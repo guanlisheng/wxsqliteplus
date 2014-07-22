@@ -384,7 +384,7 @@ bool wxCreateTriggerDialog::ShowToolTips()
 void wxCreateTriggerDialog::OnChar(wxKeyEvent& event)
 {
    int c = event.GetKeyCode();
-   if ((!wxIsalnum(c) && c != _T('_') && c != _T(' ') && c != WXK_BACK && c != WXK_DELETE)&&
+   if ((!wxIsalnum(c) && c != ('_') && c != (' ') && c != WXK_BACK && c != WXK_DELETE)&&
       // Ctrl+C Ctrl+V Ctrl+X
        !(event.ControlDown() && (c == 3 || c == 22 || c == 24)))
       return;
@@ -566,7 +566,7 @@ void wxCreateTriggerDialog::PopulateObjName()
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(_T("PopulateObjName"), ex);
+      wxGetApp().ShowError(("PopulateObjName"), ex);
    }
    tblQRY.Finalize();
 }
@@ -583,8 +583,8 @@ void wxCreateTriggerDialog::PopulateColumns()
    if (m_Base != wxEmptyString)
       basename = m_Base;
    else
-      basename = _T("main");
-   sql = wxString::Format(_T("PRAGMA %s.table_info(\"%s\");"),
+      basename = ("main");
+   sql = wxString::Format(("PRAGMA %s.table_info(\"%s\");"),
                           basename.c_str(), tablename.c_str());
 
    m_AvailableColumns->Clear();
@@ -598,7 +598,7 @@ void wxCreateTriggerDialog::PopulateColumns()
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(_T("PopulateColumns"), ex);
+      wxGetApp().ShowError(("PopulateColumns"), ex);
    }
    clmnQRY.Finalize();
 }
@@ -654,36 +654,36 @@ wxString wxCreateTriggerDialog::GetCreateTriggerDDL()
    }
 
    // Création du DDL
-   ddl = _T("CREATE ");
+   ddl = ("CREATE ");
    if (m_TempTrigger->IsChecked())
-      ddl += _T("TEMPORARY ");
-   ddl += _T("TRIGGER ");
+      ddl += ("TEMPORARY ");
+   ddl += ("TRIGGER ");
    if (!m_TempTrigger->IsChecked() && m_Base != wxEmptyString)
-      ddl += m_Base + _T(".");
-   ddl += _T("\"") + triggername.Lower() + _T("\"\n");
-   ddl += m_TriggerTime->GetStringSelection() + _T(" ");
+      ddl += m_Base + (".");
+   ddl += ("\"") + triggername.Lower() + ("\"\n");
+   ddl += m_TriggerTime->GetStringSelection() + (" ");
    ddl += m_TriggerEvent->GetStringSelection();
    if (m_TriggerEvent->GetSelection() == 3)
    {
       for (size_t i = 0; i < m_SelectedColumns->GetCount(); i++)
       {
-         ddl += _T(" ") + m_SelectedColumns->GetString(i);
+         ddl += (" ") + m_SelectedColumns->GetString(i);
          if (i != m_SelectedColumns->GetCount() - 1)
-            ddl += _T(",");
+            ddl += (",");
       }
    }
-   ddl += _T("\n");
-   ddl += _T("ON \"") + objname + _T("\"\n");
+   ddl += ("\n");
+   ddl += ("ON \"") + objname + ("\"\n");
    if (m_ForEachRow->IsChecked())
-      ddl += _T("FOR EACH ROW\n");
+      ddl += ("FOR EACH ROW\n");
    when = m_When->GetValue();
    if (!when.IsEmpty())
-      ddl += _T("WHEN ") + when + _T("\n");
-   ddl += _T("BEGIN\n");
+      ddl += ("WHEN ") + when + ("\n");
+   ddl += ("BEGIN\n");
    ddl += statement;
-   if (statement.Last() != _T('\n'))
-      ddl += _T("\n");
-   ddl += _T("END;");
+   if (statement.Last() != ('\n'))
+      ddl += ("\n");
+   ddl += ("END;");
 
    if (!wxGetApp().CheckStatementSyntax(m_Db, ddl, ddlerror))
    {

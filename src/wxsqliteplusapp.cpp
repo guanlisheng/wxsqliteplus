@@ -175,7 +175,7 @@ bool wxSQLitePlusApp::OnInit()
 {
    int XPos, YPos, F_Width, F_Height, F_Maximized;
 
-   const wxString name = wxString::Format(_T("wxSQLitePlus-%s"), wxGetUserId().c_str());
+   const wxString name = wxString::Format(("wxSQLitePlus-%s"), wxGetUserId().c_str());
    m_checker = new wxSingleInstanceChecker(name);
    if (m_checker->IsAnotherRunning())
    {
@@ -209,7 +209,7 @@ bool wxSQLitePlusApp::OnInit()
    wxSize size(F_Width, F_Height);
 
    wxSQLitePlusFrame* mainWindow = new wxSQLitePlusFrame(NULL, -1,
-                                                         _T("wxSQLite+"),
+                                                         ("wxSQLite+"),
                                                          pos, size);
    SetTopWindow(mainWindow);
    if (F_Maximized)
@@ -220,7 +220,7 @@ bool wxSQLitePlusApp::OnInit()
       mainWindow->CmdOpen(argv[i]);
 
 #ifdef DEBUG
-    new wxLogWindow(mainWindow, _T("Debug"));
+    new wxLogWindow(mainWindow, ("Debug"));
 #endif
 
    return true;
@@ -242,10 +242,10 @@ void wxSQLitePlusApp::AddHistory(const wxString& sql)
       wxString sql1;
       wxString statement = sql;
 
-      if (statement.Last() != _T(';'))
-         statement += _T(';');
+      if (statement.Last() != (';'))
+         statement += (';');
       sqlCRC32 = CalcCrc32(Normalize(statement));
-      sql1 = wxString::Format(_T("SELECT id, count_use "
+      sql1 = wxString::Format(("SELECT id, count_use "
                                  "FROM history "
                                  "WHERE"
                                  "  user = '%s' AND code = %lu;"),
@@ -255,7 +255,7 @@ void wxSQLitePlusApp::AddHistory(const wxString& sql)
       {
          int id = hisQRY.GetInt(0);
          int count = hisQRY.GetInt(1) + 1;
-         sql1 = wxString::Format(_T("UPDATE history "
+         sql1 = wxString::Format(("UPDATE history "
                                     "SET "
                                     "  count_use = %i, "
                                     "  last_modif_date = CURRENT_TIMESTAMP "
@@ -264,9 +264,9 @@ void wxSQLitePlusApp::AddHistory(const wxString& sql)
       }
       else
       {
-         statement.Replace(_T("'"), _T("/'/"), true);
-         statement.Replace(_T("/'/"), _T("''"), true);
-         sql1 = wxString::Format(_T("INSERT INTO history"
+         statement.Replace(("'"), ("/'/"), true);
+         statement.Replace(("/'/"), ("''"), true);
+         sql1 = wxString::Format(("INSERT INTO history"
                                     "(user, sql, code, count_use)"
                                     "VALUES ('%s', '%s', %lu, 1);"),
                                  wxGetUserId().c_str(), statement.c_str(), sqlCRC32);
@@ -276,10 +276,10 @@ void wxSQLitePlusApp::AddHistory(const wxString& sql)
 
       sql_count = wxGetApp().GetParamInt(PARAM_SQLHISTOCOUNT);
 
-      sql1 = _T("SELECT COUNT(*) FROM history;");
+      sql1 = ("SELECT COUNT(*) FROM history;");
       if (m_db.ExecuteScalar(sql1) > sql_count)
       {
-         sql1 = wxString::Format(_T("DELETE FROM history "
+         sql1 = wxString::Format(("DELETE FROM history "
                                     "WHERE "
                                     "  last_modif_date < ( "
                                     "                      SELECT MIN(last_modif_date) "
@@ -300,7 +300,7 @@ void wxSQLitePlusApp::AddHistory(const wxString& sql)
    }
    catch(wxSQLite3Exception& ex)
    {
-      ShowError(_T("AddHistory"), ex);
+      ShowError(("AddHistory"), ex);
    }
 }
 /*---------------------------------------------------------------------------*/
@@ -311,7 +311,7 @@ wxSQLite3ResultSet wxSQLitePlusApp::GetStatementHistory()
 
    try
    {
-      sql1 = wxString::Format(_T("SELECT"
+      sql1 = wxString::Format(("SELECT"
                                  "  last_modif_date AS \"Date\", "
                                  "  sql AS \"Statement\", "
                                  "  count_use AS \"Count\" "
@@ -324,7 +324,7 @@ wxSQLite3ResultSet wxSQLitePlusApp::GetStatementHistory()
    }
    catch(wxSQLite3Exception& ex)
    {
-      ShowError(_T("GetStatementHistory"), ex);
+      ShowError(("GetStatementHistory"), ex);
    }
    return hisQRY;
 }
@@ -336,256 +336,256 @@ void wxSQLitePlusApp::SetParamInt(int param, int value)
    switch (param)
    {
       case PARAM_FRAME_XPOS   :
-         paramname = _T("Frame_XPos");
+         paramname = ("Frame_XPos");
          break;
       case PARAM_FRAME_YPOS   :
-         paramname = _T("Frame_YPos");
+         paramname = ("Frame_YPos");
          break;
       case PARAM_FRAME_WIDTH  :
-         paramname = _T("Frame_Width");
+         paramname = ("Frame_Width");
          break;
       case PARAM_FRAME_HEIGHT :
-         paramname = _T("Frame_Height");
+         paramname = ("Frame_Height");
          break;
       case PARAM_FRAME_MAXIMIZED :
-         paramname = _T("Frame_Maximized");
+         paramname = ("Frame_Maximized");
          break;
       case PARAM_AUTOTRANSACT :
-         paramname = _T("Auto_Transaction");
+         paramname = ("Auto_Transaction");
          break;
       case PARAM_SQLHISTOCOUNT :
-         paramname = _T("Sql_History_Count");
+         paramname = ("Sql_History_Count");
          break;
       case PARAM_SAVEWINPOSITION :
-         paramname = _T("Save_Window_position");
+         paramname = ("Save_Window_position");
          m_SavePosition = (bool)value;
          break;
       case PARAM_SAVEWINPERSPECTIVE :
-         paramname = _T("Save_Window_Perspective");
+         paramname = ("Save_Window_Perspective");
          m_SavePerspective = (bool)value;
          break;
       case PARAM_STYLE_FONTSIZE :
-         paramname = _T("Style Font Size");
+         paramname = ("Style Font Size");
          m_FontSize = value;
          break;
       case PARAM_STYLE_EDGELINE :
-         paramname = _T("Style Edge Line");
+         paramname = ("Style Edge Line");
          m_EdgeLineVisible = (bool)value;
          break;
       case PARAM_ST_BOLD_DEF :
-         paramname = _T("Style Font Bold Default");
+         paramname = ("Style Font Bold Default");
          m_FontBold[STYLE_DEFAULT] = (bool)value;
          break;
       case PARAM_ST_ITALIC_DEF :
-         paramname = _T("Style Font Italic Default");
+         paramname = ("Style Font Italic Default");
          m_FontItalic[STYLE_DEFAULT] = (bool)value;
          break;
       case PARAM_ST_UNDER_DEF :
-         paramname = _T("Style Font Underline Default");
+         paramname = ("Style Font Underline Default");
          m_FontUnderline[STYLE_DEFAULT] = (bool)value;
          break;
       case PARAM_ST_CASE_DEF :
-         paramname = _T("Style Font Case Default");
+         paramname = ("Style Font Case Default");
          m_StyleCase[STYLE_DEFAULT] = value;
          break;
       case PARAM_ST_BOLD_COM :
-         paramname = _T("Style Font Bold Comment");
+         paramname = ("Style Font Bold Comment");
          m_FontBold[STYLE_COMMENT] = (bool)value;
          break;
       case PARAM_ST_ITALIC_COM :
-         paramname = _T("Style Font Italic Comment");
+         paramname = ("Style Font Italic Comment");
          m_FontItalic[STYLE_COMMENT] = (bool)value;
          break;
       case PARAM_ST_UNDER_COM :
-         paramname = _T("Style Font Underline Comment");
+         paramname = ("Style Font Underline Comment");
          m_FontUnderline[STYLE_COMMENT] = (bool)value;
          break;
       case PARAM_ST_CASE_COM :
-         paramname = _T("Style Font Case Comment");
+         paramname = ("Style Font Case Comment");
          m_StyleCase[STYLE_COMMENT] = value;
          break;
       case PARAM_ST_BOLD_COML :
-         paramname = _T("Style Font Bold Comment Line");
+         paramname = ("Style Font Bold Comment Line");
          m_FontBold[STYLE_COMMENTLINE] = (bool)value;
          break;
       case PARAM_ST_ITALIC_COML :
-         paramname = _T("Style Font Italic Comment Line");
+         paramname = ("Style Font Italic Comment Line");
          m_FontItalic[STYLE_COMMENTLINE] = (bool)value;
          break;
       case PARAM_ST_UNDER_COML :
-         paramname = _T("Style Font Underline Comment Line");
+         paramname = ("Style Font Underline Comment Line");
          m_FontUnderline[STYLE_COMMENTLINE] = (bool)value;
          break;
       case PARAM_ST_CASE_COML :
-         paramname = _T("Style Font Case Comment Line");
+         paramname = ("Style Font Case Comment Line");
          m_StyleCase[STYLE_COMMENTLINE] = value;
          break;
       case PARAM_ST_BOLD_NUM :
-         paramname = _T("Style Font Bold Number");
+         paramname = ("Style Font Bold Number");
          m_FontBold[STYLE_NUMBER] = (bool)value;
          break;
       case PARAM_ST_ITALIC_NUM :
-         paramname = _T("Style Font Italic Number");
+         paramname = ("Style Font Italic Number");
          m_FontItalic[STYLE_NUMBER] = (bool)value;
          break;
       case PARAM_ST_UNDER_NUM :
-         paramname = _T("Style Font Underline Number");
+         paramname = ("Style Font Underline Number");
          m_FontUnderline[STYLE_NUMBER] = (bool)value;
          break;
       case PARAM_ST_CASE_NUM :
-         paramname = _T("Style Font Case Number");
+         paramname = ("Style Font Case Number");
          m_StyleCase[STYLE_NUMBER] = value;
          break;
       case PARAM_ST_BOLD_KEY1 :
-         paramname = _T("Style Font Bold Key 1");
+         paramname = ("Style Font Bold Key 1");
          m_FontBold[STYLE_WORD1] = (bool)value;
          break;
       case PARAM_ST_ITALIC_KEY1 :
-         paramname = _T("Style Font Italic Key 1");
+         paramname = ("Style Font Italic Key 1");
          m_FontItalic[STYLE_WORD1] = (bool)value;
          break;
       case PARAM_ST_UNDER_KEY1 :
-         paramname = _T("Style Font Underline Key 1");
+         paramname = ("Style Font Underline Key 1");
          m_FontUnderline[STYLE_WORD1] = (bool)value;
          break;
       case PARAM_ST_CASE_KEY1 :
-         paramname = _T("Style Font Case Key 1");
+         paramname = ("Style Font Case Key 1");
          m_StyleCase[STYLE_WORD1] = value;
          break;
       case PARAM_ST_BOLD_STR :
-         paramname = _T("Style Font Bold String");
+         paramname = ("Style Font Bold String");
          m_FontBold[STYLE_STRING] = (bool)value;
          break;
       case PARAM_ST_ITALIC_STR :
-         paramname = _T("Style Font Italic String");
+         paramname = ("Style Font Italic String");
          m_FontItalic[STYLE_STRING] = (bool)value;
          break;
       case PARAM_ST_UNDER_STR :
-         paramname = _T("Style Font Underline String");
+         paramname = ("Style Font Underline String");
          m_FontUnderline[STYLE_STRING] = (bool)value;
          break;
       case PARAM_ST_CASE_STR :
-         paramname = _T("Style Font Case String");
+         paramname = ("Style Font Case String");
          m_StyleCase[STYLE_STRING] = value;
          break;
       case PARAM_ST_BOLD_CHAR :
-         paramname = _T("Style Font Bold Characters");
+         paramname = ("Style Font Bold Characters");
          m_FontBold[STYLE_CHARACTER] = (bool)value;
          break;
       case PARAM_ST_ITALIC_CHAR :
-         paramname = _T("Style Font Italic Characters");
+         paramname = ("Style Font Italic Characters");
          m_FontItalic[STYLE_CHARACTER] = (bool)value;
          break;
       case PARAM_ST_UNDER_CHAR :
-         paramname = _T("Style Font Underline Characters");
+         paramname = ("Style Font Underline Characters");
          m_FontUnderline[STYLE_CHARACTER] = (bool)value;
          break;
       case PARAM_ST_CASE_CHAR :
-         paramname = _T("Style Font Case Characters");
+         paramname = ("Style Font Case Characters");
          m_StyleCase[STYLE_CHARACTER] = value;
          break;
       case PARAM_ST_BOLD_OPE :
-         paramname = _T("Style Font Bold Operator");
+         paramname = ("Style Font Bold Operator");
          m_FontBold[STYLE_OPERATOR] = (bool)value;
          break;
       case PARAM_ST_ITALIC_OPE :
-         paramname = _T("Style Font Italic Operator");
+         paramname = ("Style Font Italic Operator");
          m_FontItalic[STYLE_OPERATOR] = (bool)value;
          break;
       case PARAM_ST_UNDER_OPE :
-         paramname = _T("Style Font Underline Operator");
+         paramname = ("Style Font Underline Operator");
          m_FontUnderline[STYLE_OPERATOR] = (bool)value;
          break;
       case PARAM_ST_CASE_OPE :
-         paramname = _T("Style Font Case Operator");
+         paramname = ("Style Font Case Operator");
          m_StyleCase[STYLE_OPERATOR] = value;
          break;
       case PARAM_ST_BOLD_IDE :
-         paramname = _T("Style Font Bold Identifier");
+         paramname = ("Style Font Bold Identifier");
          m_FontBold[STYLE_IDENTIFIER] = (bool)value;
          break;
       case PARAM_ST_ITALIC_IDE :
-         paramname = _T("Style Font Italic Identifier");
+         paramname = ("Style Font Italic Identifier");
          m_FontItalic[STYLE_IDENTIFIER] = (bool)value;
          break;
       case PARAM_ST_UNDER_IDE :
-         paramname = _T("Style Font Underline Identifier");
+         paramname = ("Style Font Underline Identifier");
          m_FontUnderline[STYLE_IDENTIFIER] = (bool)value;
          break;
       case PARAM_ST_CASE_IDE :
-         paramname = _T("Style Font Case Identifier");
+         paramname = ("Style Font Case Identifier");
          m_StyleCase[STYLE_IDENTIFIER] = value;
          break;
       case PARAM_ST_BOLD_KEY2 :
-         paramname = _T("Style Font Bold Key 2");
+         paramname = ("Style Font Bold Key 2");
          m_FontBold[STYLE_WORD2] = (bool)value;
          break;
       case PARAM_ST_ITALIC_KEY2 :
-         paramname = _T("Style Font Italic Key 2");
+         paramname = ("Style Font Italic Key 2");
          m_FontItalic[STYLE_WORD2] = (bool)value;
          break;
       case PARAM_ST_UNDER_KEY2 :
-         paramname = _T("Style Font Underline Key 2");
+         paramname = ("Style Font Underline Key 2");
          m_FontUnderline[STYLE_WORD2] = (bool)value;
          break;
       case PARAM_ST_CASE_KEY2 :
-         paramname = _T("Style Font Case Key 2");
+         paramname = ("Style Font Case Key 2");
          m_StyleCase[STYLE_WORD2] = value;
          break;
       case PARAM_ST_BOLD_KEY3 :
-         paramname = _T("Style Font Bold Key 3");
+         paramname = ("Style Font Bold Key 3");
          m_FontBold[STYLE_WORD3] = (bool)value;
          break;
       case PARAM_ST_ITALIC_KEY3 :
-         paramname = _T("Style Font Italic Key 3");
+         paramname = ("Style Font Italic Key 3");
          m_FontItalic[STYLE_WORD3] = (bool)value;
          break;
       case PARAM_ST_UNDER_KEY3 :
-         paramname = _T("Style Font Underline Key 3");
+         paramname = ("Style Font Underline Key 3");
          m_FontUnderline[STYLE_WORD3] = (bool)value;
          break;
       case PARAM_ST_CASE_KEY3 :
-         paramname = _T("Style Font Case Key 3");
+         paramname = ("Style Font Case Key 3");
          m_StyleCase[STYLE_WORD3] = value;
          break;
       case PARAM_ST_BOLD_KEY4 :
-         paramname = _T("Style Font Bold Key 4");
+         paramname = ("Style Font Bold Key 4");
          m_FontBold[STYLE_WORD4] = (bool)value;
          break;
       case PARAM_ST_ITALIC_KEY4 :
-         paramname = _T("Style Font Italic Key 4");
+         paramname = ("Style Font Italic Key 4");
          m_FontItalic[STYLE_WORD4] = (bool)value;
          break;
       case PARAM_ST_UNDER_KEY4 :
-         paramname = _T("Style Font Underline Key 4");
+         paramname = ("Style Font Underline Key 4");
          m_FontUnderline[STYLE_WORD4] = (bool)value;
          break;
       case PARAM_ST_CASE_KEY4 :
-         paramname = _T("Style Font Case Key 4");
+         paramname = ("Style Font Case Key 4");
          m_StyleCase[STYLE_WORD4] = value;
          break;
       case PARAM_ST_TAB_WIDTH :
-         paramname = _T("Style Tab Width");
+         paramname = ("Style Tab Width");
          m_StyleTabWidth = value;
          break;
       case PARAM_ST_USE_TAB :
-         paramname = _T("Style Use Tab");
+         paramname = ("Style Use Tab");
          m_StyleUseTab = value;
          break;
       case PARAM_ST_TAB_INDENT :
-         paramname = _T("Style Tab Indent");
+         paramname = ("Style Tab Indent");
          m_StyleTabIndent = value;
          break;
       case PARAM_ST_BACKSP_UNINDT :
-         paramname = _T("Style Backspace Unindent");
+         paramname = ("Style Backspace Unindent");
          m_StyleBackspaceUnindent = value;
          break;
       case PARAM_ST_INDENT_WIDTH :
-         paramname = _T("Style Indent Width");
+         paramname = ("Style Indent Width");
          m_StyleIndentWidth = value;
          break;
       case PARAM_ST_SHOW_LINENUM :
-         paramname = _T("Style Show Line Number");
+         paramname = ("Style Show Line Number");
          m_StyleShowLineNumber = value;
          break;
       default : return;
@@ -601,263 +601,263 @@ int wxSQLitePlusApp::GetParamInt(int param)
    switch (param)
    {
       case PARAM_FRAME_XPOS   :
-         paramname = _T("Frame_XPos");
+         paramname = ("Frame_XPos");
          defvalue = -1;
          break;
       case PARAM_FRAME_YPOS   :
-         paramname = _T("Frame_YPos");
+         paramname = ("Frame_YPos");
          defvalue = -1;
          break;
       case PARAM_FRAME_WIDTH  :
-         paramname = _T("Frame_Width");
+         paramname = ("Frame_Width");
          defvalue = 725;
          break;
       case PARAM_FRAME_HEIGHT :
-         paramname = _T("Frame_Height");
+         paramname = ("Frame_Height");
          defvalue = 550;
          break;
       case PARAM_FRAME_MAXIMIZED :
-         paramname = _T("Frame_Maximized");
+         paramname = ("Frame_Maximized");
          defvalue = 0;
          break;
       case PARAM_AUTOTRANSACT :
-         paramname = _T("Auto_Transaction");
+         paramname = ("Auto_Transaction");
          defvalue = 1;
          break;
       case PARAM_SQLHISTOCOUNT :
-         paramname = _T("Sql_History_Count");
+         paramname = ("Sql_History_Count");
          defvalue = 100;
          break;
       case PARAM_SAVEWINPOSITION :
-         paramname = _T("Save_Window_position");
+         paramname = ("Save_Window_position");
          defvalue = 1;
          break;
       case PARAM_SAVEWINPERSPECTIVE :
-         paramname = _T("Save_Window_Perspective");
+         paramname = ("Save_Window_Perspective");
          defvalue = 1;
          break;
       case PARAM_STYLE_FONTSIZE :
-         paramname = _T("Style Font Size");
+         paramname = ("Style Font Size");
          defvalue = 10;
          break;
       case PARAM_STYLE_EDGELINE :
-         paramname = _T("Style Edge Line");
+         paramname = ("Style Edge Line");
          defvalue = 1;
          break;
       case PARAM_ST_BOLD_DEF :
-         paramname = _T("Style Font Bold Default");
+         paramname = ("Style Font Bold Default");
          defvalue = 0;
          break;
       case PARAM_ST_ITALIC_DEF :
-         paramname = _T("Style Font Italic Default");
+         paramname = ("Style Font Italic Default");
          defvalue = 0;
          break;
       case PARAM_ST_UNDER_DEF :
-         paramname = _T("Style Font Underline Default");
+         paramname = ("Style Font Underline Default");
          defvalue = 0;
          break;
       case PARAM_ST_CASE_DEF :
-         paramname = _T("Style Font Case Default");
+         paramname = ("Style Font Case Default");
          defvalue = 0;
          break;
       case PARAM_ST_BOLD_COM :
-         paramname = _T("Style Font Bold Comment");
+         paramname = ("Style Font Bold Comment");
          defvalue = 0;
          break;
       case PARAM_ST_ITALIC_COM :
-         paramname = _T("Style Font Italic Comment");
+         paramname = ("Style Font Italic Comment");
          defvalue = 1;
          break;
       case PARAM_ST_UNDER_COM :
-         paramname = _T("Style Font Underline Comment");
+         paramname = ("Style Font Underline Comment");
          defvalue = 0;
          break;
       case PARAM_ST_CASE_COM :
-         paramname = _T("Style Font Case Comment");
+         paramname = ("Style Font Case Comment");
          defvalue = 0;
          break;
       case PARAM_ST_BOLD_COML :
-         paramname = _T("Style Font Bold Comment Line");
+         paramname = ("Style Font Bold Comment Line");
          defvalue = 0;
          break;
       case PARAM_ST_ITALIC_COML :
-         paramname = _T("Style Font Italic Comment Line");
+         paramname = ("Style Font Italic Comment Line");
          defvalue = 1;
          break;
       case PARAM_ST_UNDER_COML :
-         paramname = _T("Style Font Underline Comment Line");
+         paramname = ("Style Font Underline Comment Line");
          defvalue = 0;
          break;
       case PARAM_ST_CASE_COML :
-         paramname = _T("Style Font Case Comment Line");
+         paramname = ("Style Font Case Comment Line");
          defvalue = 0;
          break;
       case PARAM_ST_BOLD_NUM :
-         paramname = _T("Style Font Bold Number");
+         paramname = ("Style Font Bold Number");
          defvalue = 0;
          break;
       case PARAM_ST_ITALIC_NUM :
-         paramname = _T("Style Font Italic Number");
+         paramname = ("Style Font Italic Number");
          defvalue = 0;
          break;
       case PARAM_ST_UNDER_NUM :
-         paramname = _T("Style Font Underline Number");
+         paramname = ("Style Font Underline Number");
          defvalue = 0;
          break;
       case PARAM_ST_CASE_NUM :
-         paramname = _T("Style Font Case Number");
+         paramname = ("Style Font Case Number");
          defvalue = 0;
          break;
       case PARAM_ST_BOLD_KEY1 :
-         paramname = _T("Style Font Bold Key 1");
+         paramname = ("Style Font Bold Key 1");
          defvalue = 1;
          break;
       case PARAM_ST_ITALIC_KEY1 :
-         paramname = _T("Style Font Italic Key 1");
+         paramname = ("Style Font Italic Key 1");
          defvalue = 0;
          break;
       case PARAM_ST_UNDER_KEY1 :
-         paramname = _T("Style Font Underline Key 1");
+         paramname = ("Style Font Underline Key 1");
          defvalue = 0;
          break;
       case PARAM_ST_CASE_KEY1 :
-         paramname = _T("Style Font Case Key 1");
+         paramname = ("Style Font Case Key 1");
          defvalue = 1;  // wxSTC_CASE_UPPER
          break;
       case PARAM_ST_BOLD_STR :
-         paramname = _T("Style Font Bold String");
+         paramname = ("Style Font Bold String");
          defvalue = 0;
          break;
       case PARAM_ST_ITALIC_STR :
-         paramname = _T("Style Font Italic String");
+         paramname = ("Style Font Italic String");
          defvalue = 0;
          break;
       case PARAM_ST_UNDER_STR :
-         paramname = _T("Style Font Underline String");
+         paramname = ("Style Font Underline String");
          defvalue = 0;
          break;
       case PARAM_ST_CASE_STR :
-         paramname = _T("Style Font Case String");
+         paramname = ("Style Font Case String");
          defvalue = 0;
          break;
       case PARAM_ST_BOLD_CHAR :
-         paramname = _T("Style Font Bold Characters");
+         paramname = ("Style Font Bold Characters");
          defvalue = 0;
          break;
       case PARAM_ST_ITALIC_CHAR :
-         paramname = _T("Style Font Italic Characters");
+         paramname = ("Style Font Italic Characters");
          defvalue = 0;
          break;
       case PARAM_ST_UNDER_CHAR :
-         paramname = _T("Style Font Underline Characters");
+         paramname = ("Style Font Underline Characters");
          defvalue = 0;
          break;
       case PARAM_ST_CASE_CHAR :
-         paramname = _T("Style Font Case Characters");
+         paramname = ("Style Font Case Characters");
          defvalue = 0;
          break;
       case PARAM_ST_BOLD_OPE :
-         paramname = _T("Style Font Bold Operator");
+         paramname = ("Style Font Bold Operator");
          defvalue = 0;
          break;
       case PARAM_ST_ITALIC_OPE :
-         paramname = _T("Style Font Italic Operator");
+         paramname = ("Style Font Italic Operator");
          defvalue = 0;
          break;
       case PARAM_ST_UNDER_OPE :
-         paramname = _T("Style Font Underline Operator");
+         paramname = ("Style Font Underline Operator");
          defvalue = 0;
          break;
       case PARAM_ST_CASE_OPE :
-         paramname = _T("Style Font Case Operator");
+         paramname = ("Style Font Case Operator");
          defvalue = 0;
          break;
       case PARAM_ST_BOLD_IDE :
-         paramname = _T("Style Font Bold Identifier");
+         paramname = ("Style Font Bold Identifier");
          defvalue = 0;
          break;
       case PARAM_ST_ITALIC_IDE :
-         paramname = _T("Style Font Italic Identifier");
+         paramname = ("Style Font Italic Identifier");
          defvalue = 0;
          break;
       case PARAM_ST_UNDER_IDE :
-         paramname = _T("Style Font Underline Identifier");
+         paramname = ("Style Font Underline Identifier");
          defvalue = 0;
          break;
       case PARAM_ST_CASE_IDE :
-         paramname = _T("Style Font Case Identifier");
+         paramname = ("Style Font Case Identifier");
          defvalue = 0;
          break;
       case PARAM_ST_BOLD_KEY2 :
-         paramname = _T("Style Font Bold Key 2");
+         paramname = ("Style Font Bold Key 2");
          defvalue = 1;
          break;
       case PARAM_ST_ITALIC_KEY2 :
-         paramname = _T("Style Font Italic Key 2");
+         paramname = ("Style Font Italic Key 2");
          defvalue = 0;
          break;
       case PARAM_ST_UNDER_KEY2 :
-         paramname = _T("Style Font Underline Key 2");
+         paramname = ("Style Font Underline Key 2");
          defvalue = 0;
          break;
       case PARAM_ST_CASE_KEY2 :
-         paramname = _T("Style Font Case Key 2");
+         paramname = ("Style Font Case Key 2");
          defvalue = 0;  // wxSTC_CASE_MIXED
          break;
       case PARAM_ST_BOLD_KEY3 :
-         paramname = _T("Style Font Bold Key 3");
+         paramname = ("Style Font Bold Key 3");
          defvalue = 1;
          break;
       case PARAM_ST_ITALIC_KEY3 :
-         paramname = _T("Style Font Italic Key 3");
+         paramname = ("Style Font Italic Key 3");
          defvalue = 0;
          break;
       case PARAM_ST_UNDER_KEY3 :
-         paramname = _T("Style Font Underline Key 3");
+         paramname = ("Style Font Underline Key 3");
          defvalue = 0;
          break;
       case PARAM_ST_CASE_KEY3 :
-         paramname = _T("Style Font Case Key 3");
+         paramname = ("Style Font Case Key 3");
          defvalue = 0;  // wxSTC_CASE_MIXED
          break;
       case PARAM_ST_BOLD_KEY4 :
-         paramname = _T("Style Font Bold Key 4");
+         paramname = ("Style Font Bold Key 4");
          defvalue = 1;
          break;
       case PARAM_ST_ITALIC_KEY4 :
-         paramname = _T("Style Font Italic Key 4");
+         paramname = ("Style Font Italic Key 4");
          defvalue = 0;
          break;
       case PARAM_ST_UNDER_KEY4 :
-         paramname = _T("Style Font Underline Key 4");
+         paramname = ("Style Font Underline Key 4");
          defvalue = 0;
          break;
       case PARAM_ST_CASE_KEY4 :
-         paramname = _T("Style Font Case Key 4");
+         paramname = ("Style Font Case Key 4");
          defvalue = 0;  // wxSTC_CASE_MIXED
          break;
       case PARAM_ST_TAB_WIDTH :
-         paramname = _T("Style Tab Width");
+         paramname = ("Style Tab Width");
          defvalue = 2;
          break;
       case PARAM_ST_USE_TAB :
-         paramname = _T("Style Use Tab");
+         paramname = ("Style Use Tab");
          defvalue = 0;
          break;
       case PARAM_ST_TAB_INDENT :
-         paramname = _T("Style Tab Indent");
+         paramname = ("Style Tab Indent");
          defvalue = 1;
          break;
       case PARAM_ST_BACKSP_UNINDT :
-         paramname = _T("Style Backspace Unindent");
+         paramname = ("Style Backspace Unindent");
          defvalue = 1;
          break;
       case PARAM_ST_INDENT_WIDTH :
-         paramname = _T("Style Indent Width");
+         paramname = ("Style Indent Width");
          defvalue = 2;
          break;
       case PARAM_ST_SHOW_LINENUM :
-         paramname = _T("Style Show Line Number");
+         paramname = ("Style Show Line Number");
          defvalue = 1;
          break;
       default : return 0;
@@ -872,120 +872,120 @@ void wxSQLitePlusApp::SetParamStr(int param, const wxString& value)
    switch (param)
    {
       case PARAM_FRAME_PERSPECTIVE :
-         paramname = _T("Frame_Perspective");
+         paramname = ("Frame_Perspective");
          break;
       case PARAM_SQL_PERSPECTIVE :
-         paramname = _T("Sql_Perspective");
+         paramname = ("Sql_Perspective");
          break;
       case PARAM_ODDROWCOLOR :
-         paramname = _T("Odd_Row_Color");
+         paramname = ("Odd_Row_Color");
          break;
       case PARAM_STYLE_FONTNAME :
-         paramname = _T("Style Font Name");
+         paramname = ("Style Font Name");
          m_FontName = value;
          break;
       case PARAM_ST_FORE_DEF :
-         paramname = _T("Style Foreground Default");
+         paramname = ("Style Foreground Default");
          m_FontFore[STYLE_DEFAULT] = value;
          break;
       case PARAM_ST_FORE_COM :
-         paramname = _T("Style Foreground Comment");
+         paramname = ("Style Foreground Comment");
          m_FontFore[STYLE_COMMENT] = value;
          break;
       case PARAM_ST_FORE_COML :
-         paramname = _T("Style Foreground Comment Line");
+         paramname = ("Style Foreground Comment Line");
          m_FontFore[STYLE_COMMENTLINE] = value;
          break;
       case PARAM_ST_FORE_NUM :
-         paramname = _T("Style Foreground Number");
+         paramname = ("Style Foreground Number");
          m_FontFore[STYLE_NUMBER] = value;
          break;
       case PARAM_ST_FORE_KEY1 :
-         paramname = _T("Style Foreground Key 1");
+         paramname = ("Style Foreground Key 1");
          m_FontFore[STYLE_WORD1] = value;
          break;
       case PARAM_ST_FORE_STR :
-         paramname = _T("Style Foreground String");
+         paramname = ("Style Foreground String");
          m_FontFore[STYLE_STRING] = value;
          break;
       case PARAM_ST_FORE_CHAR :
-         paramname = _T("Style Foreground Characters");
+         paramname = ("Style Foreground Characters");
          m_FontFore[STYLE_CHARACTER] = value;
          break;
       case PARAM_ST_FORE_OPE :
-         paramname = _T("Style Foreground Operator");
+         paramname = ("Style Foreground Operator");
          m_FontFore[STYLE_OPERATOR] = value;
          break;
       case PARAM_ST_FORE_IDE :
-         paramname = _T("Style Foreground Identifier");
+         paramname = ("Style Foreground Identifier");
          m_FontFore[STYLE_IDENTIFIER] = value;
          break;
       case PARAM_ST_FORE_KEY2 :
-         paramname = _T("Style Foreground Key 2");
+         paramname = ("Style Foreground Key 2");
          m_FontFore[STYLE_WORD2] = value;
          break;
       case PARAM_ST_FORE_KEY3 :
-         paramname = _T("Style Foreground Key 3");
+         paramname = ("Style Foreground Key 3");
          m_FontFore[STYLE_WORD3] = value;
          break;
       case PARAM_ST_FORE_KEY4 :
-         paramname = _T("Style Foreground Key 4");
+         paramname = ("Style Foreground Key 4");
          m_FontFore[STYLE_WORD4] = value;
          break;
       case PARAM_ST_BACK_DEF :
-         paramname = _T("Style Background Default");
+         paramname = ("Style Background Default");
          m_FontBack[STYLE_DEFAULT] = value;
          break;
       case PARAM_ST_BACK_COM :
-         paramname = _T("Style Background Comment");
+         paramname = ("Style Background Comment");
          m_FontBack[STYLE_COMMENT] = value;
          break;
       case PARAM_ST_BACK_COML :
-         paramname = _T("Style Background Comment Line");
+         paramname = ("Style Background Comment Line");
          m_FontBack[STYLE_COMMENTLINE] = value;
          break;
       case PARAM_ST_BACK_NUM :
-         paramname = _T("Style Background Number");
+         paramname = ("Style Background Number");
          m_FontBack[STYLE_NUMBER] = value;
          break;
       case PARAM_ST_BACK_KEY1 :
-         paramname = _T("Style Background Key 1");
+         paramname = ("Style Background Key 1");
          m_FontBack[STYLE_WORD1] = value;
          break;
       case PARAM_ST_BACK_STR :
-         paramname = _T("Style Background String");
+         paramname = ("Style Background String");
          m_FontBack[STYLE_STRING] = value;
          break;
       case PARAM_ST_BACK_CHAR :
-         paramname = _T("Style Background Characters");
+         paramname = ("Style Background Characters");
          m_FontBack[STYLE_CHARACTER] = value;
          break;
       case PARAM_ST_BACK_OPE :
-         paramname = _T("Style Background Operator");
+         paramname = ("Style Background Operator");
          m_FontBack[STYLE_OPERATOR] = value;
          break;
       case PARAM_ST_BACK_IDE :
-         paramname = _T("Style Background Identifier");
+         paramname = ("Style Background Identifier");
          m_FontBack[STYLE_IDENTIFIER] = value;
          break;
       case PARAM_ST_BACK_KEY2 :
-         paramname = _T("Style Background Key 2");
+         paramname = ("Style Background Key 2");
          m_FontBack[STYLE_WORD2] = value;
          break;
       case PARAM_ST_BACK_KEY3 :
-         paramname = _T("Style Background Key 3");
+         paramname = ("Style Background Key 3");
          m_FontBack[STYLE_WORD3] = value;
          break;
       case PARAM_ST_BACK_KEY4 :
-         paramname = _T("Style Background Key 4");
+         paramname = ("Style Background Key 4");
          m_FontBack[STYLE_WORD4] = value;
          break;
       case PARAM_ST_FORE_LINENUM :
-         paramname = _T("Style Foreground Line Number");
+         paramname = ("Style Foreground Line Number");
          m_ForeLineNumber = value;
          break;
       case PARAM_ST_BACK_LINENUM :
-         paramname = _T("Style Background Line Number");
+         paramname = ("Style Background Line Number");
          m_BackLineNumber = value;
          break;
       default : return;
@@ -1000,124 +1000,124 @@ wxString wxSQLitePlusApp::GetParamStr(int param)
    switch (param)
    {
       case PARAM_FRAME_PERSPECTIVE  :
-         paramname = _T("Frame_Perspective");
+         paramname = ("Frame_Perspective");
          defvalue = wxEmptyString;
          break;
       case PARAM_SQL_PERSPECTIVE    :
-         paramname = _T("Sql_Perspective");
+         paramname = ("Sql_Perspective");
          defvalue = wxEmptyString;
          break;
       case PARAM_ODDROWCOLOR :
-         paramname = _T("Odd_Row_Color");
-         defvalue = _T("#FFFFAF");
+         paramname = ("Odd_Row_Color");
+         defvalue = ("#FFFFAF");
          break;
       case PARAM_STYLE_FONTNAME :
-         paramname = _T("Style Font Name");
-         defvalue = _T("Courier");
+         paramname = ("Style Font Name");
+         defvalue = ("Courier");
          break;
       case PARAM_ST_FORE_DEF :
-         paramname = _T("Style Foreground Default");
-         defvalue = _T("#000000");
+         paramname = ("Style Foreground Default");
+         defvalue = ("#000000");
          break;
       case PARAM_ST_FORE_COM :
-         paramname = _T("Style Foreground Comment");
-         defvalue = _T("#C0C0C0");
+         paramname = ("Style Foreground Comment");
+         defvalue = ("#C0C0C0");
          break;
       case PARAM_ST_FORE_COML :
-         paramname = _T("Style Foreground Comment Line");
-         defvalue = _T("#808080");
+         paramname = ("Style Foreground Comment Line");
+         defvalue = ("#808080");
          break;
       case PARAM_ST_FORE_NUM :
-         paramname = _T("Style Foreground Number");
-         defvalue = _T("#B000FF");
+         paramname = ("Style Foreground Number");
+         defvalue = ("#B000FF");
          break;
       case PARAM_ST_FORE_KEY1 :
-         paramname = _T("Style Foreground Key 1");
-         defvalue = _T("#238E23");
+         paramname = ("Style Foreground Key 1");
+         defvalue = ("#238E23");
          break;
       case PARAM_ST_FORE_STR :
-         paramname = _T("Style Foreground String");
-         defvalue = _T("#0000FF");
+         paramname = ("Style Foreground String");
+         defvalue = ("#0000FF");
          break;
       case PARAM_ST_FORE_CHAR :
-         paramname = _T("Style Foreground Characters");
-         defvalue = _T("#5F9F9F");
+         paramname = ("Style Foreground Characters");
+         defvalue = ("#5F9F9F");
          break;
       case PARAM_ST_FORE_OPE :
-         paramname = _T("Style Foreground Operator");
-         defvalue = _T("#9F9F5F");
+         paramname = ("Style Foreground Operator");
+         defvalue = ("#9F9F5F");
          break;
       case PARAM_ST_FORE_IDE :
-         paramname = _T("Style Foreground Identifier");
-         defvalue = _T("#0000FF");
+         paramname = ("Style Foreground Identifier");
+         defvalue = ("#0000FF");
          break;
       case PARAM_ST_FORE_KEY2 :
-         paramname = _T("Style Foreground Key 2");
-         defvalue = _T("#238E23");
+         paramname = ("Style Foreground Key 2");
+         defvalue = ("#238E23");
          break;
       case PARAM_ST_FORE_KEY3 :
-         paramname = _T("Style Foreground Key 3");
-         defvalue = _T("#238E23");
+         paramname = ("Style Foreground Key 3");
+         defvalue = ("#238E23");
          break;
       case PARAM_ST_FORE_KEY4 :
-         paramname = _T("Style Foreground Key 4");
-         defvalue = _T("#238E23");
+         paramname = ("Style Foreground Key 4");
+         defvalue = ("#238E23");
          break;
       case PARAM_ST_BACK_DEF :
-         paramname = _T("Style Background Default");
-         defvalue = _T("#FFFFFF");
+         paramname = ("Style Background Default");
+         defvalue = ("#FFFFFF");
          break;
       case PARAM_ST_BACK_COM :
-         paramname = _T("Style Background Comment");
-         defvalue = _T("#FFFFFF");
+         paramname = ("Style Background Comment");
+         defvalue = ("#FFFFFF");
          break;
       case PARAM_ST_BACK_COML :
-         paramname = _T("Style Background Comment Line");
-         defvalue = _T("#FFFFFF");
+         paramname = ("Style Background Comment Line");
+         defvalue = ("#FFFFFF");
          break;
       case PARAM_ST_BACK_NUM :
-         paramname = _T("Style Background Number");
-         defvalue = _T("#FFFFFF");
+         paramname = ("Style Background Number");
+         defvalue = ("#FFFFFF");
          break;
       case PARAM_ST_BACK_KEY1 :
-         paramname = _T("Style Background Key 1");
-         defvalue = _T("#FFFFFF");
+         paramname = ("Style Background Key 1");
+         defvalue = ("#FFFFFF");
          break;
       case PARAM_ST_BACK_STR :
-         paramname = _T("Style Background String");
-         defvalue = _T("#FFFFFF");
+         paramname = ("Style Background String");
+         defvalue = ("#FFFFFF");
          break;
       case PARAM_ST_BACK_CHAR :
-         paramname = _T("Style Background Characters");
-         defvalue = _T("#FFFFFF");
+         paramname = ("Style Background Characters");
+         defvalue = ("#FFFFFF");
          break;
       case PARAM_ST_BACK_OPE :
-         paramname = _T("Style Background Operator");
-         defvalue = _T("#FFFFFF");
+         paramname = ("Style Background Operator");
+         defvalue = ("#FFFFFF");
          break;
       case PARAM_ST_BACK_IDE :
-         paramname = _T("Style Background Identifier");
-         defvalue = _T("#FFFFFF");
+         paramname = ("Style Background Identifier");
+         defvalue = ("#FFFFFF");
          break;
       case PARAM_ST_BACK_KEY2 :
-         paramname = _T("Style Background Key 2");
-         defvalue = _T("#FFFFFF");
+         paramname = ("Style Background Key 2");
+         defvalue = ("#FFFFFF");
          break;
       case PARAM_ST_BACK_KEY3 :
-         paramname = _T("Style Background Key 3");
-         defvalue = _T("#FFFFFF");
+         paramname = ("Style Background Key 3");
+         defvalue = ("#FFFFFF");
          break;
       case PARAM_ST_BACK_KEY4 :
-         paramname = _T("Style Background Key 4");
-         defvalue = _T("#FFFFFF");
+         paramname = ("Style Background Key 4");
+         defvalue = ("#FFFFFF");
          break;
       case PARAM_ST_FORE_LINENUM :
-         paramname = _T("Style Foreground Line Number");
-         defvalue = _T("#000000");
+         paramname = ("Style Foreground Line Number");
+         defvalue = ("#000000");
          break;
       case PARAM_ST_BACK_LINENUM :
-         paramname = _T("Style Background Line Number");
-         defvalue = _T("#808080");
+         paramname = ("Style Background Line Number");
+         defvalue = ("#808080");
          break;
       default : return wxEmptyString;
    }
@@ -1130,7 +1130,7 @@ void wxSQLitePlusApp::SetSQLParameter(const wxString& param,
 {
    wxString paramname;
 
-   paramname = _T("SQLPARAM-") + param.Mid(1).Upper();
+   paramname = ("SQLPARAM-") + param.Mid(1).Upper();
 
    QuerySetParam(paramname, value);
 }
@@ -1139,7 +1139,7 @@ wxString wxSQLitePlusApp::GetSQLParameter(const wxString& param)
 {
    wxString paramname;
 
-   paramname = _T("SQLPARAM-") + param.Mid(1).Upper();
+   paramname = ("SQLPARAM-") + param.Mid(1).Upper();
    return QueryGetParam(paramname, wxEmptyString);
 }
 /*---------------------------------------------------------------------------*/
@@ -1301,7 +1301,7 @@ wxIcon wxSQLitePlusApp::GetIcon(int id)
 /*---------------------------------------------------------------------------*/
 wxString wxSQLitePlusApp::GetCompanyName() const
 {
-   return _T("Soft In The Box");
+   return ("Soft In The Box");
 }
 /*---------------------------------------------------------------------------*/
 wxString wxSQLitePlusApp::GetFileDescription() const
@@ -1311,29 +1311,29 @@ wxString wxSQLitePlusApp::GetFileDescription() const
 /*---------------------------------------------------------------------------*/
 wxString wxSQLitePlusApp::GetFileVersion() const
 {
-   return  _T("0.3.1");
+   return  ("0.3.1");
 }
 /*---------------------------------------------------------------------------*/
 wxString wxSQLitePlusApp::GetInternalName() const
 {
-   return  _T("wxSQLite+");
+   return  ("wxSQLite+");
 }
 /*---------------------------------------------------------------------------*/
 wxString wxSQLitePlusApp::GetLegalCopyright() const
 {
    wxString tmp;
 
-   tmp = _T("Copyright (c) 2007-2009, Fred Cailleau-Lepetit");
-   tmp += _T("\nCopyright (c) 2014, Guan Lisheng");
+   tmp = ("Copyright (c) 2007-2009, Fred Cailleau-Lepetit");
+   tmp += ("\nCopyright (c) 2014, Guan Lisheng");
 #if WXSQLITE3_HAVE_CODEC
-   tmp += _T("\nPart of encryption code:\nCopyright (c) 1990, RSA Data Security");
+   tmp += ("\nPart of encryption code:\nCopyright (c) 1990, RSA Data Security");
 #endif
    return tmp;
 }
 /*---------------------------------------------------------------------------*/
 wxString wxSQLitePlusApp::GetOriginalFilename() const
 {
-   return  _T("wxSQLitePlus.exe");
+   return  ("wxSQLitePlus.exe");
 }
 /*---------------------------------------------------------------------------*/
 void wxSQLitePlusApp::ShowError(const wxString& proc, wxSQLite3Exception& ex) const
@@ -1354,7 +1354,7 @@ int wxSQLitePlusApp::QueryGetParam(const wxString& param, int defvalue)
 
    try
    {
-      sql1 = wxString::Format(_T("SELECT"
+      sql1 = wxString::Format(("SELECT"
                                  "  param_value "
                                  "FROM paramint "
                                  "WHERE"
@@ -1368,7 +1368,7 @@ int wxSQLitePlusApp::QueryGetParam(const wxString& param, int defvalue)
    }
    catch(wxSQLite3Exception& ex)
    {
-      ShowError(_T("QueryGetParam"), ex);
+      ShowError(("QueryGetParam"), ex);
    }
    return value;
 }
@@ -1379,7 +1379,7 @@ void wxSQLitePlusApp::QuerySetParam(const wxString& param, int value)
 
    try
    {
-      sql1 = wxString::Format(_T("SELECT"
+      sql1 = wxString::Format(("SELECT"
                                  "  COUNT(*) "
                                  "FROM paramint "
                                  "WHERE"
@@ -1388,7 +1388,7 @@ void wxSQLitePlusApp::QuerySetParam(const wxString& param, int value)
                               param.c_str(), wxGetUserId().c_str());
       if (m_db.ExecuteScalar(sql1) > 0)
       {
-         sql1 = wxString::Format(_T("UPDATE paramint "
+         sql1 = wxString::Format(("UPDATE paramint "
                                     "SET "
                                     "  param_value = %i "
                                     "WHERE"
@@ -1398,7 +1398,7 @@ void wxSQLitePlusApp::QuerySetParam(const wxString& param, int value)
       }
       else
       {
-         sql1 = wxString::Format(_T("INSERT INTO paramint"
+         sql1 = wxString::Format(("INSERT INTO paramint"
                                     "(user, param_name, param_value)"
                                     "VALUES ('%s', '%s', %i);"),
                                     wxGetUserId().c_str(), param.c_str(), value);
@@ -1407,7 +1407,7 @@ void wxSQLitePlusApp::QuerySetParam(const wxString& param, int value)
    }
    catch(wxSQLite3Exception& ex)
    {
-      ShowError(_T("QuerySetParam"), ex);
+      ShowError(("QuerySetParam"), ex);
    }
 }
 /*---------------------------------------------------------------------------*/
@@ -1420,7 +1420,7 @@ wxString wxSQLitePlusApp::QueryGetParam(const wxString& param,
 
    try
    {
-      sql1 = wxString::Format(_T("SELECT"
+      sql1 = wxString::Format(("SELECT"
                                  "  param_value "
                                  "FROM paramtext "
                                  "WHERE"
@@ -1436,7 +1436,7 @@ wxString wxSQLitePlusApp::QueryGetParam(const wxString& param,
    }
    catch(wxSQLite3Exception& ex)
    {
-      ShowError(_T("QueryGetParam"), ex);
+      ShowError(("QueryGetParam"), ex);
    }
    return value;
 }
@@ -1448,7 +1448,7 @@ void wxSQLitePlusApp::QuerySetParam(const wxString& param,
 
    try
    {
-      sql1 = wxString::Format(_T("SELECT"
+      sql1 = wxString::Format(("SELECT"
                                  "  COUNT(*) "
                                  "FROM paramtext "
                                  "WHERE"
@@ -1457,7 +1457,7 @@ void wxSQLitePlusApp::QuerySetParam(const wxString& param,
                               param.c_str(), wxGetUserId().c_str());
       if (m_db.ExecuteScalar(sql1) > 0)
       {
-         sql1 = wxString::Format(_T("UPDATE paramtext "
+         sql1 = wxString::Format(("UPDATE paramtext "
                                     "SET "
                                     "  param_value = '%s' "
                                     "WHERE"
@@ -1467,7 +1467,7 @@ void wxSQLitePlusApp::QuerySetParam(const wxString& param,
       }
       else
       {
-         sql1 = wxString::Format(_T("INSERT INTO paramtext"
+         sql1 = wxString::Format(("INSERT INTO paramtext"
                                     "(user, param_name, param_value)"
                                     "VALUES ('%s', '%s', '%s');"),
                                     wxGetUserId().c_str(), param.c_str(), value.c_str());
@@ -1476,7 +1476,7 @@ void wxSQLitePlusApp::QuerySetParam(const wxString& param,
    }
    catch(wxSQLite3Exception& ex)
    {
-      ShowError(_T("QuerySetParam"), ex);
+      ShowError(("QuerySetParam"), ex);
    }
 }
 /*---------------------------------------------------------------------------*/
@@ -1494,7 +1494,7 @@ bool wxSQLitePlusApp::CheckStatementSyntax(wxSQLite3Database* db,
    // mais juste si l'expression est bien terminée.
    // L'utilisation de EXPLAIN permet de passer par l'analyseur
    // syntaxique et de vérifier les paramètres (nom de tables et colonnes, etc...)
-   wxString tmp = _T("EXPLAIN ") + statement.Strip(wxString::both);
+   wxString tmp = ("EXPLAIN ") + statement.Strip(wxString::both);
 
    try
    {
@@ -1522,22 +1522,22 @@ wxString wxSQLitePlusApp::Normalize(const wxString& str)
    for (size_t i = 0; i < str.Len(); i++)
    {
       c = str[i];
-      if ((c == p)&&(c == _T(' ')))
+      if ((c == p)&&(c == (' ')))
       {  // Ne rien faire
          // le caractère précédent est un espace
          // l'espace courant est donc superflu
       }
-      else if (c == _T(' ')&&(p == 0))
+      else if (c == (' ')&&(p == 0))
       {  // Le caractère courant est un espace
          // mais le caractère précédent n'était pas un espace
          ret += c;      // Ajouter l'espace
-         p = _T(' ');   // Marqué comme premier espace
+         p = (' ');   // Marqué comme premier espace
       }
-      else if (c == _T('\n'))
+      else if (c == ('\n'))
       {  // Le caractère courant est un saut de ligne
-         if (p != _T(' ')) // Si le caractère précédent n'est pas un espace
+         if (p != (' ')) // Si le caractère précédent n'est pas un espace
          {
-            p = _T(' ');   // Marquer ce caractère comme un espace
+            p = (' ');   // Marquer ce caractère comme un espace
             ret += p;      // Et l'ajouter
          }  // Sinon considérer comme espace superflu
       }
@@ -1546,27 +1546,27 @@ wxString wxSQLitePlusApp::Normalize(const wxString& str)
          ret += c;   // Ajouter le caractère
          p = 0;      // Fermer la chaine en supprimant le flag
       }
-      else if ((c == _T('\''))||(c == _T('"')))
+      else if ((c == ('\''))||(c == ('"')))
       {  // Début de chaine par ' ou "
          ret += c;   // Ajouter le caractère courant
          p = c;      // Mettre le flag de début de chaine
       }
       else
       {  // Autre cas
-         if (((p == _T(' '))&&(c != _T(' ')))||((p != _T('\''))&&(p != _T('"'))))
+         if (((p == (' '))&&(c != (' ')))||((p != ('\''))&&(p != ('"'))))
          {  // si un espace précédent existe mais le caractère courant
             // n'est pas un espace ou
             // le flag n'est pas marqué comme ' ni comme "
             p = 0;   // Annulation du flag espace
             c = wxToupper(c); // Mise en majuscule du caractère courant
          }
-         else if (p == _T('"'))  // c'est une chaine de nom d'objet sql
+         else if (p == ('"'))  // c'est une chaine de nom d'objet sql
             c = wxToupper(c);    // Mise en majuscule du caractère courant
          ret += c;   // Ajout du caractère courant
       }
    }
-   if (ret.Last() != _T(';'))
-      ret += _T(';');
+   if (ret.Last() != (';'))
+      ret += (';');
    return ret;
 }
 /*---------------------------------------------------------------------------*/
@@ -1635,22 +1635,22 @@ void wxSQLitePlusApp::InitConfig()
 #ifdef __WXMSW__
       wxFileName fname(argv[0]);
       cfgdb = fname.GetPath(wxPATH_GET_VOLUME);
-      cfgdb += _T("\\config.par");
+      cfgdb += ("\\config.par");
 #else
-      cfgdb = wxFileName::GetHomeDir() + _T("/.SoftInTheBox");
+      cfgdb = wxFileName::GetHomeDir() + ("/.SoftInTheBox");
       // Vérifier l'existance du chemin, sinon le créer
       if (!wxDirExists(cfgdb))
          wxMkdir(cfgdb);
-      cfgdb += _T("/wxSQLitePlus");
+      cfgdb += ("/wxSQLitePlus");
       // Vérifier l'existance du chemin, sinon le créer
       if (!wxDirExists(cfgdb))
          wxMkdir(cfgdb);
-      cfgdb += _T("/config.db");
+      cfgdb += ("/config.db");
 #endif
       m_db.Open(cfgdb);
-      if (!m_db.TableExists(_T("history")))
+      if (!m_db.TableExists(("history")))
       {
-         wxString sql = _T("CREATE TABLE history "
+         wxString sql = ("CREATE TABLE history "
                            "("
                            "  id INTEGER PRIMARY KEY AUTOINCREMENT, "
                            "  last_modif_date DATE DEFAULT CURRENT_TIMESTAMP, "
@@ -1661,14 +1661,14 @@ void wxSQLitePlusApp::InitConfig()
                            ");");
          m_db.ExecuteUpdate(sql);
 
-         sql = _T("CREATE INDEX idx_hist_user_sql ON history "
+         sql = ("CREATE INDEX idx_hist_user_sql ON history "
                   "( "
                   "   user ASC, "
                   "   sql ASC "
                   ");");
          m_db.ExecuteUpdate(sql);
 
-         sql = _T("CREATE INDEX idx_hist_user_date ON history "
+         sql = ("CREATE INDEX idx_hist_user_date ON history "
                   "( "
                   "   user ASC, "
                   "   last_modif_date DESC "
@@ -1676,9 +1676,9 @@ void wxSQLitePlusApp::InitConfig()
          m_db.ExecuteUpdate(sql);
 
       }
-      if (!m_db.TableExists(_T("paramint")))
+      if (!m_db.TableExists(("paramint")))
       {
-         wxString sql = _T("CREATE TABLE paramint "
+         wxString sql = ("CREATE TABLE paramint "
                            "( "
                            "  id INTEGER PRIMARY KEY AUTOINCREMENT, "
                            "  user TEXT, "
@@ -1687,16 +1687,16 @@ void wxSQLitePlusApp::InitConfig()
                            ");");
          m_db.ExecuteUpdate(sql);
 
-         sql = _T("CREATE UNIQUE INDEX idx_pint_user_name ON paramint "
+         sql = ("CREATE UNIQUE INDEX idx_pint_user_name ON paramint "
                   "( "
                   "   user ASC, "
                   "   param_name ASC "
                   ");");
          m_db.ExecuteUpdate(sql);
       }
-      if (!m_db.TableExists(_T("paramtext")))
+      if (!m_db.TableExists(("paramtext")))
       {
-         wxString sql = _T("CREATE TABLE paramtext "
+         wxString sql = ("CREATE TABLE paramtext "
                            "( "
                            "  id INTEGER PRIMARY KEY AUTOINCREMENT, "
                            "  user TEXT, "
@@ -1705,19 +1705,19 @@ void wxSQLitePlusApp::InitConfig()
                            ");");
          m_db.ExecuteUpdate(sql);
 
-         sql = _T("CREATE UNIQUE INDEX idx_ptext_user_name ON paramtext "
+         sql = ("CREATE UNIQUE INDEX idx_ptext_user_name ON paramtext "
                   "( "
                   "   user ASC, "
                   "   param_name ASC "
                   ");");
          m_db.ExecuteUpdate(sql);
 
-         QuerySetParam(_T("Version"), GetFileVersion());
+         QuerySetParam(("Version"), GetFileVersion());
       }
    }
    catch(wxSQLite3Exception& ex)
    {
-      ShowError(_T("InitConfig"), ex);
+      ShowError(("InitConfig"), ex);
    }
 }
 /*---------------------------------------------------------------------------*/
@@ -1746,14 +1746,14 @@ wxColour wxSQLitePlusApp::GetStyleColourFore(int index)
 {
    if (index >= 0 && index < STYLE_COUNT)
       return m_FontFore[index];
-   return wxColour(_T("BLACK"));
+   return wxColour(("BLACK"));
 }
 /*---------------------------------------------------------------------------*/
 wxColour wxSQLitePlusApp::GetStyleColourBack(int index)
 {
    if (index >= 0 && index < STYLE_COUNT)
       return m_FontBack[index];
-   return wxColour(_T("WHITE"));
+   return wxColour(("WHITE"));
 }
 /*---------------------------------------------------------------------------*/
 int wxSQLitePlusApp::GetStyleCase(int index)
@@ -1916,7 +1916,7 @@ unsigned short wxSQLitePlusApp::GetService()
 
    wxFileConfig IPCConfigFile(wxEmptyString, wxEmptyString, GetIPCFile());
 
-   IPCConfigFile.Read(_T("Service"), &Service, 0);
+   IPCConfigFile.Read(("Service"), &Service, 0);
 
    return (unsigned short)Service;
 }
@@ -1925,7 +1925,7 @@ void wxSQLitePlusApp::SetService(unsigned short port)
 {
    wxFileConfig IPCConfigFile(wxEmptyString, wxEmptyString, GetIPCFile());
 
-   IPCConfigFile.Write(_T("Service"), (long)port);
+   IPCConfigFile.Write(("Service"), (long)port);
 }
 /*---------------------------------------------------------------------------*/
 wxString wxSQLitePlusApp::GetIPCFile()
@@ -1937,6 +1937,6 @@ wxString wxSQLitePlusApp::GetIPCFile()
       if (!wxMkdir(stdp.GetUserLocalDataDir()))
          return wxEmptyString;
    }
-   return stdp.GetUserLocalDataDir() + wxFileName::GetPathSeparator() + _T("ipc.cfg");
+   return stdp.GetUserLocalDataDir() + wxFileName::GetPathSeparator() + ("ipc.cfg");
 }
 /*---------------------------------------------------------------------------*/

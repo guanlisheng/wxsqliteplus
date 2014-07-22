@@ -241,7 +241,7 @@ class WXDLLIMPEXP_SCPECGRID wxGridCellBlobRenderer : public wxGridCellStringRend
    public:
 
       wxGridCellBlobRenderer(bool displaynullvalue = true,
-                             const wxString& defaultstring = _T("(blob)"));
+                             const wxString& defaultstring = ("(blob)"));
 
       virtual void Draw(wxGrid& grid, wxGridCellAttr& attr, wxDC& dc,
                         const wxRect& rect, int row, int col, bool isSelected);

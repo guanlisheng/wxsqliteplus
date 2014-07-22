@@ -149,7 +149,7 @@ void wxAddColumnDialog::SetDatabase(wxSQLite3Database* db, const wxString& base)
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(_T("SetDatabase"), ex);
+      wxGetApp().ShowError(("SetDatabase"), ex);
    }
 }
 /*---------------------------------------------------------------------------*/
@@ -315,7 +315,7 @@ wxString wxAddColumnDialog::GetAddColumnsDDL()
    {
       ddl += arrayString.Item(i);
       if ((int)i != m_TableColumns.GetNumberRows() - 1)
-         ddl += _T("\n");
+         ddl += ("\n");
    }
 
    return ddl;
@@ -347,15 +347,15 @@ wxArrayString wxAddColumnDialog::GetAddColumnsScript()
    }
 
    // Création du DDL
-   sql = _T("ALTER TABLE \"");
+   sql = ("ALTER TABLE \"");
    if (m_Base != wxEmptyString)
-      sql += m_Base + _T(".");
-   sql += tablename + _T("\" ADD COLUMN ");
+      sql += m_Base + (".");
+   sql += tablename + ("\" ADD COLUMN ");
    for (int i = 0; i < m_TableColumns.GetNumberRows(); i++)
    {
       ddl = sql;
       column = m_TableColumns.GetColumnCtrTable(i);
-      ddl += _T("\"") + column->GetName() + _T("\" ");
+      ddl += ("\"") + column->GetName() + ("\" ");
       switch (column->GetType())
       {
          case cttIntegerAutoinc :
@@ -366,13 +366,13 @@ wxArrayString wxAddColumnDialog::GetAddColumnsScript()
                return emptyArray;
             }
          case cttInteger :
-            ddl += _T("INTEGER"); break;
+            ddl += ("INTEGER"); break;
          case cttReal :
-            ddl += _T("REAL"); break;
+            ddl += ("REAL"); break;
          case cttText :
-            ddl += _T("TEXT"); break;
+            ddl += ("TEXT"); break;
          case cttBlob :
-            ddl += _T("BLOB"); break;
+            ddl += ("BLOB"); break;
       }
 
       if (column->GetNotNull())
@@ -383,27 +383,27 @@ wxArrayString wxAddColumnDialog::GetAddColumnsScript()
                          _("Error"));
             return emptyArray;
          }
-         ddl += _T(" NOT NULL");
+         ddl += (" NOT NULL");
       }
 
       if (column->GetDefault() != wxEmptyString)
       {
-         ddl += _T(" DEFAULT ");
+         ddl += (" DEFAULT ");
          if ((column->GetType() == cttText || column->GetType() == cttBlob)&&
-             (column->GetDefault() != _T("CURRENT_TIME")||
-              column->GetDefault() != _T("CURRENT_DATE")||
-              column->GetDefault() != _T("CURRENT_TIMESTAMP")))
+             (column->GetDefault() != ("CURRENT_TIME")||
+              column->GetDefault() != ("CURRENT_DATE")||
+              column->GetDefault() != ("CURRENT_TIMESTAMP")))
          {
             def = column->GetDefault();
-            if (!def.StartsWith(_T("'"))||!def.EndsWith(_T("'")))
+            if (!def.StartsWith(("'"))||!def.EndsWith(("'")))
             {
-               def.Replace(_T("'"), _T("''"));
-               ddl += _T("'") + def + _T("'");
+               def.Replace(("'"), ("''"));
+               ddl += ("'") + def + ("'");
             }
          }
-         else if (column->GetDefault() == _T("CURRENT_TIME")||
-                  column->GetDefault() == _T("CURRENT_DATE")||
-                  column->GetDefault() == _T("CURRENT_TIMESTAMP"))
+         else if (column->GetDefault() == ("CURRENT_TIME")||
+                  column->GetDefault() == ("CURRENT_DATE")||
+                  column->GetDefault() == ("CURRENT_TIMESTAMP"))
          {
             wxMessageBox(_("The column may not have a default value of "
                            "CURRENT_TIME, CURRENT_DATE or CURRENT_TIMESTAMP."),
@@ -419,7 +419,7 @@ wxArrayString wxAddColumnDialog::GetAddColumnsScript()
                       _("Error"));
          return emptyArray;
       }
-      ddl += _T(";");
+      ddl += (";");
       arrayString.Add(ddl);
    }
    return arrayString;
@@ -442,9 +442,9 @@ void wxAddColumnDialog::DoTablenameSelected()
    if (m_Base != wxEmptyString)
       basename = m_Base;
    else
-      basename = _T("main");
+      basename = ("main");
 
-   sql = wxString::Format(_T("PRAGMA %s.table_info(\"%s\");"),
+   sql = wxString::Format(("PRAGMA %s.table_info(\"%s\");"),
                           basename.c_str(), tablename.c_str());
    try
    {
@@ -454,7 +454,7 @@ void wxAddColumnDialog::DoTablenameSelected()
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(_T("OnTablenameSelected"), ex);
+      wxGetApp().ShowError(("OnTablenameSelected"), ex);
    }
    tblQRY.Finalize();
 

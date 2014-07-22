@@ -185,8 +185,8 @@ void wxSQLBook::CreateControls()
    m_SQLEdit = new wxSQLEditor(this, ID_SQLEDIT);
 
    GetAuiManager().AddPane(m_SQLEdit,
-                           wxAuiPaneInfo().Name(_T("SQLEdit"))
-                                          .Caption(_T("Enter SQL Statement :"))
+                           wxAuiPaneInfo().Name(("SQLEdit"))
+                                          .Caption(("Enter SQL Statement :"))
                                           .Top().MinSize(wxSize(-1, 200))
                                           .CloseButton(false)
                                           .DestroyOnClose(false)
@@ -226,7 +226,7 @@ void wxSQLBook::CreateControls()
    m_ResultBook->AddPage(m_Explain, _("Explain"), false, m_ExplainBitmap);
 
    GetAuiManager().AddPane(m_ResultBook,
-                           wxAuiPaneInfo().Name(_T("ResultBook"))
+                           wxAuiPaneInfo().Name(("ResultBook"))
                                           .Centre()
                                           .CaptionVisible(false)
                                           .CloseButton(false)
@@ -327,7 +327,7 @@ void wxSQLBook::OnExplainClick(wxCommandEvent& event)
    wxString SQL = GetCurrentSQLStatement();
    if (!SQL.IsEmpty())
    {
-      SQL = _T("EXPLAIN ") + SQL;
+      SQL = ("EXPLAIN ") + SQL;
       ExecQuery(SQL, true);
    }
 }
@@ -356,7 +356,7 @@ void wxSQLBook::ExecQuery(const wxString sql, bool explain, bool history)
       {
          if (m_db->GetAutoCommit() && m_AutoTransact)
          {
-            m_db->ExecuteUpdate(_T("BEGIN TRANSACTION;"));
+            m_db->ExecuteUpdate(("BEGIN TRANSACTION;"));
             m_LogResult->AppendText(_("Started transaction.\n"));
          }
       }
@@ -493,7 +493,7 @@ wxString wxSQLBook::GetCurrentSQLStatement()
             y--;
             temp = m_SQLEdit->GetLine(y).Trim();
 
-            if ((temp.IsEmpty()||(temp.Last() == _T(';')))&&!m_SQLEdit->EndLineIsComment(y))
+            if ((temp.IsEmpty()||(temp.Last() == (';')))&&!m_SQLEdit->EndLineIsComment(y))
             {
                start = y + 1;
                break;
@@ -514,19 +514,19 @@ wxString wxSQLBook::GetCurrentItem()
    temp = m_SQLEdit->GetSelectedText();
 
    if (!temp.IsEmpty())
-      return temp.BeforeFirst(_T('\n'));
+      return temp.BeforeFirst(('\n'));
 
    y = m_SQLEdit->LineFromPosition(m_SQLEdit->GetCurrentPos());
    x = m_SQLEdit->GetColumn(m_SQLEdit->GetCurrentPos());
 
    str = m_SQLEdit->GetLine(y);
 
-   s = _T(' ');
+   s = (' ');
    for (start = x; start >= 0; start--)
    {
       c = str.GetChar(start);
 
-      if (c == _T(' ')||c == _T('"'))
+      if (c == (' ')||c == ('"'))
       {
          s = c;
          break;
@@ -574,12 +574,12 @@ wxString wxSQLBook::GetSQLStatementAt(long start, long& end)
    for (long i = start; i < count; i++)
    {
       if (!first)
-         Str += _T("\n");
+         Str += ("\n");
       else
          first = false;
 
       temp = m_SQLEdit->GetLine(i).Trim();
-      if ((temp.Last() == _T(';')) && !m_SQLEdit->EndLineIsComment(i)) // Arrêt au point virgule de fin de commande
+      if ((temp.Last() == (';')) && !m_SQLEdit->EndLineIsComment(i)) // Arrêt au point virgule de fin de commande
       // if (temp.IsEmpty())  // Arrêt à la première ligne vide
       {
          end = i;
@@ -597,7 +597,7 @@ void wxSQLBook::OnBeginTransactionClick(wxCommandEvent& event)
    {
       if (m_db->GetAutoCommit())
       {
-         m_db->ExecuteUpdate(_T("BEGIN TRANSACTION;"));
+         m_db->ExecuteUpdate(("BEGIN TRANSACTION;"));
          m_LogResult->AppendText(_("Started transaction.\n"));
       }
    }
@@ -617,7 +617,7 @@ void wxSQLBook::OnEndTransactionClick(wxCommandEvent& event)
    {
       if (!m_db->GetAutoCommit())
       {
-         m_db->ExecuteUpdate(_T("END TRANSACTION;"));
+         m_db->ExecuteUpdate(("END TRANSACTION;"));
          m_LogResult->AppendText(_("Transaction completed.\n"));
       }
    }
@@ -637,7 +637,7 @@ void wxSQLBook::OnCommitClick(wxCommandEvent& event)
    {
       if (!m_db->GetAutoCommit())
       {
-         m_db->ExecuteUpdate(_T("COMMIT;"));
+         m_db->ExecuteUpdate(("COMMIT;"));
          m_LogResult->AppendText(_("Transaction completed.\n"));
       }
    }
@@ -657,7 +657,7 @@ void wxSQLBook::OnRollbackClick(wxCommandEvent& event)
    {
       if (!m_db->GetAutoCommit())
       {
-         m_db->ExecuteUpdate(_T("ROLLBACK;"));
+         m_db->ExecuteUpdate(("ROLLBACK;"));
          m_LogResult->AppendText(_("Transaction cancelled.\n"));
       }
    }
@@ -719,7 +719,7 @@ void wxSQLBook::OnMnuCompactClick(wxCommandEvent& event)
       if (m_db->GetAutoCommit())
       {
          m_Hook->Clear();
-         m_db->ExecuteUpdate(_T("VACUUM;"));
+         m_db->ExecuteUpdate(("VACUUM;"));
          DisplayHookValues();
          m_LogResult->AppendText(_("Operation completed.\n"));
       }
@@ -817,7 +817,7 @@ wxMenu* wxSQLBook::CreateMenuSQLEditor()
    menu->Append(ID_MNU_EXECUTESCRIPT, _("Run &Script\tF5"), _("Execute the SQL script"), wxITEM_NORMAL);
    menu->AppendSeparator();
    menu->Append(ID_MNU_EXPLAIN, _("Execute &Explain Plan\tF6"), _("Explain the current SQL statement"), wxITEM_NORMAL);
-   menu->Append(ID_MNU_DESCRIBE, _("&Describe\tF4"), _T(""), wxITEM_NORMAL);
+   menu->Append(ID_MNU_DESCRIBE, _("&Describe\tF4"), (""), wxITEM_NORMAL);
    menu->AppendSeparator();
    menu->Append(wxID_UNDO, _("&undo\tCtrl+Z"), _("Undo the last editor action"), wxITEM_NORMAL);
    menu->Append(wxID_REDO, _("&Redo\tShift+Ctrl+Z"), _("Redo the last editor action"), wxITEM_NORMAL);
@@ -856,7 +856,7 @@ void wxSQLBook::ShowEditorPos()
    x = m_SQLEdit->GetColumn(p);
    y = m_SQLEdit->LineFromPosition(p);
 
-   SetStatusText(wxString::Format(_T("%l/%l"), x + 1, y + 1));
+   SetStatusText(wxString::Format(("%l/%l"), x + 1, y + 1));
 }
 /*---------------------------------------------------------------------------*/
 void wxSQLBook::SetStatusText(const wxString& text)
@@ -894,11 +894,11 @@ void wxSQLBook::OnMnuShowhistoryClick(wxCommandEvent& event)
       {
          // Me demandez pas pourquoi la chaine contient des doubles interlignes
          // Je n'en sais rien, mais c'est génant.
-         sql.Replace(_T("\n\n"), _T("\n"));
+         sql.Replace(("\n\n"), ("\n"));
          c = m_SQLEdit->GetCharAt(m_SQLEdit->GetLength());
 
-         if ((c != _T('\n'))&&(c != 0))
-            m_SQLEdit->AppendText(_T("\n\n"));
+         if ((c != ('\n'))&&(c != 0))
+            m_SQLEdit->AppendText(("\n\n"));
          m_SQLEdit->AppendText(sql);
       }
    }
@@ -921,8 +921,8 @@ void wxSQLBook::Describe(const wxString& name)
 
    if (!name.IsEmpty())
    {
-      tempname = name.AfterLast(_T('.'));
-      base = name.BeforeLast(_T('.'));
+      tempname = name.AfterLast(('.'));
+      base = name.BeforeLast(('.'));
 
       frame = (wxSQLitePlusFrame*)wxGetApp().GetTopWindow();
       if (frame->ExistDbObject(otTableAndView, tempname, base))

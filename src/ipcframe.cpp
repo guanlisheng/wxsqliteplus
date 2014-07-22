@@ -75,7 +75,7 @@ void wxIPCFrame::LaunchClient()
    wxIPV4address addr;
 
    // Création du client
-   addr.Hostname(_T("127.0.0.1"));
+   addr.Hostname(("127.0.0.1"));
    addr.Service(wxGetApp().GetService());
 
    Client.Connect(addr, false);
@@ -89,7 +89,7 @@ void wxIPCFrame::LaunchClient()
          msg1 = message.c_str();
          len  = (wxStrlen(msg1) + 1) * sizeof(wxChar);
          Client.WriteMsg(msg1, len);
-         // wxLogMessage(_T("%s %u"), msg1, len);
+         // wxLogMessage(("%s %u"), msg1, len);
       }
       message = IPC_VERB_SHOW;
       msg1 = message.c_str();

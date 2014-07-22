@@ -143,7 +143,7 @@ void wxPanelData::OnStaticUpdate(wxUpdateUIEvent& event)
    if (m_DataGrid->IsSorted())
    {
       if (!tmp.IsEmpty())
-         tmp += _T(", ");
+         tmp += (", ");
       tmp += _("Sorted");
    }
    if (tmp != m_active->GetLabel())

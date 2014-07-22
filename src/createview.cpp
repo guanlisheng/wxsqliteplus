@@ -223,7 +223,7 @@ bool wxCreateViewDialog::ShowToolTips()
 void wxCreateViewDialog::OnChar(wxKeyEvent& event)
 {
    int c = event.GetKeyCode();
-   if ((!wxIsalnum(c) && c != _T('_') && c != _T(' ') && c != WXK_BACK && c != WXK_DELETE)&&
+   if ((!wxIsalnum(c) && c != ('_') && c != (' ') && c != WXK_BACK && c != WXK_DELETE)&&
       // Ctrl+C Ctrl+V Ctrl+X
        !(event.ControlDown() && (c == 3 || c == 22 || c == 24)))
       return;
@@ -271,8 +271,8 @@ bool wxCreateViewDialog::CheckViewQuery(const wxString& query)
       /*
       wxString tmp;
       // Ce test n'est pas bon ni performant
-      tmp = query.Strip(wxString::both).BeforeFirst(_T(' ')).Upper();
-      if (tmp != _T("SELECT"))
+      tmp = query.Strip(wxString::both).BeforeFirst((' ')).Upper();
+      if (tmp != ("SELECT"))
       {
          m_QueryError = _("You must enter a SELECT sql statement.");
       }
@@ -324,16 +324,16 @@ wxString wxCreateViewDialog::GetCreateViewDDL()
    }
 
    // Création du DDL
-   ddl = _T("CREATE ");
+   ddl = ("CREATE ");
    if (m_TempView->IsChecked())
-      ddl += _T("TEMPORARY ");
-   ddl += _T("VIEW ");
+      ddl += ("TEMPORARY ");
+   ddl += ("VIEW ");
    if (!m_TempView->IsChecked() && m_Base != wxEmptyString)
-      ddl += m_Base + _T(".");
-   ddl += _T("\"") + viewname.Lower() + _T("\" AS\n");
+      ddl += m_Base + (".");
+   ddl += ("\"") + viewname.Lower() + ("\" AS\n");
    ddl += query;
-   if (query.Last() != _T(';'))
-      ddl += _T(';');
+   if (query.Last() != (';'))
+      ddl += (';');
 /*
 CREATE [TEMP | TEMPORARY] VIEW [IF NOT EXISTS] [database-name.] view-name AS select-statement
 */

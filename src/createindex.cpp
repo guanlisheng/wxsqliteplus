@@ -139,7 +139,7 @@ void wxCreateIndexDlg::CreateControls()
                                              wxDefaultPosition, wxDefaultSize, 0);
    bSizer2->Add(iStatic1, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
-   m_IndexName = new wxTextCtrl(this, ID_TEXTNAME, _T(""), wxDefaultPosition,
+   m_IndexName = new wxTextCtrl(this, ID_TEXTNAME, (""), wxDefaultPosition,
                                 wxDefaultSize, 0);
    bSizer2->Add(m_IndexName, 1, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
@@ -284,7 +284,7 @@ void wxCreateIndexDlg::SetDatabase(wxSQLite3Database* db, const wxString& base)
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(_T("SetDatabase"), ex);
+      wxGetApp().ShowError(("SetDatabase"), ex);
    }
 }
 /*---------------------------------------------------------------------------*/
@@ -302,7 +302,7 @@ void wxCreateIndexDlg::SetTable(const wxString& table)
 void wxCreateIndexDlg::OnChar(wxKeyEvent& event)
 {
    int c = event.GetKeyCode();
-   if ((!wxIsalnum(c) && c != _T('_') && c != _T(' ') && c != WXK_BACK && c != WXK_DELETE)&&
+   if ((!wxIsalnum(c) && c != ('_') && c != (' ') && c != WXK_BACK && c != WXK_DELETE)&&
       // Ctrl+C Ctrl+V Ctrl+X
        !(event.ControlDown() && (c == 3 || c == 22 || c == 24)))
       return;
@@ -335,7 +335,7 @@ void wxCreateIndexDlg::OnAddbtnClick(wxCommandEvent& event)
    order = m_Order->GetStringSelection();
    if (!column.IsEmpty() && !order.IsEmpty())
    {
-      m_IndexColumns->Append(_T("\"") + column + _T("\" ") + order);
+      m_IndexColumns->Append(("\"") + column + ("\" ") + order);
       DoIndexcolumnsSelected();
    }
    event.Skip();
@@ -434,21 +434,21 @@ wxString wxCreateIndexDlg::GetCreateIndexDDL()
       return wxEmptyString;
    }
 
-   ddl = _T("CREATE ");
+   ddl = ("CREATE ");
    if (m_UniqueIndex-> IsChecked())
-      ddl += _T("UNIQUE ");
-   ddl += _T("INDEX ");
+      ddl += ("UNIQUE ");
+   ddl += ("INDEX ");
    if (m_Base != wxEmptyString)
-      ddl += m_Base + _T(".");
-   ddl += _T("\"") + indexname.Lower();
-   ddl += _T("\" ON \"") + tablename + _T("\"\n(");
+      ddl += m_Base + (".");
+   ddl += ("\"") + indexname.Lower();
+   ddl += ("\" ON \"") + tablename + ("\"\n(");
    for (size_t i = 0; i < m_IndexColumns->GetCount(); i++)
    {
-      ddl += _T("\n   ") + m_IndexColumns->GetString(i);
+      ddl += ("\n   ") + m_IndexColumns->GetString(i);
       if (i != m_IndexColumns->GetCount() - 1)
-         ddl += _T(",");
+         ddl += (",");
    }
-   ddl += _T("\n);");
+   ddl += ("\n);");
    return ddl;
 }
 /*---------------------------------------------------------------------------*/
@@ -465,8 +465,8 @@ void wxCreateIndexDlg::DoTablenameSelected()
       if (m_Base != wxEmptyString)
          basename = m_Base;
       else
-         basename = _T("main");
-      sql = wxString::Format(_T("PRAGMA %s.table_info(\"%s\");"),
+         basename = ("main");
+      sql = wxString::Format(("PRAGMA %s.table_info(\"%s\");"),
                              basename.c_str(), tablename.c_str());
       clmnQRY = m_Db->ExecuteQuery(ToUTF8(sql));
       while (clmnQRY.NextRow())
@@ -475,7 +475,7 @@ void wxCreateIndexDlg::DoTablenameSelected()
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(_T("DoTablenameSelected"), ex);
+      wxGetApp().ShowError(("DoTablenameSelected"), ex);
    }
 }
 /*---------------------------------------------------------------------------*/

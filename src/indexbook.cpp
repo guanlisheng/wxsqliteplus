@@ -149,11 +149,11 @@ void wxIndexBook::RefreshDbObject()
    if (m_Base != wxEmptyString)
       basename = m_Base;
    else
-      basename = _T("main");
+      basename = ("main");
    try
    {
       // remplissage de la grille des colonnes
-      sql = wxString::Format(_T("PRAGMA %s.index_info(\"%s\");"),
+      sql = wxString::Format(("PRAGMA %s.index_info(\"%s\");"),
                              basename.c_str(), m_DbObjectName.c_str());
       resultSet = m_db->ExecuteQuery(ToUTF8(sql));
       m_PageColumns->SetTable(&g_EmptyTable);
@@ -169,7 +169,7 @@ void wxIndexBook::RefreshDbObject()
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(_T("RefreshDbObject"), ex);
+      wxGetApp().ShowError(("RefreshDbObject"), ex);
    }
 
    frame = (wxSQLitePlusFrame*)wxGetApp().GetTopWindow();

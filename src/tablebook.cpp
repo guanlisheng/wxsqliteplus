@@ -176,7 +176,7 @@ void wxTableBook::OnTablebookPageChanging( wxAuiNotebookEvent& event )
 {
    if (m_InitData)
    {  // Vérifier si c'est l'onglet Data qui doit être affiché
-      if (_T("Data") == m_Book->GetPageText(event.GetSelection()))
+      if (("Data") == m_Book->GetPageText(event.GetSelection()))
       {  // Si oui lancer la sélection des données de la table
          m_InitData = false;
          RefreshData();
@@ -196,7 +196,7 @@ void wxTableBook::SetDbObjectName(wxSQLite3Database* db,
 void wxTableBook::RefreshDbObject()
 {
    RefreshStruct();
-   if (_T("Data") == m_Book->GetPageText(m_Book->GetSelection()))
+   if (("Data") == m_Book->GetPageText(m_Book->GetSelection()))
       RefreshData();
    else
       m_InitData = true;
@@ -216,7 +216,7 @@ void wxTableBook::RefreshStruct()
    if (m_Base != wxEmptyString)
       basename = m_Base;
    else
-      basename = _T("main");
+      basename = ("main");
    try
    {
       // remplissage de la grille des colonnes
@@ -232,13 +232,13 @@ void wxTableBook::RefreshStruct()
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(_T("RefreshStruct"), ex);
+      wxGetApp().ShowError(("RefreshStruct"), ex);
    }
 
    try
    {
       // remplissage de la grille des clés étrangères
-      sql = wxString::Format(_T("PRAGMA %s.foreign_key_list(\"%s\");"),
+      sql = wxString::Format(("PRAGMA %s.foreign_key_list(\"%s\");"),
                              basename.c_str(), m_DbObjectName.c_str());
       resultSet = m_db->ExecuteQuery(ToUTF8(sql));
       m_PageForeignKey->SetTable(&g_EmptyTable);
@@ -254,7 +254,7 @@ void wxTableBook::RefreshStruct()
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(_T("RefreshStruct"), ex);
+      wxGetApp().ShowError(("RefreshStruct"), ex);
    }
 
    try
@@ -272,7 +272,7 @@ void wxTableBook::RefreshStruct()
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(_T("RefreshStruct"), ex);
+      wxGetApp().ShowError(("RefreshStruct"), ex);
    }
 
    try
@@ -290,7 +290,7 @@ void wxTableBook::RefreshStruct()
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(_T("RefreshStruct"), ex);
+      wxGetApp().ShowError(("RefreshStruct"), ex);
    }
 
    frame = (wxSQLitePlusFrame*)wxGetApp().GetTopWindow();

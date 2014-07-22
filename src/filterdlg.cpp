@@ -148,7 +148,7 @@ void wxFilterDialog::CreateControls()
    m_operators->SetStringSelection(_(">"));
    bSizer3->Add(m_operators, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
-   m_Value = new wxTextCtrl(iPanel1, ID_VALUE, _T(""), wxDefaultPosition,
+   m_Value = new wxTextCtrl(iPanel1, ID_VALUE, (""), wxDefaultPosition,
                             wxDefaultSize, 0);
    bSizer3->Add(m_Value, 1, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
@@ -209,37 +209,37 @@ void wxFilterDialog::OnBtnAddClick(wxCommandEvent& event)
    idxfield = m_fields->GetSelection();
    idxoper = m_operators->GetSelection();
 
-   tmp1 = wxString::Format(_T("\"%s\" %s"),
+   tmp1 = wxString::Format(("\"%s\" %s"),
                            m_fields->GetString(idxfield).c_str(),
                            m_operators->GetString(idxoper).c_str());
    if (idxoper < 10)
    {
       tmp2 = m_Value-> GetValue();
       if (m_fields->GetClientData(idxfield) == (void*)1)
-         tmp2 = wxString::Format(_T("'%s'"), tmp2.c_str());
-      tmp1 = wxString::Format(_T("%s %s"), tmp1.c_str(), tmp2.c_str());
+         tmp2 = wxString::Format(("'%s'"), tmp2.c_str());
+      tmp1 = wxString::Format(("%s %s"), tmp1.c_str(), tmp2.c_str());
    }
    m_filter->AddText(tmp1);
 }
 /*---------------------------------------------------------------------------*/
 void wxFilterDialog::OnBtnAndClick(wxCommandEvent& event)
 {
-   m_filter->AddText(_T("\nAND "));
+   m_filter->AddText(("\nAND "));
 }
 /*---------------------------------------------------------------------------*/
 void wxFilterDialog::OnBtnOrClick(wxCommandEvent& event)
 {
-   m_filter->AddText(_T("\nOR "));
+   m_filter->AddText(("\nOR "));
 }
 /*---------------------------------------------------------------------------*/
 void wxFilterDialog::OnBtnOparClick(wxCommandEvent& event)
 {
-   m_filter->AddText(_T("("));
+   m_filter->AddText(("("));
 }
 /*---------------------------------------------------------------------------*/
 void wxFilterDialog::OnBtnCparClick(wxCommandEvent& event)
 {
-   m_filter->AddText(_T(")"));
+   m_filter->AddText((")"));
 }
 /*---------------------------------------------------------------------------*/
 void wxFilterDialog::OnClearClick(wxCommandEvent& event)
@@ -262,12 +262,12 @@ void wxFilterDialog::OnOkClick(wxCommandEvent& event)
       if (!m_Statement.IsEmpty())
       {
          if (m_Base.IsEmpty())
-            base = _T("main");
+            base = ("main");
          else
             base = m_Base;
-         sql = _T("EXPLAIN SELECT *\r");
-         sql += _T("FROM ") + base + _T(".") + m_Table + _T("\r");
-         sql += _T("WHERE ") + m_Statement + _T(";");
+         sql = ("EXPLAIN SELECT *\r");
+         sql += ("FROM ") + base + (".") + m_Table + ("\r");
+         sql += ("WHERE ") + m_Statement + (";");
          wxSQLite3ResultSet resultSet = m_Db->ExecuteQuery(ToUTF8(sql));
          resultSet.Finalize();
       }
@@ -317,11 +317,11 @@ void wxFilterDialog::SetTable(const wxString& table)
       if (m_Base != wxEmptyString)
          basename = m_Base;
       else
-         basename = _T("main");
+         basename = ("main");
 
       // limiter à 1 car si limite à 0 ça ne fonctionne pas
       // les informations sur le type de colonnes n'est pas retourné
-      sql = wxString::Format(_T("SELECT * FROM %s.%s LIMIT 1;"),
+      sql = wxString::Format(("SELECT * FROM %s.%s LIMIT 1;"),
                              basename.c_str(), m_Table.c_str());
       clmnQRY = m_Db->ExecuteQuery(ToUTF8(sql));
 
@@ -346,7 +346,7 @@ void wxFilterDialog::SetTable(const wxString& table)
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(_T("SetTable"), ex);
+      wxGetApp().ShowError(("SetTable"), ex);
    }
 
 }
