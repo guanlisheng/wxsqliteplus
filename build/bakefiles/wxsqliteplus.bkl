@@ -39,7 +39,7 @@
 
   <exe id="wxsqliteplus" template="wxsqliteplus_common,wxgui">
     <exename>wxsqliteplus</exename>
-    <win32-res>src/wxSQLitePlus.rc</win32-res>
+    <win32-res>src/wxsqliteplus.rc</win32-res>
     <if cond="FORMAT=='autoconf'">
       <wx-mac-app-bundle/>
     </if>
