@@ -124,7 +124,7 @@ void wxTriggerBook::RefreshDbObject()
    if (m_Base != wxEmptyString)
       basename = m_Base;
    else
-      basename = _T("main");
+      basename = ("main");
 
    frame = (wxSQLitePlusFrame*)wxGetApp().GetTopWindow();
    m_PageDdl->SetValue(frame->GetDbObjectDDL(otTrigger, m_DbObjectName, basename));

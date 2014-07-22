@@ -139,9 +139,9 @@ void wxSQLParametersDialog::AddParameter(const wxString& name,
 
    if (pName.IsEmpty())
       pName = _("Unknow");
-   if (pName.GetChar(0) == _T(':') || pName.GetChar(0) == _T('$'))
+   if (pName.GetChar(0) == (':') || pName.GetChar(0) == ('$'))
       pName = pName.Mid(1);
-   pName += _T(" : ");
+   pName += (" : ");
 
    wxStaticText* itemStatic = new wxStaticText(m_ScrolledWindow, -1, pName,
                                                wxDefaultPosition,

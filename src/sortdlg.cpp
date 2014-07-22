@@ -303,7 +303,7 @@ void wxSortDialog::OnAlltoleftClick(wxCommandEvent& event)
    {
       for (int i = 0; i < count; i++)
       {
-         tmp = m_Selected->GetString(i).BeforeLast(_T(' ')) + _T(" ASC");
+         tmp = m_Selected->GetString(i).BeforeLast((' ')) + (" ASC");
          m_Available->Append(tmp);
       }
       m_Selected->Clear();
@@ -327,7 +327,7 @@ void wxSortDialog::OnToleftClick(wxCommandEvent& event)
    {
       for (int i = 0; i < count; i++)
       {
-         tmp = m_Selected->GetString(selections[i]).BeforeLast(_T(' ')) + _T(" ASC");
+         tmp = m_Selected->GetString(selections[i]).BeforeLast((' ')) + (" ASC");
          m_Available->Append(tmp);
       }
 
@@ -441,8 +441,8 @@ void wxSortDialog::OnRbAscSelected(wxCommandEvent& event)
    int index;
 
    index = m_Selected->GetSelection();
-   tmp = m_Selected->GetString(index).BeforeLast(_T(' '));
-   m_Selected->SetString(index, tmp + _T(" ASC"));
+   tmp = m_Selected->GetString(index).BeforeLast((' '));
+   m_Selected->SetString(index, tmp + (" ASC"));
    event.Skip();
 }
 /*---------------------------------------------------------------------------*/
@@ -452,8 +452,8 @@ void wxSortDialog::OnRbDescSelected(wxCommandEvent& event)
    int index;
 
    index = m_Selected->GetSelection();
-   tmp = m_Selected->GetString(index).BeforeLast(_T(' '));
-   m_Selected->SetString(index, tmp + _T(" DESC"));
+   tmp = m_Selected->GetString(index).BeforeLast((' '));
+   m_Selected->SetString(index, tmp + (" DESC"));
    event.Skip();
 }
 /*---------------------------------------------------------------------------*/
@@ -461,9 +461,9 @@ void wxSortDialog::OnSelectedSelected(wxCommandEvent& event)
 {
    wxString tmp;
 
-   tmp = m_Selected->GetStringSelection().AfterLast(_T(' '));
+   tmp = m_Selected->GetStringSelection().AfterLast((' '));
 
-   if (tmp == _T("ASC"))
+   if (tmp == ("ASC"))
       m_Ascending->SetValue(true);
    else
       m_Descending->SetValue(true);
@@ -498,18 +498,18 @@ void wxSortDialog::SetStringsOrder(wxArrayString& array)
       wxString sql, tmp;
       int index;
 
-      sql = wxString::Format(_T("PRAGMA %s.table_info(\"%s\");"),
+      sql = wxString::Format(("PRAGMA %s.table_info(\"%s\");"),
                              m_Base.c_str(), m_Table.c_str());
       tblQRY = m_Db->ExecuteQuery(ToUTF8(sql));
       while (tblQRY.NextRow())
-         m_Available->Append(tblQRY.GetString(1) + _T(" ASC"));
+         m_Available->Append(tblQRY.GetString(1) + (" ASC"));
 
       tblQRY.Finalize();
 
       m_StringsOrder = array;
       for (size_t i = 0; i < m_StringsOrder.Count(); i++)
       {
-         tmp = m_StringsOrder[i].BeforeLast(_T(' ')) + _T(" ASC");
+         tmp = m_StringsOrder[i].BeforeLast((' ')) + (" ASC");
          index = m_Available->FindString(tmp);
          if (index != wxNOT_FOUND)
          {
@@ -520,7 +520,7 @@ void wxSortDialog::SetStringsOrder(wxArrayString& array)
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(_T("SetStringsOrder"), ex);
+      wxGetApp().ShowError(("SetStringsOrder"), ex);
    }
 }
 /*---------------------------------------------------------------------------*/

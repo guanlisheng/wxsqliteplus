@@ -59,21 +59,21 @@ void wxCreateTrigerParserMinimal::Analyze()
    
    token = GetNextToken().Upper();
 
-   if (token == _T("CREATE"))
+   if (token == ("CREATE"))
    {
       token = GetNextToken().Upper();
-      if (token == _T("TEMP")||token == _T("TEMPORARY"))
+      if (token == ("TEMP")||token == ("TEMPORARY"))
          token = GetNextToken().Upper();
-      if (token == _T("TRIGGER"))
+      if (token == ("TRIGGER"))
       {
          token = GetNextToken().Upper();
-         if (token == _T("IF"))
+         if (token == ("IF"))
          {
             token = GetNextToken().Upper();
-            if (token == _T("NOT"))
+            if (token == ("NOT"))
             {
                token = GetNextToken().Upper();
-               if (token == _T("EXISTS"))
+               if (token == ("EXISTS"))
                   token = GetNextToken().Upper();
                else
                   return;
@@ -84,35 +84,35 @@ void wxCreateTrigerParserMinimal::Analyze()
             token = GetNextToken();
          }
          token = GetNextToken().Upper();
-         if (token == _T("BEFORE")||token == _T("AFTER"))
+         if (token == ("BEFORE")||token == ("AFTER"))
          {
-            m_Event = token + _T(" ");
+            m_Event = token + (" ");
             token = GetNextToken().Upper();
          }
          m_Event += token;
-         if (token == _T("UPDATE"))
+         if (token == ("UPDATE"))
          {
             token = GetNextToken().Upper();
-            if (token == _T("OF"))
+            if (token == ("OF"))
             {
-               m_Event += _T(" OF");
+               m_Event += (" OF");
                m_Column = GetNextToken();
             }
          }
-         else if (token == _T("INSTEAD"))
+         else if (token == ("INSTEAD"))
          {
             token = GetNextToken().Upper();
-            if (token == _T("OF"))
+            if (token == ("OF"))
             {
-               m_Event = _T("INSTEAD OF");
+               m_Event = ("INSTEAD OF");
                token = GetNextToken().Upper();
                m_Column = token;
-               if (token == _T("UPDATE"))
+               if (token == ("UPDATE"))
                {
                   token = GetNextToken().Upper();
-                  if (token == _T("OF"))
+                  if (token == ("OF"))
                   {
-                     m_Column += _T(" OF ");
+                     m_Column += (" OF ");
                      m_Column += GetNextToken();
                   }
                }
@@ -139,7 +139,7 @@ wxString wxCreateTrigerParserMinimal::GetNextToken()
    ToStartToken();
 
    c = m_Ddl[m_CharPos];
-   if (c == _T('\'')||c == _T('\"'))
+   if (c == ('\'')||c == ('\"'))
    {
       cm = c;
       m_CurrentToken += GetNextChar();
@@ -182,6 +182,6 @@ bool wxCreateTrigerParserMinimal::CurrentCharIsBlank()
    wxChar c;
    c = m_Ddl[m_CharPos];
 
-   return (c == _T(' ') || c == _T('\t') || c == _T('\r') || c == _T('\n'));
+   return (c == (' ') || c == ('\t') || c == ('\r') || c == ('\n'));
 }
 /*---------------------------------------------------------------------------*/

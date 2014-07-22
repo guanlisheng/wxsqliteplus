@@ -89,10 +89,10 @@ wxString wxSpecGrid::GetDataBlock(const wxGridCellCoords& topleft,
       {
          tmp += GetCellValue(r, c);
          if (c != bottomright.GetCol())
-            tmp += _T("\t");
+            tmp += ("\t");
       }
       if (r != bottomright.GetRow())
-         tmp += _T("\r\n");
+         tmp += ("\r\n");
    }
    return tmp;
 }
@@ -106,7 +106,7 @@ wxString wxSpecGrid::GetDataBlock(const wxArrayOfCellsBlock& array)
    for (size_t i =  0; i < count; i++)
    {
       tmp += GetDataBlock(array[i].GetLeftTop(), array[i].GetRightBottom());
-      tmp += _T("\r\n");
+      tmp += ("\r\n");
    }
 
    return tmp;
@@ -176,7 +176,7 @@ wxMenu* wxSpecGrid::CreateRightMenu()
    wxMenu* menu = new wxMenu;
    menu->Append(wxID_COPY, _("C&opy"), _("Copy the selected text"), wxITEM_NORMAL);
    menu->AppendSeparator();
-   menu->Append(wxID_SELECTALL, _("Select &All"), _T(""), wxITEM_NORMAL);
+   menu->Append(wxID_SELECTALL, _("Select &All"), (""), wxITEM_NORMAL);
    return menu;
 }
 /*---------------------------------------------------------------------------*/
@@ -203,7 +203,7 @@ void wxSpecGrid::OnBlodEdit(wxGridCellBlobEditorEvent& event)
          BlobDlg.ShowModal();
       }
       else
-         wxMessageBox(_T("The value is NULL!"), _T("Blob"));
+         wxMessageBox(("The value is NULL!"), ("Blob"));
    }
 }
 /*---------------------------------------------------------------------------*/
@@ -278,10 +278,10 @@ void wxDataGrid::DoRefresh(bool usefilter)
    if (m_Base != wxEmptyString)
       basename = m_Base;
    else
-      basename = _T("main");
+      basename = ("main");
    try
    {  // remplissage de la grille des données
-      sql = wxString::Format(_T("SELECT * FROM %s.%s"), basename.c_str(),
+      sql = wxString::Format(("SELECT * FROM %s.%s"), basename.c_str(),
                              m_TableViewName.c_str());
       m_IsFiltered = m_IsSorted = false;
       if (usefilter)
@@ -289,21 +289,21 @@ void wxDataGrid::DoRefresh(bool usefilter)
          if (!m_StringWhere.IsEmpty())
          {
             m_IsFiltered = true;
-            sql += _T(" WHERE ") + m_StringWhere;
+            sql += (" WHERE ") + m_StringWhere;
          }
          for (size_t i = 0; i < m_StringsOrder.Count(); i++)
          {
             if (i == 0)
             {
                m_IsSorted = true;
-               sql += _T(" ORDER BY ");
+               sql += (" ORDER BY ");
             }
             else
-               sql += _T(", ");
+               sql += (", ");
             sql += m_StringsOrder[i];
          }
       }
-      sql += _T(";");
+      sql += (";");
       resultSet = m_db->ExecuteQuery(ToUTF8(sql));
       SetTable(&g_EmptyTable);
       ForceRefresh();
@@ -317,7 +317,7 @@ void wxDataGrid::DoRefresh(bool usefilter)
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(_T("Refresh"), ex);
+      wxGetApp().ShowError(("Refresh"), ex);
    }
 }
 /*---------------------------------------------------------------------------*/
@@ -392,7 +392,7 @@ wxGridCellBlobRenderer::wxGridCellBlobRenderer(bool displaynullvalue,
    m_IsNullValueDisplayed = displaynullvalue;
    m_DefaultString = defaultstring;
    if (defaultstring == wxEmptyString)
-      m_DefaultString = _T("(blob)");
+      m_DefaultString = ("(blob)");
 }
 /*---------------------------------------------------------------------------*/
 wxString wxGridCellBlobRenderer::GetString(const wxGrid& grid, int row, int col)
@@ -403,7 +403,7 @@ wxString wxGridCellBlobRenderer::GetString(const wxGrid& grid, int row, int col)
    if (grid.GetTable()->IsEmptyCell(row, col))
    {
       if (m_IsNullValueDisplayed)
-         text = _T("(null)");
+         text = ("(null)");
       else
          text = wxEmptyString;
    }
@@ -453,7 +453,7 @@ wxGridCellBlobEditor::wxGridCellBlobEditor() : wxGridCellEditor(), wxEvtHandler(
 void wxGridCellBlobEditor::Create(wxWindow* parent, wxWindowID id,
                           wxEvtHandler* evtHandler)
 {
-   m_control = new wxButton(parent, id, _T("..."), wxDefaultPosition,
+   m_control = new wxButton(parent, id, ("..."), wxDefaultPosition,
                             wxDefaultSize, wxBU_EXACTFIT);
 
    wxGridCellEditor::Create(parent, id, evtHandler);

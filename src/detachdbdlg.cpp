@@ -101,11 +101,11 @@ void wxDetachDbDlg::SetDatabase(wxSQLite3Database* db, const wxString& base)
    {
       try
       {
-         dbQRY = m_Db->ExecuteQuery(ToUTF8(_T("PRAGMA database_list;")));
+         dbQRY = m_Db->ExecuteQuery(ToUTF8(("PRAGMA database_list;")));
          while (dbQRY.NextRow())
          {
             alias = dbQRY.GetString(1);
-            if (alias != _T("main") && alias != _T("temp"))
+            if (alias != ("main") && alias != ("temp"))
             {
                m_DataBasesList->Append(alias);
             }
@@ -114,7 +114,7 @@ void wxDetachDbDlg::SetDatabase(wxSQLite3Database* db, const wxString& base)
       }
       catch(wxSQLite3Exception& ex)
       {
-         wxGetApp().ShowError(_T("SetDatabase"), ex);
+         wxGetApp().ShowError(("SetDatabase"), ex);
       }
       dbQRY.Finalize();
    }

@@ -217,7 +217,7 @@ void wxPrefDlg::CreatePanelGeneral()
                                            wxDefaultPosition, wxDefaultSize, 0);
    flexSizer1->Add(sText2, 0, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
-   m_MaxHistory = new wxSpinCtrl(panelGen, ID_MAX_HISTORY, _T("100"),
+   m_MaxHistory = new wxSpinCtrl(panelGen, ID_MAX_HISTORY, ("100"),
                                  wxDefaultPosition, wxSize(70, -1),
                                  wxSP_ARROW_KEYS, 0, 100, 100);
    flexSizer1->Add(m_MaxHistory, 0, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxALL, 5);
@@ -323,7 +323,7 @@ void wxPrefDlg::CreatePanelEditor()
                                            wxDefaultSize, 0);
    flexSizer1->Add(sText3, 0, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
-   m_TabWidth = new wxSpinCtrl(panelEdit, ID_TABWIDTH, _T("2"),
+   m_TabWidth = new wxSpinCtrl(panelEdit, ID_TABWIDTH, ("2"),
                                wxDefaultPosition, wxDefaultSize,
                                wxSP_ARROW_KEYS, 1, 20, 2);
    flexSizer1->Add(m_TabWidth, 0, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxALL, 5);
@@ -333,7 +333,7 @@ void wxPrefDlg::CreatePanelEditor()
                                            wxDefaultPosition, wxDefaultSize, 0);
    flexSizer1->Add(sText4, 0, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
-   m_IdentWidth = new wxSpinCtrl(panelEdit, ID_IDENTWIDTH, _T("2"),
+   m_IdentWidth = new wxSpinCtrl(panelEdit, ID_IDENTWIDTH, ("2"),
                                  wxDefaultPosition, wxDefaultSize,
                                  wxSP_ARROW_KEYS, 1, 20, 2);
    flexSizer1->Add(m_IdentWidth, 0, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxALL, 5);
@@ -462,7 +462,7 @@ void wxPrefDlg::CreatePanelSyntax()
    m_EdSample = new wxSQLEditorBase(panelSyntax, ID_EDITSAMPLE,
                                     wxDefaultPosition, wxSize(350, 200));
 
-   m_EdSample->SetText(_T("-- comment\n"
+   m_EdSample->SetText(("-- comment\n"
                           "PRAGMA short_column_names = 1; \n"
                           "/* comment */\n"
                           "select rowid, e.name, max(salary)\n"
@@ -681,7 +681,7 @@ void wxPrefDlg::SetValUnderline(int index, bool value)
 wxString wxPrefDlg::GetValItemFG(int index)
 {
    if (index < 0 || index >= STYLE_COUNT)
-      return _T("#FFFFFF");
+      return ("#FFFFFF");
    return m_Val_ItemFG[index];
 }
 /*---------------------------------------------------------------------------*/
@@ -695,7 +695,7 @@ void wxPrefDlg::SetValItemFG(int index, const wxString& value)
 wxString wxPrefDlg::GetValItemBG(int index)
 {
    if (index < 0 || index >= STYLE_COUNT)
-      return _T("#000000");
+      return ("#000000");
    return m_Val_ItemBG[index];
 }
 /*---------------------------------------------------------------------------*/
@@ -830,7 +830,7 @@ void wxPrefDlg::DisplayStyle(int style)
 /*---------------------------------------------------------------------------*/
 void wxPrefDlg::ResetDefaultDataGeneral()
 {
-   m_Val_OddColour = _T("#FFFFAF");
+   m_Val_OddColour = ("#FFFFAF");
    m_Val_MaxHistory = 100;
    m_Val_SavePos = true;
    m_Val_SavePers = true;
@@ -840,8 +840,8 @@ void wxPrefDlg::ResetDefaultDataEditor()
 {
    m_Val_ShowEdge = true;
    m_Val_ShowLineNumber = true;
-   m_Val_LineFG = _T("#000000");
-   m_Val_LineBG = _T("#808080");
+   m_Val_LineFG = ("#000000");
+   m_Val_LineBG = ("#808080");
    m_Val_UseTab = false;
    m_Val_TabIndent = true;
    m_Val_BackUnindent = true;
@@ -851,7 +851,7 @@ void wxPrefDlg::ResetDefaultDataEditor()
 /*---------------------------------------------------------------------------*/
 void wxPrefDlg::ResetDefaultDataSyntax()
 {
-   m_Val_FontName = _T("Courier");
+   m_Val_FontName = ("Courier");
    m_Val_FontSize = 10;
 
    for (int i = STYLE_DEFAULT; i < STYLE_COUNT; i++)
@@ -859,8 +859,8 @@ void wxPrefDlg::ResetDefaultDataSyntax()
       m_Val_Bold[i] = false;
       m_Val_Italic[i] = false;
       m_Val_Underline[i] = false;
-      m_Val_ItemFG[i] = _T("#000000");
-      m_Val_ItemBG[i] = _T("#FFFFFF");
+      m_Val_ItemFG[i] = ("#000000");
+      m_Val_ItemBG[i] = ("#FFFFFF");
       m_Val_Case[i] = 0; // 0 Mixed 1 Upper 2 Lower
    }
 
@@ -871,17 +871,17 @@ void wxPrefDlg::ResetDefaultDataSyntax()
    m_Val_Bold[STYLE_WORD2] = true;
    m_Val_Bold[STYLE_WORD3] = true;
    m_Val_Bold[STYLE_WORD4] = true;
-   m_Val_ItemFG[STYLE_COMMENT] = _T("#C0C0C0");
-   m_Val_ItemFG[STYLE_COMMENTLINE] = _T("#808080");
-   m_Val_ItemFG[STYLE_NUMBER] = _T("#B000FF");
-   m_Val_ItemFG[STYLE_WORD1] = _T("#238E23");
-   m_Val_ItemFG[STYLE_STRING] = _T("#0000FF");
-   m_Val_ItemFG[STYLE_CHARACTER] = _T("#5F9F9F");
-   m_Val_ItemFG[STYLE_OPERATOR] = _T("#9F9F5F");
-   m_Val_ItemFG[STYLE_IDENTIFIER] = _T("#0000FF");
-   m_Val_ItemFG[STYLE_WORD2] = _T("#238E23");
-   m_Val_ItemFG[STYLE_WORD3] = _T("#238E23");
-   m_Val_ItemFG[STYLE_WORD4] = _T("#238E23");
+   m_Val_ItemFG[STYLE_COMMENT] = ("#C0C0C0");
+   m_Val_ItemFG[STYLE_COMMENTLINE] = ("#808080");
+   m_Val_ItemFG[STYLE_NUMBER] = ("#B000FF");
+   m_Val_ItemFG[STYLE_WORD1] = ("#238E23");
+   m_Val_ItemFG[STYLE_STRING] = ("#0000FF");
+   m_Val_ItemFG[STYLE_CHARACTER] = ("#5F9F9F");
+   m_Val_ItemFG[STYLE_OPERATOR] = ("#9F9F5F");
+   m_Val_ItemFG[STYLE_IDENTIFIER] = ("#0000FF");
+   m_Val_ItemFG[STYLE_WORD2] = ("#238E23");
+   m_Val_ItemFG[STYLE_WORD3] = ("#238E23");
+   m_Val_ItemFG[STYLE_WORD4] = ("#238E23");
 }
 /*---------------------------------------------------------------------------*/
 void wxPrefDlg::ResetDisplayGeneral()

@@ -125,7 +125,7 @@ void wxAboutDlg::CreateControls()
    wxBoxSizer* bSizer4 = new wxBoxSizer(wxVERTICAL);
    panelText->SetSizer(bSizer4);
 
-   tmp = wxGetApp().GetInternalName() + _T(" v") + wxGetApp().GetFileVersion();
+   tmp = wxGetApp().GetInternalName() + (" v") + wxGetApp().GetFileVersion();
    m_AppName = new wxStaticText(panelText, wxID_STATIC, tmp, wxDefaultPosition,
                                 wxDefaultSize, 0);
    bSizer4->Add(m_AppName, 0, wxALIGN_CENTER_HORIZONTAL|wxALL, 5);

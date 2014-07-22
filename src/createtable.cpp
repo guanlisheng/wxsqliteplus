@@ -63,7 +63,7 @@ pour plus de détails.
 /*---------------------------------------------------------------------------*/
 wxColumnCtrTable::wxColumnCtrTable()
 {
-   m_Name = _T("col");
+   m_Name = ("col");
    m_Type = cttText;
    m_NotNull = false;
    m_PrimaryKey = false;
@@ -99,21 +99,21 @@ wxString wxGridColumnsTable::GetValue(int row, int col)
       case 1 :
          switch (m_Columns[row]->GetType())
          {
-            case cttInteger : return _T("INTEGER");
-            case cttIntegerAutoinc : return _T("INTEGER AUTOINCREMENT");
-            case cttReal : return _T("REAL");
-            case cttText : return _T("TEXT");
-            case cttBlob : return _T("BLOB");
+            case cttInteger : return ("INTEGER");
+            case cttIntegerAutoinc : return ("INTEGER AUTOINCREMENT");
+            case cttReal : return ("REAL");
+            case cttText : return ("TEXT");
+            case cttBlob : return ("BLOB");
          }
          return wxEmptyString;
       case 2 :
          if (m_Columns[row]->GetNotNull())
-            return _T("1");
-         return _T("0");
+            return ("1");
+         return ("0");
       case 3 :
          if (m_Columns[row]->GetPrimaryKey())
-            return _T("1");
-         return _T("0");
+            return ("1");
+         return ("0");
       case 4 : return m_Columns[row]->GetDefault();
    }
    return wxEmptyString;
@@ -138,7 +138,7 @@ void wxGridColumnsTable::SetValue(int row, int col, const wxString& value)
    }
    else if (col == 1)
    {
-      if (value == _T("INTEGER"))
+      if (value == ("INTEGER"))
       {
          long l_Long;
          wxString val;
@@ -148,7 +148,7 @@ void wxGridColumnsTable::SetValue(int row, int col, const wxString& value)
          if ((val != wxEmptyString) && !val.ToLong(&l_Long))
             SetValue(row, 4, wxEmptyString);
       }
-      else if (value == _T("INTEGER AUTOINCREMENT"))
+      else if (value == ("INTEGER AUTOINCREMENT"))
       {
          if (CheckAutoInc())
             return;
@@ -156,9 +156,9 @@ void wxGridColumnsTable::SetValue(int row, int col, const wxString& value)
          SetValueAsBool(row, 3, true);
          SetValue(row, 4, wxEmptyString);
          // Oblige la grille à prendre en compte le changement
-         GetView()->SetCellValue(row, 3, _T("1"));
+         GetView()->SetCellValue(row, 3, ("1"));
       }
-      else if (value == _T("REAL"))
+      else if (value == ("REAL"))
       {
          double l_Double;
          wxString val;
@@ -168,9 +168,9 @@ void wxGridColumnsTable::SetValue(int row, int col, const wxString& value)
          if ((val != wxEmptyString) && !val.ToDouble(&l_Double))
             SetValue(row, 4, wxEmptyString);
       }
-      else if (value == _T("TEXT"))
+      else if (value == ("TEXT"))
          m_Columns[row]->SetType(cttText);
-      else if (value == _T("BLOB"))
+      else if (value == ("BLOB"))
          m_Columns[row]->SetType(cttBlob);
    }
    else if (col == 4)
@@ -184,18 +184,18 @@ void wxGridColumnsTable::SetValue(int row, int col, const wxString& value)
          {
             case cttInteger :
                if (value.ToLong(&l_Long))
-                  m_Columns[row]->SetDefault(wxString::Format(_T("%li"), l_Long));
+                  m_Columns[row]->SetDefault(wxString::Format(("%li"), l_Long));
                break;
             case cttIntegerAutoinc : return;
             case cttReal :
                if (value.ToDouble(&l_Double))
-                  m_Columns[row]->SetDefault(wxString::Format(_T("%f"), l_Double));
+                  m_Columns[row]->SetDefault(wxString::Format(("%f"), l_Double));
                break;
             case cttText :
             case cttBlob :
-               if ((value.Upper() == _T("CURRENT_TIME"))||
-                  (value.Upper() == _T("CURRENT_DATE"))||
-                  (value.Upper() == _T("CURRENT_TIMESTAMP")))
+               if ((value.Upper() == ("CURRENT_TIME"))||
+                  (value.Upper() == ("CURRENT_DATE"))||
+                  (value.Upper() == ("CURRENT_TIMESTAMP")))
                   m_Columns[row]->SetDefault(value.Upper());
                else
                   m_Columns[row]->SetDefault(value);
@@ -223,7 +223,7 @@ void wxGridColumnsTable::SetValueAsBool(int row, int col, bool value)
          {
             m_Columns[i]->SetPrimaryKey(false);
             // Oblige la grille à prendre en compte le changement
-            GetView()->SetCellValue(i, 3, _T("0"));
+            GetView()->SetCellValue(i, 3, ("0"));
          }
       }
       else
@@ -253,7 +253,7 @@ wxString wxGridColumnsTable::GetTypeName(int row, int col)
    if (col == 0 || col == 4)
       return wxGRID_VALUE_STRING;
    else if (col == 1)
-      return wxString::Format(_T("%s:INTEGER,INTEGER AUTOINCREMENT,REAL,TEXT,BLOB"), wxGRID_VALUE_CHOICE);
+      return wxString::Format(("%s:INTEGER,INTEGER AUTOINCREMENT,REAL,TEXT,BLOB"), wxGRID_VALUE_CHOICE);
    else if (col == 2 || col == 3)
       return wxGRID_VALUE_BOOL;
    return wxEmptyString;
@@ -329,7 +329,7 @@ bool wxGridColumnsTable::CheckName(const wxString& name, int row)
    for (size_t i = 0; i < name.Len(); i++)
    {
       c = name.GetChar(i);
-      if (!wxIsalnum(c) && c != _T('_') && c != _T(' '))
+      if (!wxIsalnum(c) && c != ('_') && c != (' '))
          return false;
    }
    // Vérifie que le nom est unique
@@ -348,7 +348,7 @@ wxString wxGridColumnsTable::GetUniqueName()
 
    do
    {
-      name = wxString::Format(_T("COLUMN%u"), i++);
+      name = wxString::Format(("COLUMN%u"), i++);
    }
    while (!CheckName(name));
    return name;
@@ -561,7 +561,7 @@ void wxCreateTableDialog::OnGridChar(wxKeyEvent& event)
 void wxCreateTableDialog::OnChar(wxKeyEvent& event)
 {
    int c = event.GetKeyCode();
-   if ((!wxIsalnum(c) && c != _T('_') && c != _T(' ') && c != WXK_BACK && c != WXK_DELETE)&&
+   if ((!wxIsalnum(c) && c != ('_') && c != (' ') && c != WXK_BACK && c != WXK_DELETE)&&
       // Ctrl+C Ctrl+V Ctrl+X
        !(event.ControlDown() && (c == 3 || c == 22 || c == 24)))
       return;
@@ -617,18 +617,18 @@ wxString wxCreateTableDialog::GetCreateTableDDL()
    }
 
    // Création du DDL
-   ddl = _T("CREATE ");
+   ddl = ("CREATE ");
    if (m_TempTable->IsChecked())
-      ddl += _T("TEMPORARY ");
-   ddl += _T("TABLE ");
+      ddl += ("TEMPORARY ");
+   ddl += ("TABLE ");
    if (!m_TempTable->IsChecked() && m_Base != wxEmptyString)
-      ddl += m_Base + _T(".");
-   ddl += _T("\"") + tablename.Lower() + _T("\"\n");
-   ddl += _T("(");
+      ddl += m_Base + (".");
+   ddl += ("\"") + tablename.Lower() + ("\"\n");
+   ddl += ("(");
    for (int i = 0; i < m_TableColumns.GetNumberRows(); i++)
    {
       column = m_TableColumns.GetColumnCtrTable(i);
-      ddl += _T("\n  \"") + column->GetName() + _T("\" ");
+      ddl += ("\n  \"") + column->GetName() + ("\" ");
       switch (column->GetType())
       {
          case cttIntegerAutoinc :
@@ -639,44 +639,44 @@ wxString wxCreateTableDialog::GetCreateTableDDL()
                return wxEmptyString;
             }
          case cttInteger :
-            ddl += _T("INTEGER"); break;
+            ddl += ("INTEGER"); break;
          case cttReal :
-            ddl += _T("REAL"); break;
+            ddl += ("REAL"); break;
          case cttText :
-            ddl += _T("TEXT"); break;
+            ddl += ("TEXT"); break;
          case cttBlob :
-            ddl += _T("BLOB"); break;
+            ddl += ("BLOB"); break;
       }
       if (column->GetNotNull())
-         ddl += _T(" NOT NULL");
+         ddl += (" NOT NULL");
       if (column->GetPrimaryKey())
       {
-         ddl += _T(" PRIMARY KEY");
+         ddl += (" PRIMARY KEY");
          if (column->GetType() == cttIntegerAutoinc)
-            ddl += _T(" AUTOINCREMENT");
+            ddl += (" AUTOINCREMENT");
       }
       if (column->GetDefault() != wxEmptyString)
       {
-         ddl += _T(" DEFAULT ");
+         ddl += (" DEFAULT ");
          if ((column->GetType() == cttText || column->GetType() == cttBlob)&&
-             (column->GetDefault() != _T("CURRENT_TIME")||
-              column->GetDefault() != _T("CURRENT_DATE")||
-              column->GetDefault() != _T("CURRENT_TIMESTAMP")))
+             (column->GetDefault() != ("CURRENT_TIME")||
+              column->GetDefault() != ("CURRENT_DATE")||
+              column->GetDefault() != ("CURRENT_TIMESTAMP")))
          {
             def = column->GetDefault();
-            if (!def.StartsWith(_T("'"))||!def.EndsWith(_T("'")))
+            if (!def.StartsWith(("'"))||!def.EndsWith(("'")))
             {
-               def.Replace(_T("'"), _T("''"));
-               ddl += _T("'") + def + _T("'");
+               def.Replace(("'"), ("''"));
+               ddl += ("'") + def + ("'");
             }
          }
          else
             ddl += column->GetDefault();
       }
       if (i != m_TableColumns.GetNumberRows() - 1)
-         ddl += _T(",");
+         ddl += (",");
    }
-   ddl += _T("\n);");
+   ddl += ("\n);");
    return ddl;
 }
 /*---------------------------------------------------------------------------*/

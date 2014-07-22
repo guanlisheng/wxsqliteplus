@@ -50,10 +50,10 @@ pour plus de détails.
 #include "wxsqliteplusapp.h"
 #include "specgrid.h"
 /*---------------------------------------------------------------------------*/
-#define wxGRID_VALUE_BLOB     _T("blob")
+#define wxGRID_VALUE_BLOB     ("blob")
 /*---------------------------------------------------------------------------*/
 wxGridEmptyTable g_EmptyTable;
-wxString g_NullValString(_T("(null)"));
+wxString g_NullValString(("(null)"));
 /*---------------------------------------------------------------------------*/
 // wxSQLite3TableColumn
 /*---------------------------------------------------------------------------*/
@@ -313,7 +313,7 @@ class wxSQLite3TableBlobColumn : public wxSQLite3TableColumn
          {
             if (m_nullValues.Item(row) == 0)
                return GetNullString();
-            return _T("(blob)");
+            return ("(blob)");
          }
          return wxEmptyString;
       }
@@ -489,8 +489,8 @@ void wxGridSQLite3TableBase::PopulateArray(wxSQLite3ResultSet* resultSet)
             p_Column = (wxSQLite3TableColumn*)new wxSQLite3TableBlobColumn;
             break;
          default : // WXSQLITE_TEXT WXSQLITE_NULL
-            if (colType == _T("BLOB") || colType == _T("CLOB") ||
-                colType == _T("GLOB"))
+            if (colType == ("BLOB") || colType == ("CLOB") ||
+                colType == ("GLOB"))
                p_Column = (wxSQLite3TableColumn*)new wxSQLite3TableBlobColumn;
             else
                p_Column = (wxSQLite3TableColumn*)new wxSQLite3TableStringColumn;
@@ -551,7 +551,7 @@ wxSQLite3ResultSet wxGridSQLite3Table::GetResultSet(wxSQLite3Database* db,
    wxString sql;
    sql = _("SELECT * FROM ");
    if (base != wxEmptyString)
-      sql += base + _T(".");
+      sql += base + (".");
    sql += m_TableName + _(";");
    try
    {
@@ -559,7 +559,7 @@ wxSQLite3ResultSet wxGridSQLite3Table::GetResultSet(wxSQLite3Database* db,
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(_T("GetResultSet"), ex);
+      wxGetApp().ShowError(("GetResultSet"), ex);
    }
    return resultSet;
 }
@@ -594,7 +594,7 @@ wxString wxGridTblIndexesTable::GetValue(int row, int col)
    // dans certain cas au lieu de 1 la colonne est égale à 99
    // les coches sont alors mal gérées
    if (col == 2)
-      return m_ArrayColumn[col]->GetBool(row) ? _T("1") : _T("0");
+      return m_ArrayColumn[col]->GetBool(row) ? ("1") : ("0");
    else
       return m_ArrayColumn[col]->GetString(row);
 }
@@ -609,8 +609,8 @@ wxSQLite3ResultSet wxGridTblIndexesTable::GetResultSet(wxSQLite3Database* db,
    if (base != wxEmptyString)
       basename = base;
    else
-      basename = _T("main");
-   sql = wxString::Format(_T("PRAGMA %s.index_list(\"%s\");"), basename.c_str(),
+      basename = ("main");
+   sql = wxString::Format(("PRAGMA %s.index_list(\"%s\");"), basename.c_str(),
                           tablename.c_str());
    try
    {
@@ -618,7 +618,7 @@ wxSQLite3ResultSet wxGridTblIndexesTable::GetResultSet(wxSQLite3Database* db,
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(_T("GetResultSet"), ex);
+      wxGetApp().ShowError(("GetResultSet"), ex);
    }
    return resultSet;
 }
@@ -650,7 +650,7 @@ wxString wxGridTblColumnsTable::GetValue(int row, int col)
    // dans certain cas au lieu de 1 la colonne est égale à 99
    // les coches sont alors mal gérées
    if ((col == 3)||(col == 5))
-      return m_ArrayColumn[col]->GetBool(row) ? _T("1") : _T("0");
+      return m_ArrayColumn[col]->GetBool(row) ? ("1") : ("0");
    else
       return m_ArrayColumn[col]->GetString(row);
 }
@@ -665,8 +665,8 @@ wxSQLite3ResultSet wxGridTblColumnsTable::GetResultSet(wxSQLite3Database* db,
    if (base != wxEmptyString)
       basename = base;
    else
-      basename = _T("main");
-   sql = wxString::Format(_T("PRAGMA %s.table_info(\"%s\");"), basename.c_str(),
+      basename = ("main");
+   sql = wxString::Format(("PRAGMA %s.table_info(\"%s\");"), basename.c_str(),
                           tablename.c_str());
    try
    {
@@ -674,7 +674,7 @@ wxSQLite3ResultSet wxGridTblColumnsTable::GetResultSet(wxSQLite3Database* db,
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(_T("GetResultSet"), ex);
+      wxGetApp().ShowError(("GetResultSet"), ex);
    }
    return resultSet;
 }
@@ -703,15 +703,15 @@ void wxGridTriggerTable::PopulateArray(wxSQLite3ResultSet* resultSet)
       return;
    m_NumberCols = 3;
    p_Column = (wxSQLite3TableColumn*)new wxSQLite3TableStringColumn;
-   p_Column->SetLabelValue(_T("name"));
+   p_Column->SetLabelValue(("name"));
    p_Column->SetShowNull(false);
    m_ArrayColumn.Add(p_Column);
    p_Column = (wxSQLite3TableColumn*)new wxSQLite3TableStringColumn;
-   p_Column->SetLabelValue(_T("type"));
+   p_Column->SetLabelValue(("type"));
    p_Column->SetShowNull(false);
    m_ArrayColumn.Add(p_Column);
    p_Column = (wxSQLite3TableColumn*)new wxSQLite3TableStringColumn;
-   p_Column->SetLabelValue(_T("column/Event"));
+   p_Column->SetLabelValue(("column/Event"));
    p_Column->SetShowNull(false);
    m_ArrayColumn.Add(p_Column);
    // boucler et incrémenter
@@ -733,26 +733,26 @@ wxSQLite3ResultSet wxGridTriggerTable::GetResultSet(wxSQLite3Database* db,
    wxSQLite3ResultSet resultSet;
    wxString sql;
 
-   if ((base == wxEmptyString)||(base == _T("main")))
+   if ((base == wxEmptyString)||(base == ("main")))
    {
-      sql = _T("SELECT name, sql \n"
+      sql = ("SELECT name, sql \n"
                "FROM  sqlite_master \n"
                "WHERE type = 'trigger' AND tbl_name = '");
-      sql += tablename + _T("' \n"
+      sql += tablename + ("' \n"
                             "UNION \n"
                             "SELECT name, sql \n"
                             "FROM sqlite_temp_master \n"
                             "WHERE type = 'trigger' AND tbl_name = '");
-      sql += tablename + _T("';");
+      sql += tablename + ("';");
    }
    else
    {
-      sql = _T("SELECT name, sql \n"
+      sql = ("SELECT name, sql \n"
                "FROM ");
-      sql += base + _T(".");
-      sql += _T("sqlite_master \n"
+      sql += base + (".");
+      sql += ("sqlite_master \n"
                 "WHERE type = 'trigger' AND tbl_name = '");
-      sql += tablename + _T("';");
+      sql += tablename + ("';");
    }
    try
    {
@@ -760,7 +760,7 @@ wxSQLite3ResultSet wxGridTriggerTable::GetResultSet(wxSQLite3Database* db,
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(_T("GetResultSet"), ex);
+      wxGetApp().ShowError(("GetResultSet"), ex);
    }
    return resultSet;
 }

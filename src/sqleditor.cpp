@@ -48,7 +48,7 @@ pour plus de détails.
 #include "wxsqliteplusapp.h"
 /*---------------------------------------------------------------------------*/
 wxString SQLWordlist1 =
-_T("abort add after all alter analyze and as asc attach autoincrement before "
+("abort add after all alter analyze and as asc attach autoincrement before "
    "begin between blob by cascade case cast check clob collate column commit conflict "
    "constraint create cross current_date current_time current_timestamp database "
    "default deferrable deferred delete desc detach distinct double drop each else "
@@ -61,13 +61,13 @@ _T("abort add after all alter analyze and as asc attach autoincrement before "
    "unique update using vacuum values varchar varchar2 view virtual when where");
 
 wxString SQLWordlist2 =
-_T("abs avg coalesce count date datetime glob hex ifnull julianday "
+("abs avg coalesce count date datetime glob hex ifnull julianday "
    "last_insert_rowid length like load_extension lower ltrim max min nullif "
    "quote random randomblob replace round rtrim soundex sqlite_version "
    "strftime substr sum time total trim typeof upper zeroblob ");
 
 wxString SQLWordlist3 =
-_T("auto_vacuum cache_size case_sensitive_like count_changes database_list "
+("auto_vacuum cache_size case_sensitive_like count_changes database_list "
    "default_cache_size default_synchronous empty_result_callbacks encoding "
    "foreign_key_list freelist_count full_column_names fullfsync "
    "incremental_vacuum index_info index_list integrity_check legacy_file_format "
@@ -76,7 +76,7 @@ _T("auto_vacuum cache_size case_sensitive_like count_changes database_list "
    "temp_store_directory user_version vdbe_listing vdbe_trace");
 
 wxString SQLWordlist4 =
-_T("_rowid_ main oid rowid sqlite_master sqlite_sequence sqlite_temp_master temp");
+("_rowid_ main oid rowid sqlite_master sqlite_sequence sqlite_temp_master temp");
 /*---------------------------------------------------------------------------*/
 IMPLEMENT_DYNAMIC_CLASS(wxSQLEditorBase, wxStyledTextCtrl)
 
@@ -129,7 +129,7 @@ bool wxSQLEditorBase::Create(wxWindow *parent, wxWindowID id,
 /*---------------------------------------------------------------------------*/
 void wxSQLEditorBase::Init()
 {
-   m_FontName = _T("Courier New");
+   m_FontName = ("Courier New");
    m_FontSize = 10;
 
    SetWrapMode(wxSTC_WRAP_NONE);  // wxSTC_WRAP_WORD wxSTC_WRAP_NONE
@@ -167,14 +167,14 @@ void wxSQLEditorBase::SetDefaultFont(const wxString& name, int size)
 void wxSQLEditorBase::ReInitAllStyle()
 {
    SetMarginType(0, wxSTC_MARGIN_NUMBER);
-   StyleSetForeground(wxSTC_STYLE_LINENUMBER, wxColour(_T("BLACK")));
-   StyleSetBackground(wxSTC_STYLE_LINENUMBER, wxColour(_T("GREY")));
+   StyleSetForeground(wxSTC_STYLE_LINENUMBER, wxColour(("BLACK")));
+   StyleSetBackground(wxSTC_STYLE_LINENUMBER, wxColour(("GREY")));
    SetMarginWidth(0, 25);
    // default fonts for all styles!
    for (int i = wxSTC_SQL_DEFAULT; i <= wxSTC_SQL_QUOTEDIDENTIFIER; i++)
    {
       SetTypeStyle(i, false, false, false, wxSTC_CASE_MIXED,
-                   wxColour(_T("BLACK")), wxColour(_T("WHITE")));
+                   wxColour(("BLACK")), wxColour(("WHITE")));
    }
 }
 /*---------------------------------------------------------------------------*/

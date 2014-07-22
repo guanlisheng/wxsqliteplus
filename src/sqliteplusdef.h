@@ -38,8 +38,8 @@ pour plus de détails.
    #define ToUTF8(str) wxString(wxConvCurrent->cMB2WC(str), wxConvUTF8)
 #endif /* Unicode */
 /*---------------------------------------------------------------------------*/
-#define IPC_VERB_OPEN _T("OPEN")
-#define IPC_VERB_SHOW _T("SHOW")
+#define IPC_VERB_OPEN ("OPEN")
+#define IPC_VERB_SHOW ("SHOW")
 /*---------------------------------------------------------------------------*/
 #define ID_BMP_ADD               14101
 #define ID_BMP_REMOVE            14102

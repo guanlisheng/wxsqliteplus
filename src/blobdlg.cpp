@@ -144,7 +144,7 @@ void wxBlobDialog::CreateControls()
 
    wxButton* btnSaveAs = new wxButton(pnInfo, ID_BTN_SAVEAS, _("Save As..."),
                                       wxDefaultPosition, wxDefaultSize, 0);
-   btnSaveAs->SetName(_T("m_BtnSaveAs"));
+   btnSaveAs->SetName(("m_BtnSaveAs"));
    bSizer2->Add(btnSaveAs, 0, wxALIGN_LEFT|wxALL, 5);
 
    m_Notebook->AddPage(pnInfo, _("Information"));
@@ -197,7 +197,7 @@ void wxBlobDialog::SetBlob(wxMemoryBuffer* buffer)
       wxImage image;
       size_t BufLen = buffer->GetDataLen();
 
-      m_BlobLen->SetLabel(wxString::Format(_T("%u"), BufLen));
+      m_BlobLen->SetLabel(wxString::Format(("%u"), BufLen));
       m_EditHexa->SetValue(GetHexaString(buffer));
       wxMemoryInputStream inputStream((const char*)buffer->GetData(), BufLen);
       if (m_FlagBin == false)
@@ -256,22 +256,22 @@ wxString wxBlobDialog::GetHexaString(wxMemoryBuffer* buffer)
          c = ((char*)buffer->GetData())[count];
          if (c < 32)
          {
-            if (c == 7 or c == _T('\r') or c == _T('\n'))
-               carStr += _T(" ");
+            if (c == 7 || c == ('\r') || c == ('\n'))
+               carStr += (" ");
             else
             {
                m_FlagBin = true;
-               carStr += _T("?");
+               carStr += ("?");
             }
          }
          else
             carStr += wxChar(c);
-         HexStr += wxString::Format(_T("0x%02X "), (int)c);
+         HexStr += wxString::Format(("0x%02X "), (int)c);
       }
       // _("0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 | xxxxxxxx\n")
       strLen = HexStr.Len();
-      HexStr += wxString(_T(' '), 40 - strLen);
-      retStr += HexStr + _T("| ") + carStr + _T("\n");
+      HexStr += wxString((' '), 40 - strLen);
+      retStr += HexStr + ("| ") + carStr + ("\n");
    }
 
    return retStr;

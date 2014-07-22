@@ -228,7 +228,7 @@ void wxAttachDbDlg::OnOkClick(wxCommandEvent& event)
    alias = m_EdAlias->GetValue().Lower();
    try
    {
-      dbQRY = m_Db->ExecuteQuery(ToUTF8(_T("PRAGMA database_list;")));
+      dbQRY = m_Db->ExecuteQuery(ToUTF8(("PRAGMA database_list;")));
       while (dbQRY.NextRow())
       {
          if (dbQRY.GetString(1) == alias)
@@ -243,7 +243,7 @@ void wxAttachDbDlg::OnOkClick(wxCommandEvent& event)
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(_T("OnOkClick"), ex);
+      wxGetApp().ShowError(("OnOkClick"), ex);
    }
    dbQRY.Finalize();
    event.Skip();
@@ -252,7 +252,7 @@ void wxAttachDbDlg::OnOkClick(wxCommandEvent& event)
 void wxAttachDbDlg::OnChar(wxKeyEvent& event)
 {
    int c = event.GetKeyCode();
-   if ((!wxIsalnum(c) && c != _T('_') && c != WXK_BACK &&
+   if ((!wxIsalnum(c) && c != ('_') && c != WXK_BACK &&
         c != WXK_DELETE && c != WXK_TAB)&&
       // Ctrl+C Ctrl+V Ctrl+X
        !(event.ControlDown() && (c == 3 || c == 22 || c == 24)))

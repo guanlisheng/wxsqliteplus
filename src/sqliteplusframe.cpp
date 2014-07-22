@@ -314,8 +314,8 @@ void wxSQLitePlusFrame::CreateControls()
                                wxTR_HAS_BUTTONS |wxTR_LINES_AT_ROOT|
                                wxTR_HIDE_ROOT|wxTR_SINGLE|wxSUNKEN_BORDER);
 
-   GetAuiManager().AddPane(m_TreeCtrl, wxAuiPaneInfo().Name(_T("TreePane"))
-                                                      .Caption(_T("Database Structure"))
+   GetAuiManager().AddPane(m_TreeCtrl, wxAuiPaneInfo().Name(("TreePane"))
+                                                      .Caption(("Database Structure"))
                                                       .BestSize(wxSize(250, -1))
                                                       .TopDockable(false)
                                                       .BottomDockable(false)
@@ -329,7 +329,7 @@ void wxSQLitePlusFrame::CreateControls()
                                         wxAUI_NB_TAB_EXTERNAL_MOVE|
                                         wxAUI_NB_CLOSE_ON_ACTIVE_TAB);
 
-   GetAuiManager().AddPane(m_CenterNotebook, wxAuiPaneInfo().Name(_T("CenterPane"))
+   GetAuiManager().AddPane(m_CenterNotebook, wxAuiPaneInfo().Name(("CenterPane"))
                                                             .Centre()
                                                             .CaptionVisible(false)
                                                             .CloseButton(false)
@@ -349,7 +349,7 @@ void wxSQLitePlusFrame::CreateControls()
    m_TreeCtrl->SetImageList(&m_TreeImageList);
    int widths[3] = {-1, 70, 100};
    SetStatusWidths(3, widths);
-   SetStatusText(_T("v") + wxGetApp().GetFileVersion() + _T("/") + m_db.GetVersion(), 2);
+   SetStatusText(("v") + wxGetApp().GetFileVersion() + ("/") + m_db.GetVersion(), 2);
 }
 /*---------------------------------------------------------------------------*/
 void wxSQLitePlusFrame::CreateMenus()
@@ -531,8 +531,8 @@ void wxSQLitePlusFrame::CreateToolbars()
                      _("Refresh all database structure"));
    m_TbFile->Realize();
    GetAuiManager().AddPane(m_TbFile, wxAuiPaneInfo().ToolbarPane()
-                                                    .Name(_T("ToolbarFile"))
-                                                    .Caption(_T("File"))
+                                                    .Name(("ToolbarFile"))
+                                                    .Caption(("File"))
                                                     .Top()
                                                     .LeftDockable(false)
                                                     .RightDockable(false)
@@ -569,8 +569,8 @@ void wxSQLitePlusFrame::CreateToolbars()
                      _("Delete the selected text"));
    m_TbEdit->Realize();
    GetAuiManager().AddPane(m_TbEdit, wxAuiPaneInfo().ToolbarPane()
-                                                    .Name(_T("ToolbarEdit"))
-                                                    .Caption(_T("Edit"))
+                                                    .Name(("ToolbarEdit"))
+                                                    .Caption(("Edit"))
                                                     .Top()
                                                     .LeftDockable(false)
                                                     .RightDockable(false)
@@ -598,7 +598,7 @@ void wxSQLitePlusFrame::CreateToolbars()
                       _("Explain the current SQL statement"));
    m_TbQuery->Realize();
    GetAuiManager().AddPane(m_TbQuery, wxAuiPaneInfo().ToolbarPane()
-                                                     .Name(_T("Query"))
+                                                     .Name(("Query"))
                                                      .Top()
                                                      .LeftDockable(false)
                                                      .RightDockable(false)
@@ -637,8 +637,8 @@ void wxSQLitePlusFrame::CreateToolbars()
                          _("Set/unset the auto start transaction flag"));
    m_TbTransact->Realize();
    GetAuiManager().AddPane(m_TbTransact, wxAuiPaneInfo().ToolbarPane()
-                                                        .Name(_T("Pane1"))
-                                                        .Caption(_T("Transaction"))
+                                                        .Name(("Pane1"))
+                                                        .Caption(("Transaction"))
                                                         .Top()
                                                         .LeftDockable(false)
                                                         .RightDockable(false)
@@ -689,8 +689,8 @@ void wxSQLitePlusFrame::CreateToolbars()
                          _("Show dialog to delete trigger"));
    m_TbDatabase->Realize();
    GetAuiManager().AddPane(m_TbDatabase, wxAuiPaneInfo().ToolbarPane()
-                                                        .Name(_T("Pane2"))
-                                                        .Caption(_T("Database"))
+                                                        .Name(("Pane2"))
+                                                        .Caption(("Database"))
                                                         .Top()
                                                         .LeftDockable(false)
                                                         .RightDockable(false)
@@ -715,7 +715,7 @@ void wxSQLitePlusFrame::CmdOpen(const wxString& file)
 
       if (DatabaseExist(file, false, &alias))
       {
-         wxSQLBook* book = (wxSQLBook*)GetPage(_T("SQL"));
+         wxSQLBook* book = (wxSQLBook*)GetPage(("SQL"));
          if (book)
          {
             msg = wxString::Format(_("Error : Database \"%s\" is already opened as %s\n"),
@@ -727,16 +727,16 @@ void wxSQLitePlusFrame::CmdOpen(const wxString& file)
          return;
       }
       alias = wxFileName(file).GetName().Lower();
-      alias.Replace(_T(" "), _T("_"));
-      alias.Replace(_T("\""), _T(""));
-      alias.Replace(_T("'"), _T(""));
+      alias.Replace((" "), ("_"));
+      alias.Replace(("\""), (""));
+      alias.Replace(("'"), (""));
 
       if (DatabaseExist(alias))
       {
          int i = 1;
-         while (DatabaseExist(wxString::Format(_T("%s-%i"), alias.c_str(), i)))
+         while (DatabaseExist(wxString::Format(("%s-%i"), alias.c_str(), i)))
             i++;
-         alias = wxString::Format(_T("%s-%i"), alias.c_str(), i);
+         alias = wxString::Format(("%s-%i"), alias.c_str(), i);
       }
       AttachDatabase(file, alias);
    }
@@ -750,7 +750,7 @@ void wxSQLitePlusFrame::InitNodeParams()
 
    m_NodeType = -1;
    m_NodeText = wxEmptyString;
-   m_NodeDbName = _T("main");
+   m_NodeDbName = ("main");
 
    // Voir si un item sélectionné, si oui prendre les bons
    if (m_TreeCtrl != NULL)
@@ -800,16 +800,16 @@ void wxSQLitePlusFrame::OnSrvSocketEvent(wxSocketEvent& event)
          len = ev_sock->ReadMsg(buffer, 1024 * sizeof(wxChar)).LastCount();
          if (len > 0)
          {
-            str.Printf(_T("%s"), buffer);
+            str.Printf(("%s"), buffer);
             // wxLogMessage(str);
-            verb = str.BeforeFirst(_T(' '));
+            verb = str.BeforeFirst((' '));
             if (verb == IPC_VERB_SHOW)
             {
                Raise();
             }
             else if (verb == IPC_VERB_OPEN)
             {
-               str = str.AfterFirst(_T(' '));
+               str = str.AfterFirst((' '));
                if (!str.IsEmpty())
                   CmdOpen(str);
             }
@@ -868,9 +868,9 @@ void wxSQLitePlusFrame::OnDbtreeItemActivated(wxTreeEvent& event)
           image == ID_TREE_VIEW || image == ID_TREE_VIEW_TMP ||
           image == ID_TREE_FIELD)
       {
-         wxString Str = _T("\"") + m_TreeCtrl->GetItemText(item) + _T("\"");
+         wxString Str = ("\"") + m_TreeCtrl->GetItemText(item) + ("\"");
          int index = m_CenterNotebook->GetSelection();
-         if (m_CenterNotebook->GetPageText(index) == _T("SQL"))
+         if (m_CenterNotebook->GetPageText(index) == ("SQL"))
          {
             wxSQLBook* window = (wxSQLBook*)m_CenterNotebook->GetPage(index);
             if (window)
@@ -1254,12 +1254,12 @@ void wxSQLitePlusFrame::InitTree()
    {
       try
       {
-         dbQRY = m_db.ExecuteQuery(ToUTF8(_T("PRAGMA database_list;")));
+         dbQRY = m_db.ExecuteQuery(ToUTF8(("PRAGMA database_list;")));
          while (dbQRY.NextRow())
          {
             dbname = dbQRY.GetString(1);
             // La base temporaire est prise en compte avec main
-            if (dbname != _T("temp"))
+            if (dbname != ("temp"))
             {
                DatabaseItem = m_TreeCtrl->AppendItem(RootItem, dbname,
                                                      ID_TREE_DATABASE);
@@ -1269,7 +1269,7 @@ void wxSQLitePlusFrame::InitTree()
       }
       catch(wxSQLite3Exception& ex)
       {
-         wxGetApp().ShowError(_T("InitTree"), ex);
+         wxGetApp().ShowError(("InitTree"), ex);
       }
       dbQRY.Finalize();
    }
@@ -1357,7 +1357,7 @@ void wxSQLitePlusFrame::RefreshTables(const wxString& dbname)
          temp = tblQRY.GetInt(1);
          CurrentItem = m_TreeCtrl->AppendItem(TableItem, tablename,
                                               ID_TREE_TABLE + temp);
-         sql = wxString::Format(_T("PRAGMA %s.table_info(\"%s\");"),
+         sql = wxString::Format(("PRAGMA %s.table_info(\"%s\");"),
                                 dbname.c_str(), tablename.c_str());
          try
          {
@@ -1368,14 +1368,14 @@ void wxSQLitePlusFrame::RefreshTables(const wxString& dbname)
          }
          catch(wxSQLite3Exception& ex)
          {
-            wxGetApp().ShowError(_T("RefreshTables"), ex);
+            wxGetApp().ShowError(("RefreshTables"), ex);
          }
          clmnQRY.Finalize();
       }
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(_T("RefreshTables"), ex);
+      wxGetApp().ShowError(("RefreshTables"), ex);
    }
    tblQRY.Finalize();
    if (bExpanded)
@@ -1408,7 +1408,7 @@ void wxSQLitePlusFrame::RefreshViews(const wxString& dbname)
          temp = tblQRY.GetInt(1);
          CurrentItem = m_TreeCtrl->AppendItem(ViewItem, viewname,
                                               ID_TREE_VIEW + temp);
-         sql = wxString::Format(_T("PRAGMA %s.table_info(\"%s\");"),
+         sql = wxString::Format(("PRAGMA %s.table_info(\"%s\");"),
                                 dbname.c_str(), viewname.c_str());
          try
          {
@@ -1419,14 +1419,14 @@ void wxSQLitePlusFrame::RefreshViews(const wxString& dbname)
          }
          catch(wxSQLite3Exception& ex)
          {
-            wxGetApp().ShowError(_T("RefreshViews"), ex);
+            wxGetApp().ShowError(("RefreshViews"), ex);
          }
          clmnQRY.Finalize();
       }
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(_T("RefreshViews"), ex);
+      wxGetApp().ShowError(("RefreshViews"), ex);
    }
    tblQRY.Finalize();
    if (bExpanded)
@@ -1459,7 +1459,7 @@ void wxSQLitePlusFrame::RefreshIndexes(const wxString& dbname)
          temp = tblQRY.GetInt(1);
          CurrentItem = m_TreeCtrl->AppendItem(IndexItem, indexname,
                                               ID_TREE_INDEX + temp);
-         sql = wxString::Format(_T("PRAGMA %s.index_info(\"%s\");"),
+         sql = wxString::Format(("PRAGMA %s.index_info(\"%s\");"),
                                 dbname.c_str(), indexname.c_str());
          try
          {
@@ -1470,14 +1470,14 @@ void wxSQLitePlusFrame::RefreshIndexes(const wxString& dbname)
          }
          catch(wxSQLite3Exception& ex)
          {
-            wxGetApp().ShowError(_T("RefreshIndexes"), ex);
+            wxGetApp().ShowError(("RefreshIndexes"), ex);
          }
          clmnQRY.Finalize();
       }
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(_T("RefreshIndexes"), ex);
+      wxGetApp().ShowError(("RefreshIndexes"), ex);
    }
    tblQRY.Finalize();
    if (bExpanded)
@@ -1512,7 +1512,7 @@ void wxSQLitePlusFrame::RefreshTriggers(const wxString& dbname)
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(_T("RefreshTriggers"), ex);
+      wxGetApp().ShowError(("RefreshTriggers"), ex);
    }
    tblQRY.Finalize();
    if (bExpanded)
@@ -1534,7 +1534,7 @@ wxTreeItemId wxSQLitePlusFrame::GetItem(const wxString& dbname, int imageId)
       return root;
 
    if (dbname.IsEmpty())
-      name = _T("main");
+      name = ("main");
    else
       name = dbname;
 
@@ -1613,7 +1613,7 @@ bool wxSQLitePlusFrame::DatabaseExist(const wxString& dbname, bool alias,
       ret = alias ? 2 : 1;
       try
       {
-         dbQRY = m_db.ExecuteQuery(ToUTF8(_T("PRAGMA database_list;")));
+         dbQRY = m_db.ExecuteQuery(ToUTF8(("PRAGMA database_list;")));
          while (dbQRY.NextRow())
          {
             if (dbname == dbQRY.GetString(index))
@@ -1627,7 +1627,7 @@ bool wxSQLitePlusFrame::DatabaseExist(const wxString& dbname, bool alias,
       }
       catch(wxSQLite3Exception& ex)
       {
-         wxGetApp().ShowError(_T("DatabaseExist"), ex);
+         wxGetApp().ShowError(("DatabaseExist"), ex);
       }
       dbQRY.Finalize();
    }
@@ -1638,7 +1638,7 @@ bool wxSQLitePlusFrame::CloseDatabase()
 {
    try
    {
-      wxSQLBook* book = (wxSQLBook*)GetPage(_T("SQL"));
+      wxSQLBook* book = (wxSQLBook*)GetPage(("SQL"));
       if (book)
       {
          if (!book->DoClose())
@@ -1659,7 +1659,7 @@ bool wxSQLitePlusFrame::CloseDatabase()
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxMessageBox(_T("Close Database Error"));
+      wxMessageBox(("Close Database Error"));
       return false;
    }
 }
@@ -1684,7 +1684,7 @@ bool wxSQLitePlusFrame::OpenDatabase(const wxString& dbfullname, const wxString&
             {
                wxSQLite3ResultSet dbQRY;
 
-               dbQRY = m_db.ExecuteQuery(ToUTF8(_T("PRAGMA database_list;")));
+               dbQRY = m_db.ExecuteQuery(ToUTF8(("PRAGMA database_list;")));
                ret = true;
             }
             catch(wxSQLite3Exception& ex)
@@ -1694,8 +1694,8 @@ bool wxSQLitePlusFrame::OpenDatabase(const wxString& dbfullname, const wxString&
                                                   ex.GetErrorCode(),
                                                   ex.GetExtendedErrorCode(),
                                                   ex.GetMessage().c_str());
-               wxMessageBox(ErrStr, _T("Open Database Error"));
-               if (ex.GetErrorCode() == 26 and ex.GetExtendedErrorCode() == 26)
+               wxMessageBox(ErrStr, ("Open Database Error"));
+               if (ex.GetErrorCode() == 26 && ex.GetExtendedErrorCode() == 26)
                {
                   wxDbEncryptionKeyDlg encryptionKeyDlg(this);
 
@@ -1741,7 +1741,7 @@ bool wxSQLitePlusFrame::OpenDatabase(const wxString& dbfullname, const wxString&
                                          ex.GetErrorCode(),
                                          ex.GetExtendedErrorCode(),
                                          ex.GetMessage().c_str());
-      wxMessageBox(ErrStr, _T("Open Database Error"));
+      wxMessageBox(ErrStr, ("Open Database Error"));
       return false;
    }
 /*
@@ -1776,11 +1776,11 @@ bool wxSQLitePlusFrame::AttachDatabase(const wxString& dbfile,
             // ATTACH DATABASE "fichier" AS alias KEY "";
             // même pour une base non chiffrée
             if (l_dbkey.IsEmpty() && !m_db.IsEncrypted())
-               sql = _T("ATTACH DATABASE \"") + dbfile + _T("\" AS ") +
-                     dbalias + _T(";");
+               sql = ("ATTACH DATABASE \"") + dbfile + ("\" AS ") +
+                     dbalias + (";");
             else // si non
-               sql = _T("ATTACH DATABASE \"") + dbfile + _T("\" AS ") +
-                     dbalias  + _T(" KEY \"") + l_dbkey + _T("\";");
+               sql = ("ATTACH DATABASE \"") + dbfile + ("\" AS ") +
+                     dbalias  + (" KEY \"") + l_dbkey + ("\";");
             try
             {
                m_db.ExecuteUpdate(sql);
@@ -1788,13 +1788,13 @@ bool wxSQLitePlusFrame::AttachDatabase(const wxString& dbfile,
             }
             catch(wxSQLite3Exception& ex)
             {  // Capture de l'exception n'est pas une base ou est criptée
-               if (ex.GetErrorCode() == 26 and ex.GetExtendedErrorCode() == 26)
+               if (ex.GetErrorCode() == 26 && ex.GetExtendedErrorCode() == 26)
                {  // Affichage du message
                   wxString ErrStr = wxString::Format(_("Error %i-%i : %s\n"),
                                                      ex.GetErrorCode(),
                                                      ex.GetExtendedErrorCode(),
                                                      ex.GetMessage().c_str());
-                  wxMessageBox(ErrStr, _T("Open Database Error"));
+                  wxMessageBox(ErrStr, ("Open Database Error"));
                   // Affichage du dialog de saisie de la clef
                   wxAttachDbDlg attachDbDlg(this);
 
@@ -1820,7 +1820,7 @@ bool wxSQLitePlusFrame::AttachDatabase(const wxString& dbfile,
             return false;
          DatabaseItem = m_TreeCtrl->AppendItem(root, dbalias, ID_TREE_DATABASE);
          RefreshDatabase(dbalias, true);
-         book = (wxSQLBook*)GetPage(_T("SQL"));
+         book = (wxSQLBook*)GetPage(("SQL"));
          if (book)
          {
             // si dbkey est non nulle modifgier le message pour indiquer que la base est chiffrée
@@ -1835,7 +1835,7 @@ bool wxSQLitePlusFrame::AttachDatabase(const wxString& dbfile,
       }
       catch(wxSQLite3Exception& ex)
       {
-         wxGetApp().ShowError(_T("AttachDatabase"), ex);
+         wxGetApp().ShowError(("AttachDatabase"), ex);
       }
    }
    return false;
@@ -1851,7 +1851,7 @@ bool wxSQLitePlusFrame::EncryptDatabase(const wxString& dbkey)
       }
       catch(wxSQLite3Exception& ex)
       {
-         wxGetApp().ShowError(_T("EncryptDatabase"), ex);
+         wxGetApp().ShowError(("EncryptDatabase"), ex);
       }
    }
    return false;
@@ -1860,7 +1860,7 @@ bool wxSQLitePlusFrame::EncryptDatabase(const wxString& dbkey)
 void wxSQLitePlusFrame::OnEventClick(wxCommandEvent& event)
 {
    int index = m_CenterNotebook->GetSelection();
-   if ((index != -1)&&(m_CenterNotebook->GetPageText(index) == _T("SQL")))
+   if ((index != -1)&&(m_CenterNotebook->GetPageText(index) == ("SQL")))
    {
       wxWindow* window = m_CenterNotebook->GetPage(index);
       if (window)
@@ -1872,7 +1872,7 @@ void wxSQLitePlusFrame::OnEventUpdate(wxUpdateUIEvent& event)
 {
    int index = m_CenterNotebook->GetSelection();
 
-   if ((index != -1)&&(m_CenterNotebook->GetPageText(index) == _T("SQL")))
+   if ((index != -1)&&(m_CenterNotebook->GetPageText(index) == ("SQL")))
    {
       wxWindow* window = m_CenterNotebook->GetPage(index);
       if (window)
@@ -1916,7 +1916,7 @@ void wxSQLitePlusFrame::OnMnuCloseDbUpdate(wxUpdateUIEvent& event)
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(_T("OnMnuCloseDbUpdate"), ex);
+      wxGetApp().ShowError(("OnMnuCloseDbUpdate"), ex);
    }
    event.Enable(b_enable);
 }
@@ -1939,7 +1939,7 @@ wxWindow* wxSQLitePlusFrame::GetPage(const wxString& name)
 /*---------------------------------------------------------------------------*/
 void wxSQLitePlusFrame::OnMnuAutotransactClick(wxCommandEvent& event)
 {
-   wxSQLBook* book = (wxSQLBook*)GetPage(_T("SQL"));
+   wxSQLBook* book = (wxSQLBook*)GetPage(("SQL"));
    if (book)
       book->SetAutoTransact(event.IsChecked());
    m_MnuTransact->Check(ID_MNU_AUTOTRANSACT, event.IsChecked());
@@ -1969,7 +1969,7 @@ void wxSQLitePlusFrame::OnMnuBackupDbClick(wxCommandEvent& event)
                                             ex.GetErrorCode(),
                                             ex.GetExtendedErrorCode(),
                                             ex.GetMessage().c_str());
-         wxMessageBox(ErrStr, _T("Backup Database Error"));
+         wxMessageBox(ErrStr, ("Backup Database Error"));
       }
    }
 }
@@ -1992,7 +1992,7 @@ void wxSQLitePlusFrame::OnMnuRestoreDbClick(wxCommandEvent& event)
                                             ex.GetErrorCode(),
                                             ex.GetExtendedErrorCode(),
                                             ex.GetMessage().c_str());
-         wxMessageBox(ErrStr, _T("Restore Database Error"));
+         wxMessageBox(ErrStr, ("Restore Database Error"));
       }
    }
 }
@@ -2020,7 +2020,7 @@ void wxSQLitePlusFrame::OnDetachDbClick(wxCommandEvent& event)
             return;
          for (int i = 0; i < count; i++)
          {
-            sql = _T("DETACH DATABASE ") + aliaslist[i] + _T(";");
+            sql = ("DETACH DATABASE ") + aliaslist[i] + (";");
             try
             {
                m_db.ExecuteUpdate(sql);
@@ -2046,7 +2046,7 @@ void wxSQLitePlusFrame::OnDetachDbClick(wxCommandEvent& event)
             }
             catch(wxSQLite3Exception& ex)
             {
-               wxGetApp().ShowError(_T("OnDetachDbClick"), ex);
+               wxGetApp().ShowError(("OnDetachDbClick"), ex);
             }
          }
       }
@@ -2080,12 +2080,12 @@ void wxSQLitePlusFrame::DropDbObject(wxSQLiteObjectType type)
       ObjType = dropObject.GetObjectType();
       ObjName = dropObject.GetObjectName();
       if (m_NodeDbName.IsEmpty())
-         dbname = _T("main");
+         dbname = ("main");
       else
          dbname = m_NodeDbName;
-      SQL = _T("DROP ") + GetObjTypeName(ObjType) + _T(" ");
-      SQL += dbname + _T(".\"") + ObjName + _("\";");
-      book = (wxSQLBook*)GetPage(_T("SQL"));
+      SQL = ("DROP ") + GetObjTypeName(ObjType) + (" ");
+      SQL += dbname + (".\"") + ObjName + _("\";");
+      book = (wxSQLBook*)GetPage(("SQL"));
       if (book)
       {
          book->ExecQuery(SQL);
@@ -2115,7 +2115,7 @@ void wxSQLitePlusFrame::CreateIndex(const wxString& dbname,
       createIndexDlg.SetTable(tablename);
    if (createIndexDlg.ShowModal() == wxID_OK)
    {
-      book = (wxSQLBook*)GetPage(_T("SQL"));
+      book = (wxSQLBook*)GetPage(("SQL"));
       if (book)
       {
          book->ExecQuery(createIndexDlg.GetCreateIndexDDL());
@@ -2135,11 +2135,11 @@ void wxSQLitePlusFrame::CreateTable(const wxString& dbname)
    createTableDlg.SetDatabase(&m_db, dbname);
    if (createTableDlg.ShowModal() == wxID_OK)
    {
-      book = (wxSQLBook*)GetPage(_T("SQL"));
+      book = (wxSQLBook*)GetPage(("SQL"));
       if (book)
       {
          book->ExecQuery(createTableDlg.GetCreateTableDDL());
-         RefreshTables(createTableDlg.GetTemporary() ? _T("main") : dbname);
+         RefreshTables(createTableDlg.GetTemporary() ? ("main") : dbname);
          m_TreeCtrl->Refresh();
          m_TreeCtrl->Update();
       }
@@ -2155,11 +2155,11 @@ void wxSQLitePlusFrame::CreateView(const wxString& dbname)
    createViewDlg.SetDatabase(&m_db, dbname);
    if (createViewDlg.ShowModal() == wxID_OK)
    {
-      book = (wxSQLBook*)GetPage(_T("SQL"));
+      book = (wxSQLBook*)GetPage(("SQL"));
       if (book)
       {
          book->ExecQuery(createViewDlg.GetCreateViewDDL());
-         RefreshViews(createViewDlg.GetTemporary() ? _T("main") : dbname);
+         RefreshViews(createViewDlg.GetTemporary() ? ("main") : dbname);
          m_TreeCtrl->Refresh();
          m_TreeCtrl->Update();
       }
@@ -2178,11 +2178,11 @@ void wxSQLitePlusFrame::CreateTrigger(const wxString& dbname, bool useobj,
       createTriggerDlg.SetObject(objname, istable);
    if (createTriggerDlg.ShowModal() == wxID_OK)
    {
-      book = (wxSQLBook*)GetPage(_T("SQL"));
+      book = (wxSQLBook*)GetPage(("SQL"));
       if (book)
       {
          book->ExecQuery(createTriggerDlg.GetCreateTriggerDDL());
-         RefreshTriggers(createTriggerDlg.GetTemporary() ? _T("main") : dbname);
+         RefreshTriggers(createTriggerDlg.GetTemporary() ? ("main") : dbname);
          m_TreeCtrl->Refresh();
          m_TreeCtrl->Update();
       }
@@ -2201,7 +2201,7 @@ void wxSQLitePlusFrame::AddColumns(const wxString& dbname,
       addColumnDlg.SetTable(tablename);
    if (addColumnDlg.ShowModal() == wxID_OK)
    {
-      book = (wxSQLBook*)GetPage(_T("SQL"));
+      book = (wxSQLBook*)GetPage(("SQL"));
       if (book)
       {
          book->ExecScript(addColumnDlg.GetAddColumnsScript());
@@ -2432,7 +2432,7 @@ void wxSQLitePlusFrame::OnMnuAddIndexUpdate(wxUpdateUIEvent& event)
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(_T("OnMnuAddIndexUpdate"), ex);
+      wxGetApp().ShowError(("OnMnuAddIndexUpdate"), ex);
    }
    event.Enable(b_enable);
 }
@@ -2460,7 +2460,7 @@ void wxSQLitePlusFrame::OnMnuAddTriggerUpdate(wxUpdateUIEvent& event)
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(_T("OnMnuAddTriggerUpdate"), ex);
+      wxGetApp().ShowError(("OnMnuAddTriggerUpdate"), ex);
    }
    event.Enable(b_enable);
 }
@@ -2486,7 +2486,7 @@ bool wxSQLitePlusFrame::TryToRefresh()
       return false;
    alias = m_NodeDbName;
    if (alias.IsEmpty())
-      alias = _T("main");
+      alias = ("main");
    size_t count = m_CenterNotebook->GetPageCount();
    for (size_t i = 0; i < count; i++)
    {
@@ -2540,26 +2540,26 @@ wxSQLite3ResultSet wxSQLitePlusFrame::GetObjNameList(wxSQLiteObjectType objtype,
    wxSQLite3ResultSet objQRY;
    wxString sql, where;
 
-   sql = _T("SELECT name, 0 AS tmp ");
+   sql = ("SELECT name, 0 AS tmp ");
    if (objtype == otTableAndView)
-      where = _T("WHERE type IN ('table', 'view') AND name <> 'sqlite_sequence'");
+      where = ("WHERE type IN ('table', 'view') AND name <> 'sqlite_sequence'");
    else
    {
-      where = _T("WHERE type = '") + GetObjTypeName(objtype) + _T("'");
+      where = ("WHERE type = '") + GetObjTypeName(objtype) + ("'");
       if ((objtype == otTable)||(objtype == otView))
-         where += _T(" AND name <> 'sqlite_sequence'");
+         where += (" AND name <> 'sqlite_sequence'");
    }
-   if ((dbname == wxEmptyString)||(dbname == _T("main")))
+   if ((dbname == wxEmptyString)||(dbname == ("main")))
    {
-      sql += _T("FROM sqlite_master ");
-      sql += where + _T(" UNION ");
-      sql += _T("SELECT name, 1 AS tmp FROM sqlite_temp_master ") + where;
+      sql += ("FROM sqlite_master ");
+      sql += where + (" UNION ");
+      sql += ("SELECT name, 1 AS tmp FROM sqlite_temp_master ") + where;
    }
    else
    {
-      sql += _T("FROM ") + dbname + _T(".sqlite_master ") + where;
+      sql += ("FROM ") + dbname + (".sqlite_master ") + where;
    }
-   sql += _T(" ORDER by name;");
+   sql += (" ORDER by name;");
 
    objQRY = m_db.ExecuteQuery(ToUTF8(sql));
 
@@ -2576,21 +2576,21 @@ bool wxSQLitePlusFrame::ExistDbObject(wxSQLiteObjectType objtype,
       return false;
 
    if (objtype == otTableAndView)
-      whtype = _T("type IN ('table', 'view') ");
+      whtype = ("type IN ('table', 'view') ");
    else
-      whtype = _T("type = '") + GetObjTypeName(objtype) + _T("' ");
+      whtype = ("type = '") + GetObjTypeName(objtype) + ("' ");
 
-   where = _T("WHERE name = '") + name + _T("' AND ") + whtype;
+   where = ("WHERE name = '") + name + ("' AND ") + whtype;
 
-   sql = _T("SELECT MAX(c) FROM (");
-   if ((dbname == wxEmptyString)||(dbname == _T("main")))
+   sql = ("SELECT MAX(c) FROM (");
+   if ((dbname == wxEmptyString)||(dbname == ("main")))
    {
-      sql += _T("SELECT COUNT(*) c FROM sqlite_master ") + where;
-      sql += _T("UNION SELECT COUNT(*) c FROM sqlite_temp_master ") + where;
+      sql += ("SELECT COUNT(*) c FROM sqlite_master ") + where;
+      sql += ("UNION SELECT COUNT(*) c FROM sqlite_temp_master ") + where;
    }
    else
-      sql += _T("SELECT COUNT(*) c FROM ") + dbname + _T(".sqlite_master ") + where;
-   sql += _T(")");
+      sql += ("SELECT COUNT(*) c FROM ") + dbname + (".sqlite_master ") + where;
+   sql += (")");
 
    try
    {
@@ -2599,7 +2599,7 @@ bool wxSQLitePlusFrame::ExistDbObject(wxSQLiteObjectType objtype,
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(_T("ExistDbObject"), ex);
+      wxGetApp().ShowError(("ExistDbObject"), ex);
    }
    return false;
 }
@@ -2631,14 +2631,14 @@ wxString wxSQLitePlusFrame::GetDbObjectDDL(wxSQLiteObjectType objtype,
    if (dbname != wxEmptyString)
       basename = dbname;
    else
-      basename = _T("main");
+      basename = ("main");
    objname = GetObjTypeName(objtype);
 
    try
    {  // remplissage de l'éditeur DDL
-      if (basename == _T("main"))
+      if (basename == ("main"))
       {
-         sql = wxString::Format(_T("SELECT sql FROM sqlite_master\n"
+         sql = wxString::Format(("SELECT sql FROM sqlite_master\n"
                                    "WHERE type = '%s' AND name = '%s'\n"
                                    "UNION\n"
                                    "SELECT sql FROM sqlite_temp_master\n"
@@ -2648,7 +2648,7 @@ wxString wxSQLitePlusFrame::GetDbObjectDDL(wxSQLiteObjectType objtype,
       }
       else
       {
-         sql = wxString::Format(_T("SELECT sql FROM %s.sqlite_master\n"
+         sql = wxString::Format(("SELECT sql FROM %s.sqlite_master\n"
                                    "WHERE type = '%s' AND name = '%s';"),
                                 basename.c_str(), objname.c_str(), name.c_str());
       }
@@ -2661,7 +2661,7 @@ wxString wxSQLitePlusFrame::GetDbObjectDDL(wxSQLiteObjectType objtype,
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(_T("GetDbObjectDDL"), ex);
+      wxGetApp().ShowError(("GetDbObjectDDL"), ex);
    }
    return ret;
 }
@@ -2678,10 +2678,10 @@ bool wxSQLitePlusFrame::DoFinishTransaction()
          switch (answer)
          {
             case wxYES :
-               m_db.ExecuteUpdate(_T("COMMIT;"));
+               m_db.ExecuteUpdate(("COMMIT;"));
                break;
             case wxNO  :
-                m_db.ExecuteUpdate(_T("ROLLBACK;"));
+                m_db.ExecuteUpdate(("ROLLBACK;"));
               break;
             default    :
                return false;
@@ -2691,7 +2691,7 @@ bool wxSQLitePlusFrame::DoFinishTransaction()
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(_T("DoFinishTransaction"), ex);
+      wxGetApp().ShowError(("DoFinishTransaction"), ex);
       return false;
    }
 }
