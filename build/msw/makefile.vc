@@ -130,7 +130,7 @@ WXSQLITEPLUS_OBJECTS =  \
 	wxsqliteplus_viewbook.obj \
 	wxsqliteplus_wxsqliteplusapp.obj
 WXSQLITEPLUS_RESOURCES =  \
-	wxsqliteplus_wxSQLitePlus.res
+	wxsqliteplus_wxsqliteplus.res
 
 ### Conditionally set variables: ###
 
@@ -290,7 +290,7 @@ wxsqlite.lib: $(WXSQLITE_OBJECTS)
 	$(WXSQLITE_OBJECTS)
 <<
 
-wxsqliteplus.exe: $(WXSQLITEPLUS_OBJECTS) wxsqlite.lib wxsqliteplus_wxSQLitePlus.res
+wxsqliteplus.exe: $(WXSQLITEPLUS_OBJECTS) wxsqlite.lib wxsqliteplus_wxsqliteplus.res
 	link /NOLOGO /OUT:$@  /LIBPATH:$(WX_DIR)$(__WXLIBPATH_FILENAMES_3) $(WXMACHINE_FLAG) /LIBPATH:$(WX_DIR)$(__WXLIBPATH_FILENAMES_6) $(WXMACHINE_FLAG) /SUBSYSTEM:WINDOWS $(LDFLAGS) @<<
 	$(WXSQLITEPLUS_OBJECTS) $(WXSQLITEPLUS_RESOURCES)  wxsqlite.lib $(__WXLIB_STC_NAME_p) wxscintilla$(WX3RDPARTYLIBPOSTFIX).lib $(__WXLIB_RICHTEXT_NAME_p) $(__WXLIB_AUI_NAME_p) $(__WXLIB_ADV_NAME_p) $(__WXLIB_NET_NAME_p) $(__WXLIB_XML_NAME_p) $(__WXLIB_CORE_NAME_p) $(__WXLIB_BASE_NAME_p) wxtiff$(WX3RDPARTYLIBPOSTFIX).lib wxjpeg$(WX3RDPARTYLIBPOSTFIX).lib wxpng$(WX3RDPARTYLIBPOSTFIX).lib wxzlib$(WX3RDPARTYLIBPOSTFIX).lib wxregex$(WXLIBPOSTFIX).lib wxexpat$(WX3RDPARTYLIBPOSTFIX).lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib oleacc.lib wxtiff$(WX3RDPARTYLIBPOSTFIX).lib wxjpeg$(WX3RDPARTYLIBPOSTFIX).lib wxpng$(WX3RDPARTYLIBPOSTFIX).lib wxzlib$(WX3RDPARTYLIBPOSTFIX).lib wxregex$(WXLIBPOSTFIX).lib wxexpat$(WX3RDPARTYLIBPOSTFIX).lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib oleacc.lib
 <<
@@ -397,6 +397,6 @@ wxsqliteplus_viewbook.obj: ..\..\src\viewbook.cpp
 wxsqliteplus_wxsqliteplusapp.obj: ..\..\src\wxsqliteplusapp.cpp
 	$(CXX) /c /nologo /TP /Fo$@ $(WXSQLITEPLUS_CXXFLAGS) ..\..\src\wxsqliteplusapp.cpp
 
-wxsqliteplus_wxSQLitePlus.res: ..\..\src\wxSQLitePlus.rc
-	rc /fo$@  /d WIN32 $(____WX_SHARED_0) $(__WXUNICODE_DEFINE_p_0) $(__WXDEBUG_DEFINE_p_0) /d __WXMSW__ /i $(WX_DIR)$(__WXLIBPATH_FILENAMES_2)\msw$(WXLIBPOSTFIX) /i $(WX_DIR)\include /i ..\..\3rd\wxsqlite3\sqlite3\secure\src /i ..\..\3rd\wxsqlite3\include $(____WX_SHARED_0) $(__WXUNICODE_DEFINE_p_0) $(__WXDEBUG_DEFINE_p_0) /d __WXMSW__ /i $(WX_DIR)$(__WXLIBPATH_FILENAMES_5)\msw$(WXLIBPOSTFIX) /i $(WX_DIR)\include /d _WINDOWS ..\..\src\wxSQLitePlus.rc
+wxsqliteplus_wxsqliteplus.res: ..\..\src\wxsqliteplus.rc
+	rc /fo$@  /d WIN32 $(____WX_SHARED_0) $(__WXUNICODE_DEFINE_p_0) $(__WXDEBUG_DEFINE_p_0) /d __WXMSW__ /i $(WX_DIR)$(__WXLIBPATH_FILENAMES_2)\msw$(WXLIBPOSTFIX) /i $(WX_DIR)\include /i ..\..\3rd\wxsqlite3\sqlite3\secure\src /i ..\..\3rd\wxsqlite3\include $(____WX_SHARED_0) $(__WXUNICODE_DEFINE_p_0) $(__WXDEBUG_DEFINE_p_0) /d __WXMSW__ /i $(WX_DIR)$(__WXLIBPATH_FILENAMES_5)\msw$(WXLIBPOSTFIX) /i $(WX_DIR)\include /d _WINDOWS ..\..\src\wxsqliteplus.rc
 
