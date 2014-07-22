@@ -78,7 +78,7 @@ void wxDbBook::Init()
 }
 /*---------------------------------------------------------------------------*/
 void wxDbBook::SetDbObjectName(wxSQLite3Database* db,
-                               const wxString objectname, const wxString& base)
+                               const wxString& objectname, const wxString& base)
 {
    m_db = db;
    m_Base = base;

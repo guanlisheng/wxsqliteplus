@@ -103,7 +103,7 @@ COND_PLATFORM_OS2_1___wxsqliteplus___os2_emxbindcmd = $(NM) \
 	wxsqliteplus$(EXEEXT) ; fi
 @COND_PLATFORM_OS2_1@__wxsqliteplus___os2_emxbindcmd = $(COND_PLATFORM_OS2_1___wxsqliteplus___os2_emxbindcmd)
 @COND_PLATFORM_WIN32_1@__wxsqliteplus___win32rc = \
-@COND_PLATFORM_WIN32_1@	wxsqliteplus_wxSQLitePlus_rc.o
+@COND_PLATFORM_WIN32_1@	wxsqliteplus_wxsqliteplus_rc.o
 @COND_PLATFORM_MACOSX_1@__wxsqliteplus_app_Contents_PkgInfo___depname \
 @COND_PLATFORM_MACOSX_1@	= wxsqliteplus.app/Contents/PkgInfo
 @COND_PLATFORM_MACOSX_1@__wxsqliteplus_bundle___depname \
@@ -264,7 +264,7 @@ wxsqliteplus_viewbook.o: $(srcdir)/src/viewbook.cpp
 wxsqliteplus_wxsqliteplusapp.o: $(srcdir)/src/wxsqliteplusapp.cpp
 	$(CXXC) -c -o $@ $(WXSQLITEPLUS_CXXFLAGS) $(srcdir)/src/wxsqliteplusapp.cpp
 
-wxsqliteplus_wxSQLitePlus_rc.o: $(srcdir)/src/wxSQLitePlus.rc
+wxsqliteplus_wxsqliteplus_rc.o: $(srcdir)/src/wxsqliteplus.rc
 	$(WX_RESCOMP) -i$< -o$@  --include-dir $(srcdir)/3rd/wxsqlite3/sqlite3/secure/src --include-dir $(srcdir)/3rd/wxsqlite3/include
 
 

@@ -58,7 +58,7 @@ class wxDbBook : public wxPanel
       virtual ~wxDbBook();
 
       virtual void SetDbObjectName(wxSQLite3Database* db,
-                                   const wxString objectname,
+                                   const wxString& objectname,
                                    const wxString& base = wxEmptyString);
 
 
