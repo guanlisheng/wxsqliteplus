@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+
+<!-- Created by: Ulrich Telle <utelle@users.sourceforge.net>     -->
+<!-- Date: 2007-05-30                                            -->
+
+<bakefile-gen xmlns="http://www.bakefile.org/schema/bakefile-gen">
+
+  <input>wxsqliteplus.bkl</input>
+  <add-formats>autoconf,mingw,msvc</add-formats>
+  <add-formats files="wxsqliteplus.bkl">msvs2008prj</add-formats>
+
+  <!-- Directories where the files go -->
+  <add-flags files="wxsqliteplus.bkl" formats="autoconf">
+        -o../../Makefile.in
+  </add-flags>
+
+  <add-flags files="wxsqliteplus.bkl" formats="mingw">
+        -o../msw/makefile.gcc
+  </add-flags>
+
+  <add-flags files="wxsqliteplus.bkl" formats="msvc">
+        -o../msw/makefile.vc
+  </add-flags>
+
+  <add-flags files="wxsqliteplus.bkl" formats="msvs2008prj">
+        -o../msw/mmex.sln
+        -DMSVS_PLATFORMS=win32,win64
+    </add-flags>
+
+</bakefile-gen>

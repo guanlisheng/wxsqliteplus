@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<makefile>
+    <if cond="FORMAT!='autoconf'">
+        <set-srcdir>../..</set-srcdir>
+    </if>
+    <include file="wxsqlite3.bkl"/>
+
+
+  <!-- =============================================================== -->
+  <!--                    Misc platform specialities:                  -->
+  <!-- =============================================================== -->
+
+  <if cond="FORMAT=='autoconf'">
+    <include file="mac_bundles.bkl"/>
+  </if>
+
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <!-- Sample(s) settings                                                -->
+  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+
+  <template id="wxsqliteplus_common" template="wx">
+    <include>$(SRCDIR)/3rd/wxsqlite3/sqlite3/secure/src</include>
+    <include>$(SRCDIR)/3rd/wxsqlite3/include</include>
+
+    <sources>$(fileList('src/*.cpp'))</sources>
+    <headers>$(fileList('src/*.h'))</headers>
+
+    <library>wxsqlite</library>
+
+    <wx-lib>stc</wx-lib>
+    <wx-lib>richtext</wx-lib>
+    <wx-lib>aui</wx-lib>
+    <wx-lib>adv</wx-lib>
+    <wx-lib>net</wx-lib>
+    <wx-lib>xml</wx-lib>
+    <wx-lib>core</wx-lib>
+    <wx-lib>base</wx-lib>
+  </template>
+
+  <exe id="wxsqliteplus" template="wxsqliteplus_common,wxgui">
+    <exename>wxsqliteplus</exename>
+    <win32-res>src/wxSQLitePlus.rc</win32-res>
+    <if cond="FORMAT=='autoconf'">
+      <wx-mac-app-bundle/>
+    </if>
+  </exe>
+
+</makefile>
