@@ -10,7 +10,7 @@
 	ProjectType="Visual C++"
 	Version="9.00"
 	Name="wxsqliteplus"
-	ProjectGUID="{DA0A69B2-D40A-53DA-8541-3CB50C41AD19}"
+	ProjectGUID="{9D065D4A-AF3E-5878-89C4-26C49A4CA32D}"
 	>
 	<Platforms>
 		<Platform
@@ -101,7 +101,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -191,7 +191,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -281,7 +281,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -371,7 +371,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -462,7 +462,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -553,7 +553,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -644,7 +644,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -735,7 +735,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -825,7 +825,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -915,7 +915,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -1005,7 +1005,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -1095,7 +1095,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -1186,7 +1186,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -1277,7 +1277,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -1368,7 +1368,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -1459,7 +1459,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -1549,7 +1549,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -1639,7 +1639,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -1729,7 +1729,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -1819,7 +1819,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -1910,7 +1910,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -2001,7 +2001,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -2092,7 +2092,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -2183,7 +2183,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -2273,7 +2273,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -2363,7 +2363,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -2453,7 +2453,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -2543,7 +2543,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -2634,7 +2634,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -2725,7 +2725,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -2816,7 +2816,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool
@@ -2907,7 +2907,7 @@
 			/>
 			<Tool
 				Name="VCBscMakeTool"
-				OutputFile="$(PlatformName)\$(ConfigurationName)\mmex_wxsqliteplus.bsc"
+				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus_wxsqliteplus.bsc"
 				SuppressStartupBanner="true"
 			/>
 			<Tool

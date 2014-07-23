@@ -23,7 +23,7 @@
   </add-flags>
 
   <add-flags files="wxsqliteplus.bkl" formats="msvs2008prj">
-        -o../msw/mmex.sln
+        -o../msw/wxsqliteplus.sln
         -DMSVS_PLATFORMS=win32,win64
     </add-flags>
 

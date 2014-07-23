@@ -18,8 +18,6 @@
         <include>$(SRCDIR)/3rd/wxsqlite3/sqlite3/secure/src</include>
         <include>$(SRCDIR)/3rd/wxsqlite3/include</include>
 
-        <!-- paths relative to trunk/mmex -->
-
         <set var="SRC">3rd/wxsqlite3</set>
 
         <headers>$(fileList(SRC + 'include/wx/*.h'))</headers>
