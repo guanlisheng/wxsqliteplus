@@ -5,7 +5,7 @@ A cross-platform, open-source, easy-to-use SQLite database browser or client.
 Encryption Method is now compatible with [wxSQLite3](https://github.com/moneymanagerex/wxsqlite3)
 
 [![Build Status](https://secure.travis-ci.org/moneymanagerex/wxSqlitePlus.png)](http://travis-ci.org/moneymanagerex/wxSqlitePlus)
-
+[![Ohloh](http://www.ohloh.net/p/wxsqliteplus/widgets/project_thin_badge.gif)](https://www.ohloh.net/p/wxsqliteplus)
 
 ## Make a donation
 1. Do a donate at my Ripple address: `rUY7DvWqNnSYCYiVr986W71tuaKtDCMNz3` 
