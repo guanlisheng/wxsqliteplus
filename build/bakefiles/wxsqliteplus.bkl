@@ -37,6 +37,7 @@
 
     <wx-lib>stc</wx-lib>
     <wx-lib>richtext</wx-lib>
+    <wx-lib>html</wx-lib>
     <wx-lib>aui</wx-lib>
     <wx-lib>adv</wx-lib>
     <wx-lib>net</wx-lib>
