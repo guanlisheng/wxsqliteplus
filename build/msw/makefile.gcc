@@ -77,10 +77,7 @@ WXSQLITEPLUS_CXXFLAGS = -DHAVE_W32API_H $(____WX_SHARED) \
 	$(__WXUNICODE_DEFINE_p) $(__WXDEBUG_DEFINE_p) -D__WXMSW__ \
 	-I$(WX_DIR)$(WXLIBPATH)\msw$(WXLIBPOSTFIX) -I$(WX_DIR)\include \
 	-I..\..\3rd\wxsqlite3\sqlite3\secure\src -I..\..\3rd\wxsqlite3\include \
-	-DHAVE_W32API_H $(____WX_SHARED) $(__WXUNICODE_DEFINE_p) \
-	$(__WXDEBUG_DEFINE_p) -D__WXMSW__ \
-	-I$(WX_DIR)$(WXLIBPATH)\msw$(WXLIBPOSTFIX) -I$(WX_DIR)\include $(CPPFLAGS) \
-	$(CXXFLAGS)
+	$(CPPFLAGS) $(CXXFLAGS)
 WXSQLITEPLUS_OBJECTS =  \
 	wxsqliteplus_aboutdlg.o \
 	wxsqliteplus_addcolumn.o \
@@ -121,6 +118,18 @@ WXSQLITEPLUS_OBJECTS =  \
 ifeq ($(WX_DEBUG),1)
 WX3RDPARTYLIBPOSTFIX = d
 endif
+ifeq ($(WX_SHARED),0)
+____WX_SHARED_1_p_1 = 
+endif
+ifeq ($(WX_SHARED),1)
+____WX_SHARED_1_p_1 = --define WXUSINGDLL
+endif
+ifeq ($(WX_UNICODE),1)
+__WXUNICODE_DEFINE_p_2 = --define _UNICODE
+endif
+ifeq ($(WX_DEBUG),1)
+__WXDEBUG_DEFINE_p_2 = --define __WXDEBUG__
+endif
 ifeq ($(WX_MONOLITHIC),0)
 __WXLIB_STC_NAME_p = -lwxmsw$(WX_VERSION)$(WXLIBPOSTFIX)_stc
 endif
@@ -154,23 +163,11 @@ endif
 ifeq ($(WX_SHARED),1)
 ____WX_SHARED = -DWXUSINGDLL
 endif
-ifeq ($(WX_SHARED),0)
-____WX_SHARED_0 = 
-endif
-ifeq ($(WX_SHARED),1)
-____WX_SHARED_0 = --define WXUSINGDLL
-endif
 ifeq ($(WX_UNICODE),1)
 __WXUNICODE_DEFINE_p = -D_UNICODE
 endif
-ifeq ($(WX_UNICODE),1)
-__WXUNICODE_DEFINE_p_0 = --define _UNICODE
-endif
 ifeq ($(WX_DEBUG),1)
 __WXDEBUG_DEFINE_p = -D__WXDEBUG__
-endif
-ifeq ($(WX_DEBUG),1)
-__WXDEBUG_DEFINE_p_0 = --define __WXDEBUG__
 endif
 ifeq ($(WX_DEBUG),0)
 ifeq ($(WX_UNICODE),1)
@@ -223,7 +220,7 @@ libwxsqlite.a: $(WXSQLITE_OBJECTS)
 	ranlib $@
 
 wxsqliteplus.exe: $(WXSQLITEPLUS_OBJECTS) libwxsqlite.a wxsqliteplus_wxsqliteplus_rc.o
-	$(CXX) -o $@ $(WXSQLITEPLUS_OBJECTS)  -mthreads -L$(WX_DIR)$(WXLIBPATH)  -mthreads -L$(WX_DIR)$(WXLIBPATH)  -Wl,--subsystem,windows -mwindows $(LDFLAGS)  libwxsqlite.a $(__WXLIB_STC_NAME_p) -lwxscintilla$(WX3RDPARTYLIBPOSTFIX) $(__WXLIB_RICHTEXT_NAME_p) $(__WXLIB_AUI_NAME_p) $(__WXLIB_ADV_NAME_p) $(__WXLIB_NET_NAME_p) $(__WXLIB_XML_NAME_p) $(__WXLIB_CORE_NAME_p) $(__WXLIB_BASE_NAME_p) -lwxtiff$(WX3RDPARTYLIBPOSTFIX) -lwxjpeg$(WX3RDPARTYLIBPOSTFIX) -lwxpng$(WX3RDPARTYLIBPOSTFIX) -lwxzlib$(WX3RDPARTYLIBPOSTFIX) -lwxregex$(WXLIBPOSTFIX) -lwxexpat$(WX3RDPARTYLIBPOSTFIX) -lkernel32 -luser32 -lgdi32 -lcomdlg32 -lwinspool -lwinmm -lshell32 -lcomctl32 -lole32 -loleaut32 -luuid -lrpcrt4 -ladvapi32 -lwsock32 -lwxtiff$(WX3RDPARTYLIBPOSTFIX) -lwxjpeg$(WX3RDPARTYLIBPOSTFIX) -lwxpng$(WX3RDPARTYLIBPOSTFIX) -lwxzlib$(WX3RDPARTYLIBPOSTFIX) -lwxregex$(WXLIBPOSTFIX) -lwxexpat$(WX3RDPARTYLIBPOSTFIX) -lkernel32 -luser32 -lgdi32 -lcomdlg32 -lwinspool -lwinmm -lshell32 -lcomctl32 -lole32 -loleaut32 -luuid -lrpcrt4 -ladvapi32 -lwsock32
+	$(CXX) -o $@ $(WXSQLITEPLUS_OBJECTS)  -mthreads -L$(WX_DIR)$(WXLIBPATH)  -Wl,--subsystem,windows -mwindows $(LDFLAGS)  libwxsqlite.a $(__WXLIB_STC_NAME_p) -lwxscintilla$(WX3RDPARTYLIBPOSTFIX) $(__WXLIB_RICHTEXT_NAME_p) $(__WXLIB_AUI_NAME_p) $(__WXLIB_ADV_NAME_p) $(__WXLIB_NET_NAME_p) $(__WXLIB_XML_NAME_p) $(__WXLIB_CORE_NAME_p) $(__WXLIB_BASE_NAME_p) -lwxtiff$(WX3RDPARTYLIBPOSTFIX) -lwxjpeg$(WX3RDPARTYLIBPOSTFIX) -lwxpng$(WX3RDPARTYLIBPOSTFIX) -lwxzlib$(WX3RDPARTYLIBPOSTFIX) -lwxregex$(WXLIBPOSTFIX) -lwxexpat$(WX3RDPARTYLIBPOSTFIX) -lkernel32 -luser32 -lgdi32 -lcomdlg32 -lwinspool -lwinmm -lshell32 -lcomctl32 -lole32 -loleaut32 -luuid -lrpcrt4 -ladvapi32 -lwsock32
 
 wxsqlite_wxsqlite3.o: ../../3rd/wxsqlite3/src/wxsqlite3.cpp
 	$(CXX) -c -o $@ $(WXSQLITE_CXXFLAGS) $(CPPDEPS) $<
@@ -328,7 +325,7 @@ wxsqliteplus_wxsqliteplusapp.o: ../../src/wxsqliteplusapp.cpp
 	$(CXX) -c -o $@ $(WXSQLITEPLUS_CXXFLAGS) $(CPPDEPS) $<
 
 wxsqliteplus_wxsqliteplus_rc.o: ../../src/wxsqliteplus.rc
-	windres --use-temp-file -i$< -o$@  --define HAVE_W32API_H $(____WX_SHARED_0) $(__WXUNICODE_DEFINE_p_0) $(__WXDEBUG_DEFINE_p_0) --define __WXMSW__ --include-dir $(WX_DIR)$(WXLIBPATH)\msw$(WXLIBPOSTFIX) --include-dir $(WX_DIR)/include --include-dir ../../3rd/wxsqlite3/sqlite3/secure/src --include-dir ../../3rd/wxsqlite3/include --define HAVE_W32API_H $(____WX_SHARED_0) $(__WXUNICODE_DEFINE_p_0) $(__WXDEBUG_DEFINE_p_0) --define __WXMSW__ --include-dir $(WX_DIR)$(WXLIBPATH)\msw$(WXLIBPOSTFIX) --include-dir $(WX_DIR)/include
+	windres --use-temp-file -i$< -o$@  --define HAVE_W32API_H $(____WX_SHARED_1_p_1) $(__WXUNICODE_DEFINE_p_2) $(__WXDEBUG_DEFINE_p_2) --define __WXMSW__ --include-dir $(WX_DIR)$(WXLIBPATH)\msw$(WXLIBPOSTFIX) --include-dir $(WX_DIR)/include --include-dir ../../3rd/wxsqlite3/sqlite3/secure/src --include-dir ../../3rd/wxsqlite3/include
 
 .PHONY: all clean
 

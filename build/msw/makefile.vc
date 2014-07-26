@@ -91,11 +91,8 @@ WXSQLITE_OBJECTS =  \
 WXSQLITEPLUS_CXXFLAGS = /MD /DWIN32 $(____WX_SHARED) $(__WXUNICODE_DEFINE_p) \
 	$(__WXDEBUG_DEFINE_p) /D__WXMSW__ \
 	/I$(WX_DIR)$(__WXLIBPATH_FILENAMES_1)\msw$(WXLIBPOSTFIX) \
-	/I$(WX_DIR)\include /I..\..\3rd\wxsqlite3\sqlite3\secure\src \
-	/I..\..\3rd\wxsqlite3\include $(____WX_SHARED) $(__WXUNICODE_DEFINE_p) \
-	$(__WXDEBUG_DEFINE_p) /D__WXMSW__ \
-	/I$(WX_DIR)$(__WXLIBPATH_FILENAMES_4)\msw$(WXLIBPOSTFIX) \
-	/I$(WX_DIR)\include /D_WINDOWS /GR /EHsc $(CPPFLAGS) $(CXXFLAGS)
+	/I$(WX_DIR)\include /D_WINDOWS /I..\..\3rd\wxsqlite3\sqlite3\secure\src \
+	/I..\..\3rd\wxsqlite3\include /GR /EHsc $(CPPFLAGS) $(CXXFLAGS)
 WXSQLITEPLUS_OBJECTS =  \
 	wxsqliteplus_aboutdlg.obj \
 	wxsqliteplus_addcolumn.obj \
@@ -156,6 +153,18 @@ __WXLIBPATH_FILENAMES = \lib\$(COMPILER_PREFIX)$(WXCPU)_lib
 __WXLIBPATH_FILENAMES = \lib\$(COMPILER_PREFIX)$(WXCPU)_dll
 !endif
 !if "$(WX_SHARED)" == "0"
+____WX_SHARED_5_p_1 = 
+!endif
+!if "$(WX_SHARED)" == "1"
+____WX_SHARED_5_p_1 = /d WXUSINGDLL
+!endif
+!if "$(WX_UNICODE)" == "1"
+__WXUNICODE_DEFINE_p_2 = /d _UNICODE
+!endif
+!if "$(WX_DEBUG)" == "1"
+__WXDEBUG_DEFINE_p_2 = /d __WXDEBUG__
+!endif
+!if "$(WX_SHARED)" == "0"
 __WXLIBPATH_FILENAMES_1 = \lib\$(COMPILER_PREFIX)$(WXCPU)_lib
 !endif
 !if "$(WX_SHARED)" == "1"
@@ -201,46 +210,16 @@ __WXLIB_BASE_NAME_p = wxbase$(WX_VERSION)$(WXLIBPOSTFIX).lib
 __WXLIB_BASE_NAME_p = wxmsw$(WX_VERSION)$(WXLIBPOSTFIX).lib
 !endif
 !if "$(WX_SHARED)" == "0"
-__WXLIBPATH_FILENAMES_4 = \lib\$(COMPILER_PREFIX)$(WXCPU)_lib
-!endif
-!if "$(WX_SHARED)" == "1"
-__WXLIBPATH_FILENAMES_4 = \lib\$(COMPILER_PREFIX)$(WXCPU)_dll
-!endif
-!if "$(WX_SHARED)" == "0"
-__WXLIBPATH_FILENAMES_5 = \lib\$(COMPILER_PREFIX)$(WXCPU)_lib
-!endif
-!if "$(WX_SHARED)" == "1"
-__WXLIBPATH_FILENAMES_5 = \lib\$(COMPILER_PREFIX)$(WXCPU)_dll
-!endif
-!if "$(WX_SHARED)" == "0"
-__WXLIBPATH_FILENAMES_6 = \lib\$(COMPILER_PREFIX)$(WXCPU)_lib
-!endif
-!if "$(WX_SHARED)" == "1"
-__WXLIBPATH_FILENAMES_6 = \lib\$(COMPILER_PREFIX)$(WXCPU)_dll
-!endif
-!if "$(WX_SHARED)" == "0"
 ____WX_SHARED = 
 !endif
 !if "$(WX_SHARED)" == "1"
 ____WX_SHARED = /DWXUSINGDLL
 !endif
-!if "$(WX_SHARED)" == "0"
-____WX_SHARED_0 = 
-!endif
-!if "$(WX_SHARED)" == "1"
-____WX_SHARED_0 = /d WXUSINGDLL
-!endif
 !if "$(WX_UNICODE)" == "1"
 __WXUNICODE_DEFINE_p = /D_UNICODE
 !endif
-!if "$(WX_UNICODE)" == "1"
-__WXUNICODE_DEFINE_p_0 = /d _UNICODE
-!endif
 !if "$(WX_DEBUG)" == "1"
 __WXDEBUG_DEFINE_p = /D__WXDEBUG__
-!endif
-!if "$(WX_DEBUG)" == "1"
-__WXDEBUG_DEFINE_p_0 = /d __WXDEBUG__
 !endif
 !if "$(WX_DEBUG)" == "0" && "$(WX_UNICODE)" == "1"
 WXLIBPOSTFIX = u
@@ -291,8 +270,8 @@ wxsqlite.lib: $(WXSQLITE_OBJECTS)
 <<
 
 wxsqliteplus.exe: $(WXSQLITEPLUS_OBJECTS) wxsqlite.lib wxsqliteplus_wxsqliteplus.res
-	link /NOLOGO /OUT:$@  /LIBPATH:$(WX_DIR)$(__WXLIBPATH_FILENAMES_3) $(WXMACHINE_FLAG) /LIBPATH:$(WX_DIR)$(__WXLIBPATH_FILENAMES_6) $(WXMACHINE_FLAG) /SUBSYSTEM:WINDOWS $(LDFLAGS) @<<
-	$(WXSQLITEPLUS_OBJECTS) $(WXSQLITEPLUS_RESOURCES)  wxsqlite.lib $(__WXLIB_STC_NAME_p) wxscintilla$(WX3RDPARTYLIBPOSTFIX).lib $(__WXLIB_RICHTEXT_NAME_p) $(__WXLIB_AUI_NAME_p) $(__WXLIB_ADV_NAME_p) $(__WXLIB_NET_NAME_p) $(__WXLIB_XML_NAME_p) $(__WXLIB_CORE_NAME_p) $(__WXLIB_BASE_NAME_p) wxtiff$(WX3RDPARTYLIBPOSTFIX).lib wxjpeg$(WX3RDPARTYLIBPOSTFIX).lib wxpng$(WX3RDPARTYLIBPOSTFIX).lib wxzlib$(WX3RDPARTYLIBPOSTFIX).lib wxregex$(WXLIBPOSTFIX).lib wxexpat$(WX3RDPARTYLIBPOSTFIX).lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib oleacc.lib wxtiff$(WX3RDPARTYLIBPOSTFIX).lib wxjpeg$(WX3RDPARTYLIBPOSTFIX).lib wxpng$(WX3RDPARTYLIBPOSTFIX).lib wxzlib$(WX3RDPARTYLIBPOSTFIX).lib wxregex$(WXLIBPOSTFIX).lib wxexpat$(WX3RDPARTYLIBPOSTFIX).lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib oleacc.lib
+	link /NOLOGO /OUT:$@  /LIBPATH:$(WX_DIR)$(__WXLIBPATH_FILENAMES_3) $(WXMACHINE_FLAG) /SUBSYSTEM:WINDOWS $(LDFLAGS) @<<
+	$(WXSQLITEPLUS_OBJECTS) $(WXSQLITEPLUS_RESOURCES)  wxsqlite.lib $(__WXLIB_STC_NAME_p) wxscintilla$(WX3RDPARTYLIBPOSTFIX).lib $(__WXLIB_RICHTEXT_NAME_p) $(__WXLIB_AUI_NAME_p) $(__WXLIB_ADV_NAME_p) $(__WXLIB_NET_NAME_p) $(__WXLIB_XML_NAME_p) $(__WXLIB_CORE_NAME_p) $(__WXLIB_BASE_NAME_p) wxtiff$(WX3RDPARTYLIBPOSTFIX).lib wxjpeg$(WX3RDPARTYLIBPOSTFIX).lib wxpng$(WX3RDPARTYLIBPOSTFIX).lib wxzlib$(WX3RDPARTYLIBPOSTFIX).lib wxregex$(WXLIBPOSTFIX).lib wxexpat$(WX3RDPARTYLIBPOSTFIX).lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib oleacc.lib
 <<
 
 wxsqlite_wxsqlite3.obj: ..\..\3rd\wxsqlite3\src\wxsqlite3.cpp
@@ -398,5 +377,5 @@ wxsqliteplus_wxsqliteplusapp.obj: ..\..\src\wxsqliteplusapp.cpp
 	$(CXX) /c /nologo /TP /Fo$@ $(WXSQLITEPLUS_CXXFLAGS) ..\..\src\wxsqliteplusapp.cpp
 
 wxsqliteplus_wxsqliteplus.res: ..\..\src\wxsqliteplus.rc
-	rc /fo$@  /d WIN32 $(____WX_SHARED_0) $(__WXUNICODE_DEFINE_p_0) $(__WXDEBUG_DEFINE_p_0) /d __WXMSW__ /i $(WX_DIR)$(__WXLIBPATH_FILENAMES_2)\msw$(WXLIBPOSTFIX) /i $(WX_DIR)\include /i ..\..\3rd\wxsqlite3\sqlite3\secure\src /i ..\..\3rd\wxsqlite3\include $(____WX_SHARED_0) $(__WXUNICODE_DEFINE_p_0) $(__WXDEBUG_DEFINE_p_0) /d __WXMSW__ /i $(WX_DIR)$(__WXLIBPATH_FILENAMES_5)\msw$(WXLIBPOSTFIX) /i $(WX_DIR)\include /d _WINDOWS ..\..\src\wxsqliteplus.rc
+	rc /fo$@  /d WIN32 $(____WX_SHARED_5_p_1) $(__WXUNICODE_DEFINE_p_2) $(__WXDEBUG_DEFINE_p_2) /d __WXMSW__ /i $(WX_DIR)$(__WXLIBPATH_FILENAMES_2)\msw$(WXLIBPOSTFIX) /i $(WX_DIR)\include /d _WINDOWS /i ..\..\3rd\wxsqlite3\sqlite3\secure\src /i ..\..\3rd\wxsqlite3\include ..\..\src\wxsqliteplus.rc
 

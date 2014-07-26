@@ -52,8 +52,7 @@ WXSQLITE_OBJECTS =  \
 	wxsqlite_wxsqlite3.o \
 	wxsqlite_sqlite3secure.o
 WXSQLITEPLUS_CXXFLAGS = -I$(srcdir)/3rd/wxsqlite3/sqlite3/secure/src \
-	-I$(srcdir)/3rd/wxsqlite3/include $(WX_CXXFLAGS) $(WX_CXXFLAGS) $(CPPFLAGS) \
-	$(CXXFLAGS)
+	-I$(srcdir)/3rd/wxsqlite3/include $(WX_CXXFLAGS) $(CPPFLAGS) $(CXXFLAGS)
 WXSQLITEPLUS_OBJECTS =  \
 	wxsqliteplus_aboutdlg.o \
 	wxsqliteplus_addcolumn.o \

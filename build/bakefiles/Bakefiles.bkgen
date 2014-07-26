@@ -1,8 +1,5 @@
 <?xml version="1.0" ?>
 
-<!-- Created by: Ulrich Telle <utelle@users.sourceforge.net>     -->
-<!-- Date: 2007-05-30                                            -->
-
 <bakefile-gen xmlns="http://www.bakefile.org/schema/bakefile-gen">
 
   <input>wxsqliteplus.bkl</input>
@@ -25,6 +22,6 @@
   <add-flags files="wxsqliteplus.bkl" formats="msvs2008prj">
         -o../msw/wxsqliteplus.sln
         -DMSVS_PLATFORMS=win32,win64
-    </add-flags>
+  </add-flags>
 
 </bakefile-gen>

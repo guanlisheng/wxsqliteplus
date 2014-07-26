@@ -46,15 +46,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;__WXMSW__;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_lib\msw;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_lib\msw;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;__WXMSW__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -70,9 +70,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="__WXMSW__;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_lib\msw;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -80,11 +80,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31_stc.lib wxscintilla.lib wxmsw31_richtext.lib wxmsw31_aui.lib wxmsw31_adv.lib wxbase31_net.lib wxbase31_xml.lib wxmsw31_core.lib wxbase31.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregex.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregex.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31_stc.lib wxscintilla.lib wxmsw31_richtext.lib wxmsw31_aui.lib wxmsw31_adv.lib wxbase31_net.lib wxbase31_xml.lib wxmsw31_core.lib wxbase31.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregex.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_lib;$(WXWIN)\lib\vc_lib"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_lib"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -136,15 +136,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;__WXMSW__;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_lib\msw;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_lib\msw;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;__WXMSW__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -160,9 +160,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="__WXMSW__;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_lib\msw;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -170,11 +170,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintilla.lib       wxmsw31.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregex.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregex.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintilla.lib       wxmsw31.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregex.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_lib;$(WXWIN)\lib\vc_lib"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_lib"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -226,15 +226,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;__WXDEBUG__;__WXMSW__;__WXDEBUG__;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_lib\mswd;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_lib\mswd;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;__WXDEBUG__;__WXMSW__;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;__WXDEBUG__;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -250,9 +250,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="__WXDEBUG__;__WXMSW__;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="__WXDEBUG__;__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_lib\mswd;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -260,11 +260,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31d_stc.lib wxscintillad.lib wxmsw31d_richtext.lib wxmsw31d_aui.lib wxmsw31d_adv.lib wxbase31d_net.lib wxbase31d_xml.lib wxmsw31d_core.lib wxbase31d.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31d_stc.lib wxscintillad.lib wxmsw31d_richtext.lib wxmsw31d_aui.lib wxmsw31d_adv.lib wxbase31d_net.lib wxbase31d_xml.lib wxmsw31d_core.lib wxbase31d.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_lib;$(WXWIN)\lib\vc_lib"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_lib"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -316,15 +316,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;__WXDEBUG__;__WXMSW__;__WXDEBUG__;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_lib\mswd;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_lib\mswd;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;__WXDEBUG__;__WXMSW__;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;__WXDEBUG__;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -340,9 +340,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="__WXDEBUG__;__WXMSW__;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="__WXDEBUG__;__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_lib\mswd;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -350,11 +350,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintillad.lib       wxmsw31d.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintillad.lib       wxmsw31d.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_lib;$(WXWIN)\lib\vc_lib"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_lib"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -407,15 +407,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;_UNICODE;__WXMSW__;_UNICODE;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_lib\mswu;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;_UNICODE;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_lib\mswu;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;_UNICODE;__WXMSW__;_UNICODE;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;_UNICODE;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -431,9 +431,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_UNICODE;__WXMSW__;_UNICODE;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="_UNICODE;__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_lib\mswu;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -441,11 +441,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31u_stc.lib wxscintilla.lib wxmsw31u_richtext.lib wxmsw31u_aui.lib wxmsw31u_adv.lib wxbase31u_net.lib wxbase31u_xml.lib wxmsw31u_core.lib wxbase31u.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregexu.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregexu.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31u_stc.lib wxscintilla.lib wxmsw31u_richtext.lib wxmsw31u_aui.lib wxmsw31u_adv.lib wxbase31u_net.lib wxbase31u_xml.lib wxmsw31u_core.lib wxbase31u.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregexu.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_lib;$(WXWIN)\lib\vc_lib"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_lib"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -498,15 +498,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;_UNICODE;__WXMSW__;_UNICODE;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_lib\mswu;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;_UNICODE;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_lib\mswu;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;_UNICODE;__WXMSW__;_UNICODE;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;_UNICODE;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -522,9 +522,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_UNICODE;__WXMSW__;_UNICODE;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="_UNICODE;__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_lib\mswu;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -532,11 +532,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintilla.lib       wxmsw31u.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregexu.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregexu.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintilla.lib       wxmsw31u.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregexu.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_lib;$(WXWIN)\lib\vc_lib"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_lib"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -589,15 +589,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;_UNICODE;__WXDEBUG__;__WXMSW__;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_lib\mswud;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_lib\mswud;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;_UNICODE;__WXDEBUG__;__WXMSW__;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -613,9 +613,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_UNICODE;__WXDEBUG__;__WXMSW__;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_lib\mswud;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -623,11 +623,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31ud_stc.lib wxscintillad.lib wxmsw31ud_richtext.lib wxmsw31ud_aui.lib wxmsw31ud_adv.lib wxbase31ud_net.lib wxbase31ud_xml.lib wxmsw31ud_core.lib wxbase31ud.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31ud_stc.lib wxscintillad.lib wxmsw31ud_richtext.lib wxmsw31ud_aui.lib wxmsw31ud_adv.lib wxbase31ud_net.lib wxbase31ud_xml.lib wxmsw31ud_core.lib wxbase31ud.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_lib;$(WXWIN)\lib\vc_lib"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_lib"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -680,15 +680,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;_UNICODE;__WXDEBUG__;__WXMSW__;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_lib\mswud;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_lib\mswud;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;_UNICODE;__WXDEBUG__;__WXMSW__;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -704,9 +704,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_UNICODE;__WXDEBUG__;__WXMSW__;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_lib\mswud;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_lib\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -714,11 +714,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintillad.lib       wxmsw31ud.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintillad.lib       wxmsw31ud.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_lib;$(WXWIN)\lib\vc_lib"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_lib"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -770,15 +770,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXMSW__;WXUSINGDLL;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_dll\msw;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_dll\msw;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXMSW__;WXUSINGDLL;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -794,9 +794,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="WXUSINGDLL;__WXMSW__;WXUSINGDLL;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="WXUSINGDLL;__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_dll\msw;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -804,11 +804,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31_stc.lib wxscintilla.lib wxmsw31_richtext.lib wxmsw31_aui.lib wxmsw31_adv.lib wxbase31_net.lib wxbase31_xml.lib wxmsw31_core.lib wxbase31.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregex.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregex.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31_stc.lib wxscintilla.lib wxmsw31_richtext.lib wxmsw31_aui.lib wxmsw31_adv.lib wxbase31_net.lib wxbase31_xml.lib wxmsw31_core.lib wxbase31.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregex.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_dll;$(WXWIN)\lib\vc_dll"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_dll"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -860,15 +860,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXMSW__;WXUSINGDLL;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_dll\msw;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_dll\msw;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXMSW__;WXUSINGDLL;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -884,9 +884,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="WXUSINGDLL;__WXMSW__;WXUSINGDLL;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="WXUSINGDLL;__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_dll\msw;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -894,11 +894,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintilla.lib       wxmsw31.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregex.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregex.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintilla.lib       wxmsw31.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregex.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_dll;$(WXWIN)\lib\vc_dll"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_dll"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -950,15 +950,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXDEBUG__;__WXMSW__;WXUSINGDLL;__WXDEBUG__;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_dll\mswd;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_dll\mswd;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXDEBUG__;__WXMSW__;WXUSINGDLL;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXDEBUG__;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -974,9 +974,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="WXUSINGDLL;__WXDEBUG__;__WXMSW__;WXUSINGDLL;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="WXUSINGDLL;__WXDEBUG__;__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_dll\mswd;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -984,11 +984,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31d_stc.lib wxscintillad.lib wxmsw31d_richtext.lib wxmsw31d_aui.lib wxmsw31d_adv.lib wxbase31d_net.lib wxbase31d_xml.lib wxmsw31d_core.lib wxbase31d.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31d_stc.lib wxscintillad.lib wxmsw31d_richtext.lib wxmsw31d_aui.lib wxmsw31d_adv.lib wxbase31d_net.lib wxbase31d_xml.lib wxmsw31d_core.lib wxbase31d.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_dll;$(WXWIN)\lib\vc_dll"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_dll"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -1040,15 +1040,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXDEBUG__;__WXMSW__;WXUSINGDLL;__WXDEBUG__;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_dll\mswd;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_dll\mswd;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXDEBUG__;__WXMSW__;WXUSINGDLL;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXDEBUG__;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -1064,9 +1064,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="WXUSINGDLL;__WXDEBUG__;__WXMSW__;WXUSINGDLL;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="WXUSINGDLL;__WXDEBUG__;__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_dll\mswd;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -1074,11 +1074,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintillad.lib       wxmsw31d.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintillad.lib       wxmsw31d.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_dll;$(WXWIN)\lib\vc_dll"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_dll"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -1131,15 +1131,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXMSW__;WXUSINGDLL;_UNICODE;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_dll\mswu;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_dll\mswu;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXMSW__;WXUSINGDLL;_UNICODE;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -1155,9 +1155,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="WXUSINGDLL;_UNICODE;__WXMSW__;WXUSINGDLL;_UNICODE;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="WXUSINGDLL;_UNICODE;__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_dll\mswu;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -1165,11 +1165,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31u_stc.lib wxscintilla.lib wxmsw31u_richtext.lib wxmsw31u_aui.lib wxmsw31u_adv.lib wxbase31u_net.lib wxbase31u_xml.lib wxmsw31u_core.lib wxbase31u.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregexu.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregexu.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31u_stc.lib wxscintilla.lib wxmsw31u_richtext.lib wxmsw31u_aui.lib wxmsw31u_adv.lib wxbase31u_net.lib wxbase31u_xml.lib wxmsw31u_core.lib wxbase31u.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregexu.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_dll;$(WXWIN)\lib\vc_dll"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_dll"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -1222,15 +1222,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXMSW__;WXUSINGDLL;_UNICODE;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_dll\mswu;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_dll\mswu;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXMSW__;WXUSINGDLL;_UNICODE;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -1246,9 +1246,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="WXUSINGDLL;_UNICODE;__WXMSW__;WXUSINGDLL;_UNICODE;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="WXUSINGDLL;_UNICODE;__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_dll\mswu;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -1256,11 +1256,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintilla.lib       wxmsw31u.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregexu.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregexu.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintilla.lib       wxmsw31u.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregexu.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_dll;$(WXWIN)\lib\vc_dll"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_dll"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -1313,15 +1313,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_dll\mswud;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_dll\mswud;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -1337,9 +1337,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_dll\mswud;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -1347,11 +1347,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31ud_stc.lib wxscintillad.lib wxmsw31ud_richtext.lib wxmsw31ud_aui.lib wxmsw31ud_adv.lib wxbase31ud_net.lib wxbase31ud_xml.lib wxmsw31ud_core.lib wxbase31ud.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31ud_stc.lib wxscintillad.lib wxmsw31ud_richtext.lib wxmsw31ud_aui.lib wxmsw31ud_adv.lib wxbase31ud_net.lib wxbase31ud_xml.lib wxmsw31ud_core.lib wxbase31ud.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_dll;$(WXWIN)\lib\vc_dll"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_dll"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -1404,15 +1404,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_dll\mswud;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_dll\mswud;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -1428,9 +1428,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_dll\mswud;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_dll\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -1438,11 +1438,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintillad.lib       wxmsw31ud.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintillad.lib       wxmsw31ud.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_dll;$(WXWIN)\lib\vc_dll"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_dll"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -1494,15 +1494,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;__WXMSW__;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_lib\msw;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_lib\msw;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;__WXMSW__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -1518,9 +1518,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="__WXMSW__;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_lib\msw;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -1528,11 +1528,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31_stc.lib wxscintilla.lib wxmsw31_richtext.lib wxmsw31_aui.lib wxmsw31_adv.lib wxbase31_net.lib wxbase31_xml.lib wxmsw31_core.lib wxbase31.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregex.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregex.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31_stc.lib wxscintilla.lib wxmsw31_richtext.lib wxmsw31_aui.lib wxmsw31_adv.lib wxbase31_net.lib wxbase31_xml.lib wxmsw31_core.lib wxbase31.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregex.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_lib;$(WXWIN)\lib\vc_x64_lib"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_lib"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -1584,15 +1584,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;__WXMSW__;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_lib\msw;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_lib\msw;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;__WXMSW__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -1608,9 +1608,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="__WXMSW__;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_lib\msw;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -1618,11 +1618,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintilla.lib       wxmsw31.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregex.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregex.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintilla.lib       wxmsw31.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregex.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_lib;$(WXWIN)\lib\vc_x64_lib"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_lib"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -1674,15 +1674,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;__WXDEBUG__;__WXMSW__;__WXDEBUG__;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_lib\mswd;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_lib\mswd;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;__WXDEBUG__;__WXMSW__;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;__WXDEBUG__;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -1698,9 +1698,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="__WXDEBUG__;__WXMSW__;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="__WXDEBUG__;__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_lib\mswd;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -1708,11 +1708,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31d_stc.lib wxscintillad.lib wxmsw31d_richtext.lib wxmsw31d_aui.lib wxmsw31d_adv.lib wxbase31d_net.lib wxbase31d_xml.lib wxmsw31d_core.lib wxbase31d.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31d_stc.lib wxscintillad.lib wxmsw31d_richtext.lib wxmsw31d_aui.lib wxmsw31d_adv.lib wxbase31d_net.lib wxbase31d_xml.lib wxmsw31d_core.lib wxbase31d.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_lib;$(WXWIN)\lib\vc_x64_lib"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_lib"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -1764,15 +1764,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;__WXDEBUG__;__WXMSW__;__WXDEBUG__;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_lib\mswd;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_lib\mswd;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;__WXDEBUG__;__WXMSW__;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;__WXDEBUG__;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -1788,9 +1788,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="__WXDEBUG__;__WXMSW__;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="__WXDEBUG__;__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_lib\mswd;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -1798,11 +1798,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintillad.lib       wxmsw31d.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintillad.lib       wxmsw31d.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_lib;$(WXWIN)\lib\vc_x64_lib"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_lib"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -1855,15 +1855,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;_UNICODE;__WXMSW__;_UNICODE;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_lib\mswu;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;_UNICODE;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_lib\mswu;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;_UNICODE;__WXMSW__;_UNICODE;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;_UNICODE;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -1879,9 +1879,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_UNICODE;__WXMSW__;_UNICODE;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="_UNICODE;__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_lib\mswu;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -1889,11 +1889,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31u_stc.lib wxscintilla.lib wxmsw31u_richtext.lib wxmsw31u_aui.lib wxmsw31u_adv.lib wxbase31u_net.lib wxbase31u_xml.lib wxmsw31u_core.lib wxbase31u.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregexu.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregexu.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31u_stc.lib wxscintilla.lib wxmsw31u_richtext.lib wxmsw31u_aui.lib wxmsw31u_adv.lib wxbase31u_net.lib wxbase31u_xml.lib wxmsw31u_core.lib wxbase31u.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregexu.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_lib;$(WXWIN)\lib\vc_x64_lib"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_lib"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -1946,15 +1946,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;_UNICODE;__WXMSW__;_UNICODE;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_lib\mswu;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;_UNICODE;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_lib\mswu;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;_UNICODE;__WXMSW__;_UNICODE;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;_UNICODE;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -1970,9 +1970,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_UNICODE;__WXMSW__;_UNICODE;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="_UNICODE;__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_lib\mswu;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -1980,11 +1980,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintilla.lib       wxmsw31u.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregexu.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregexu.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintilla.lib       wxmsw31u.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregexu.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_lib;$(WXWIN)\lib\vc_x64_lib"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_lib"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -2037,15 +2037,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;_UNICODE;__WXDEBUG__;__WXMSW__;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_lib\mswud;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_lib\mswud;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;_UNICODE;__WXDEBUG__;__WXMSW__;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -2061,9 +2061,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_UNICODE;__WXDEBUG__;__WXMSW__;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_lib\mswud;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -2071,11 +2071,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31ud_stc.lib wxscintillad.lib wxmsw31ud_richtext.lib wxmsw31ud_aui.lib wxmsw31ud_adv.lib wxbase31ud_net.lib wxbase31ud_xml.lib wxmsw31ud_core.lib wxbase31ud.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31ud_stc.lib wxscintillad.lib wxmsw31ud_richtext.lib wxmsw31ud_aui.lib wxmsw31ud_adv.lib wxbase31ud_net.lib wxbase31ud_xml.lib wxmsw31ud_core.lib wxbase31ud.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_lib;$(WXWIN)\lib\vc_x64_lib"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_lib"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -2128,15 +2128,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;_UNICODE;__WXDEBUG__;__WXMSW__;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_lib\mswud;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_lib\mswud;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;_UNICODE;__WXDEBUG__;__WXMSW__;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -2152,9 +2152,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="_UNICODE;__WXDEBUG__;__WXMSW__;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_lib\mswud;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_lib\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -2162,11 +2162,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintillad.lib       wxmsw31ud.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintillad.lib       wxmsw31ud.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_lib;$(WXWIN)\lib\vc_x64_lib"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_lib"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -2218,15 +2218,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXMSW__;WXUSINGDLL;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_dll\msw;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_dll\msw;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXMSW__;WXUSINGDLL;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -2242,9 +2242,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="WXUSINGDLL;__WXMSW__;WXUSINGDLL;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="WXUSINGDLL;__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_dll\msw;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -2252,11 +2252,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31_stc.lib wxscintilla.lib wxmsw31_richtext.lib wxmsw31_aui.lib wxmsw31_adv.lib wxbase31_net.lib wxbase31_xml.lib wxmsw31_core.lib wxbase31.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregex.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregex.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31_stc.lib wxscintilla.lib wxmsw31_richtext.lib wxmsw31_aui.lib wxmsw31_adv.lib wxbase31_net.lib wxbase31_xml.lib wxmsw31_core.lib wxbase31.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregex.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_dll;$(WXWIN)\lib\vc_x64_dll"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_dll"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -2308,15 +2308,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXMSW__;WXUSINGDLL;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_dll\msw;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_dll\msw;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXMSW__;WXUSINGDLL;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -2332,9 +2332,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="WXUSINGDLL;__WXMSW__;WXUSINGDLL;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="WXUSINGDLL;__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_dll\msw;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\msw;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -2342,11 +2342,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintilla.lib       wxmsw31.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregex.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregex.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintilla.lib       wxmsw31.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregex.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_dll;$(WXWIN)\lib\vc_x64_dll"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_dll"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -2398,15 +2398,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXDEBUG__;__WXMSW__;WXUSINGDLL;__WXDEBUG__;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_dll\mswd;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_dll\mswd;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXDEBUG__;__WXMSW__;WXUSINGDLL;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXDEBUG__;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -2422,9 +2422,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="WXUSINGDLL;__WXDEBUG__;__WXMSW__;WXUSINGDLL;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="WXUSINGDLL;__WXDEBUG__;__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_dll\mswd;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -2432,11 +2432,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31d_stc.lib wxscintillad.lib wxmsw31d_richtext.lib wxmsw31d_aui.lib wxmsw31d_adv.lib wxbase31d_net.lib wxbase31d_xml.lib wxmsw31d_core.lib wxbase31d.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31d_stc.lib wxscintillad.lib wxmsw31d_richtext.lib wxmsw31d_aui.lib wxmsw31d_adv.lib wxbase31d_net.lib wxbase31d_xml.lib wxmsw31d_core.lib wxbase31d.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_dll;$(WXWIN)\lib\vc_x64_dll"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_dll"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -2488,15 +2488,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXDEBUG__;__WXMSW__;WXUSINGDLL;__WXDEBUG__;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_dll\mswd;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_dll\mswd;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXDEBUG__;__WXMSW__;WXUSINGDLL;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;__WXDEBUG__;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -2512,9 +2512,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="WXUSINGDLL;__WXDEBUG__;__WXMSW__;WXUSINGDLL;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="WXUSINGDLL;__WXDEBUG__;__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_dll\mswd;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswd;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -2522,11 +2522,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintillad.lib       wxmsw31d.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintillad.lib       wxmsw31d.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexd.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_dll;$(WXWIN)\lib\vc_x64_dll"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_dll"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -2579,15 +2579,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXMSW__;WXUSINGDLL;_UNICODE;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_dll\mswu;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_dll\mswu;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXMSW__;WXUSINGDLL;_UNICODE;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -2603,9 +2603,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="WXUSINGDLL;_UNICODE;__WXMSW__;WXUSINGDLL;_UNICODE;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="WXUSINGDLL;_UNICODE;__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_dll\mswu;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -2613,11 +2613,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31u_stc.lib wxscintilla.lib wxmsw31u_richtext.lib wxmsw31u_aui.lib wxmsw31u_adv.lib wxbase31u_net.lib wxbase31u_xml.lib wxmsw31u_core.lib wxbase31u.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregexu.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregexu.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31u_stc.lib wxscintilla.lib wxmsw31u_richtext.lib wxmsw31u_aui.lib wxmsw31u_adv.lib wxbase31u_net.lib wxbase31u_xml.lib wxmsw31u_core.lib wxbase31u.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregexu.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_dll;$(WXWIN)\lib\vc_x64_dll"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_dll"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -2670,15 +2670,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXMSW__;WXUSINGDLL;_UNICODE;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_dll\mswu;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_dll\mswu;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXMSW__;WXUSINGDLL;_UNICODE;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -2694,9 +2694,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="WXUSINGDLL;_UNICODE;__WXMSW__;WXUSINGDLL;_UNICODE;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="WXUSINGDLL;_UNICODE;__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_dll\mswu;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswu;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -2704,11 +2704,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintilla.lib       wxmsw31u.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregexu.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregexu.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintilla.lib       wxmsw31u.lib wxtiff.lib wxjpeg.lib wxpng.lib wxzlib.lib wxregexu.lib wxexpat.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_dll;$(WXWIN)\lib\vc_x64_dll"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_dll"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -2761,15 +2761,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_dll\mswud;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_dll\mswud;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -2785,9 +2785,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_dll\mswud;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -2795,11 +2795,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31ud_stc.lib wxscintillad.lib wxmsw31ud_richtext.lib wxmsw31ud_aui.lib wxmsw31ud_adv.lib wxbase31ud_net.lib wxbase31ud_xml.lib wxmsw31ud_core.lib wxbase31ud.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib wxmsw31ud_stc.lib wxscintillad.lib wxmsw31ud_richtext.lib wxmsw31ud_aui.lib wxmsw31ud_adv.lib wxbase31ud_net.lib wxbase31ud_xml.lib wxmsw31ud_core.lib wxbase31ud.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_dll;$(WXWIN)\lib\vc_x64_dll"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_dll"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"
@@ -2852,15 +2852,15 @@
 			/>
 			<Tool
 				Name="VCMIDLTool"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_dll\mswud;$(WXWIN)\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCCLCompilerTool"
 				AdditionalOptions="/MP"
 				Optimization="0"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_dll\mswud;$(WXWIN)\include"
-				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
+				PreprocessorDefinitions="WIN32;WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
 				ExceptionHandling="1"
 				RuntimeLibrary="2"
 				BufferSecurityCheck="true"
@@ -2876,9 +2876,9 @@
 			/>
 			<Tool
 				Name="VCResourceCompilerTool"
-				PreprocessorDefinitions="WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
+				PreprocessorDefinitions="WXUSINGDLL;_UNICODE;__WXDEBUG__;__WXMSW__;_WINDOWS"
 				Culture="1033"
-				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include;$(WXWIN)\lib\vc_x64_dll\mswud;$(WXWIN)\include"
+				AdditionalIncludeDirectories="$(WXWIN)\lib\vc_x64_dll\mswud;$(WXWIN)\include;..\..\3rd\wxsqlite3\sqlite3\secure\src;..\..\3rd\wxsqlite3\include"
 			/>
 			<Tool
 				Name="VCPreLinkEventTool"
@@ -2886,11 +2886,11 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalOptions=""
-				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintillad.lib       wxmsw31ud.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
+				AdditionalDependencies="$(PlatformName)\$(ConfigurationName)\wxsqlite.lib  wxscintillad.lib       wxmsw31ud.lib wxtiffd.lib wxjpegd.lib wxpngd.lib wxzlibd.lib wxregexud.lib wxexpatd.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib"
 				OutputFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.exe"
 				LinkIncremental="1"
 				SuppressStartupBanner="true"
-				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_dll;$(WXWIN)\lib\vc_x64_dll"
+				AdditionalLibraryDirectories="$(WXWIN)\lib\vc_x64_dll"
 				GenerateManifest="true"
 				ProgramDatabaseFile="$(PlatformName)\$(ConfigurationName)\wxsqliteplus.pdb"
 				SubSystem="2"

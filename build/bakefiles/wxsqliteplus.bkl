@@ -14,18 +14,20 @@
     <include file="mac_bundles.bkl"/>
   </if>
 
-  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
-  <!-- Sample(s) settings                                                -->
-  <!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ -->
+  <exe id="wxsqliteplus" template="wxgui">
+    <exename>wxsqliteplus</exename>
 
-  <template id="wxsqliteplus_common" template="wx">
     <include>$(SRCDIR)/3rd/wxsqlite3/sqlite3/secure/src</include>
     <include>$(SRCDIR)/3rd/wxsqlite3/include</include>
 
     <sources>$(fileList('src/*.cpp'))</sources>
     <headers>$(fileList('src/*.h'))</headers>
-
     <library>wxsqlite</library>
+
+    <win32-res>src/wxsqliteplus.rc</win32-res>
+    <if cond="FORMAT=='autoconf'">
+      <wx-mac-app-bundle/>
+    </if>
 
     <wx-lib>stc</wx-lib>
     <wx-lib>richtext</wx-lib>
@@ -35,14 +37,6 @@
     <wx-lib>xml</wx-lib>
     <wx-lib>core</wx-lib>
     <wx-lib>base</wx-lib>
-  </template>
-
-  <exe id="wxsqliteplus" template="wxsqliteplus_common,wxgui">
-    <exename>wxsqliteplus</exename>
-    <win32-res>src/wxsqliteplus.rc</win32-res>
-    <if cond="FORMAT=='autoconf'">
-      <wx-mac-app-bundle/>
-    </if>
   </exe>
 
 </makefile>
