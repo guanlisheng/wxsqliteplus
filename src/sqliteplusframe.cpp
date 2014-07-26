@@ -993,15 +993,15 @@ void wxSQLitePlusFrame::OnPreferencesClick(wxCommandEvent& event)
 
    wxString ValOddColour = wxGetApp().GetParamStr(PARAM_ODDROWCOLOR);
    int ValMaxHistory = wxGetApp().GetParamInt(PARAM_SQLHISTOCOUNT);
-   bool ValSavePos = wxGetApp().GetSavePosition();
-   bool ValSavePers = wxGetApp().GetSavePerspective();
-   bool ValShowEdge = wxGetApp().GetParamInt(PARAM_STYLE_EDGELINE);
-   bool ValShowLineNumber = wxGetApp().GetParamInt(PARAM_ST_SHOW_LINENUM);
+   bool ValSavePos = wxGetApp().GetSavePosition() ? true : false;
+   bool ValSavePers = wxGetApp().GetSavePerspective() ? true : false;
+   bool ValShowEdge = wxGetApp().GetParamInt(PARAM_STYLE_EDGELINE) ? true : false;
+   bool ValShowLineNumber = wxGetApp().GetParamInt(PARAM_ST_SHOW_LINENUM) ? true : false;
    wxString ValLineFG = wxGetApp().GetParamStr(PARAM_ST_FORE_LINENUM);
    wxString ValLineBG = wxGetApp().GetParamStr(PARAM_ST_BACK_LINENUM);
-   bool ValUseTab = wxGetApp().GetParamInt(PARAM_ST_USE_TAB);
-   bool ValTabIndent = wxGetApp().GetParamInt(PARAM_ST_TAB_INDENT);
-   bool ValBackUnindent = wxGetApp().GetParamInt(PARAM_ST_BACKSP_UNINDT);
+   bool ValUseTab = wxGetApp().GetParamInt(PARAM_ST_USE_TAB) ? true : false;
+   bool ValTabIndent = wxGetApp().GetParamInt(PARAM_ST_TAB_INDENT) ? true : false;
+   bool ValBackUnindent = wxGetApp().GetParamInt(PARAM_ST_BACKSP_UNINDT) ? true : false;
    int ValTabWidth = wxGetApp().GetParamInt(PARAM_ST_TAB_WIDTH);
    int ValIndentWidth = wxGetApp().GetParamInt(PARAM_ST_INDENT_WIDTH);
    wxString ValFontName = wxGetApp().GetParamStr(PARAM_STYLE_FONTNAME);
@@ -1009,9 +1009,9 @@ void wxSQLitePlusFrame::OnPreferencesClick(wxCommandEvent& event)
 
    for (int i = STYLE_DEFAULT; i < STYLE_COUNT; i++)
    {
-      ValBold[i] = wxGetApp().GetParamInt(PARAM_ST_BOLD_DEF + (i * 6));
-      ValItalic[i] = wxGetApp().GetParamInt(PARAM_ST_ITALIC_DEF + (i * 6));
-      ValUnderline[i] = wxGetApp().GetParamInt(PARAM_ST_UNDER_DEF + (i * 6));
+      ValBold[i] = wxGetApp().GetParamInt(PARAM_ST_BOLD_DEF + (i * 6)) ? true : false;
+      ValItalic[i] = wxGetApp().GetParamInt(PARAM_ST_ITALIC_DEF + (i * 6)) ? true : false;
+      ValUnderline[i] = wxGetApp().GetParamInt(PARAM_ST_UNDER_DEF + (i * 6)) ? true : false;
       ValItemFG[i] = wxGetApp().GetParamStr(PARAM_ST_FORE_DEF + (i * 6));
       ValItemBG[i] = wxGetApp().GetParamStr(PARAM_ST_BACK_DEF + (i * 6));
       ValCase[i] = wxGetApp().GetParamInt(PARAM_ST_CASE_DEF + (i * 6));
@@ -1657,9 +1657,9 @@ bool wxSQLitePlusFrame::CloseDatabase()
       }
       return true;
    }
-   catch(wxSQLite3Exception& ex)
+   catch(wxSQLite3Exception& /*ex*/)
    {
-      wxMessageBox(("Close Database Error"));
+      wxMessageBox("Close Database Error");
       return false;
    }
 }
@@ -1694,7 +1694,7 @@ bool wxSQLitePlusFrame::OpenDatabase(const wxString& dbfullname, const wxString&
                                                   ex.GetErrorCode(),
                                                   ex.GetExtendedErrorCode(),
                                                   ex.GetMessage().c_str());
-               wxMessageBox(ErrStr, ("Open Database Error"));
+               wxMessageBox(ErrStr, "Open Database Error");
                if (ex.GetErrorCode() == 26 && ex.GetExtendedErrorCode() == 26)
                {
                   wxDbEncryptionKeyDlg encryptionKeyDlg(this);
@@ -1741,7 +1741,7 @@ bool wxSQLitePlusFrame::OpenDatabase(const wxString& dbfullname, const wxString&
                                          ex.GetErrorCode(),
                                          ex.GetExtendedErrorCode(),
                                          ex.GetMessage().c_str());
-      wxMessageBox(ErrStr, ("Open Database Error"));
+      wxMessageBox(ErrStr, "Open Database Error");
       return false;
    }
 /*

@@ -239,7 +239,7 @@ void wxBlobDialog::OnBtnSaveasClick(wxCommandEvent& event)
 wxString wxBlobDialog::GetHexaString(wxMemoryBuffer* buffer)
 {
    wxString retStr, HexStr, carStr;
-   size_t bLen, count, strLen;
+   size_t bLen, strLen;
    char c;
 
    bLen = buffer->GetDataLen();
@@ -256,22 +256,22 @@ wxString wxBlobDialog::GetHexaString(wxMemoryBuffer* buffer)
          c = ((char*)buffer->GetData())[count];
          if (c < 32)
          {
-            if (c == 7 || c == ('\r') || c == ('\n'))
-               carStr += (" ");
+            if (c == 7 || c == '\r' || c == '\n')
+               carStr += " ";
             else
             {
                m_FlagBin = true;
-               carStr += ("?");
+               carStr += "?";
             }
          }
          else
             carStr += wxChar(c);
-         HexStr += wxString::Format(("0x%02X "), (int)c);
+         HexStr += wxString::Format("0x%02X ", (int)c);
       }
       // _("0x00 0x00 0x00 0x00 0x00 0x00 0x00 0x00 | xxxxxxxx\n")
       strLen = HexStr.Len();
-      HexStr += wxString((' '), 40 - strLen);
-      retStr += HexStr + ("| ") + carStr + ("\n");
+      HexStr += wxString(' ', 40 - strLen);
+      retStr += HexStr + "| " + carStr + "\n";
    }
 
    return retStr;

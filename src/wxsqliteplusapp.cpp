@@ -189,7 +189,7 @@ bool wxSQLitePlusApp::OnInit()
 
    Init();
 
-   wxInitAllImageHandlers;
+   wxInitAllImageHandlers();
 
    if (m_SavePosition)
    {
@@ -358,11 +358,11 @@ void wxSQLitePlusApp::SetParamInt(int param, int value)
          break;
       case PARAM_SAVEWINPOSITION :
          paramname = ("Save_Window_position");
-         m_SavePosition = (bool)value;
+         m_SavePosition = value ? true: false;
          break;
       case PARAM_SAVEWINPERSPECTIVE :
          paramname = ("Save_Window_Perspective");
-         m_SavePerspective = (bool)value;
+         m_SavePerspective = value ? true: false;
          break;
       case PARAM_STYLE_FONTSIZE :
          paramname = ("Style Font Size");
@@ -370,19 +370,19 @@ void wxSQLitePlusApp::SetParamInt(int param, int value)
          break;
       case PARAM_STYLE_EDGELINE :
          paramname = ("Style Edge Line");
-         m_EdgeLineVisible = (bool)value;
+         m_EdgeLineVisible = value ? true: false;
          break;
       case PARAM_ST_BOLD_DEF :
          paramname = ("Style Font Bold Default");
-         m_FontBold[STYLE_DEFAULT] = (bool)value;
+         m_FontBold[STYLE_DEFAULT] = value ? true: false;
          break;
       case PARAM_ST_ITALIC_DEF :
          paramname = ("Style Font Italic Default");
-         m_FontItalic[STYLE_DEFAULT] = (bool)value;
+         m_FontItalic[STYLE_DEFAULT] = value ? true: false;
          break;
       case PARAM_ST_UNDER_DEF :
          paramname = ("Style Font Underline Default");
-         m_FontUnderline[STYLE_DEFAULT] = (bool)value;
+         m_FontUnderline[STYLE_DEFAULT] = value ? true: false;
          break;
       case PARAM_ST_CASE_DEF :
          paramname = ("Style Font Case Default");
@@ -390,15 +390,15 @@ void wxSQLitePlusApp::SetParamInt(int param, int value)
          break;
       case PARAM_ST_BOLD_COM :
          paramname = ("Style Font Bold Comment");
-         m_FontBold[STYLE_COMMENT] = (bool)value;
+         m_FontBold[STYLE_COMMENT] = value ? true: false;
          break;
       case PARAM_ST_ITALIC_COM :
          paramname = ("Style Font Italic Comment");
-         m_FontItalic[STYLE_COMMENT] = (bool)value;
+         m_FontItalic[STYLE_COMMENT] = value ? true: false;
          break;
       case PARAM_ST_UNDER_COM :
          paramname = ("Style Font Underline Comment");
-         m_FontUnderline[STYLE_COMMENT] = (bool)value;
+         m_FontUnderline[STYLE_COMMENT] = value ? true: false;
          break;
       case PARAM_ST_CASE_COM :
          paramname = ("Style Font Case Comment");
@@ -406,15 +406,15 @@ void wxSQLitePlusApp::SetParamInt(int param, int value)
          break;
       case PARAM_ST_BOLD_COML :
          paramname = ("Style Font Bold Comment Line");
-         m_FontBold[STYLE_COMMENTLINE] = (bool)value;
+         m_FontBold[STYLE_COMMENTLINE] = value ? true: false;
          break;
       case PARAM_ST_ITALIC_COML :
          paramname = ("Style Font Italic Comment Line");
-         m_FontItalic[STYLE_COMMENTLINE] = (bool)value;
+         m_FontItalic[STYLE_COMMENTLINE] = value ? true: false;
          break;
       case PARAM_ST_UNDER_COML :
          paramname = ("Style Font Underline Comment Line");
-         m_FontUnderline[STYLE_COMMENTLINE] = (bool)value;
+         m_FontUnderline[STYLE_COMMENTLINE] = value ? true: false;
          break;
       case PARAM_ST_CASE_COML :
          paramname = ("Style Font Case Comment Line");
@@ -422,15 +422,15 @@ void wxSQLitePlusApp::SetParamInt(int param, int value)
          break;
       case PARAM_ST_BOLD_NUM :
          paramname = ("Style Font Bold Number");
-         m_FontBold[STYLE_NUMBER] = (bool)value;
+         m_FontBold[STYLE_NUMBER] = value ? true: false;
          break;
       case PARAM_ST_ITALIC_NUM :
          paramname = ("Style Font Italic Number");
-         m_FontItalic[STYLE_NUMBER] = (bool)value;
+         m_FontItalic[STYLE_NUMBER] = value ? true: false;
          break;
       case PARAM_ST_UNDER_NUM :
          paramname = ("Style Font Underline Number");
-         m_FontUnderline[STYLE_NUMBER] = (bool)value;
+         m_FontUnderline[STYLE_NUMBER] = value ? true: false;
          break;
       case PARAM_ST_CASE_NUM :
          paramname = ("Style Font Case Number");
@@ -438,15 +438,15 @@ void wxSQLitePlusApp::SetParamInt(int param, int value)
          break;
       case PARAM_ST_BOLD_KEY1 :
          paramname = ("Style Font Bold Key 1");
-         m_FontBold[STYLE_WORD1] = (bool)value;
+         m_FontBold[STYLE_WORD1] = value ? true: false;
          break;
       case PARAM_ST_ITALIC_KEY1 :
          paramname = ("Style Font Italic Key 1");
-         m_FontItalic[STYLE_WORD1] = (bool)value;
+         m_FontItalic[STYLE_WORD1] = value ? true: false;
          break;
       case PARAM_ST_UNDER_KEY1 :
          paramname = ("Style Font Underline Key 1");
-         m_FontUnderline[STYLE_WORD1] = (bool)value;
+         m_FontUnderline[STYLE_WORD1] = value ? true: false;
          break;
       case PARAM_ST_CASE_KEY1 :
          paramname = ("Style Font Case Key 1");
@@ -454,15 +454,15 @@ void wxSQLitePlusApp::SetParamInt(int param, int value)
          break;
       case PARAM_ST_BOLD_STR :
          paramname = ("Style Font Bold String");
-         m_FontBold[STYLE_STRING] = (bool)value;
+         m_FontBold[STYLE_STRING] = value ? true: false;
          break;
       case PARAM_ST_ITALIC_STR :
          paramname = ("Style Font Italic String");
-         m_FontItalic[STYLE_STRING] = (bool)value;
+         m_FontItalic[STYLE_STRING] = value ? true: false;
          break;
       case PARAM_ST_UNDER_STR :
          paramname = ("Style Font Underline String");
-         m_FontUnderline[STYLE_STRING] = (bool)value;
+         m_FontUnderline[STYLE_STRING] = value ? true: false;
          break;
       case PARAM_ST_CASE_STR :
          paramname = ("Style Font Case String");
@@ -470,15 +470,15 @@ void wxSQLitePlusApp::SetParamInt(int param, int value)
          break;
       case PARAM_ST_BOLD_CHAR :
          paramname = ("Style Font Bold Characters");
-         m_FontBold[STYLE_CHARACTER] = (bool)value;
+         m_FontBold[STYLE_CHARACTER] = value ? true: false;
          break;
       case PARAM_ST_ITALIC_CHAR :
          paramname = ("Style Font Italic Characters");
-         m_FontItalic[STYLE_CHARACTER] = (bool)value;
+         m_FontItalic[STYLE_CHARACTER] = value ? true: false;
          break;
       case PARAM_ST_UNDER_CHAR :
          paramname = ("Style Font Underline Characters");
-         m_FontUnderline[STYLE_CHARACTER] = (bool)value;
+         m_FontUnderline[STYLE_CHARACTER] = value ? true: false;
          break;
       case PARAM_ST_CASE_CHAR :
          paramname = ("Style Font Case Characters");
@@ -486,15 +486,15 @@ void wxSQLitePlusApp::SetParamInt(int param, int value)
          break;
       case PARAM_ST_BOLD_OPE :
          paramname = ("Style Font Bold Operator");
-         m_FontBold[STYLE_OPERATOR] = (bool)value;
+         m_FontBold[STYLE_OPERATOR] = value ? true: false;
          break;
       case PARAM_ST_ITALIC_OPE :
          paramname = ("Style Font Italic Operator");
-         m_FontItalic[STYLE_OPERATOR] = (bool)value;
+         m_FontItalic[STYLE_OPERATOR] = value ? true: false;
          break;
       case PARAM_ST_UNDER_OPE :
          paramname = ("Style Font Underline Operator");
-         m_FontUnderline[STYLE_OPERATOR] = (bool)value;
+         m_FontUnderline[STYLE_OPERATOR] = value ? true: false;
          break;
       case PARAM_ST_CASE_OPE :
          paramname = ("Style Font Case Operator");
@@ -502,15 +502,15 @@ void wxSQLitePlusApp::SetParamInt(int param, int value)
          break;
       case PARAM_ST_BOLD_IDE :
          paramname = ("Style Font Bold Identifier");
-         m_FontBold[STYLE_IDENTIFIER] = (bool)value;
+         m_FontBold[STYLE_IDENTIFIER] = value ? true: false;
          break;
       case PARAM_ST_ITALIC_IDE :
          paramname = ("Style Font Italic Identifier");
-         m_FontItalic[STYLE_IDENTIFIER] = (bool)value;
+         m_FontItalic[STYLE_IDENTIFIER] = value ? true: false;
          break;
       case PARAM_ST_UNDER_IDE :
          paramname = ("Style Font Underline Identifier");
-         m_FontUnderline[STYLE_IDENTIFIER] = (bool)value;
+         m_FontUnderline[STYLE_IDENTIFIER] = value ? true: false;
          break;
       case PARAM_ST_CASE_IDE :
          paramname = ("Style Font Case Identifier");
@@ -518,15 +518,15 @@ void wxSQLitePlusApp::SetParamInt(int param, int value)
          break;
       case PARAM_ST_BOLD_KEY2 :
          paramname = ("Style Font Bold Key 2");
-         m_FontBold[STYLE_WORD2] = (bool)value;
+         m_FontBold[STYLE_WORD2] = value ? true: false;
          break;
       case PARAM_ST_ITALIC_KEY2 :
          paramname = ("Style Font Italic Key 2");
-         m_FontItalic[STYLE_WORD2] = (bool)value;
+         m_FontItalic[STYLE_WORD2] = value ? true: false;
          break;
       case PARAM_ST_UNDER_KEY2 :
          paramname = ("Style Font Underline Key 2");
-         m_FontUnderline[STYLE_WORD2] = (bool)value;
+         m_FontUnderline[STYLE_WORD2] = value ? true: false;
          break;
       case PARAM_ST_CASE_KEY2 :
          paramname = ("Style Font Case Key 2");
@@ -534,15 +534,15 @@ void wxSQLitePlusApp::SetParamInt(int param, int value)
          break;
       case PARAM_ST_BOLD_KEY3 :
          paramname = ("Style Font Bold Key 3");
-         m_FontBold[STYLE_WORD3] = (bool)value;
+         m_FontBold[STYLE_WORD3] = value ? true: false;
          break;
       case PARAM_ST_ITALIC_KEY3 :
          paramname = ("Style Font Italic Key 3");
-         m_FontItalic[STYLE_WORD3] = (bool)value;
+         m_FontItalic[STYLE_WORD3] = value ? true: false;
          break;
       case PARAM_ST_UNDER_KEY3 :
          paramname = ("Style Font Underline Key 3");
-         m_FontUnderline[STYLE_WORD3] = (bool)value;
+         m_FontUnderline[STYLE_WORD3] = value ? true: false;
          break;
       case PARAM_ST_CASE_KEY3 :
          paramname = ("Style Font Case Key 3");
@@ -550,15 +550,15 @@ void wxSQLitePlusApp::SetParamInt(int param, int value)
          break;
       case PARAM_ST_BOLD_KEY4 :
          paramname = ("Style Font Bold Key 4");
-         m_FontBold[STYLE_WORD4] = (bool)value;
+         m_FontBold[STYLE_WORD4] = value ? true: false;
          break;
       case PARAM_ST_ITALIC_KEY4 :
          paramname = ("Style Font Italic Key 4");
-         m_FontItalic[STYLE_WORD4] = (bool)value;
+         m_FontItalic[STYLE_WORD4] = value ? true: false;
          break;
       case PARAM_ST_UNDER_KEY4 :
          paramname = ("Style Font Underline Key 4");
-         m_FontUnderline[STYLE_WORD4] = (bool)value;
+         m_FontUnderline[STYLE_WORD4] = value ? true: false;
          break;
       case PARAM_ST_CASE_KEY4 :
          paramname = ("Style Font Case Key 4");
@@ -570,15 +570,15 @@ void wxSQLitePlusApp::SetParamInt(int param, int value)
          break;
       case PARAM_ST_USE_TAB :
          paramname = ("Style Use Tab");
-         m_StyleUseTab = value;
+         m_StyleUseTab = value ? true: false;
          break;
       case PARAM_ST_TAB_INDENT :
          paramname = ("Style Tab Indent");
-         m_StyleTabIndent = value;
+         m_StyleTabIndent = value ? true: false;
          break;
       case PARAM_ST_BACKSP_UNINDT :
          paramname = ("Style Backspace Unindent");
-         m_StyleBackspaceUnindent = value;
+         m_StyleBackspaceUnindent = value ? true: false;
          break;
       case PARAM_ST_INDENT_WIDTH :
          paramname = ("Style Indent Width");
@@ -586,7 +586,7 @@ void wxSQLitePlusApp::SetParamInt(int param, int value)
          break;
       case PARAM_ST_SHOW_LINENUM :
          paramname = ("Style Show Line Number");
-         m_StyleShowLineNumber = value;
+         m_StyleShowLineNumber = value ? true: false;
          break;
       default : return;
    }
@@ -1600,29 +1600,29 @@ void wxSQLitePlusApp::Init()
 {
    InitConfig();
 
-   m_SavePosition = (bool)wxGetApp().GetParamInt(PARAM_SAVEWINPOSITION);
-   m_SavePerspective = (bool)wxGetApp().GetParamInt(PARAM_SAVEWINPERSPECTIVE);
+   m_SavePosition = wxGetApp().GetParamInt(PARAM_SAVEWINPOSITION) ? true: false;
+   m_SavePerspective = wxGetApp().GetParamInt(PARAM_SAVEWINPERSPECTIVE) ? true: false;
 
    // Initialiser les styles pour les editeurs
    m_FontName = wxGetApp().GetParamStr(PARAM_STYLE_FONTNAME);
    m_FontSize = wxGetApp().GetParamInt(PARAM_STYLE_FONTSIZE);
-   m_EdgeLineVisible = (bool)wxGetApp().GetParamInt(PARAM_STYLE_EDGELINE);
+   m_EdgeLineVisible = wxGetApp().GetParamInt(PARAM_STYLE_EDGELINE) ? true: false;
    for (int i = STYLE_DEFAULT; i < STYLE_COUNT; i++)
    {
-      m_FontBold[i] = (bool)wxGetApp().GetParamInt(PARAM_ST_BOLD_DEF + (i * 6));
-      m_FontItalic[i] = (bool)wxGetApp().GetParamInt(PARAM_ST_ITALIC_DEF + (i * 6));
-      m_FontUnderline[i] = (bool)wxGetApp().GetParamInt(PARAM_ST_UNDER_DEF + (i * 6));
+      m_FontBold[i] = wxGetApp().GetParamInt(PARAM_ST_BOLD_DEF + (i * 6)) ? true: false;
+      m_FontItalic[i] = wxGetApp().GetParamInt(PARAM_ST_ITALIC_DEF + (i * 6)) ? true: false;
+      m_FontUnderline[i] = wxGetApp().GetParamInt(PARAM_ST_UNDER_DEF + (i * 6)) ? true: false;
       m_FontFore[i] = wxColour(wxGetApp().GetParamStr(PARAM_ST_FORE_DEF + (i * 6)));
       m_FontBack[i] = wxColour(wxGetApp().GetParamStr(PARAM_ST_BACK_DEF + (i * 6)));
       m_StyleCase[i] = wxGetApp().GetParamInt(PARAM_ST_CASE_DEF + (i * 6));
    }
 
    m_StyleTabWidth = wxGetApp().GetParamInt(PARAM_ST_TAB_WIDTH);
-   m_StyleUseTab = (bool)wxGetApp().GetParamInt(PARAM_ST_USE_TAB);
-   m_StyleTabIndent = (bool)wxGetApp().GetParamInt(PARAM_ST_TAB_INDENT);
-   m_StyleBackspaceUnindent = (bool)wxGetApp().GetParamInt(PARAM_ST_BACKSP_UNINDT);
+   m_StyleUseTab = wxGetApp().GetParamInt(PARAM_ST_USE_TAB) ? true: false;
+   m_StyleTabIndent = wxGetApp().GetParamInt(PARAM_ST_TAB_INDENT) ? true: false;
+   m_StyleBackspaceUnindent = wxGetApp().GetParamInt(PARAM_ST_BACKSP_UNINDT) ? true: false;
    m_StyleIndentWidth = wxGetApp().GetParamInt(PARAM_ST_INDENT_WIDTH);
-   m_StyleShowLineNumber = (bool)wxGetApp().GetParamInt(PARAM_ST_SHOW_LINENUM);
+   m_StyleShowLineNumber = wxGetApp().GetParamInt(PARAM_ST_SHOW_LINENUM) ? true: false;
    m_ForeLineNumber = wxColour(wxGetApp().GetParamStr(PARAM_ST_FORE_LINENUM));
    m_BackLineNumber = wxColour(wxGetApp().GetParamStr(PARAM_ST_BACK_LINENUM));
 }

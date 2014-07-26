@@ -208,7 +208,7 @@ class wxSQLite3TableLongColumn : public wxSQLite3TableColumn
       virtual bool GetBool(int row)
       {
          if (row >= 0)
-            return (bool)m_Array.Item(row);
+            return m_Array.Item(row) ? true : false;
          return false;
       }
 
@@ -253,7 +253,7 @@ class wxSQLite3TableDoubleColumn : public wxSQLite3TableColumn
       virtual bool GetBool(int row)
       {
          if (row >= 0)
-            return (bool)m_Array.Item(row);
+            return m_Array.Item(row) ? true : false;
          return false;
       }
 
