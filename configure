@@ -5682,7 +5682,7 @@ ac_compiler_gnu=$ac_cv_c_compiler_gnu
         fi
 
 
-                                    WX_ADDITIONAL_LIBS="html, net, aui, adv, qa, webview, stc, richtext,core,base"
+                                    WX_ADDITIONAL_LIBS="html, net, aui, adv, qa, stc, richtext,core,base"
 
 
 

@@ -1,5 +1,11 @@
 <?xml version="1.0" ?>
 <makefile>
+    <if cond="FORMAT in ['msvc6prj','msevc4prj','msvs2008prj']">
+        <set var="WX_SHARED">0</set>
+        <set var="WX_UNICODE">1</set>
+        <set var="WX_MONOLITHIC">0</set>
+    </if>
+
     <if cond="FORMAT!='autoconf'">
         <set-srcdir>../..</set-srcdir>
     </if>
