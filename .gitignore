@@ -23,3 +23,19 @@
 # Python
 *.pyc
 .DS_Store
+
+# MSVC
+Backup
+Win32
+x64
+Debug
+Release
+ipch
+*.patch
+*.state
+*.sdf
+*.suo
+*.opensdf
+*.user
+_Upgrade*
+Upgrade*
