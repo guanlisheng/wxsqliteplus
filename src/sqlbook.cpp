@@ -856,7 +856,7 @@ void wxSQLBook::ShowEditorPos()
    x = m_SQLEdit->GetColumn(p);
    y = m_SQLEdit->LineFromPosition(p);
 
-   SetStatusText(wxString::Format(("%l/%l"), x + 1, y + 1));
+   SetStatusText(wxString::Format(("%li/%li"), x + 1, y + 1));
 }
 /*---------------------------------------------------------------------------*/
 void wxSQLBook::SetStatusText(const wxString& text)
