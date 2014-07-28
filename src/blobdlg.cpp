@@ -133,14 +133,17 @@ void wxBlobDialog::CreateControls()
    wxStaticText* sText2 = new wxStaticText(pnInfo, wxID_STATIC,
                                            _("First 32 bytes"),
                                            wxDefaultPosition, wxDefaultSize, 0);
-   bSizer2->Add(sText2, 0, wxALIGN_LEFT|wxALL, 5);
+   bSizer2->Add(sText2, 0, wxALIGN_LEFT | wxALL, 5);
 
    m_EditHexa = new wxTextCtrl(pnInfo, ID_TEXTCTRL3, wxEmptyString,
                                wxDefaultPosition, wxDefaultSize,
                                wxTE_MULTILINE|wxTE_READONLY|wxHSCROLL);
-   m_EditHexa->SetFont(wxFont(10, wxTELETYPE, wxNORMAL, wxNORMAL, false,
-                              wxT("Liberation Mono")));
-   bSizer2->Add(m_EditHexa, 1, wxGROW|wxALL, 5);
+   wxFont font = this->GetFont();
+   font.SetFamily(wxFONTFAMILY_TELETYPE);
+   font.SetFaceName("Liberation Mono");
+   m_EditHexa->SetFont(font);
+
+   bSizer2->Add(m_EditHexa, 1, wxGROW | wxALL, 5);
 
    wxButton* btnSaveAs = new wxButton(pnInfo, ID_BTN_SAVEAS, _("Save As..."),
                                       wxDefaultPosition, wxDefaultSize, 0);
