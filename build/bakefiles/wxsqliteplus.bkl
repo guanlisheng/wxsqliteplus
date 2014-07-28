@@ -20,7 +20,7 @@
     <include file="mac_bundles.bkl"/>
   </if>
 
-  <exe id="wxsqliteplus" template="wxgui">
+  <exe id="wxsqliteplus" template="wxgui" template_append="wxlike">
     <exename>wxsqliteplus</exename>
 
     <include>$(SRCDIR)/3rd/wxsqlite3/sqlite3/secure/src</include>

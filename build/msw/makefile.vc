@@ -88,11 +88,13 @@ WXSQLITE_CXXFLAGS = /MD /DWIN32 $(____WX_SHARED) $(__WXUNICODE_DEFINE_p) \
 WXSQLITE_OBJECTS =  \
 	wxsqlite_wxsqlite3.obj \
 	wxsqlite_sqlite3secure.obj
-WXSQLITEPLUS_CXXFLAGS = /MD /DWIN32 $(____WX_SHARED) $(__WXUNICODE_DEFINE_p) \
-	$(__WXDEBUG_DEFINE_p) /D__WXMSW__ \
+WXSQLITEPLUS_CXXFLAGS = /MD$(____wxsqliteplus__DEBUGINFO_12) /DWIN32 \
+	$(____WX_SHARED) $(__WXUNICODE_DEFINE_p) $(__WXDEBUG_DEFINE_p) /D__WXMSW__ \
 	/I$(WX_DIR)$(__WXLIBPATH_FILENAMES_1)\msw$(WXLIBPOSTFIX) \
 	/I$(WX_DIR)\include /D_WINDOWS /I..\..\3rd\wxsqlite3\sqlite3\secure\src \
-	/I..\..\3rd\wxsqlite3\include /GR /EHsc $(CPPFLAGS) $(CXXFLAGS)
+	/I..\..\3rd\wxsqlite3\include $(____wxsqliteplus__OPT_8) \
+	$(____wxsqliteplus__DEBUGINFO_9) $(______wxsqliteplus__DEBUGINFO_11_p) \
+	/Fdwxsqliteplus.pdb /GR /EHsc $(CPPFLAGS) $(CXXFLAGS)
 WXSQLITEPLUS_OBJECTS =  \
 	wxsqliteplus_aboutdlg.obj \
 	wxsqliteplus_addcolumn.obj \
@@ -212,6 +214,54 @@ __WXLIB_BASE_NAME_p = wxbase$(WX_VERSION)$(WXLIBPOSTFIX).lib
 !if "$(WX_MONOLITHIC)" == "1"
 __WXLIB_BASE_NAME_p = wxmsw$(WX_VERSION)$(WXLIBPOSTFIX).lib
 !endif
+!if "$(WX_DEBUG)" == "0"
+____wxsqliteplus__OPT_8 = /O2
+!endif
+!if "$(WX_DEBUG)" == "1"
+____wxsqliteplus__OPT_8 = /Od
+!endif
+!if "$(WX_DEBUG)" == "0"
+____wxsqliteplus__DEBUGINFO_9 = 
+!endif
+!if "$(WX_DEBUG)" == "1"
+____wxsqliteplus__DEBUGINFO_9 = /Zi
+!endif
+!if "$(WX_DEBUG)" == "0"
+____wxsqliteplus__DEBUGINFO_10 = 
+!endif
+!if "$(WX_DEBUG)" == "1"
+____wxsqliteplus__DEBUGINFO_10 = /DEBUG
+!endif
+!if "$(WX_DEBUG)" == "0"
+______wxsqliteplus__DEBUGINFO_11_p = 
+!endif
+!if "$(WX_DEBUG)" == "1"
+______wxsqliteplus__DEBUGINFO_11_p = /D_DEBUG
+!endif
+!if "$(WX_DEBUG)" == "0"
+______wxsqliteplus__DEBUGINFO_11_p_1 = 
+!endif
+!if "$(WX_DEBUG)" == "1"
+______wxsqliteplus__DEBUGINFO_11_p_1 = /d _DEBUG
+!endif
+!if "$(WX_DEBUG)" == "0"
+____wxsqliteplus__DEBUGINFO_12 = 
+!endif
+!if "$(WX_DEBUG)" == "1"
+____wxsqliteplus__DEBUGINFO_12 = d
+!endif
+!if "$(WX_DEBUG)" == "0"
+____wxsqliteplus__DEBUGINFO_13 = /opt:ref /opt:icf
+!endif
+!if "$(WX_DEBUG)" == "1"
+____wxsqliteplus__DEBUGINFO_13 = 
+!endif
+!if "$(WX_DEBUG)" == "0"
+____wxsqliteplus__DEBUGINFO_14 = 
+!endif
+!if "$(WX_DEBUG)" == "1"
+____wxsqliteplus__DEBUGINFO_14 = $(____wxsqliteplus__DEBUGINFO_13)
+!endif
 !if "$(WX_SHARED)" == "0"
 ____WX_SHARED = 
 !endif
@@ -273,7 +323,7 @@ wxsqlite.lib: $(WXSQLITE_OBJECTS)
 <<
 
 wxsqliteplus.exe: $(WXSQLITEPLUS_OBJECTS) wxsqlite.lib wxsqliteplus_wxsqliteplus.res
-	link /NOLOGO /OUT:$@  /LIBPATH:$(WX_DIR)$(__WXLIBPATH_FILENAMES_3) $(WXMACHINE_FLAG) /SUBSYSTEM:WINDOWS $(LDFLAGS) @<<
+	link /NOLOGO /OUT:$@  /LIBPATH:$(WX_DIR)$(__WXLIBPATH_FILENAMES_3) $(WXMACHINE_FLAG) /SUBSYSTEM:WINDOWS $(____wxsqliteplus__DEBUGINFO_10) /pdb:"wxsqliteplus.pdb" $(____wxsqliteplus__DEBUGINFO_14) $(LDFLAGS) @<<
 	$(WXSQLITEPLUS_OBJECTS) $(WXSQLITEPLUS_RESOURCES)  wxsqlite.lib $(__WXLIB_STC_NAME_p) wxscintilla$(WX3RDPARTYLIBPOSTFIX).lib $(__WXLIB_RICHTEXT_NAME_p) $(__WXLIB_HTML_NAME_p) $(__WXLIB_AUI_NAME_p) $(__WXLIB_ADV_NAME_p) $(__WXLIB_NET_NAME_p) $(__WXLIB_XML_NAME_p) $(__WXLIB_CORE_NAME_p) $(__WXLIB_BASE_NAME_p) wxtiff$(WX3RDPARTYLIBPOSTFIX).lib wxjpeg$(WX3RDPARTYLIBPOSTFIX).lib wxpng$(WX3RDPARTYLIBPOSTFIX).lib wxzlib$(WX3RDPARTYLIBPOSTFIX).lib wxregex$(WXLIBPOSTFIX).lib wxexpat$(WX3RDPARTYLIBPOSTFIX).lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib oleacc.lib
 <<
 
@@ -380,5 +430,5 @@ wxsqliteplus_wxsqliteplusapp.obj: ..\..\src\wxsqliteplusapp.cpp
 	$(CXX) /c /nologo /TP /Fo$@ $(WXSQLITEPLUS_CXXFLAGS) ..\..\src\wxsqliteplusapp.cpp
 
 wxsqliteplus_wxsqliteplus.res: ..\..\src\wxsqliteplus.rc
-	rc /fo$@  /d WIN32 $(____WX_SHARED_5_p_1) $(__WXUNICODE_DEFINE_p_2) $(__WXDEBUG_DEFINE_p_2) /d __WXMSW__ /i $(WX_DIR)$(__WXLIBPATH_FILENAMES_2)\msw$(WXLIBPOSTFIX) /i $(WX_DIR)\include /d _WINDOWS /i ..\..\3rd\wxsqlite3\sqlite3\secure\src /i ..\..\3rd\wxsqlite3\include ..\..\src\wxsqliteplus.rc
+	rc /fo$@  /d WIN32 $(____WX_SHARED_5_p_1) $(__WXUNICODE_DEFINE_p_2) $(__WXDEBUG_DEFINE_p_2) /d __WXMSW__ /i $(WX_DIR)$(__WXLIBPATH_FILENAMES_2)\msw$(WXLIBPOSTFIX) /i $(WX_DIR)\include /d _WINDOWS /i ..\..\3rd\wxsqlite3\sqlite3\secure\src /i ..\..\3rd\wxsqlite3\include $(______wxsqliteplus__DEBUGINFO_11_p_1) ..\..\src\wxsqliteplus.rc
 

@@ -77,7 +77,8 @@ WXSQLITEPLUS_CXXFLAGS = -DHAVE_W32API_H $(____WX_SHARED) \
 	$(__WXUNICODE_DEFINE_p) $(__WXDEBUG_DEFINE_p) -D__WXMSW__ \
 	-I$(WX_DIR)$(WXLIBPATH)\msw$(WXLIBPOSTFIX) -I$(WX_DIR)\include \
 	-I..\..\3rd\wxsqlite3\sqlite3\secure\src -I..\..\3rd\wxsqlite3\include \
-	$(CPPFLAGS) $(CXXFLAGS)
+	$(____wxsqliteplus__OPT_3) $(____wxsqliteplus__DEBUGINFO) $(CPPFLAGS) \
+	$(CXXFLAGS)
 WXSQLITEPLUS_OBJECTS =  \
 	wxsqliteplus_aboutdlg.o \
 	wxsqliteplus_addcolumn.o \
@@ -160,6 +161,12 @@ endif
 ifeq ($(WX_MONOLITHIC),1)
 __WXLIB_BASE_NAME_p = -lwxmsw$(WX_VERSION)$(WXLIBPOSTFIX)
 endif
+ifeq ($(WX_DEBUG),0)
+____wxsqliteplus__OPT_3 = -O2
+endif
+ifeq ($(WX_DEBUG),1)
+____wxsqliteplus__OPT_3 = -O0
+endif
 ifeq ($(WX_SHARED),0)
 ____WX_SHARED = 
 endif
@@ -193,6 +200,12 @@ endif
 ifeq ($(WX_SHARED),1)
 WXLIBPATH = \lib\$(COMPILER_PREFIX)_dll
 endif
+ifeq ($(WX_DEBUG),0)
+____wxsqliteplus__DEBUGINFO = 
+endif
+ifeq ($(WX_DEBUG),1)
+____wxsqliteplus__DEBUGINFO = -g
+endif
 
 
 ### Targets: ###
@@ -223,7 +236,7 @@ libwxsqlite.a: $(WXSQLITE_OBJECTS)
 	ranlib $@
 
 wxsqliteplus.exe: $(WXSQLITEPLUS_OBJECTS) libwxsqlite.a wxsqliteplus_wxsqliteplus_rc.o
-	$(CXX) -o $@ $(WXSQLITEPLUS_OBJECTS)  -mthreads -L$(WX_DIR)$(WXLIBPATH)  -Wl,--subsystem,windows -mwindows $(LDFLAGS)  libwxsqlite.a $(__WXLIB_STC_NAME_p) -lwxscintilla$(WX3RDPARTYLIBPOSTFIX) $(__WXLIB_RICHTEXT_NAME_p) $(__WXLIB_HTML_NAME_p) $(__WXLIB_AUI_NAME_p) $(__WXLIB_ADV_NAME_p) $(__WXLIB_NET_NAME_p) $(__WXLIB_XML_NAME_p) $(__WXLIB_CORE_NAME_p) $(__WXLIB_BASE_NAME_p) -lwxtiff$(WX3RDPARTYLIBPOSTFIX) -lwxjpeg$(WX3RDPARTYLIBPOSTFIX) -lwxpng$(WX3RDPARTYLIBPOSTFIX) -lwxzlib$(WX3RDPARTYLIBPOSTFIX) -lwxregex$(WXLIBPOSTFIX) -lwxexpat$(WX3RDPARTYLIBPOSTFIX) -lkernel32 -luser32 -lgdi32 -lcomdlg32 -lwinspool -lwinmm -lshell32 -lcomctl32 -lole32 -loleaut32 -luuid -lrpcrt4 -ladvapi32 -lwsock32
+	$(CXX) -o $@ $(WXSQLITEPLUS_OBJECTS)  -mthreads -L$(WX_DIR)$(WXLIBPATH)  -Wl,--subsystem,windows -mwindows $(____wxsqliteplus__DEBUGINFO) $(LDFLAGS)  libwxsqlite.a $(__WXLIB_STC_NAME_p) -lwxscintilla$(WX3RDPARTYLIBPOSTFIX) $(__WXLIB_RICHTEXT_NAME_p) $(__WXLIB_HTML_NAME_p) $(__WXLIB_AUI_NAME_p) $(__WXLIB_ADV_NAME_p) $(__WXLIB_NET_NAME_p) $(__WXLIB_XML_NAME_p) $(__WXLIB_CORE_NAME_p) $(__WXLIB_BASE_NAME_p) -lwxtiff$(WX3RDPARTYLIBPOSTFIX) -lwxjpeg$(WX3RDPARTYLIBPOSTFIX) -lwxpng$(WX3RDPARTYLIBPOSTFIX) -lwxzlib$(WX3RDPARTYLIBPOSTFIX) -lwxregex$(WXLIBPOSTFIX) -lwxexpat$(WX3RDPARTYLIBPOSTFIX) -lkernel32 -luser32 -lgdi32 -lcomdlg32 -lwinspool -lwinmm -lshell32 -lcomctl32 -lole32 -loleaut32 -luuid -lrpcrt4 -ladvapi32 -lwsock32
 
 wxsqlite_wxsqlite3.o: ../../3rd/wxsqlite3/src/wxsqlite3.cpp
 	$(CXX) -c -o $@ $(WXSQLITE_CXXFLAGS) $(CPPDEPS) $<
