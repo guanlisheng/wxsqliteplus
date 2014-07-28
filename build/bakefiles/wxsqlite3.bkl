@@ -2,7 +2,7 @@
 <makefile>
 
     <include file="wxpresets/presets/wx.bkl"/>
-    <lib id="wxsqlite" template="wx-lib">
+    <lib id="wxsqlite" template="wx-lib" template_append="wxlike">
 
         <!-- disable precompiled headers for wxWidgets -->
         <define>NOPCH</define>
