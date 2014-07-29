@@ -361,13 +361,13 @@ void wxPrefDlg::CreatePanelSyntax()
    wxStaticText* sText1 = new wxStaticText(panelSyntax, wxID_STATIC,
                                            _("Font : "), wxDefaultPosition,
                                            wxDefaultSize, 0);
-   bSizer2->Add(sText1, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+   bSizer2->Add(sText1, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5);
 
    m_Font = new wxFontPickerCtrl(panelSyntax, ID_FONT,
-                                 wxFont(8, wxSWISS, wxNORMAL, wxNORMAL,
-                                        false, wxT("Courier New")),
-                                 wxDefaultPosition, wxDefaultSize,
-                                 wxFNTP_DEFAULT_STYLE);
+       wxFont(8, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL,
+           false, wxT("Courier New")),
+       wxDefaultPosition, wxDefaultSize,
+       wxFNTP_DEFAULT_STYLE);
    bSizer2->Add(m_Font, 1, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
    // bSizer2->Add(5, 5, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
@@ -375,9 +375,8 @@ void wxPrefDlg::CreatePanelSyntax()
    wxBoxSizer* bSizer3 = new wxBoxSizer(wxHORIZONTAL);
    bSizer1->Add(bSizer3, 0, wxALIGN_LEFT, 0);
    wxStaticText* sText2 = new wxStaticText(panelSyntax, wxID_STATIC,
-                                           _("Items : "), wxDefaultPosition,
-                                           wxDefaultSize, 0);
-   bSizer3->Add(sText2, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+                                           _("Items : "));
+   bSizer3->Add(sText2, 0, wxALIGN_CENTER_VERTICAL | wxALL, 5);
 
    wxArrayString m_EdItemsStrings;
    m_EdItemsStrings.Add(_("Default"));
@@ -907,14 +906,14 @@ void wxPrefDlg::ResetDisplayEditor()
 /*---------------------------------------------------------------------------*/
 void wxPrefDlg::ResetDisplaySyntax()
 {
-   wxFont font(m_Val_FontSize, wxFONTFAMILY_DEFAULT, wxNORMAL, wxNORMAL,
-               false, m_Val_FontName);
-   m_Font->SetSelectedFont(font);
-   int index = m_EdItems->GetSelection();
-   if (index != wxNOT_FOUND)
-      DisplayStyle(index);
-   ChangeFont();
-   for (int i = STYLE_DEFAULT; i < STYLE_COUNT; i++)
-      ChangeStyle(i);
+    wxFont font(m_Val_FontSize, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL,
+        false, m_Val_FontName);
+    m_Font->SetSelectedFont(font);
+    int index = m_EdItems->GetSelection();
+    if (index != wxNOT_FOUND)
+        DisplayStyle(index);
+    ChangeFont();
+    for (int i = STYLE_DEFAULT; i < STYLE_COUNT; i++)
+        ChangeStyle(i);
 }
 /*---------------------------------------------------------------------------*/
