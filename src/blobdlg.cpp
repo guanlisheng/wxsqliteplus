@@ -138,14 +138,14 @@ void wxBlobDialog::CreateControls()
    m_EditHexa = new wxTextCtrl(pnInfo, ID_TEXTCTRL3, wxEmptyString,
                                wxDefaultPosition, wxDefaultSize,
                                wxTE_MULTILINE|wxTE_READONLY|wxHSCROLL);
-   m_EditHexa->SetFont(wxFont(10, wxTELETYPE, wxNORMAL, wxNORMAL, false,
-                              wxT("Liberation Mono")));
-   bSizer2->Add(m_EditHexa, 1, wxGROW|wxALL, 5);
+   m_EditHexa->SetFont(wxFont(10, wxFONTFAMILY_TELETYPE, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false,
+       "Liberation Mono"));
+   bSizer2->Add(m_EditHexa, 1, wxGROW | wxALL, 5);
 
    wxButton* btnSaveAs = new wxButton(pnInfo, ID_BTN_SAVEAS, _("Save As..."),
                                       wxDefaultPosition, wxDefaultSize, 0);
    btnSaveAs->SetName(("m_BtnSaveAs"));
-   bSizer2->Add(btnSaveAs, 0, wxALIGN_LEFT|wxALL, 5);
+   bSizer2->Add(btnSaveAs, 0, wxALIGN_LEFT | wxALL, 5);
 
    m_Notebook->AddPage(pnInfo, _("Information"));
 
