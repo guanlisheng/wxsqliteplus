@@ -257,7 +257,7 @@ BEGIN_EVENT_TABLE(wxDataGrid, wxSpecGrid)
 END_EVENT_TABLE()
 /*---------------------------------------------------------------------------*/
 void wxDataGrid::SetDbTableViewName(wxSQLite3Database* db,
-                                    const wxString objectname,
+                                    const wxString& objectname,
                                     const wxString& base)
 {
    m_db = db;

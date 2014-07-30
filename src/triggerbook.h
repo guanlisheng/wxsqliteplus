@@ -60,7 +60,7 @@ class wxTriggerBook : public wxDbBook
       ~wxTriggerBook();
 
       virtual void SetDbObjectName(wxSQLite3Database* db,
-                                   const wxString objectname,
+                                   const wxString& objectname,
                                    const wxString& base);
 
       virtual void RefreshDbObject();

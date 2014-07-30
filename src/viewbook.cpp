@@ -152,7 +152,7 @@ void wxViewBook::OnViewebookPageChanging( wxAuiNotebookEvent& event )
 }
 /*---------------------------------------------------------------------------*/
 void wxViewBook::SetDbObjectName(wxSQLite3Database* db,
-                                 const wxString objectname, const wxString& base)
+                                 const wxString& objectname, const wxString& base)
 {
    wxDbBook::SetDbObjectName(db, objectname, base);
    m_PageData->SetDbTableViewName(db, objectname, base);

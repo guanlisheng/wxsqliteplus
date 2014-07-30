@@ -105,7 +105,7 @@ void wxTriggerBook::CreateControls()
 bool wxTriggerBook::ShowToolTips(){return true;}
 /*---------------------------------------------------------------------------*/
 void wxTriggerBook::SetDbObjectName(wxSQLite3Database* db,
-                                    const wxString objectname,
+                                    const wxString& objectname,
                                     const wxString& base)
 {
    wxDbBook::SetDbObjectName(db, objectname, base);

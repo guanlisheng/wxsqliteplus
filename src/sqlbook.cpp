@@ -348,7 +348,7 @@ void wxSQLBook::OnQueryUpdate(wxUpdateUIEvent& event)
       event.Enable(false);
 }
 /*---------------------------------------------------------------------------*/
-void wxSQLBook::ExecQuery(const wxString sql, bool explain, bool history)
+void wxSQLBook::ExecQuery(const wxString& sql, bool explain, bool history)
 {
    try
    {

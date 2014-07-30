@@ -65,7 +65,7 @@ class wxViewBook: public wxDbBook
       ~wxViewBook();
 
       virtual void SetDbObjectName(wxSQLite3Database* db,
-                                   const wxString objectname,
+                                   const wxString& objectname,
                                    const wxString& base);
 
       virtual void RefreshDbObject();

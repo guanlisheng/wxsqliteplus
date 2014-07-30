@@ -61,7 +61,7 @@ class wxPanelData : public wxPanel
       ~wxPanelData();
 
       void SetDbTableViewName(wxSQLite3Database* db,
-                              const wxString objectname,
+                              const wxString& objectname,
                               const wxString& base = wxEmptyString);
 
       bool HasFocus();

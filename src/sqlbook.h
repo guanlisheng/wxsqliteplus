@@ -79,7 +79,7 @@ class wxSQLBook: public wxPanel
       }
       void SetAutoTransact(bool autotransact){m_AutoTransact = autotransact;}
 
-      void ExecQuery(const wxString sql, bool explain = false,
+      void ExecQuery(const wxString& sql, bool explain = false,
                      bool history = true);
       void ExecScript(const wxArrayString& arrayString);
 

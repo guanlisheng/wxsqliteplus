@@ -205,7 +205,7 @@ class WXDLLIMPEXP_SCPECGRID wxDataGrid : public wxSpecGrid
                  {m_IsFiltered = m_IsSorted = false;}
 
       void SetDbTableViewName(wxSQLite3Database* db,
-                              const wxString objectname,
+                              const wxString& objectname,
                               const wxString& base = wxEmptyString);
 
       void DoRefresh(bool usefilter = false);

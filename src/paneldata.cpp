@@ -86,7 +86,7 @@ wxPanelData::~wxPanelData()
 }
 /*---------------------------------------------------------------------------*/
 void wxPanelData::SetDbTableViewName(wxSQLite3Database* db,
-                                     const wxString objectname,
+                                     const wxString& objectname,
                                      const wxString& base)
 {
    if (m_DataGrid)

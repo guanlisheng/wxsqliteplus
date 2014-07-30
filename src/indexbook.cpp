@@ -128,7 +128,7 @@ void wxIndexBook::CreateControls()
 bool wxIndexBook::ShowToolTips(){return true;}
 /*---------------------------------------------------------------------------*/
 void wxIndexBook::SetDbObjectName(wxSQLite3Database* db,
-                                  const wxString objectname,
+                                  const wxString& objectname,
                                   const wxString& base)
 {
    wxDbBook::SetDbObjectName(db, objectname, base);
