@@ -197,7 +197,7 @@ void wxBackupRestoreDbDlg::OnGetfilebtnClick(wxCommandEvent& event)
 
    wxFileDialog fileDialog(this, dlgtitle, wxEmptyString,
                            wxEmptyString,
-                           _("SQLite files (*.db)|*.db|All files (*.*)|*.*"),
+                           _("MMEX Files(*.mmb)|*.mmb|MMEX Encrypted Files(*.emb)|*.emb|SQLite files (*.db)|*.db|All files (*.*)|*.*"),
                            style);
    if (fileDialog.ShowModal() == wxID_OK)
    {

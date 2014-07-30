@@ -921,7 +921,7 @@ void wxSQLitePlusFrame::OnOpenCreateClick(wxCommandEvent& event)
 {
    wxFileDialog fileDialog(this, _("Open/Create database"), wxEmptyString,
                            wxEmptyString,
-                           _("SQLite files (*.db)|*.db|All files (*.*)|*.*"),
+                           _("MMEX Files(*.mmb)|*.mmb|MMEX Encrypted Files(*.emb)|*.emb|SQLite files (*.db)|*.db|All files (*.*)|*.*"),
                            wxFD_OPEN/*|wxFILE_MUST_EXIST*/);
    if (fileDialog.ShowModal() == wxID_OK)
    {
