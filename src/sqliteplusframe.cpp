@@ -219,6 +219,10 @@ wxSQLitePlusFrame::wxSQLitePlusFrame(wxWindow* parent, wxWindowID id,
 {
    Init();
    Create(parent, id, caption, pos, size, style);
+
+   // open a in-memory database when start
+   // http://www.sqlite.org/inmemorydb.html
+   OpenDatabase(":memory:", "memory");
 }
 /*---------------------------------------------------------------------------*/
 bool wxSQLitePlusFrame::Create(wxWindow* parent, wxWindowID id,
