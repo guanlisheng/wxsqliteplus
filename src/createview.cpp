@@ -329,7 +329,7 @@ wxString wxCreateViewDialog::GetCreateViewDDL()
       ddl += ("TEMPORARY ");
    ddl += ("VIEW ");
    if (!m_TempView->IsChecked() && m_Base != wxEmptyString)
-      ddl += m_Base + (".");
+      ddl += "'" + m_Base + ("'.");
    ddl += ("\"") + viewname.Lower() + ("\" AS\n");
    ddl += query;
    if (query.Last() != (';'))

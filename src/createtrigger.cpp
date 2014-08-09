@@ -584,7 +584,7 @@ void wxCreateTriggerDialog::PopulateColumns()
       basename = m_Base;
    else
       basename = ("main");
-   sql = wxString::Format(("PRAGMA %s.table_info(\"%s\");"),
+   sql = wxString::Format(("PRAGMA '%s'.table_info(\"%s\");"),
                           basename.c_str(), tablename.c_str());
 
    m_AvailableColumns->Clear();
@@ -659,7 +659,7 @@ wxString wxCreateTriggerDialog::GetCreateTriggerDDL()
       ddl += ("TEMPORARY ");
    ddl += ("TRIGGER ");
    if (!m_TempTrigger->IsChecked() && m_Base != wxEmptyString)
-      ddl += m_Base + (".");
+      ddl += "'" + m_Base + ("'.");
    ddl += ("\"") + triggername.Lower() + ("\"\n");
    ddl += m_TriggerTime->GetStringSelection() + (" ");
    ddl += m_TriggerEvent->GetStringSelection();

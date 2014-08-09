@@ -238,7 +238,7 @@ void wxTableBook::RefreshStruct()
    try
    {
       // remplissage de la grille des clés étrangères
-      sql = wxString::Format(("PRAGMA %s.foreign_key_list(\"%s\");"),
+      sql = wxString::Format(("PRAGMA '%s'.foreign_key_list(\"%s\");"),
                              basename.c_str(), m_DbObjectName.c_str());
       resultSet = m_db->ExecuteQuery(ToUTF8(sql));
       m_PageForeignKey->SetTable(&g_EmptyTable);

@@ -622,7 +622,7 @@ wxString wxCreateTableDialog::GetCreateTableDDL()
       ddl += ("TEMPORARY ");
    ddl += ("TABLE ");
    if (!m_TempTable->IsChecked() && m_Base != wxEmptyString)
-      ddl += m_Base + (".");
+      ddl += "'" + m_Base + ("'.");
    ddl += ("\"") + tablename.Lower() + ("\"\n");
    ddl += ("(");
    for (int i = 0; i < m_TableColumns.GetNumberRows(); i++)

@@ -153,7 +153,7 @@ void wxIndexBook::RefreshDbObject()
    try
    {
       // remplissage de la grille des colonnes
-      sql = wxString::Format(("PRAGMA %s.index_info(\"%s\");"),
+      sql = wxString::Format(("PRAGMA '%s'.index_info(\"%s\");"),
                              basename.c_str(), m_DbObjectName.c_str());
       resultSet = m_db->ExecuteQuery(ToUTF8(sql));
       m_PageColumns->SetTable(&g_EmptyTable);

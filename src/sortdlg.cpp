@@ -498,7 +498,7 @@ void wxSortDialog::SetStringsOrder(wxArrayString& array)
       wxString sql, tmp;
       int index;
 
-      sql = wxString::Format(("PRAGMA %s.table_info(\"%s\");"),
+      sql = wxString::Format(("PRAGMA '%s'.table_info(\"%s\");"),
                              m_Base.c_str(), m_Table.c_str());
       tblQRY = m_Db->ExecuteQuery(ToUTF8(sql));
       while (tblQRY.NextRow())

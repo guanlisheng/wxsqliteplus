@@ -439,7 +439,7 @@ wxString wxCreateIndexDlg::GetCreateIndexDDL()
       ddl += ("UNIQUE ");
    ddl += ("INDEX ");
    if (m_Base != wxEmptyString)
-      ddl += m_Base + (".");
+      ddl += "'" + m_Base + ("'.");
    ddl += ("\"") + indexname.Lower();
    ddl += ("\" ON \"") + tablename + ("\"\n(");
    for (size_t i = 0; i < m_IndexColumns->GetCount(); i++)
@@ -466,7 +466,7 @@ void wxCreateIndexDlg::DoTablenameSelected()
          basename = m_Base;
       else
          basename = ("main");
-      sql = wxString::Format(("PRAGMA %s.table_info(\"%s\");"),
+      sql = wxString::Format(("PRAGMA '%s'.table_info(\"%s\");"),
                              basename.c_str(), tablename.c_str());
       clmnQRY = m_Db->ExecuteQuery(ToUTF8(sql));
       while (clmnQRY.NextRow())

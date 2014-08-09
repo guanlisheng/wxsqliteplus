@@ -347,9 +347,9 @@ wxArrayString wxAddColumnDialog::GetAddColumnsScript()
    }
 
    // Création du DDL
-   sql = ("ALTER TABLE \"");
+   sql = ("ALTER TABLE '");
    if (m_Base != wxEmptyString)
-      sql += m_Base + (".");
+      sql += m_Base + "'.\"";
    sql += tablename + ("\" ADD COLUMN ");
    for (int i = 0; i < m_TableColumns.GetNumberRows(); i++)
    {
@@ -444,7 +444,7 @@ void wxAddColumnDialog::DoTablenameSelected()
    else
       basename = ("main");
 
-   sql = wxString::Format(("PRAGMA %s.table_info(\"%s\");"),
+   sql = wxString::Format(("PRAGMA '%s'.table_info(\"%s\");"),
                           basename.c_str(), tablename.c_str());
    try
    {

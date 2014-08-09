@@ -1361,7 +1361,7 @@ void wxSQLitePlusFrame::RefreshTables(const wxString& dbname)
          temp = tblQRY.GetInt(1);
          CurrentItem = m_TreeCtrl->AppendItem(TableItem, tablename,
                                               ID_TREE_TABLE + temp);
-         sql = wxString::Format(("PRAGMA %s.table_info(\"%s\");"),
+         sql = wxString::Format(("PRAGMA '%s'.table_info(\"%s\");"),
                                 dbname.c_str(), tablename.c_str());
          try
          {
@@ -1412,7 +1412,7 @@ void wxSQLitePlusFrame::RefreshViews(const wxString& dbname)
          temp = tblQRY.GetInt(1);
          CurrentItem = m_TreeCtrl->AppendItem(ViewItem, viewname,
                                               ID_TREE_VIEW + temp);
-         sql = wxString::Format(("PRAGMA %s.table_info(\"%s\");"),
+         sql = wxString::Format(("PRAGMA '%s'.table_info(\"%s\");"),
                                 dbname.c_str(), viewname.c_str());
          try
          {
@@ -1463,7 +1463,7 @@ void wxSQLitePlusFrame::RefreshIndexes(const wxString& dbname)
          temp = tblQRY.GetInt(1);
          CurrentItem = m_TreeCtrl->AppendItem(IndexItem, indexname,
                                               ID_TREE_INDEX + temp);
-         sql = wxString::Format(("PRAGMA %s.index_info(\"%s\");"),
+         sql = wxString::Format(("PRAGMA '%s'.index_info(\"%s\");"),
                                 dbname.c_str(), indexname.c_str());
          try
          {
@@ -2561,7 +2561,7 @@ wxSQLite3ResultSet wxSQLitePlusFrame::GetObjNameList(wxSQLiteObjectType objtype,
    }
    else
    {
-      sql += ("FROM ") + dbname + (".sqlite_master ") + where;
+      sql += ("FROM '") + dbname + ("'.sqlite_master ") + where;
    }
    sql += (" ORDER by name;");
 
@@ -2593,7 +2593,7 @@ bool wxSQLitePlusFrame::ExistDbObject(wxSQLiteObjectType objtype,
       sql += ("UNION SELECT COUNT(*) c FROM sqlite_temp_master ") + where;
    }
    else
-      sql += ("SELECT COUNT(*) c FROM ") + dbname + (".sqlite_master ") + where;
+      sql += ("SELECT COUNT(*) c FROM '") + dbname + ("'.sqlite_master ") + where;
    sql += (")");
 
    try
@@ -2652,7 +2652,7 @@ wxString wxSQLitePlusFrame::GetDbObjectDDL(wxSQLiteObjectType objtype,
       }
       else
       {
-         sql = wxString::Format(("SELECT sql FROM %s.sqlite_master\n"
+         sql = wxString::Format(("SELECT sql FROM '%s'.sqlite_master\n"
                                    "WHERE type = '%s' AND name = '%s';"),
                                 basename.c_str(), objname.c_str(), name.c_str());
       }

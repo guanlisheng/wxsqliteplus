@@ -666,7 +666,7 @@ wxSQLite3ResultSet wxGridTblColumnsTable::GetResultSet(wxSQLite3Database* db,
       basename = base;
    else
       basename = ("main");
-   sql = wxString::Format(("PRAGMA %s.table_info(\"%s\");"), basename.c_str(),
+   sql = wxString::Format(("PRAGMA '%s'.table_info(\"%s\");"), basename.c_str(),
                           tablename.c_str());
    try
    {
