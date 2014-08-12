@@ -798,7 +798,7 @@ void wxSQLitePlusFrame::OnSrvSocketEvent(wxSocketEvent& event)
    if (event.GetSocketEvent() == wxSOCKET_INPUT)
    {
       ev_sock = event.GetSocket();
-      ev_sock->SetFlags(wxSOCKET_BLOCK|wxSOCKET_NOWAIT);
+      ev_sock->SetFlags(wxSOCKET_BLOCK|wxSOCKET_WAITALL);
       if (!ev_sock->Error())
       {
          len = ev_sock->ReadMsg(buffer, 1024 * sizeof(wxChar)).LastCount();
