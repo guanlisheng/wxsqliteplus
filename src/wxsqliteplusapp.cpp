@@ -236,21 +236,17 @@ void wxSQLitePlusApp::AddHistory(const wxString& sql)
 {
    try
    {
-      wxSQLite3ResultSet hisQRY;
-      unsigned long sqlCRC32;
-      int sql_count;
-      wxString sql1;
       wxString statement = sql;
 
       if (statement.Last() != (';'))
          statement += (';');
-      sqlCRC32 = CalcCrc32(Normalize(statement));
-      sql1 = wxString::Format(("SELECT id, count_use "
+      unsigned long sqlCRC32 = CalcCrc32(Normalize(statement));
+      wxString sql1 = wxString::Format(("SELECT id, count_use "
                                  "FROM history "
                                  "WHERE"
                                  "  user = '%s' AND code = %lu;"),
                               wxGetUserId().c_str(), sqlCRC32);
-      hisQRY = m_db.ExecuteQuery(ToUTF8(sql1));
+      wxSQLite3ResultSet hisQRY = m_db.ExecuteQuery(ToUTF8(sql1));
       if (hisQRY.NextRow())
       {
          int id = hisQRY.GetInt(0);
@@ -274,7 +270,7 @@ void wxSQLitePlusApp::AddHistory(const wxString& sql)
       hisQRY.Finalize();
       m_db.ExecuteUpdate(sql1);
 
-      sql_count = wxGetApp().GetParamInt(PARAM_SQLHISTOCOUNT);
+      int sql_count = wxGetApp().GetParamInt(PARAM_SQLHISTOCOUNT);
 
       sql1 = ("SELECT COUNT(*) FROM history;");
       if (m_db.ExecuteScalar(sql1) > sql_count)
@@ -307,11 +303,10 @@ void wxSQLitePlusApp::AddHistory(const wxString& sql)
 wxSQLite3ResultSet wxSQLitePlusApp::GetStatementHistory()
 {
    wxSQLite3ResultSet hisQRY;
-   wxString sql1;
 
    try
    {
-      sql1 = wxString::Format(("SELECT"
+      wxString sql1 = wxString::Format(("SELECT"
                                  "  last_modif_date AS \"Date\", "
                                  "  sql AS \"Statement\", "
                                  "  count_use AS \"Count\" "
@@ -1348,20 +1343,18 @@ void wxSQLitePlusApp::ShowError(const wxString& proc, wxSQLite3Exception& ex) co
 /*---------------------------------------------------------------------------*/
 int wxSQLitePlusApp::QueryGetParam(const wxString& param, int defvalue)
 {
-   wxSQLite3ResultSet paramQRY;
-   wxString sql1;
    int value  = defvalue;
 
    try
    {
-      sql1 = wxString::Format(("SELECT"
+      wxString sql1 = wxString::Format(("SELECT"
                                  "  param_value "
                                  "FROM paramint "
                                  "WHERE"
                                  "  param_name = '%s' AND"
                                  "  user = '%s';"),
                               param.c_str(), wxGetUserId().c_str());
-      paramQRY = m_db.ExecuteQuery(ToUTF8(sql1));
+      wxSQLite3ResultSet paramQRY = m_db.ExecuteQuery(ToUTF8(sql1));
       if (paramQRY.NextRow())
          value = paramQRY.GetInt(0);
       paramQRY.Finalize();
@@ -1375,11 +1368,9 @@ int wxSQLitePlusApp::QueryGetParam(const wxString& param, int defvalue)
 /*---------------------------------------------------------------------------*/
 void wxSQLitePlusApp::QuerySetParam(const wxString& param, int value)
 {
-   wxString sql1;
-
    try
    {
-      sql1 = wxString::Format(("SELECT"
+      wxString sql1 = wxString::Format(("SELECT"
                                  "  COUNT(*) "
                                  "FROM paramint "
                                  "WHERE"
@@ -1414,20 +1405,18 @@ void wxSQLitePlusApp::QuerySetParam(const wxString& param, int value)
 wxString wxSQLitePlusApp::QueryGetParam(const wxString& param,
                                         const wxString& defvalue)
 {
-   wxSQLite3ResultSet paramQRY;
-   wxString sql1;
-   wxString value;
+   wxString value = defvalue;
 
    try
    {
-      sql1 = wxString::Format(("SELECT"
+      wxString sql1 = wxString::Format(("SELECT"
                                  "  param_value "
                                  "FROM paramtext "
                                  "WHERE"
                                  "  param_name = '%s' AND"
                                  "  user = '%s';"),
                               param.c_str(), wxGetUserId().c_str());
-      paramQRY = m_db.ExecuteQuery(ToUTF8(sql1));
+      wxSQLite3ResultSet paramQRY = m_db.ExecuteQuery(ToUTF8(sql1));
       if (paramQRY.NextRow())
          value = paramQRY.GetString(0);
       else
@@ -1637,11 +1626,7 @@ void wxSQLitePlusApp::InitConfig()
       cfgdb = fname.GetPath(wxPATH_GET_VOLUME);
       cfgdb += ("\\config.par");
 #else
-      cfgdb = wxFileName::GetHomeDir() + ("/.SoftInTheBox");
-      // Vérifier l'existance du chemin, sinon le créer
-      if (!wxDirExists(cfgdb))
-         wxMkdir(cfgdb);
-      cfgdb += ("/wxSQLitePlus");
+      cfgdb = wxFileName::GetHomeDir() + ("/.wxSQLitePlus");
       // Vérifier l'existance du chemin, sinon le créer
       if (!wxDirExists(cfgdb))
          wxMkdir(cfgdb);
