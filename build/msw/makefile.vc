@@ -113,7 +113,6 @@ WXSQLITEPLUS_OBJECTS =  \
 	wxsqliteplus_encrypkeydlg.obj \
 	wxsqliteplus_filterdlg.obj \
 	wxsqliteplus_indexbook.obj \
-	wxsqliteplus_ipcframe.obj \
 	wxsqliteplus_paneldata.obj \
 	wxsqliteplus_preferences.obj \
 	wxsqliteplus_sortdlg.obj \
@@ -381,9 +380,6 @@ wxsqliteplus_filterdlg.obj: ..\..\src\filterdlg.cpp
 
 wxsqliteplus_indexbook.obj: ..\..\src\indexbook.cpp
 	$(CXX) /c /nologo /TP /Fo$@ $(WXSQLITEPLUS_CXXFLAGS) ..\..\src\indexbook.cpp
-
-wxsqliteplus_ipcframe.obj: ..\..\src\ipcframe.cpp
-	$(CXX) /c /nologo /TP /Fo$@ $(WXSQLITEPLUS_CXXFLAGS) ..\..\src\ipcframe.cpp
 
 wxsqliteplus_paneldata.obj: ..\..\src\paneldata.cpp
 	$(CXX) /c /nologo /TP /Fo$@ $(WXSQLITEPLUS_CXXFLAGS) ..\..\src\paneldata.cpp

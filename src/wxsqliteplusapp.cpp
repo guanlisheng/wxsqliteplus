@@ -53,7 +53,6 @@ pour plus de détails.
 /*---------------------------------------------------------------------------*/
 #include "wxsqliteplusapp.h"
 #include "sqliteplusframe.h"
-#include "ipcframe.h"
 /*---------------------------------------------------------------------------*/
 #include "images/field2.xpm"
 #include "images/sqlicon.xpm"
@@ -173,19 +172,13 @@ wxSQLitePlusApp::wxSQLitePlusApp()
 /*---------------------------------------------------------------------------*/
 bool wxSQLitePlusApp::OnInit()
 {
-   int XPos, YPos, F_Width, F_Height, F_Maximized;
-
-   const wxString name = wxString::Format(("wxSQLitePlus-%s"), wxGetUserId().c_str());
-   m_checker = new wxSingleInstanceChecker(name);
+   m_checker = new wxSingleInstanceChecker();
    if (m_checker->IsAnotherRunning())
    {
-      wxIPCFrame* frame = new wxIPCFrame;
-      frame->Show(false);
-      wxCommandEvent postevent(wxEVT_COMMAND_MENU_SELECTED, ID_CMD_LAUNCH_CLT);
-      wxPostEvent(frame, postevent);
-
-      return true;
+       delete m_checker;
+       return false;
    }
+   int XPos, YPos, F_Width, F_Height, F_Maximized;
 
    Init();
 
@@ -1893,35 +1886,5 @@ void wxSQLitePlusApp::SetStyleCase(int index, int value)
       default : return;
    }
    SetParamInt(param, value);
-}
-/*---------------------------------------------------------------------------*/
-unsigned short wxSQLitePlusApp::GetService()
-{
-   long Service;
-
-   wxFileConfig IPCConfigFile(wxEmptyString, wxEmptyString, GetIPCFile());
-
-   IPCConfigFile.Read(("Service"), &Service, 0);
-
-   return (unsigned short)Service;
-}
-/*---------------------------------------------------------------------------*/
-void wxSQLitePlusApp::SetService(unsigned short port)
-{
-   wxFileConfig IPCConfigFile(wxEmptyString, wxEmptyString, GetIPCFile());
-
-   IPCConfigFile.Write(("Service"), (long)port);
-}
-/*---------------------------------------------------------------------------*/
-wxString wxSQLitePlusApp::GetIPCFile()
-{
-   wxStandardPathsBase& stdp = wxStandardPaths::Get();
-
-   if (!wxDirExists(stdp.GetUserLocalDataDir()))
-   {
-      if (!wxMkdir(stdp.GetUserLocalDataDir()))
-         return wxEmptyString;
-   }
-   return stdp.GetUserLocalDataDir() + wxFileName::GetPathSeparator() + ("ipc.cfg");
 }
 /*---------------------------------------------------------------------------*/

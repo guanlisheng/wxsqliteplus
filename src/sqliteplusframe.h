@@ -85,17 +85,12 @@ class wxSQLitePlusFrame: public wxFrame
 
       void CmdOpen(const wxString& file);
 
-      void LaunchServer();
-
    protected:
 
       void Init();
       void CreateControls();
       void CreateToolbars();
       void CreateMenus();
-
-      void OnServerEvent(wxSocketEvent& event);
-      void OnSrvSocketEvent(wxSocketEvent& event);
 
       void OnCloseWindow(wxCloseEvent& event);
       void OnDbtreeItemRightClick(wxTreeEvent& event);
@@ -156,7 +151,6 @@ class wxSQLitePlusFrame: public wxFrame
 
    private:
 
-      wxSocketServer* m_Server;
       wxAuiManager m_auiManager;
       wxTreeCtrl* m_TreeCtrl;
       wxAuiNotebook* m_CenterNotebook;

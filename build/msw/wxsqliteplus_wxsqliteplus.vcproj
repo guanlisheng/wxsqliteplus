@@ -465,10 +465,6 @@
 				>
 			</File>
 			<File
-				RelativePath="..\..\src\ipcframe.cpp"
-				>
-			</File>
-			<File
 				RelativePath="..\..\src\paneldata.cpp"
 				>
 			</File>
@@ -596,10 +592,6 @@
 			</File>
 			<File
 				RelativePath="..\..\src\indexbook.h"
-				>
-			</File>
-			<File
-				RelativePath="..\..\src\ipcframe.h"
 				>
 			</File>
 			<File

@@ -113,9 +113,6 @@ class wxSQLitePlusApp: public wxApp
       void SetStyleColourBack(int index, wxColour value);
       void SetStyleCase(int index, int value);
 
-      unsigned short GetService();
-      void SetService(unsigned short port);
-
    private:
 
       wxSingleInstanceChecker* m_checker;
@@ -150,9 +147,6 @@ class wxSQLitePlusApp: public wxApp
       unsigned long CalcCrc32(const wxString& str);
 
       void InitConfig();
-
-      wxString GetIPCFile();
-
 };
 /*---------------------------------------------------------------------------*/
 DECLARE_APP(wxSQLitePlusApp)

@@ -109,9 +109,6 @@ wxString g_SQLiteObjTypeName[5] =
 IMPLEMENT_DYNAMIC_CLASS(wxSQLitePlusFrame, wxFrame)
 
 BEGIN_EVENT_TABLE(wxSQLitePlusFrame, wxFrame)
-   EVT_SOCKET(ID_IPC_SERVER, wxSQLitePlusFrame::OnServerEvent)
-   EVT_SOCKET(ID_IPC_SRV_SOCK, wxSQLitePlusFrame::OnSrvSocketEvent)
-
    EVT_CLOSE(wxSQLitePlusFrame::OnCloseWindow)
    EVT_TREE_ITEM_RIGHT_CLICK(ID_DBTREE, wxSQLitePlusFrame::OnDbtreeItemRightClick)
    EVT_TREE_SEL_CHANGED(ID_DBTREE, wxSQLitePlusFrame::OnDbtreeItemSelChanged)
@@ -248,21 +245,16 @@ bool wxSQLitePlusFrame::Create(wxWindow* parent, wxWindowID id,
    m_MnuTransact->Check(ID_MNU_AUTOTRANSACT, (autotransact == 1));
    m_TbTransact->ToggleTool(ID_MNU_AUTOTRANSACT, (autotransact == 1));
 
-   LaunchServer();
-
    return true;
 }
 /*---------------------------------------------------------------------------*/
 wxSQLitePlusFrame::~wxSQLitePlusFrame()
 {
-   if (m_Server)
-      delete m_Server;
    GetAuiManager().UnInit();
 }
 /*---------------------------------------------------------------------------*/
 void wxSQLitePlusFrame::Init()
 {
-   m_Server = NULL;
    m_TreeCtrl = NULL;
    m_CenterNotebook = NULL;
    m_MnuFile = NULL;
@@ -765,65 +757,6 @@ void wxSQLitePlusFrame::InitNodeParams()
          m_NodeType = m_TreeCtrl->GetItemImage(item);
          m_NodeText = m_TreeCtrl->GetItemText(item);
          m_NodeDbName = GetDbNameFromItem(item);
-      }
-   }
-}
-/*---------------------------------------------------------------------------*/
-void wxSQLitePlusFrame::OnServerEvent(wxSocketEvent& event)
-{
-   wxSocketBase *sock;
-
-   if (event.GetSocketEvent() == wxSOCKET_CONNECTION)
-   {
-      sock = m_Server->Accept(false);
-      if (sock)
-      {
-         // On indique que le gestionnaire d'évènement est La fenêtre
-         sock->SetEventHandler(*this, ID_IPC_SRV_SOCK);
-         // Spécification des évènements à générer
-         sock->SetNotify(wxSOCKET_INPUT_FLAG | wxSOCKET_OUTPUT_FLAG | wxSOCKET_LOST_FLAG);
-         // les évènements peuvent être générés
-         sock->Notify(true);
-      }
-   }
-}
-/*---------------------------------------------------------------------------*/
-void wxSQLitePlusFrame::OnSrvSocketEvent(wxSocketEvent& event)
-{
-   wxSocketBase* ev_sock;
-   wxChar buffer[1024];
-   wxUint32 len;
-   wxString str, verb;
-
-   if (event.GetSocketEvent() == wxSOCKET_INPUT)
-   {
-      ev_sock = event.GetSocket();
-      ev_sock->SetFlags(wxSOCKET_BLOCK|wxSOCKET_WAITALL);
-      if (!ev_sock->Error())
-      {
-         len = ev_sock->ReadMsg(buffer, 1024 * sizeof(wxChar)).LastCount();
-         if (len > 0)
-         {
-            str.Printf(("%s"), buffer);
-            // wxLogMessage(str);
-            verb = str.BeforeFirst((' '));
-            if (verb == IPC_VERB_SHOW)
-            {
-               Raise();
-            }
-            else if (verb == IPC_VERB_OPEN)
-            {
-               str = str.AfterFirst((' '));
-               if (!str.IsEmpty())
-                  CmdOpen(str);
-            }
-            else
-            {
-               verb = wxString::Format(_("[%s]\nis not a correct IPC action."),
-                                       str.c_str());
-               wxMessageBox(verb, _("Internal Error"));
-            }
-         }
       }
    }
 }
@@ -2697,34 +2630,6 @@ bool wxSQLitePlusFrame::DoFinishTransaction()
    {
       wxGetApp().ShowError(("DoFinishTransaction"), ex);
       return false;
-   }
-}
-/*---------------------------------------------------------------------------*/
-void wxSQLitePlusFrame::LaunchServer()
-{
-   wxIPV4address addr;
-
-   addr.Service(0);  // pick an open port number.
-   // Création du serveur
-   m_Server = new wxSocketServer(addr);
-
-   // On teste si le serveur écoute
-   if (m_Server->Ok())
-   {
-      // Gets the new address, actually it is just the port number
-      m_Server->GetLocal(addr);
-      wxGetApp().SetService((unsigned int)addr.Service());
-      // On indique que le gestionnaire d'évènement est La fenêtre
-      m_Server->SetEventHandler(*this, ID_IPC_SERVER);
-      // Spécification des évènements à générer
-      m_Server->SetNotify(wxSOCKET_CONNECTION_FLAG);
-      // les évènements peuvent être générés
-      m_Server->Notify(true);
-   }
-   else
-   {
-      delete m_Server;
-      m_Server = NULL;
    }
 }
 /*---------------------------------------------------------------------------*/
