@@ -265,7 +265,6 @@
     <ClCompile Include="..\..\src\encrypkeydlg.cpp" />
     <ClCompile Include="..\..\src\filterdlg.cpp" />
     <ClCompile Include="..\..\src\indexbook.cpp" />
-    <ClCompile Include="..\..\src\ipcframe.cpp" />
     <ClCompile Include="..\..\src\paneldata.cpp" />
     <ClCompile Include="..\..\src\preferences.cpp" />
     <ClCompile Include="..\..\src\sortdlg.cpp" />
@@ -299,7 +298,6 @@
     <ClInclude Include="..\..\src\encrypkeydlg.h" />
     <ClInclude Include="..\..\src\filterdlg.h" />
     <ClInclude Include="..\..\src\indexbook.h" />
-    <ClInclude Include="..\..\src\ipcframe.h" />
     <ClInclude Include="..\..\src\paneldata.h" />
     <ClInclude Include="..\..\src\preferences.h" />
     <ClInclude Include="..\..\src\sortdlg.h" />
