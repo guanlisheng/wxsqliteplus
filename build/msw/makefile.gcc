@@ -60,18 +60,18 @@ WXSQLITE_CFLAGS = -DHAVE_W32API_H $(____WX_SHARED) $(__WXUNICODE_DEFINE_p) \
 	$(__WXDEBUG_DEFINE_p) -D__WXMSW__ \
 	-I$(WX_DIR)$(WXLIBPATH)\msw$(WXLIBPOSTFIX) -I$(WX_DIR)\include -DNOPCH \
 	-DSQLITE_CORE -DSQLITE_ENABLE_FTS3 -DSQLITE_ENABLE_FTS3_PARENTHESIS \
-	-DSQLITE_HAS_CODEC -DSQLITE_ENABLE_COLUMN_METADATA -DWXSQLITE3_HAVE_CODEC \
-	-DWXSQLITE3_HAVE_METADATA -I..\..\3rd\wxsqlite3\sqlite3\secure\src \
-	-I..\..\3rd\wxsqlite3\include $(____wxsqlite) $(____wxsqlite_1) $(CPPFLAGS) \
-	$(CFLAGS)
+	-DSQLITE_HAS_CODEC -DSQLITE_ENABLE_EXTFUNC -DSQLITE_ENABLE_COLUMN_METADATA \
+	-DWXSQLITE3_HAVE_CODEC -DWXSQLITE3_HAVE_METADATA \
+	-I..\..\3rd\wxsqlite3\sqlite3\secure\src -I..\..\3rd\wxsqlite3\include \
+	$(____wxsqlite) $(____wxsqlite_1) $(CPPFLAGS) $(CFLAGS)
 WXSQLITE_CXXFLAGS = -DHAVE_W32API_H $(____WX_SHARED) $(__WXUNICODE_DEFINE_p) \
 	$(__WXDEBUG_DEFINE_p) -D__WXMSW__ \
 	-I$(WX_DIR)$(WXLIBPATH)\msw$(WXLIBPOSTFIX) -I$(WX_DIR)\include -DNOPCH \
 	-DSQLITE_CORE -DSQLITE_ENABLE_FTS3 -DSQLITE_ENABLE_FTS3_PARENTHESIS \
-	-DSQLITE_HAS_CODEC -DSQLITE_ENABLE_COLUMN_METADATA -DWXSQLITE3_HAVE_CODEC \
-	-DWXSQLITE3_HAVE_METADATA -I..\..\3rd\wxsqlite3\sqlite3\secure\src \
-	-I..\..\3rd\wxsqlite3\include $(____wxsqlite) $(____wxsqlite_1) $(CPPFLAGS) \
-	$(CXXFLAGS)
+	-DSQLITE_HAS_CODEC -DSQLITE_ENABLE_EXTFUNC -DSQLITE_ENABLE_COLUMN_METADATA \
+	-DWXSQLITE3_HAVE_CODEC -DWXSQLITE3_HAVE_METADATA \
+	-I..\..\3rd\wxsqlite3\sqlite3\secure\src -I..\..\3rd\wxsqlite3\include \
+	$(____wxsqlite) $(____wxsqlite_1) $(CPPFLAGS) $(CXXFLAGS)
 WXSQLITE_OBJECTS =  \
 	wxsqlite_wxsqlite3.o \
 	wxsqlite_sqlite3secure.o
