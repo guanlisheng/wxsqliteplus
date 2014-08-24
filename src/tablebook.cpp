@@ -1,10 +1,10 @@
 /*---------------------------------------------------------------------------*/
-/* Logiciel de gestion de fichier de bases de données SQLite                 */
+/* Logiciel de gestion de fichier de bases de donnÃ©es SQLite                 */
 /*---------------------------------------------------------------------------*/
 /* Projet  : wxSQLitePlus                              Version  : 0.2.2.0    */
 /* Fichier : tablebook.cpp                                                   */
 /* Auteur  : Fred Cailleau-Lepetit                     Date     : 23/07/2007 */
-/* email   : softinthebox@free.fr                      Révision : 07/09/2008 */
+/* email   : softinthebox@free.fr                      RÃ©vision : 07/09/2008 */
 /*---------------------------------------------------------------------------*/
 /* Copyright (C) Fred Cailleau-Lepetit 2007                                  */
 /* Licence GNU General Public License  http://www.fsf.org/copyleft/gpl.html  */
@@ -20,14 +20,14 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 Ce programme est libre, vous pouvez le redistribuer et/ou le modifier
-selon les termes de la Licence Publique Générale GNU publiée par la
+selon les termes de la Licence Publique GÃ©nÃ©rale GNU publiÃ©e par la
 Free Software Foundation (version 3).
 
-Ce programme est distribué car potentiellement utile, mais
+Ce programme est distribuÃ© car potentiellement utile, mais
 SANS AUCUNE GARANTIE, ni explicite ni implicite, y compris
 les garanties de commercialisation ou d'adaptation dans un but
-spécifique. Reportez-vous à la Licence Publique Générale GNU
-pour plus de détails.
+spÃ©cifique. Reportez-vous Ã  la Licence Publique GÃ©nÃ©rale GNU
+pour plus de dÃ©tails.
 */
 #if defined(__GNUG__) && !defined(NO_GCC_PRAGMA)
 #pragma implementation "tablebook.h"
@@ -175,9 +175,9 @@ bool wxTableBook::ShowToolTips(){return true;}
 void wxTableBook::OnTablebookPageChanging( wxAuiNotebookEvent& event )
 {
    if (m_InitData)
-   {  // Vérifier si c'est l'onglet Data qui doit être affiché
+   {  // VÃ©rifier si c'est l'onglet Data qui doit Ãªtre affichÃ©
       if (("Data") == m_Book->GetPageText(event.GetSelection()))
-      {  // Si oui lancer la sélection des données de la table
+      {  // Si oui lancer la sÃ©lection des donnÃ©es de la table
          m_InitData = false;
          RefreshData();
       }
@@ -206,7 +206,7 @@ void wxTableBook::RefreshStruct()
 {
    if (!m_db || m_DbObjectName.IsEmpty())
       return;
-   // Remplir les wxGrid avec les paramètres de la table
+   // Remplir les wxGrid avec les paramÃ¨tres de la table
    wxSQLitePlusFrame* frame;
    wxString sql, basename;
    wxSQLite3ResultSet resultSet;
@@ -237,7 +237,7 @@ void wxTableBook::RefreshStruct()
 
    try
    {
-      // remplissage de la grille des clés étrangères
+      // remplissage de la grille des clÃ©s Ã©trangÃ¨res
       sql = wxString::Format(("PRAGMA '%s'.foreign_key_list(\"%s\");"),
                              basename.c_str(), m_DbObjectName.c_str());
       resultSet = m_db->ExecuteQuery(ToUTF8(sql));
@@ -336,3 +336,4 @@ void wxTableBook::OnEdRefresh(wxCommandEvent& event)
    m_PageDdl->InitStyle();
 }
 /*---------------------------------------------------------------------------*/
+

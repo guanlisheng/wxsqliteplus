@@ -1,10 +1,10 @@
 /*---------------------------------------------------------------------------*/
-/* Logiciel de gestion de fichier de base de donnéesSQLite                   */
+/* Logiciel de gestion de fichier de base de donnÃ©esSQLite                   */
 /*---------------------------------------------------------------------------*/
 /* Projet  : wxSQLitePlus                              Version  : 0.3.0.0    */
 /* Fichier : specgrid.h                                                      */
 /* Auteur  : Fred Cailleau-Lepetit                     Date     : 07/09/2007 */
-/* email   : softinthebox@free.fr                      Révision : 01/03/2009 */
+/* email   : softinthebox@free.fr                      RÃ©vision : 01/03/2009 */
 /*---------------------------------------------------------------------------*/
 /* Copyright (C) Fred Cailleau-Lepetit 2007                                  */
 /* Licence GNU General Public License  http://www.fsf.org/copyleft/gpl.html  */
@@ -20,14 +20,14 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 Ce programme est libre, vous pouvez le redistribuer et/ou le modifier
-selon les termes de la Licence Publique Générale GNU publiée par la
+selon les termes de la Licence Publique GÃ©nÃ©rale GNU publiÃ©e par la
 Free Software Foundation (version 3).
 
-Ce programme est distribué car potentiellement utile, mais
+Ce programme est distribuÃ© car potentiellement utile, mais
 SANS AUCUNE GARANTIE, ni explicite ni implicite, y compris
 les garanties de commercialisation ou d'adaptation dans un but
-spécifique. Reportez-vous à la Licence Publique Générale GNU
-pour plus de détails.
+spÃ©cifique. Reportez-vous Ã  la Licence Publique GÃ©nÃ©rale GNU
+pour plus de dÃ©tails.
 */
 #ifndef _SPECGRID_H_
 #define _SPECGRID_H_
@@ -339,3 +339,4 @@ typedef void (wxEvtHandler::*wxGridCellBlobEditorEventFunction)(wxGridCellBlobEd
 #define EVT_GRID_BLOBEDIT(id, fn) DECLARE_EVENT_TABLE_ENTRY(wxEVT_GRID_BLOBEDIT, id, wxID_ANY, (wxObjectEventFunction) (wxEventFunction)  wxStaticCastEvent( wxGridCellBlobEditorEventFunction, & fn ), (wxObject *) NULL ),
 /*---------------------------------------------------------------------------*/
 #endif   // _SPECGRID_H_
+

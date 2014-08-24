@@ -1,10 +1,10 @@
 /*---------------------------------------------------------------------------*/
-/* Logiciel de gestion de fichier de bases de données SQLite                 */
+/* Logiciel de gestion de fichier de bases de donnÃ©es SQLite                 */
 /*---------------------------------------------------------------------------*/
 /* Projet  : wxSQLitePlus                              Version  : 0.2.3.0    */
 /* Fichier : createtable.cpp                                                 */
 /* Auteur  : Fred Cailleau-Lepetit                     Date     : 14/07/2007 */
-/* email   : softinthebox@free.fr                      Révision : 09/11/2008 */
+/* email   : softinthebox@free.fr                      RÃ©vision : 09/11/2008 */
 /*---------------------------------------------------------------------------*/
 /* Copyright (C) Fred Cailleau-Lepetit 2007-2008                             */
 /* Licence GNU General Public License  http://www.fsf.org/copyleft/gpl.html  */
@@ -20,14 +20,14 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 Ce programme est libre, vous pouvez le redistribuer et/ou le modifier
-selon les termes de la Licence Publique Générale GNU publiée par la
+selon les termes de la Licence Publique GÃ©nÃ©rale GNU publiÃ©e par la
 Free Software Foundation (version 3).
 
-Ce programme est distribué car potentiellement utile, mais
+Ce programme est distribuÃ© car potentiellement utile, mais
 SANS AUCUNE GARANTIE, ni explicite ni implicite, y compris
 les garanties de commercialisation ou d'adaptation dans un but
-spécifique. Reportez-vous à la Licence Publique Générale GNU
-pour plus de détails.
+spÃ©cifique. Reportez-vous Ã  la Licence Publique GÃ©nÃ©rale GNU
+pour plus de dÃ©tails.
 */
 #if defined(__GNUG__) && !defined(NO_GCC_PRAGMA)
 #pragma implementation "createtable.h"
@@ -155,7 +155,7 @@ void wxGridColumnsTable::SetValue(int row, int col, const wxString& value)
          m_Columns[row]->SetType(cttIntegerAutoinc);
          SetValueAsBool(row, 3, true);
          SetValue(row, 4, wxEmptyString);
-         // Oblige la grille à prendre en compte le changement
+         // Oblige la grille Ã  prendre en compte le changement
          GetView()->SetCellValue(row, 3, ("1"));
       }
       else if (value == ("REAL"))
@@ -222,7 +222,7 @@ void wxGridColumnsTable::SetValueAsBool(int row, int col, bool value)
          for (size_t i = 0; i < m_Columns.GetCount(); i++)
          {
             m_Columns[i]->SetPrimaryKey(false);
-            // Oblige la grille à prendre en compte le changement
+            // Oblige la grille Ã  prendre en compte le changement
             GetView()->SetCellValue(i, 3, ("0"));
          }
       }
@@ -325,14 +325,14 @@ bool wxGridColumnsTable::DeleteRows(size_t pos, size_t numRows)
 bool wxGridColumnsTable::CheckName(const wxString& name, int row)
 {
    wxChar c;
-   // Vérification du nom
+   // VÃ©rification du nom
    for (size_t i = 0; i < name.Len(); i++)
    {
       c = name.GetChar(i);
       if (!wxIsalnum(c) && c != ('_') && c != (' '))
          return false;
    }
-   // Vérifie que le nom est unique
+   // VÃ©rifie que le nom est unique
    for (size_t i = 0; i < m_Columns.GetCount(); i++)
       if ((int)i != row)
          if (m_Columns[i]->GetName().Upper() == name.Upper())
@@ -364,7 +364,7 @@ wxColumnCtrTable* wxGridColumnsTable::GetColumnCtrTable(size_t index)
 /*---------------------------------------------------------------------------*/
 bool wxGridColumnsTable::CheckAutoInc(int row)
 {
-   // Vérifier si une ligne est AUTOINCREMENT
+   // VÃ©rifier si une ligne est AUTOINCREMENT
    for (size_t i = 0; i < m_Columns.GetCount(); i++)
       if (((int)i != row) && (m_Columns[i]->GetType() == cttIntegerAutoinc))
          return true;
@@ -617,7 +617,7 @@ wxString wxCreateTableDialog::GetCreateTableDDL()
       return wxEmptyString;
    }
 
-   // Création du DDL
+   // CrÃ©ation du DDL
    ddl = ("CREATE ");
    if (m_TempTable->IsChecked())
       ddl += ("TEMPORARY ");
@@ -681,3 +681,4 @@ wxString wxCreateTableDialog::GetCreateTableDDL()
    return ddl;
 }
 /*---------------------------------------------------------------------------*/
+

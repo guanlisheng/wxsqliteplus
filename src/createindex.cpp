@@ -1,10 +1,10 @@
 /*---------------------------------------------------------------------------*/
-/* Logiciel de gestion de fichier de bases de données SQLite                 */
+/* Logiciel de gestion de fichier de bases de donnÃ©es SQLite                 */
 /*---------------------------------------------------------------------------*/
 /* Projet  : wxSQLitePlus                              Version  : 0.2.3.0    */
 /* Fichier : createindex.cpp                                                 */
 /* Auteur  : Fred Cailleau-Lepetit                     Date     : 15/07/2007 */
-/* email   : softinthebox@free.fr                      Révision : 09/11/2008 */
+/* email   : softinthebox@free.fr                      RÃ©vision : 09/11/2008 */
 /*---------------------------------------------------------------------------*/
 /* Copyright (C) Fred Cailleau-Lepetit 2007-2008                             */
 /* Licence GNU General Public License  http://www.fsf.org/copyleft/gpl.html  */
@@ -20,14 +20,14 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 Ce programme est libre, vous pouvez le redistribuer et/ou le modifier
-selon les termes de la Licence Publique Générale GNU publiée par la
+selon les termes de la Licence Publique GÃ©nÃ©rale GNU publiÃ©e par la
 Free Software Foundation (version 3).
 
-Ce programme est distribué car potentiellement utile, mais
+Ce programme est distribuÃ© car potentiellement utile, mais
 SANS AUCUNE GARANTIE, ni explicite ni implicite, y compris
 les garanties de commercialisation ou d'adaptation dans un but
-spécifique. Reportez-vous à la Licence Publique Générale GNU
-pour plus de détails.
+spÃ©cifique. Reportez-vous Ã  la Licence Publique GÃ©nÃ©rale GNU
+pour plus de dÃ©tails.
 */
 #if defined(__GNUG__) && !defined(NO_GCC_PRAGMA)
 #pragma implementation "createindex.h"
@@ -509,3 +509,4 @@ void wxCreateIndexDlg::DoIndexcolumnsSelected()
    m_DownButton->Enable(b_enableDown);
 }
 /*---------------------------------------------------------------------------*/
+
