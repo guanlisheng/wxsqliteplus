@@ -10,10 +10,12 @@ Encryption method is now compatible with [wxSQLite3](https://github.com/moneyman
 ## Contributing
 
 1. Fork it!
-2. Create your feature branch: `git checkout -b my-new-feature`
-3. Commit your changes: `git commit -m 'Add some feature'`
-4. Push to the branch: `git push origin my-new-feature`
-5. Submit a pull request :D
+2. Clone it to your local machine: `git clone your-repo`
+3. Update submodule code: `git submodule update --init`
+4. Create your feature branch: `git checkout -b my-new-feature`
+5. Commit your changes: `git commit -m 'Add some feature'`
+6. Push to the branch: `git push origin my-new-feature`
+7. Submit a pull request :D
 
 ## Make a donation
 1. Do a donate at my Ripple address: `rUY7DvWqNnSYCYiVr986W71tuaKtDCMNz3` 
