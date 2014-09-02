@@ -1271,7 +1271,7 @@ wxString wxSQLitePlusApp::GetFileDescription() const
 /*---------------------------------------------------------------------------*/
 wxString wxSQLitePlusApp::GetFileVersion() const
 {
-   return  "0.3.4";
+   return  "0.3.5";
 }
 /*---------------------------------------------------------------------------*/
 wxString wxSQLitePlusApp::GetInternalName() const
