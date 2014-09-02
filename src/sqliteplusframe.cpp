@@ -209,8 +209,7 @@ bool wxSQLitePlusFrame::Create(wxWindow* parent, wxWindowID id,
          GetAuiManager().LoadPerspective(perspective);
    }
 
-   int autotransact;
-   autotransact = wxGetApp().GetParamInt(PARAM_AUTOTRANSACT);
+   int autotransact = wxGetApp().GetParamInt(PARAM_AUTOTRANSACT);
    m_MnuTransact->Check(ID_MNU_AUTOTRANSACT, (autotransact == 1));
    m_TbTransact->ToggleTool(ID_MNU_AUTOTRANSACT, (autotransact == 1));
 
@@ -676,14 +675,14 @@ void wxSQLitePlusFrame::CmdOpen(const wxString& file)
 {
    if (m_db.IsOpen())
    {  // Attach
-      wxString alias, msg;
+      wxString alias;
 
       if (DatabaseExist(file, false, &alias))
       {
          wxSQLBook* book = (wxSQLBook*)GetPage(("SQL"));
          if (book)
          {
-            msg = wxString::Format(_("Error : Database \"%s\" is already opened as %s\n"),
+            wxString msg = wxString::Format(_("Error : Database \"%s\" is already opened as %s\n"),
                                    file.c_str(), alias.c_str());
 
             book->GetLogResult()->AppendText(msg);
@@ -711,8 +710,6 @@ void wxSQLitePlusFrame::CmdOpen(const wxString& file)
 /*---------------------------------------------------------------------------*/
 void wxSQLitePlusFrame::InitNodeParams()
 {
-   wxTreeItemId item;
-
    m_NodeType = -1;
    m_NodeText = wxEmptyString;
    m_NodeDbName = ("main");
@@ -720,7 +717,7 @@ void wxSQLitePlusFrame::InitNodeParams()
    // Voir si un item sélectionné, si oui prendre les bons
    if (m_TreeCtrl != NULL)
    {
-      item = m_TreeCtrl->GetSelection();
+      wxTreeItemId item = m_TreeCtrl->GetSelection();
       if (item.IsOk()&& (item != m_TreeCtrl->GetRootItem()))
       {
          m_NodeType = m_TreeCtrl->GetItemImage(item);
@@ -760,10 +757,8 @@ void wxSQLitePlusFrame::OnDbtreeItemSelChanged(wxTreeEvent& event)
 /*---------------------------------------------------------------------------*/
 void wxSQLitePlusFrame::OnDbtreeItemActivated(wxTreeEvent& event)
 {
-   wxTreeItemId item;
    int flags;
-
-   item = m_TreeCtrl->HitTest(event.GetPoint(), flags);
+   wxTreeItemId item = m_TreeCtrl->HitTest(event.GetPoint(), flags);
    if (!item.IsOk())
       return;
 
@@ -833,12 +828,9 @@ void wxSQLitePlusFrame::OnOpenCreateClick(wxCommandEvent& event)
    {
       if (!wxFileExists(fileDialog.GetPath()))
       {
-         wxString msg;
-         int answer;
-
-         msg = wxString::Format(_("%s\nFile does not exist.\nDo you want to create it?"),
+         wxString msg = wxString::Format(_("%s\nFile does not exist.\nDo you want to create it?"),
                                 fileDialog.GetPath().c_str());
-         answer = wxMessageBox(msg, _("Confirm"), wxYES_NO, this);
+         int answer = wxMessageBox(msg, _("Confirm"), wxYES_NO, this);
          if (answer == wxNO)
             return;
       }
@@ -851,15 +843,14 @@ void wxSQLitePlusFrame::OnOpenCreateClick(wxCommandEvent& event)
 /*---------------------------------------------------------------------------*/
 void wxSQLitePlusFrame::OnAttachDbClick(wxCommandEvent& event)
 {
-   wxString dbfile, dbalias, dbkey;
    wxAttachDbDlg attachDbDlg(this);
 
    attachDbDlg.SetDatabase(&m_db);
    if (attachDbDlg.ShowModal() == wxID_OK)
    {
-      dbfile = attachDbDlg.GetFileName();
-      dbalias = attachDbDlg.GetAlias();
-      dbkey = attachDbDlg.GetKey();
+      wxString dbfile = attachDbDlg.GetFileName();
+      wxString dbalias = attachDbDlg.GetAlias();
+      wxString dbkey = attachDbDlg.GetKey();
 
       AttachDatabase(dbfile, dbalias, dbkey);
    }
@@ -867,12 +858,11 @@ void wxSQLitePlusFrame::OnAttachDbClick(wxCommandEvent& event)
 /*---------------------------------------------------------------------------*/
 void wxSQLitePlusFrame::OnReKeyDbClick(wxCommandEvent& event)
 {
-   wxString dbkey;
    wxDbEncryptionKeyDlg encryptionKeyDlg(this);
 
    if (encryptionKeyDlg.ShowModal() == wxID_OK)
    {
-      dbkey = encryptionKeyDlg.GetKey();
+      wxString dbkey = encryptionKeyDlg.GetKey();
 
       EncryptDatabase(dbkey);
    }
@@ -1148,14 +1138,11 @@ void wxSQLitePlusFrame::OnAboutClick(wxCommandEvent& event)
 /*---------------------------------------------------------------------------*/
 void wxSQLitePlusFrame::InitTree()
 {
-   wxTreeItemId RootItem;
-   wxTreeItemId DatabaseItem;
    wxSQLite3ResultSet dbQRY;
-   wxString dbname;
 
    m_TreeCtrl->DeleteAllItems();
 
-   RootItem = m_TreeCtrl->AddRoot(_("Databases"));
+   wxTreeItemId RootItem = m_TreeCtrl->AddRoot(_("Databases"));
    if (m_db.IsOpen())
    {
       try
@@ -1163,11 +1150,11 @@ void wxSQLitePlusFrame::InitTree()
          dbQRY = m_db.ExecuteQuery(ToUTF8(("PRAGMA database_list;")));
          while (dbQRY.NextRow())
          {
-            dbname = dbQRY.GetString(1);
+            wxString dbname = dbQRY.GetString(1);
             // La base temporaire est prise en compte avec main
             if (dbname != ("temp"))
             {
-               DatabaseItem = m_TreeCtrl->AppendItem(RootItem, dbname,
+               wxTreeItemId DatabaseItem = m_TreeCtrl->AppendItem(RootItem, dbname,
                                                      ID_TREE_DATABASE);
                RefreshDatabase(dbname);
             }
@@ -1183,8 +1170,6 @@ void wxSQLitePlusFrame::InitTree()
 /*---------------------------------------------------------------------------*/
 void wxSQLitePlusFrame::DoRefresh(bool refreshall)
 {
-   wxTreeItemId DatabaseItem;
-
    if ((m_db.IsOpen()&&!m_NodeDbName.IsEmpty())||refreshall)
    {
       if (m_NodeType == ID_TREE_TABLES || m_NodeType == ID_TREE_TABLE ||
@@ -1214,15 +1199,13 @@ void wxSQLitePlusFrame::DoRefresh(bool refreshall)
 /*---------------------------------------------------------------------------*/
 void wxSQLitePlusFrame::RefreshDatabase(const wxString& dbname, bool forceexpand)
 {
-   wxTreeItemId DatabaseItem;
    wxTreeItemId Item;
-   bool bExpanded;
 
-   DatabaseItem = GetItem(dbname, ID_TREE_DATABASE);
+   wxTreeItemId DatabaseItem = GetItem(dbname, ID_TREE_DATABASE);
    if (!DatabaseItem.IsOk()||!m_db.IsOpen())
       return;
 
-   bExpanded = m_TreeCtrl->IsExpanded(DatabaseItem) || forceexpand;
+   bool bExpanded = m_TreeCtrl->IsExpanded(DatabaseItem) || forceexpand;
    m_TreeCtrl->DeleteChildren(DatabaseItem);
 
    Item = m_TreeCtrl->AppendItem(DatabaseItem, _("Tables"), ID_TREE_TABLES);
@@ -1241,17 +1224,12 @@ void wxSQLitePlusFrame::RefreshDatabase(const wxString& dbname, bool forceexpand
 /*---------------------------------------------------------------------------*/
 void wxSQLitePlusFrame::RefreshTables(const wxString& dbname)
 {
-   wxTreeItemId TableItem;
-   wxTreeItemId CurrentItem;
-   wxString sql, tablename;
    wxSQLite3ResultSet tblQRY, clmnQRY;
-   int temp;
-   bool bExpanded = false;
 
-   TableItem = GetItem(dbname, ID_TREE_TABLES);
+   wxTreeItemId TableItem = GetItem(dbname, ID_TREE_TABLES);
    if (!TableItem.IsOk()||!m_db.IsOpen())
       return;
-   bExpanded = m_TreeCtrl->IsExpanded(TableItem);
+   bool bExpanded = m_TreeCtrl->IsExpanded(TableItem);
    m_TreeCtrl->DeleteChildren(TableItem);
 
    try
@@ -1259,11 +1237,11 @@ void wxSQLitePlusFrame::RefreshTables(const wxString& dbname)
       tblQRY = GetObjNameList(otTable, dbname);
       while (tblQRY.NextRow())
       {
-         tablename = tblQRY.GetString(0);
-         temp = tblQRY.GetInt(1);
-         CurrentItem = m_TreeCtrl->AppendItem(TableItem, tablename,
+         wxString tablename = tblQRY.GetString(0);
+         int temp = tblQRY.GetInt(1);
+         wxTreeItemId CurrentItem = m_TreeCtrl->AppendItem(TableItem, tablename,
                                               ID_TREE_TABLE + temp);
-         sql = wxString::Format(("PRAGMA '%s'.table_info(\"%s\");"),
+         wxString sql = wxString::Format(("PRAGMA '%s'.table_info(\"%s\");"),
                                 dbname.c_str(), tablename.c_str());
          try
          {
@@ -1292,17 +1270,12 @@ void wxSQLitePlusFrame::RefreshTables(const wxString& dbname)
 /*---------------------------------------------------------------------------*/
 void wxSQLitePlusFrame::RefreshViews(const wxString& dbname)
 {
-   wxTreeItemId ViewItem;
-   wxTreeItemId CurrentItem;
-   wxString sql, viewname;
    wxSQLite3ResultSet tblQRY, clmnQRY;
-   int temp;
-   bool bExpanded = false;
 
-   ViewItem = GetItem(dbname, ID_TREE_VIEWS);
+   wxTreeItemId ViewItem = GetItem(dbname, ID_TREE_VIEWS);
    if (!ViewItem.IsOk()||!m_db.IsOpen())
       return;
-   bExpanded = m_TreeCtrl->IsExpanded(ViewItem);
+   bool bExpanded = m_TreeCtrl->IsExpanded(ViewItem);
    m_TreeCtrl->DeleteChildren(ViewItem);
 
    try
@@ -1310,11 +1283,11 @@ void wxSQLitePlusFrame::RefreshViews(const wxString& dbname)
       tblQRY = GetObjNameList(otView, dbname);
       while (tblQRY.NextRow())
       {
-         viewname = tblQRY.GetString(0);
-         temp = tblQRY.GetInt(1);
-         CurrentItem = m_TreeCtrl->AppendItem(ViewItem, viewname,
+         wxString viewname = tblQRY.GetString(0);
+         int temp = tblQRY.GetInt(1);
+         wxTreeItemId CurrentItem = m_TreeCtrl->AppendItem(ViewItem, viewname,
                                               ID_TREE_VIEW + temp);
-         sql = wxString::Format(("PRAGMA '%s'.table_info(\"%s\");"),
+         wxString sql = wxString::Format(("PRAGMA '%s'.table_info(\"%s\");"),
                                 dbname.c_str(), viewname.c_str());
          try
          {
@@ -1343,17 +1316,12 @@ void wxSQLitePlusFrame::RefreshViews(const wxString& dbname)
 /*---------------------------------------------------------------------------*/
 void wxSQLitePlusFrame::RefreshIndexes(const wxString& dbname)
 {
-   wxTreeItemId IndexItem;
-   wxTreeItemId CurrentItem;
-   wxString sql, indexname;
    wxSQLite3ResultSet tblQRY, clmnQRY;
-   int temp;
-   bool bExpanded = false;
 
-   IndexItem = GetItem(dbname, ID_TREE_INDEXES);
+   wxTreeItemId IndexItem = GetItem(dbname, ID_TREE_INDEXES);
    if (!IndexItem.IsOk()||!m_db.IsOpen())
       return;
-   bExpanded = m_TreeCtrl->IsExpanded(IndexItem);
+   bool bExpanded = m_TreeCtrl->IsExpanded(IndexItem);
    m_TreeCtrl->DeleteChildren(IndexItem);
 
    try
@@ -1361,11 +1329,11 @@ void wxSQLitePlusFrame::RefreshIndexes(const wxString& dbname)
       tblQRY = GetObjNameList(otIndex, dbname);
       while (tblQRY.NextRow())
       {
-         indexname = tblQRY.GetString(0);
-         temp = tblQRY.GetInt(1);
-         CurrentItem = m_TreeCtrl->AppendItem(IndexItem, indexname,
+         wxString indexname = tblQRY.GetString(0);
+         int temp = tblQRY.GetInt(1);
+         wxTreeItemId CurrentItem = m_TreeCtrl->AppendItem(IndexItem, indexname,
                                               ID_TREE_INDEX + temp);
-         sql = wxString::Format(("PRAGMA '%s'.index_info(\"%s\");"),
+         wxString sql = wxString::Format(("PRAGMA '%s'.index_info(\"%s\");"),
                                 dbname.c_str(), indexname.c_str());
          try
          {
@@ -1394,16 +1362,12 @@ void wxSQLitePlusFrame::RefreshIndexes(const wxString& dbname)
 /*---------------------------------------------------------------------------*/
 void wxSQLitePlusFrame::RefreshTriggers(const wxString& dbname)
 {
-   wxTreeItemId TriggerItem;
-   wxString sql, triggername;
    wxSQLite3ResultSet tblQRY, clmnQRY;
-   int temp;
-   bool bExpanded = false;
 
-   TriggerItem = GetItem(dbname, ID_TREE_TRIGGERS);
+   wxTreeItemId TriggerItem = GetItem(dbname, ID_TREE_TRIGGERS);
    if (!TriggerItem.IsOk()||!m_db.IsOpen())
       return;
-   bExpanded = m_TreeCtrl->IsExpanded(TriggerItem);
+   bool bExpanded = m_TreeCtrl->IsExpanded(TriggerItem);
    m_TreeCtrl->DeleteChildren(TriggerItem);
 
    try
@@ -1411,8 +1375,8 @@ void wxSQLitePlusFrame::RefreshTriggers(const wxString& dbname)
       tblQRY = GetObjNameList(otTrigger, dbname);
       while (tblQRY.NextRow())
       {
-         triggername = tblQRY.GetString(0);
-         temp = tblQRY.GetInt(1);
+         wxString triggername = tblQRY.GetString(0);
+         int temp = tblQRY.GetInt(1);
          m_TreeCtrl->AppendItem(TriggerItem, triggername, ID_TREE_TRIGGER + temp);
       }
    }
@@ -1429,13 +1393,10 @@ void wxSQLitePlusFrame::RefreshTriggers(const wxString& dbname)
 /*---------------------------------------------------------------------------*/
 wxTreeItemId wxSQLitePlusFrame::GetItem(const wxString& dbname, int imageId)
 {
-   wxTreeItemId root;
-   wxTreeItemId itemdb;
-   wxTreeItemId item;
    wxTreeItemIdValue cookie;
    wxString name;
 
-   root = m_TreeCtrl->GetRootItem();
+   wxTreeItemId root = m_TreeCtrl->GetRootItem();
    if (!root.IsOk())
       return root;
 
@@ -1444,14 +1405,14 @@ wxTreeItemId wxSQLitePlusFrame::GetItem(const wxString& dbname, int imageId)
    else
       name = dbname;
 
-   itemdb = m_TreeCtrl->GetFirstChild(root, cookie);
+   wxTreeItemId itemdb = m_TreeCtrl->GetFirstChild(root, cookie);
    while (itemdb.IsOk())
    {
       if (m_TreeCtrl->GetItemText(itemdb) == name)
       {
          if (imageId == ID_TREE_DATABASE)
             return itemdb;
-         item = m_TreeCtrl->GetFirstChild(itemdb, cookie);
+         wxTreeItemId item = m_TreeCtrl->GetFirstChild(itemdb, cookie);
          while (item.IsOk())
          {
             if (m_TreeCtrl->GetItemImage(item) == imageId)
@@ -1511,12 +1472,11 @@ bool wxSQLitePlusFrame::DatabaseExist(const wxString& dbname, bool alias,
                                       wxString* val)
 {
    wxSQLite3ResultSet dbQRY;
-   int index, ret;
 
    if (m_db.IsOpen())
    {
-      index = alias ? 1 : 2;
-      ret = alias ? 2 : 1;
+      int index = alias ? 1 : 2;
+      int ret = alias ? 2 : 1;
       try
       {
          dbQRY = m_db.ExecuteQuery(ToUTF8(("PRAGMA database_list;")));
