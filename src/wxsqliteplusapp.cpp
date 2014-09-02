@@ -137,6 +137,9 @@ END_EVENT_TABLE()
 /*---------------------------------------------------------------------------*/
 wxSQLitePlusApp::wxSQLitePlusApp()
 {
+    m_lang = wxLANGUAGE_UNKNOWN;
+    m_locale.Init(m_lang, wxLOCALE_DONT_LOAD_DEFAULT);
+    m_locale.AddCatalog("wxstd");
 }
 /*---------------------------------------------------------------------------*/
 bool wxSQLitePlusApp::OnInit()

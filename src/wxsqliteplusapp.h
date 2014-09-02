@@ -82,6 +82,9 @@ class wxSQLitePlusApp: public wxApp
       void SetStyleColourBack(int index, wxColour value);
       void SetStyleCase(int index, int value);
 
+    protected:
+        wxLanguage m_lang;
+        wxLocale m_locale;
    private:
 
       wxSingleInstanceChecker* m_checker;
