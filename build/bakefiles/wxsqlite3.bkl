@@ -6,6 +6,7 @@
 
         <!-- disable precompiled headers for wxWidgets -->
         <define>NOPCH</define>
+        <define>_CRT_SECURE_NO_WARNINGS</define>
         <define>SQLITE_CORE</define>
         <define>SQLITE_ENABLE_FTS3</define>
         <define>SQLITE_ENABLE_FTS3_PARENTHESIS</define>
