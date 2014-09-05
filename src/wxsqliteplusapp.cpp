@@ -140,6 +140,7 @@ wxSQLitePlusApp::wxSQLitePlusApp()
     m_lang = (wxLanguage)wxLocale::GetSystemLanguage();
     m_locale.Init(m_lang, wxLOCALE_DONT_LOAD_DEFAULT);
     m_locale.AddCatalogLookupPathPrefix(wxGetCwd());
+    m_locale.AddCatalogLookupPathPrefix("locale");
     m_locale.AddCatalogLookupPathPrefix(wxStandardPaths::Get().GetResourcesDir());
     m_locale.AddCatalog("wxstd");
 }
