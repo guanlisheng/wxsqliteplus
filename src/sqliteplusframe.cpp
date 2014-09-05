@@ -72,7 +72,7 @@ wxString g_SQLiteObjTypeName[5] =
    _("view"),
    _("index"),
    _("trigger"),
-   _("")
+   ""
 };
 /*---------------------------------------------------------------------------*/
 IMPLEMENT_DYNAMIC_CLASS(wxSQLitePlusFrame, wxFrame)
