@@ -528,7 +528,7 @@ wxSQLite3ResultSet wxGridSQLite3Table::GetResultSet(wxSQLite3Database* db,
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(("GetResultSet"), ex);
+      wxGetApp().ShowError("GetResultSet", ex);
    }
    return resultSet;
 }
@@ -587,7 +587,7 @@ wxSQLite3ResultSet wxGridTblIndexesTable::GetResultSet(wxSQLite3Database* db,
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(("GetResultSet"), ex);
+      wxGetApp().ShowError("GetResultSet", ex);
    }
    return resultSet;
 }
@@ -643,7 +643,7 @@ wxSQLite3ResultSet wxGridTblColumnsTable::GetResultSet(wxSQLite3Database* db,
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(("GetResultSet"), ex);
+      wxGetApp().ShowError("GetResultSet", ex);
    }
    return resultSet;
 }
@@ -729,7 +729,7 @@ wxSQLite3ResultSet wxGridTriggerTable::GetResultSet(wxSQLite3Database* db,
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(("GetResultSet"), ex);
+      wxGetApp().ShowError("GetResultSet", ex);
    }
    return resultSet;
 }

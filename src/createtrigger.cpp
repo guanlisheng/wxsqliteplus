@@ -535,7 +535,7 @@ void wxCreateTriggerDialog::PopulateObjName()
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(("PopulateObjName"), ex);
+      wxGetApp().ShowError("PopulateObjName", ex);
    }
    tblQRY.Finalize();
 }
@@ -567,7 +567,7 @@ void wxCreateTriggerDialog::PopulateColumns()
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(("PopulateColumns"), ex);
+      wxGetApp().ShowError("PopulateColumns", ex);
    }
    clmnQRY.Finalize();
 }

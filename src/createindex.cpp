@@ -253,7 +253,7 @@ void wxCreateIndexDlg::SetDatabase(wxSQLite3Database* db, const wxString& base)
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(("SetDatabase"), ex);
+      wxGetApp().ShowError("SetDatabase", ex);
    }
 }
 /*---------------------------------------------------------------------------*/
@@ -444,7 +444,7 @@ void wxCreateIndexDlg::DoTablenameSelected()
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(("DoTablenameSelected"), ex);
+      wxGetApp().ShowError("DoTablenameSelected", ex);
    }
 }
 /*---------------------------------------------------------------------------*/

@@ -437,18 +437,14 @@ bool wxSQLBook::DoClose()
 /*---------------------------------------------------------------------------*/
 wxString wxSQLBook::GetCurrentSQLStatement()
 {
-   long x, y, start;
-   wxString temp;
-
-   temp = m_SQLEdit->GetSelectedText();
+   wxString temp = m_SQLEdit->GetSelectedText();
    if (!temp.IsEmpty())
       return temp;
 
-   y = m_SQLEdit->LineFromPosition(m_SQLEdit->GetCurrentPos());
-   x = m_SQLEdit->GetColumn(m_SQLEdit->GetCurrentPos());
-   if (y <= 0)
-      start = 0;
-   else
+   long y = m_SQLEdit->LineFromPosition(m_SQLEdit->GetCurrentPos());
+   long x = m_SQLEdit->GetColumn(m_SQLEdit->GetCurrentPos());
+   long start = 0;
+   if (y > 0)
    {
       temp = m_SQLEdit->GetLine(y).Trim();
 

@@ -118,7 +118,7 @@ void wxAddColumnDialog::SetDatabase(wxSQLite3Database* db, const wxString& base)
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(("SetDatabase"), ex);
+      wxGetApp().ShowError("SetDatabase", ex);
    }
 }
 /*---------------------------------------------------------------------------*/
@@ -364,10 +364,10 @@ wxArrayString wxAddColumnDialog::GetAddColumnsScript()
               column->GetDefault() != ("CURRENT_TIMESTAMP")))
          {
             def = column->GetDefault();
-            if (!def.StartsWith(("'"))||!def.EndsWith(("'")))
+            if (!def.StartsWith("'")||!def.EndsWith("'"))
             {
-               def.Replace(("'"), ("''"));
-               ddl += ("'") + def + ("'");
+               def.Replace("'", "''");
+               ddl += "'" + def + "'";
             }
          }
          else if (column->GetDefault() == ("CURRENT_TIME")||
@@ -413,7 +413,7 @@ void wxAddColumnDialog::DoTablenameSelected()
    else
       basename = ("main");
 
-   sql = wxString::Format(("PRAGMA '%s'.table_info(\"%s\");"),
+   sql = wxString::Format("PRAGMA '%s'.table_info(\"%s\");",
                           basename.c_str(), tablename.c_str());
    try
    {
@@ -423,7 +423,7 @@ void wxAddColumnDialog::DoTablenameSelected()
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(("OnTablenameSelected"), ex);
+      wxGetApp().ShowError("OnTablenameSelected", ex);
    }
    tblQRY.Finalize();
 

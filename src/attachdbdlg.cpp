@@ -197,7 +197,7 @@ void wxAttachDbDlg::OnOkClick(wxCommandEvent& event)
    alias = m_EdAlias->GetValue().Lower();
    try
    {
-      dbQRY = m_Db->ExecuteQuery(ToUTF8(("PRAGMA database_list;")));
+      dbQRY = m_Db->ExecuteQuery(ToUTF8("PRAGMA database_list;"));
       while (dbQRY.NextRow())
       {
          if (dbQRY.GetString(1) == alias)
@@ -212,7 +212,7 @@ void wxAttachDbDlg::OnOkClick(wxCommandEvent& event)
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(("OnOkClick"), ex);
+      wxGetApp().ShowError("OnOkClick", ex);
    }
    dbQRY.Finalize();
    event.Skip();

@@ -193,22 +193,22 @@ void wxFilterDialog::OnBtnAddClick(wxCommandEvent& event)
 /*---------------------------------------------------------------------------*/
 void wxFilterDialog::OnBtnAndClick(wxCommandEvent& event)
 {
-   m_filter->AddText(("\nAND "));
+   m_filter->AddText("\nAND ");
 }
 /*---------------------------------------------------------------------------*/
 void wxFilterDialog::OnBtnOrClick(wxCommandEvent& event)
 {
-   m_filter->AddText(("\nOR "));
+   m_filter->AddText("\nOR ");
 }
 /*---------------------------------------------------------------------------*/
 void wxFilterDialog::OnBtnOparClick(wxCommandEvent& event)
 {
-   m_filter->AddText(("("));
+   m_filter->AddText("(");
 }
 /*---------------------------------------------------------------------------*/
 void wxFilterDialog::OnBtnCparClick(wxCommandEvent& event)
 {
-   m_filter->AddText((")"));
+   m_filter->AddText(")");
 }
 /*---------------------------------------------------------------------------*/
 void wxFilterDialog::OnClearClick(wxCommandEvent& event)
@@ -223,20 +223,15 @@ void wxFilterDialog::OnClearUpdate(wxUpdateUIEvent& event)
 /*---------------------------------------------------------------------------*/
 void wxFilterDialog::OnOkClick(wxCommandEvent& event)
 {
-   wxString sql, base;
-
    try
    {
       m_Statement = m_filter->GetText();
       if (!m_Statement.IsEmpty())
       {
-         if (m_Base.IsEmpty())
-            base = ("main");
-         else
-            base = m_Base;
-         sql = ("EXPLAIN SELECT *\r");
-         sql += ("FROM ") + base + (".") + m_Table + ("\r");
-         sql += ("WHERE ") + m_Statement + (";");
+         wxString base = m_Base.IsEmpty() ? "main" : m_Base;
+         wxString sql = "EXPLAIN SELECT *\r";
+         sql += "FROM " + base + "." + m_Table + "\r";
+         sql += "WHERE " + m_Statement + ";";
          wxSQLite3ResultSet resultSet = m_Db->ExecuteQuery(ToUTF8(sql));
          resultSet.Finalize();
       }
@@ -315,7 +310,7 @@ void wxFilterDialog::SetTable(const wxString& table)
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(("SetTable"), ex);
+      wxGetApp().ShowError("SetTable", ex);
    }
 
 }

@@ -286,7 +286,7 @@ void wxDataGrid::DoRefresh(bool usefilter)
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(("Refresh"), ex);
+      wxGetApp().ShowError("Refresh", ex);
    }
 }
 /*---------------------------------------------------------------------------*/

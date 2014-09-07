@@ -83,7 +83,7 @@ void wxDetachDbDlg::SetDatabase(wxSQLite3Database* db, const wxString& base)
       }
       catch(wxSQLite3Exception& ex)
       {
-         wxGetApp().ShowError(("SetDatabase"), ex);
+         wxGetApp().ShowError("SetDatabase", ex);
       }
       dbQRY.Finalize();
    }

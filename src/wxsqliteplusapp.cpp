@@ -264,7 +264,7 @@ void wxSQLitePlusApp::AddHistory(const wxString& sql)
    }
    catch(wxSQLite3Exception& ex)
    {
-      ShowError(("AddHistory"), ex);
+      ShowError("AddHistory", ex);
    }
 }
 /*---------------------------------------------------------------------------*/
@@ -287,7 +287,7 @@ wxSQLite3ResultSet wxSQLitePlusApp::GetStatementHistory()
    }
    catch(wxSQLite3Exception& ex)
    {
-      ShowError(("GetStatementHistory"), ex);
+      ShowError("GetStatementHistory", ex);
    }
    return hisQRY;
 }
@@ -1329,7 +1329,7 @@ int wxSQLitePlusApp::QueryGetParam(const wxString& param, int defvalue)
    }
    catch(wxSQLite3Exception& ex)
    {
-      ShowError(("QueryGetParam"), ex);
+      ShowError("QueryGetParam", ex);
    }
    return value;
 }
@@ -1366,7 +1366,7 @@ void wxSQLitePlusApp::QuerySetParam(const wxString& param, int value)
    }
    catch(wxSQLite3Exception& ex)
    {
-      ShowError(("QuerySetParam"), ex);
+      ShowError("QuerySetParam", ex);
    }
 }
 /*---------------------------------------------------------------------------*/
@@ -1393,7 +1393,7 @@ wxString wxSQLitePlusApp::QueryGetParam(const wxString& param,
    }
    catch(wxSQLite3Exception& ex)
    {
-      ShowError(("QueryGetParam"), ex);
+      ShowError("QueryGetParam", ex);
    }
    return value;
 }
@@ -1433,7 +1433,7 @@ void wxSQLitePlusApp::QuerySetParam(const wxString& param,
    }
    catch(wxSQLite3Exception& ex)
    {
-      ShowError(("QuerySetParam"), ex);
+      ShowError("QuerySetParam", ex);
    }
 }
 /*---------------------------------------------------------------------------*/
@@ -1670,7 +1670,7 @@ void wxSQLitePlusApp::InitConfig()
    }
    catch(wxSQLite3Exception& ex)
    {
-      ShowError(("InitConfig"), ex);
+      ShowError("InitConfig", ex);
    }
 }
 /*---------------------------------------------------------------------------*/

@@ -489,7 +489,7 @@ void wxSortDialog::SetStringsOrder(wxArrayString& array)
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(("SetStringsOrder"), ex);
+      wxGetApp().ShowError("SetStringsOrder", ex);
    }
 }
 /*---------------------------------------------------------------------------*/

@@ -214,7 +214,7 @@ void wxDropObject::PopulateNameList(wxSQLiteObjectType objecttype)
       }
       catch(wxSQLite3Exception& ex)
       {
-         wxGetApp().ShowError(("PopulateNameList"), ex);
+         wxGetApp().ShowError("PopulateNameList", ex);
       }
    }
 }

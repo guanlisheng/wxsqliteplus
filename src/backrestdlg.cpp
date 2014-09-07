@@ -227,7 +227,7 @@ void wxBackupRestoreDbDlg::SetDatabase(wxSQLite3Database* db, const wxString& ba
    {
       try
       {
-         dbQRY = m_Db->ExecuteQuery(ToUTF8(("PRAGMA database_list;")));
+         dbQRY = m_Db->ExecuteQuery(ToUTF8("PRAGMA database_list;"));
          while (dbQRY.NextRow())
          {
             alias = dbQRY.GetString(1);
@@ -237,7 +237,7 @@ void wxBackupRestoreDbDlg::SetDatabase(wxSQLite3Database* db, const wxString& ba
       }
       catch(wxSQLite3Exception& ex)
       {
-         wxGetApp().ShowError(("SetDatabase"), ex);
+         wxGetApp().ShowError("SetDatabase", ex);
       }
       dbQRY.Finalize();
    }

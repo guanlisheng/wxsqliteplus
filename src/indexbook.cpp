@@ -138,7 +138,7 @@ void wxIndexBook::RefreshDbObject()
    }
    catch(wxSQLite3Exception& ex)
    {
-      wxGetApp().ShowError(("RefreshDbObject"), ex);
+      wxGetApp().ShowError("RefreshDbObject", ex);
    }
 
    frame = (wxSQLitePlusFrame*)wxGetApp().GetTopWindow();
