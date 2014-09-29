@@ -1210,7 +1210,7 @@ void wxSQLitePlusFrame::RefreshDatabase(const wxString& dbname, bool forceexpand
 
    Item = m_TreeCtrl->AppendItem(DatabaseItem, _("Tables"), ID_TREE_TABLES);
    Item = m_TreeCtrl->AppendItem(DatabaseItem, _("Views"), ID_TREE_VIEWS);
-   Item = m_TreeCtrl->AppendItem(DatabaseItem, _("Indexes"), ID_TREE_INDEXES);
+   Item = m_TreeCtrl->AppendItem(DatabaseItem, _("Index"), ID_TREE_INDEXES);
    Item = m_TreeCtrl->AppendItem(DatabaseItem, _("Triggers"), ID_TREE_TRIGGERS);
 
    RefreshTables(dbname);
