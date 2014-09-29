@@ -111,7 +111,7 @@ void wxBlobDialog::CreateControls()
                               wxT("Liberation Mono")));
    bSizer2->Add(m_EditHexa, 1, wxGROW|wxALL, 5);
 
-   wxButton* btnSaveAs = new wxButton(pnInfo, ID_BTN_SAVEAS, _("Save As..."),
+   wxButton* btnSaveAs = new wxButton(pnInfo, ID_BTN_SAVEAS, _("Save As"),
                                       wxDefaultPosition, wxDefaultSize, 0);
    btnSaveAs->SetName(("m_BtnSaveAs"));
    bSizer2->Add(btnSaveAs, 0, wxALIGN_LEFT|wxALL, 5);

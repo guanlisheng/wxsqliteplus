@@ -321,10 +321,10 @@ void wxSQLitePlusFrame::CreateMenus()
    wxMenuBar* menuBar = new wxMenuBar;
    m_MnuFile = new wxMenu;
 
-   m_MnuFile->Append(wxID_OPEN, _("&Open/Create..."),
+   m_MnuFile->Append(wxID_OPEN, _("&Open/Create"),
                      _("Open an existing database or create a new database"),
                      wxITEM_NORMAL);
-   m_MnuFile->Append(ID_MNU_ATTACH_DB, _("&Attach..."),
+   m_MnuFile->Append(ID_MNU_ATTACH_DB, _("&Attach"),
                      _("Attach an existing or new database"), wxITEM_NORMAL);
 
    m_MnuFile->Append(ID_MNU_CLOSE_DB, _("C&lose database"),
@@ -336,12 +336,12 @@ void wxSQLitePlusFrame::CreateMenus()
                      _("Delete empty space in database"), wxITEM_NORMAL);
    m_MnuFile->Enable(ID_MNU_COMPACT, false);
 
-   m_MnuFile->Append(ID_MNU_REKEY, _("Encryption key..."),
+   m_MnuFile->Append(ID_MNU_REKEY, _("Encryption key"),
                      _("Add/Change the encryption key of the main database"), wxITEM_NORMAL);
    m_MnuFile->AppendSeparator();
-   m_MnuFile->Append(ID_MNU_BACKUP, _("Backup..."),
+   m_MnuFile->Append(ID_MNU_BACKUP, _("Backup"),
                      _("Backup a database"), wxITEM_NORMAL);
-   m_MnuFile->Append(ID_MNU_RESTORE, _("Restore..."),
+   m_MnuFile->Append(ID_MNU_RESTORE, _("Restore"),
                      _("Restore a database"), wxITEM_NORMAL);
 
    m_MnuFile->AppendSeparator();
@@ -377,27 +377,27 @@ void wxSQLitePlusFrame::CreateMenus()
    menuBar->Append(m_MnuEdit, _("&Edit"));
 
    m_MnuDatabase = new wxMenu;
-   m_MnuDatabase->Append(ID_MNU_ADD_TABLE, _("Create &table..."),
+   m_MnuDatabase->Append(ID_MNU_ADD_TABLE, _("Create &table"),
                          _("Show dialog to create new table"), wxITEM_NORMAL);
-   m_MnuDatabase->Append(ID_MNU_DEL_TABLE, _("Delete t&able..."),
+   m_MnuDatabase->Append(ID_MNU_DEL_TABLE, _("Delete t&able"),
                          _("Show dialog to delete table"), wxITEM_NORMAL);
    m_MnuDatabase->AppendSeparator();
-   m_MnuDatabase->Append(ID_MNU_ADD_VIEW, _("Create &view..."),
+   m_MnuDatabase->Append(ID_MNU_ADD_VIEW, _("Create &view"),
                          _("Show dialog to create new view"), wxITEM_NORMAL);
-   m_MnuDatabase->Append(ID_MNU_DEL_VIEW, _("Delete v&iew..."),
+   m_MnuDatabase->Append(ID_MNU_DEL_VIEW, _("Delete v&iew"),
                          _("Show dialog to delete view"), wxITEM_NORMAL);
    m_MnuDatabase->AppendSeparator();
-   m_MnuDatabase->Append(ID_MNU_ADD_INDEX, _("Create i&ndex..."),
+   m_MnuDatabase->Append(ID_MNU_ADD_INDEX, _("Create i&ndex"),
                          _("Show dialog to create new index"), wxITEM_NORMAL);
-   m_MnuDatabase->Append(ID_MNU_DEL_INDEX, _("Delete inde&x..."),
+   m_MnuDatabase->Append(ID_MNU_DEL_INDEX, _("Delete inde&x"),
                          _("Show dialog to delete index"), wxITEM_NORMAL);
    m_MnuDatabase->AppendSeparator();
-   m_MnuDatabase->Append(ID_MNU_ADD_TRIGGER, _("Create tr&igger..."),
+   m_MnuDatabase->Append(ID_MNU_ADD_TRIGGER, _("Create tr&igger"),
                          _("Show dialog to create new trigger"), wxITEM_NORMAL);
-   m_MnuDatabase->Append(ID_MNU_DEL_TRIGGER, _("Delete tri&gger..."),
+   m_MnuDatabase->Append(ID_MNU_DEL_TRIGGER, _("Delete tri&gger"),
                          _("Show dialog to delete trigger"), wxITEM_NORMAL);
    m_MnuDatabase->AppendSeparator();
-   m_MnuDatabase->Append(ID_MNU_ADD_COLUMNS, _("Add &columns..."),
+   m_MnuDatabase->Append(ID_MNU_ADD_COLUMNS, _("Add &columns"),
                          _("Show dialog to add columns to table"), wxITEM_NORMAL);
    m_MnuDatabase->AppendSeparator();
    m_MnuDatabase->Append(ID_MNU_EXPLORE, _("Explore"),
@@ -462,7 +462,7 @@ void wxSQLitePlusFrame::CreateMenus()
    m_MnuHelp = new wxMenu;
    m_MnuHelp->Append(wxID_HELP, _("&Help"), _("Show the help window"),
                      wxITEM_NORMAL);
-   m_MnuHelp->Append(wxID_ABOUT, _("&About..."),
+   m_MnuHelp->Append(wxID_ABOUT, _("&About"),
                      _("Show the information dialog"), wxITEM_NORMAL);
    menuBar->Append(m_MnuHelp, _("&Help"));
    SetMenuBar(menuBar);
@@ -2123,7 +2123,7 @@ wxMenu* wxSQLitePlusFrame::CreateMenuDatabase()
    menu->Append(wxID_REFRESH, _("Refresh"),
                 _("Refresh database structure"), wxITEM_NORMAL);
    menu->AppendSeparator();
-   menu->Append(wxID_OPEN, _("Open/Create..."),
+   menu->Append(wxID_OPEN, _("Open/Create"),
                 _("Open an existing database or create a new database"),
                 wxITEM_NORMAL);
    menu->Append(ID_MNU_CLOSE_DB, _("Close"),
@@ -2131,21 +2131,21 @@ wxMenu* wxSQLitePlusFrame::CreateMenuDatabase()
    menu->Append(ID_MNU_DETACH_DB, _("Detach database"),
                 _("Detach an attached database"), wxITEM_NORMAL);
    menu->AppendSeparator();
-   menu->Append(ID_MNU_BACKUP, _("Backup..."),
+   menu->Append(ID_MNU_BACKUP, _("Backup"),
                 _("Backup a database"), wxITEM_NORMAL);
-   menu->Append(ID_MNU_RESTORE, _("Restore..."),
+   menu->Append(ID_MNU_RESTORE, _("Restore"),
                 _("Restore a database"), wxITEM_NORMAL);
    menu->AppendSeparator();
-   menu->Append(ID_MNU_DROP_OBJECT, _("Drop Object..."),
+   menu->Append(ID_MNU_DROP_OBJECT, _("Drop Object"),
                 _("Show dialog to delete database object"), wxITEM_NORMAL);
    menu->AppendSeparator();
-   menu->Append(ID_MNU_ADD_TABLE, _("Create Table..."),
+   menu->Append(ID_MNU_ADD_TABLE, _("Create Table"),
                 _("Show dialog to create new table"), wxITEM_NORMAL);
-   menu->Append(ID_MNU_ADD_VIEW, _("Create View..."),
+   menu->Append(ID_MNU_ADD_VIEW, _("Create View"),
                 _("Show dialog to create new view"), wxITEM_NORMAL);
-   menu->Append(ID_MNU_ADD_INDEX, _("Create Index..."),
+   menu->Append(ID_MNU_ADD_INDEX, _("Create Index"),
                 _("Show dialog to create new index"), wxITEM_NORMAL);
-   menu->Append(ID_MNU_ADD_TRIGGER, _("Create Trigger..."),
+   menu->Append(ID_MNU_ADD_TRIGGER, _("Create Trigger"),
                 _("Show dialog to create new trigger"), wxITEM_NORMAL);
    return menu;
 }
@@ -2158,16 +2158,16 @@ wxMenu* wxSQLitePlusFrame::CreateMenuTables()
    menu->Append(ID_MNU_EXPLORE, _("Explore"),
                 _("Explore the selected table"), wxITEM_NORMAL);
    menu->AppendSeparator();
-   menu->Append(ID_MNU_DEL_TABLE, _("Drop Table..."),
+   menu->Append(ID_MNU_DEL_TABLE, _("Drop Table"),
                 _("Delete the selected table"), wxITEM_NORMAL);
-   menu->Append(ID_MNU_ADD_TABLE, _("Create Table..."),
+   menu->Append(ID_MNU_ADD_TABLE, _("Create Table"),
                 _("Show dialog to create new table"), wxITEM_NORMAL);
-   menu->Append(ID_MNU_ADD_INDEX, _("Create Index..."),
+   menu->Append(ID_MNU_ADD_INDEX, _("Create Index"),
                 _("Show dialog to create new index"), wxITEM_NORMAL);
-   menu->Append(ID_MNU_ADD_TRIGGER, _("Create trigger..."),
+   menu->Append(ID_MNU_ADD_TRIGGER, _("Create trigger"),
                 _("Show dialog to create new trigger"), wxITEM_NORMAL);
    menu->AppendSeparator();
-   menu->Append(ID_MNU_ADD_COLUMNS, _("Add columns..."),
+   menu->Append(ID_MNU_ADD_COLUMNS, _("Add columns"),
                 _("Show dialog to add columns to table"), wxITEM_NORMAL);
    return menu;
 }
@@ -2180,9 +2180,9 @@ wxMenu* wxSQLitePlusFrame::CreateMenuIndexes()
    menu->Append(ID_MNU_EXPLORE, _("Explore"),
                 _("Explore the selected index"), wxITEM_NORMAL);
    menu->AppendSeparator();
-   menu->Append(ID_MNU_DEL_INDEX, _("Drop Index..."),
+   menu->Append(ID_MNU_DEL_INDEX, _("Drop Index"),
                 _("Delete the selected index"), wxITEM_NORMAL);
-   menu->Append(ID_MNU_ADD_INDEX, _("Create Index..."),
+   menu->Append(ID_MNU_ADD_INDEX, _("Create Index"),
                 _("Show dialog to create new index"), wxITEM_NORMAL);
    return menu;
 }
@@ -2195,11 +2195,11 @@ wxMenu* wxSQLitePlusFrame::CreateMenuViews()
    menu->Append(ID_MNU_EXPLORE, _("Explore"),
                 _("Explore the selected view"), wxITEM_NORMAL);
    menu->AppendSeparator();
-   menu->Append(ID_MNU_DEL_VIEW, _("Drop View..."),
+   menu->Append(ID_MNU_DEL_VIEW, _("Drop View"),
                 _("Delete the selected view"), wxITEM_NORMAL);
-   menu->Append(ID_MNU_ADD_VIEW, _("Create View..."),
+   menu->Append(ID_MNU_ADD_VIEW, _("Create View"),
                 _("Show dialog to create new view"), wxITEM_NORMAL);
-   menu->Append(ID_MNU_ADD_TRIGGER, _("Create &trigger..."),
+   menu->Append(ID_MNU_ADD_TRIGGER, _("Create &trigger"),
                 _("Show dialog to create new trigger"), wxITEM_NORMAL);
    return menu;
 }
@@ -2212,9 +2212,9 @@ wxMenu* wxSQLitePlusFrame::CreateMenuTriggers()
    menu->Append(ID_MNU_EXPLORE, _("Explore"),
                 _("Explore the selected trigger"), wxITEM_NORMAL);
    menu->AppendSeparator();
-   menu->Append(ID_MNU_DEL_TRIGGER, _("Drop Trigger..."),
+   menu->Append(ID_MNU_DEL_TRIGGER, _("Drop Trigger"),
                 _("Delete the selected trigger"), wxITEM_NORMAL);
-   menu->Append(ID_MNU_ADD_TRIGGER, _("Create Trigger..."),
+   menu->Append(ID_MNU_ADD_TRIGGER, _("Create Trigger"),
                 _("Show dialog to create new trigger"), wxITEM_NORMAL);
    return menu;
 }

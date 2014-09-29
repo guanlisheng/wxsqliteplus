@@ -1450,7 +1450,6 @@ bool wxSQLitePlusApp::CheckStatementSyntax(wxSQLite3Database* db,
    // d'après la documentation celle-ci ne vérifie pas vraiment la syntaxe
    // mais juste si l'expression est bien terminée.
    // L'utilisation de EXPLAIN permet de passer par l'analyseur
-   // syntaxique et de vérifier les paramètres (nom de tables et colonnes, etc...)
    wxString tmp = ("EXPLAIN ") + statement.Strip(wxString::both);
 
    try

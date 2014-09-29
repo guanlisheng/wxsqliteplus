@@ -348,8 +348,8 @@ wxMenu* wxDataGrid::CreateRightMenu()
    wxMenu* menu = wxSpecGrid::CreateRightMenu();
 
    menu->AppendSeparator();
-   menu->Append(ID_MNU_FILTER, _("&Filter..."), wxEmptyString, wxITEM_NORMAL);
-   menu->Append(ID_MNU_SORT, _("&Sort..."), wxEmptyString, wxITEM_NORMAL);
+   menu->Append(ID_MNU_FILTER, _("&Filter"), wxEmptyString, wxITEM_NORMAL);
+   menu->Append(ID_MNU_SORT, _("&Sort"), wxEmptyString, wxITEM_NORMAL);
    menu->AppendSeparator();
    menu->Append(ID_MNU_REFRESH, _("&Refresh"), wxEmptyString, wxITEM_NORMAL);
    return menu;
