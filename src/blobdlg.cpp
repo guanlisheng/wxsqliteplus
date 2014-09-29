@@ -166,7 +166,7 @@ void wxBlobDialog::SetBlob(wxMemoryBuffer* buffer)
       wxImage image;
       size_t BufLen = buffer->GetDataLen();
 
-      m_BlobLen->SetLabel(wxString::Format(("%u"), BufLen));
+      m_BlobLen->SetLabel(wxString::Format(("%lu"), BufLen));
       m_EditHexa->SetValue(GetHexaString(buffer));
       wxMemoryInputStream inputStream((const char*)buffer->GetData(), BufLen);
       if (m_FlagBin == false)
@@ -202,6 +202,7 @@ void wxBlobDialog::SetBlob(wxMemoryBuffer* buffer)
 void wxBlobDialog::OnBtnSaveasClick(wxCommandEvent& event)
 {
 // A FINIR
+    wxMessageBox(_("not implemented"));
    event.Skip();
 }
 /*---------------------------------------------------------------------------*/
