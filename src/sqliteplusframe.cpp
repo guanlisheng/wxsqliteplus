@@ -311,9 +311,9 @@ void wxSQLitePlusFrame::CreateControls()
    GetAuiManager().Update();
 
    m_TreeCtrl->SetImageList(&m_TreeImageList);
-   int widths[3] = {-1, 70, 100};
+   int widths[3] = {-1, 70, 170};
    SetStatusWidths(3, widths);
-   SetStatusText(("v") + wxGetApp().GetFileVersion() + ("/") + m_db.GetVersion(), 2);
+   SetStatusText("v" + wxGetApp().GetFileVersion() + "/" + m_db.GetVersion() + "/" + wxVERSION_STRING, 2);
 }
 /*---------------------------------------------------------------------------*/
 void wxSQLitePlusFrame::CreateMenus()
