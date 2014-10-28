@@ -9,78 +9,78 @@
 /*---------------------------------------------------------------------------*/
 class wxGridAddColumnsTable : public wxGridColumnsTable
 {
-   public:
+public:
 
-      wxGridAddColumnsTable();
-      
-      void SetExistingColumnsName(const wxArrayString& colsname);
-      
-   protected:
+    wxGridAddColumnsTable();
 
-      virtual bool CheckName(const wxString& name, int row = -1);
+    void SetExistingColumnsName(const wxArrayString& colsname);
 
-   private:
+protected:
 
-      wxArrayString m_ExistingColumnsName;
+    virtual bool CheckName(const wxString& name, int row = -1);
+
+private:
+
+    wxArrayString m_ExistingColumnsName;
 
 };
 /*---------------------------------------------------------------------------*/
 class wxAddColumnDialog: public wxDialog
-{    
-   DECLARE_DYNAMIC_CLASS(wxAddColumnDialog)
-   DECLARE_EVENT_TABLE()
+{
+    DECLARE_DYNAMIC_CLASS(wxAddColumnDialog)
+    DECLARE_EVENT_TABLE()
 
-   public:
+public:
 
-      wxAddColumnDialog();
-      wxAddColumnDialog(wxWindow* parent, wxWindowID id = -1,
-                        const wxString& caption = _("Add Column"),
-                        const wxPoint& pos = wxDefaultPosition,
-                        const wxSize& size = wxSize(400, 300),
-                        long style = wxDEFAULT_DIALOG_STYLE);
+    wxAddColumnDialog();
+    wxAddColumnDialog(wxWindow* parent, wxWindowID id = -1,
+                      const wxString& caption = _("Add Column"),
+                      const wxPoint& pos = wxDefaultPosition,
+                      const wxSize& size = wxSize(400, 300),
+                      long style = wxDEFAULT_DIALOG_STYLE);
 
-      bool Create(wxWindow* parent, wxWindowID id = -1,
-                  const wxString& caption = _("Add Column"),
-                  const wxPoint& pos = wxDefaultPosition,
-                  const wxSize& size = wxSize(400, 300),
-                  long style = wxDEFAULT_DIALOG_STYLE);
+    bool Create(wxWindow* parent, wxWindowID id = -1,
+                const wxString& caption = _("Add Column"),
+                const wxPoint& pos = wxDefaultPosition,
+                const wxSize& size = wxSize(400, 300),
+                long style = wxDEFAULT_DIALOG_STYLE);
 
-      ~wxAddColumnDialog();
+    ~wxAddColumnDialog();
 
-      wxString GetAddColumnsDDL();
-      wxArrayString GetAddColumnsScript();
-      
-      void SetDatabase(wxSQLite3Database* db,
-                       const wxString& base = wxEmptyString);
-      void SetTable(const wxString& table);
-      
-   protected:
+    wxString GetAddColumnsDDL();
+    wxArrayString GetAddColumnsScript();
 
-      void Init();
-      void CreateControls();
+    void SetDatabase(wxSQLite3Database* db,
+                     const wxString& base = wxEmptyString);
+    void SetTable(const wxString& table);
 
-      void OnTablenameSelected(wxCommandEvent& event);
-      void OnBookPageChanging(wxNotebookEvent& event);
-      void OnGridChar(wxKeyEvent& event);
-      void OnBtnAddcolumnClick(wxCommandEvent& event);
-      void OnBtnDelcolumnClick(wxCommandEvent& event);
-      void OnBtnDelcolumnUpdate(wxUpdateUIEvent& event);
-      void OnOkClick(wxCommandEvent& event);
+protected:
 
-      static bool ShowToolTips();
+    void Init();
+    void CreateControls();
 
-   private:
+    void OnTablenameSelected(wxCommandEvent& event);
+    void OnBookPageChanging(wxNotebookEvent& event);
+    void OnGridChar(wxKeyEvent& event);
+    void OnBtnAddcolumnClick(wxCommandEvent& event);
+    void OnBtnDelcolumnClick(wxCommandEvent& event);
+    void OnBtnDelcolumnUpdate(wxUpdateUIEvent& event);
+    void OnOkClick(wxCommandEvent& event);
 
-      wxChoice* m_ChoiceTableName;
-      wxGrid* m_GridColumns;
-      wxDDLEditor* m_TextDdl;
-      wxButton* m_BtnAddColumn;
+    static bool ShowToolTips();
 
-      wxSQLite3Database* m_Db;
-      wxString m_Base;
-      wxGridAddColumnsTable m_TableColumns;
+private:
 
-      void DoTablenameSelected();
+    wxChoice* m_ChoiceTableName;
+    wxGrid* m_GridColumns;
+    wxDDLEditor* m_TextDdl;
+    wxButton* m_BtnAddColumn;
+
+    wxSQLite3Database* m_Db;
+    wxString m_Base;
+    wxGridAddColumnsTable m_TableColumns;
+
+    void DoTablenameSelected();
 };
 /*---------------------------------------------------------------------------*/
 #endif   // _ADDCOLUMN_H_

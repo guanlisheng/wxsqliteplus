@@ -24,33 +24,33 @@
 IMPLEMENT_DYNAMIC_CLASS(wxDropObject, wxDialog)
 
 BEGIN_EVENT_TABLE(wxDropObject, wxDialog)
-   EVT_CHOICE(ID_OBJ_TYPE, wxDropObject::OnObjTypeSelected)
-   EVT_BUTTON(wxID_OK, wxDropObject::OnOkClick)
+    EVT_CHOICE(ID_OBJ_TYPE, wxDropObject::OnObjTypeSelected)
+    EVT_BUTTON(wxID_OK, wxDropObject::OnOkClick)
 END_EVENT_TABLE()
 /*---------------------------------------------------------------------------*/
 wxDropObject::wxDropObject()
 {
-   Init();
+    Init();
 }
 /*---------------------------------------------------------------------------*/
 wxDropObject::wxDropObject(wxWindow* parent, wxWindowID id,
                            const wxString& caption, const wxPoint& pos,
                            const wxSize& size, long style)
 {
-   Init();
-   Create(parent, id, caption, pos, size, style);
+    Init();
+    Create(parent, id, caption, pos, size, style);
 }
 /*---------------------------------------------------------------------------*/
 bool wxDropObject::Create(wxWindow* parent, wxWindowID id,
                           const wxString& caption, const wxPoint& pos,
                           const wxSize& size, long style)
 {
-   SetExtraStyle(wxWS_EX_BLOCK_EVENTS);
-   wxDialog::Create( parent, id, caption, pos, size, style );
-   
-   CreateControls();
-   Centre();
-   return true;
+    SetExtraStyle(wxWS_EX_BLOCK_EVENTS);
+    wxDialog::Create( parent, id, caption, pos, size, style );
+
+    CreateControls();
+    Centre();
+    return true;
 }
 /*---------------------------------------------------------------------------*/
 wxDropObject::~wxDropObject()
@@ -59,164 +59,164 @@ wxDropObject::~wxDropObject()
 /*---------------------------------------------------------------------------*/
 void wxDropObject::Init()
 {
-   m_ChoiceObjType = NULL;
-   m_TextObjName = NULL;
-   m_Db = NULL;
+    m_ChoiceObjType = NULL;
+    m_TextObjName = NULL;
+    m_Db = NULL;
 }
 /*---------------------------------------------------------------------------*/
 void wxDropObject::CreateControls()
-{    
-   wxBoxSizer* bSizer1 = new wxBoxSizer(wxVERTICAL);
-   SetSizer(bSizer1);
+{
+    wxBoxSizer* bSizer1 = new wxBoxSizer(wxVERTICAL);
+    SetSizer(bSizer1);
 
-   wxStaticText* iStatic1 = new wxStaticText(this, wxID_STATIC,
-                                             _("Object Type :"),
-                                             wxDefaultPosition, wxDefaultSize, 0);
-   bSizer1->Add(iStatic1, 0, wxALIGN_LEFT|wxALL, 5);
+    wxStaticText* iStatic1 = new wxStaticText(this, wxID_STATIC,
+            _("Object Type :"),
+            wxDefaultPosition, wxDefaultSize, 0);
+    bSizer1->Add(iStatic1, 0, wxALIGN_LEFT|wxALL, 5);
 
-   wxArrayString m_ChoiceObjTypeStrings;
-   m_ChoiceObjTypeStrings.Add(_("TABLE"));
-   m_ChoiceObjTypeStrings.Add(_("VIEW"));
-   m_ChoiceObjTypeStrings.Add(_("INDEX"));
-   m_ChoiceObjTypeStrings.Add(_("TRIGGER"));
-   m_ChoiceObjType = new wxChoice(this, ID_OBJ_TYPE, wxDefaultPosition,
-                                  wxSize(200, -1), m_ChoiceObjTypeStrings, 0);
-   bSizer1->Add(m_ChoiceObjType, 0, wxGROW|wxALL, 5);
+    wxArrayString m_ChoiceObjTypeStrings;
+    m_ChoiceObjTypeStrings.Add(_("TABLE"));
+    m_ChoiceObjTypeStrings.Add(_("VIEW"));
+    m_ChoiceObjTypeStrings.Add(_("INDEX"));
+    m_ChoiceObjTypeStrings.Add(_("TRIGGER"));
+    m_ChoiceObjType = new wxChoice(this, ID_OBJ_TYPE, wxDefaultPosition,
+                                   wxSize(200, -1), m_ChoiceObjTypeStrings, 0);
+    bSizer1->Add(m_ChoiceObjType, 0, wxGROW|wxALL, 5);
 
-   wxStaticText* iStatic2 = new wxStaticText(this, wxID_STATIC,
-                                             _("Object Name :"),
-                                             wxDefaultPosition, wxDefaultSize, 0);
-   bSizer1->Add(iStatic2, 0, wxALIGN_LEFT|wxALL, 5);
+    wxStaticText* iStatic2 = new wxStaticText(this, wxID_STATIC,
+            _("Object Name :"),
+            wxDefaultPosition, wxDefaultSize, 0);
+    bSizer1->Add(iStatic2, 0, wxALIGN_LEFT|wxALL, 5);
 
-   wxArrayString m_TextObjNameStrings;
-   m_TextObjName = new wxChoice(this, ID_OBJ_NAME, wxDefaultPosition,
-                                wxSize(200, -1), m_TextObjNameStrings, 0);
-   bSizer1->Add(m_TextObjName, 0, wxGROW|wxALL, 5);
+    wxArrayString m_TextObjNameStrings;
+    m_TextObjName = new wxChoice(this, ID_OBJ_NAME, wxDefaultPosition,
+                                 wxSize(200, -1), m_TextObjNameStrings, 0);
+    bSizer1->Add(m_TextObjName, 0, wxGROW|wxALL, 5);
 
-   bSizer1->Add(5, 5, 1, wxGROW|wxALL, 5);
+    bSizer1->Add(5, 5, 1, wxGROW|wxALL, 5);
 
-   wxStdDialogButtonSizer* dBtnSizer1 = new wxStdDialogButtonSizer;
+    wxStdDialogButtonSizer* dBtnSizer1 = new wxStdDialogButtonSizer;
 
-   bSizer1->Add(dBtnSizer1, 0, wxALIGN_RIGHT|wxALL, 5);
-   wxButton* btnOk = new wxButton(this, wxID_OK, _("&OK"), wxDefaultPosition,
-                                  wxDefaultSize, 0);
-   btnOk->SetDefault();
-   dBtnSizer1->AddButton(btnOk);
+    bSizer1->Add(dBtnSizer1, 0, wxALIGN_RIGHT|wxALL, 5);
+    wxButton* btnOk = new wxButton(this, wxID_OK, _("&OK"), wxDefaultPosition,
+                                   wxDefaultSize, 0);
+    btnOk->SetDefault();
+    dBtnSizer1->AddButton(btnOk);
 
-   wxButton* btnCancel = new wxButton(this, wxID_CANCEL, _("&Cancel"),
-                                      wxDefaultPosition, wxDefaultSize, 0);
-   dBtnSizer1->AddButton(btnCancel);
+    wxButton* btnCancel = new wxButton(this, wxID_CANCEL, _("&Cancel"),
+                                       wxDefaultPosition, wxDefaultSize, 0);
+    dBtnSizer1->AddButton(btnCancel);
 
-   dBtnSizer1->Realize();
+    dBtnSizer1->Realize();
 
-   // Set validators
-   m_ChoiceObjType->SetValidator(wxGenericValidator(& m_ObjectType));
-   m_TextObjName->SetValidator(wxGenericValidator(& m_ObjectName));
+    // Set validators
+    m_ChoiceObjType->SetValidator(wxGenericValidator(& m_ObjectType));
+    m_TextObjName->SetValidator(wxGenericValidator(& m_ObjectName));
 }
 /*---------------------------------------------------------------------------*/
 bool wxDropObject::ShowToolTips()
 {
-   return true;
+    return true;
 }
 /*---------------------------------------------------------------------------*/
 void wxDropObject::SetDatabase(wxSQLite3Database* db, const wxString& base)
 {
-   m_Db = db;
-   m_Base = base;
+    m_Db = db;
+    m_Base = base;
 }
 /*---------------------------------------------------------------------------*/
 void wxDropObject::OnOkClick(wxCommandEvent& event)
 {
-   wxString name;
-   wxSQLitePlusFrame* frame;
-   wxSQLiteObjectType type;
-   
-   name = m_TextObjName->GetStringSelection().Lower();
-   type = (wxSQLiteObjectType)m_ChoiceObjType->GetSelection();
-   if (type == otNone)
-   {
-      wxMessageBox(_("You have to select an object type."),
-                   _("Error"));
-      return;
-   }
-   if (name.IsEmpty())
-   {
-      wxMessageBox(_("You have to enter an object name."),
-                   _("Error"));
-      return;
-   }
-   
-   frame = (wxSQLitePlusFrame*)wxGetApp().GetTopWindow();
-   
-   if (!frame->ExistDbObject(type, name, m_Base))
-   {
-      wxMessageBox(_("Object of this type with this name don't exist."),
-                   _("Error"));
-      return;
-   }
-   event.Skip();
+    wxString name;
+    wxSQLitePlusFrame* frame;
+    wxSQLiteObjectType type;
+
+    name = m_TextObjName->GetStringSelection().Lower();
+    type = (wxSQLiteObjectType)m_ChoiceObjType->GetSelection();
+    if (type == otNone)
+    {
+        wxMessageBox(_("You have to select an object type."),
+                     _("Error"));
+        return;
+    }
+    if (name.IsEmpty())
+    {
+        wxMessageBox(_("You have to enter an object name."),
+                     _("Error"));
+        return;
+    }
+
+    frame = (wxSQLitePlusFrame*)wxGetApp().GetTopWindow();
+
+    if (!frame->ExistDbObject(type, name, m_Base))
+    {
+        wxMessageBox(_("Object of this type with this name don't exist."),
+                     _("Error"));
+        return;
+    }
+    event.Skip();
 }
 /*---------------------------------------------------------------------------*/
 void wxDropObject::DisableType()
 {
-   m_TextObjName->SetFocus();
-   m_ChoiceObjType->Enable(false);
+    m_TextObjName->SetFocus();
+    m_ChoiceObjType->Enable(false);
 }
 /*---------------------------------------------------------------------------*/
 void wxDropObject::DisableName()
 {
-   m_TextObjName->Enable(false);
+    m_TextObjName->Enable(false);
 }
 /*---------------------------------------------------------------------------*/
 void wxDropObject::OnObjTypeSelected( wxCommandEvent& event )
 {
-   PopulateNameList((wxSQLiteObjectType)m_ChoiceObjType->GetSelection());
-   event.Skip();
+    PopulateNameList((wxSQLiteObjectType)m_ChoiceObjType->GetSelection());
+    event.Skip();
 }
 /*---------------------------------------------------------------------------*/
 wxSQLiteObjectType wxDropObject::GetObjectType() const
 {
-   wxSQLitePlusFrame* frame;
-   
-   frame = (wxSQLitePlusFrame*)wxGetApp().GetTopWindow();
-   return frame->GetObjNameType(m_ObjectType);
+    wxSQLitePlusFrame* frame;
+
+    frame = (wxSQLitePlusFrame*)wxGetApp().GetTopWindow();
+    return frame->GetObjNameType(m_ObjectType);
 }
 /*---------------------------------------------------------------------------*/
 void wxDropObject::SetObjectType(wxSQLiteObjectType value)
 {
-   wxSQLitePlusFrame* frame;
+    wxSQLitePlusFrame* frame;
 
-   frame = (wxSQLitePlusFrame*)wxGetApp().GetTopWindow();
+    frame = (wxSQLitePlusFrame*)wxGetApp().GetTopWindow();
 
-   m_ObjectType = frame->GetObjTypeName(value).Upper();
-   PopulateNameList(value);
+    m_ObjectType = frame->GetObjTypeName(value).Upper();
+    PopulateNameList(value);
 }
 /*---------------------------------------------------------------------------*/
 void wxDropObject::PopulateNameList(wxSQLiteObjectType objecttype)
 {
-   wxString objectname;
-   wxSQLite3ResultSet tblQRY;
-   wxSQLitePlusFrame* frame;
+    wxString objectname;
+    wxSQLite3ResultSet tblQRY;
+    wxSQLitePlusFrame* frame;
 
-   m_TextObjName->Clear();
-   if (m_Db && (objecttype != otNone))
-   {
-      try
-      {
-         frame = (wxSQLitePlusFrame*)wxGetApp().GetTopWindow();
-         tblQRY = frame->GetObjNameList(objecttype, m_Base);
-         while (tblQRY.NextRow())
-         {
-            objectname = tblQRY.GetString(0);
-            m_TextObjName->Append(objectname);
-         }
-         tblQRY.Finalize();
-      }
-      catch(wxSQLite3Exception& ex)
-      {
-         wxGetApp().ShowError("PopulateNameList", ex);
-      }
-   }
+    m_TextObjName->Clear();
+    if (m_Db && (objecttype != otNone))
+    {
+        try
+        {
+            frame = (wxSQLitePlusFrame*)wxGetApp().GetTopWindow();
+            tblQRY = frame->GetObjNameList(objecttype, m_Base);
+            while (tblQRY.NextRow())
+            {
+                objectname = tblQRY.GetString(0);
+                m_TextObjName->Append(objectname);
+            }
+            tblQRY.Finalize();
+        }
+        catch(wxSQLite3Exception& ex)
+        {
+            wxGetApp().ShowError("PopulateNameList", ex);
+        }
+    }
 }
 /*---------------------------------------------------------------------------*/
 

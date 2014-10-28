@@ -11,46 +11,46 @@ class wxDataGrid;
 /*---------------------------------------------------------------------------*/
 class wxPanelData : public wxPanel
 {
-   DECLARE_DYNAMIC_CLASS(wxPanelData)
-   DECLARE_EVENT_TABLE()
+    DECLARE_DYNAMIC_CLASS(wxPanelData)
+    DECLARE_EVENT_TABLE()
 
-   public:
+public:
 
-      wxPanelData();
-      wxPanelData(wxWindow* parent, wxWindowID id = -1,
-                  const wxPoint& pos = wxDefaultPosition,
-                  const wxSize& size = wxDefaultSize,
-                  long style = wxTAB_TRAVERSAL);
+    wxPanelData();
+    wxPanelData(wxWindow* parent, wxWindowID id = -1,
+                const wxPoint& pos = wxDefaultPosition,
+                const wxSize& size = wxDefaultSize,
+                long style = wxTAB_TRAVERSAL);
 
-      bool Create(wxWindow* parent, wxWindowID id = -1,
-                  const wxPoint& pos = wxDefaultPosition,
-                  const wxSize& size = wxDefaultSize,
-                  long style = wxTAB_TRAVERSAL);
+    bool Create(wxWindow* parent, wxWindowID id = -1,
+                const wxPoint& pos = wxDefaultPosition,
+                const wxSize& size = wxDefaultSize,
+                long style = wxTAB_TRAVERSAL);
 
-      ~wxPanelData();
+    ~wxPanelData();
 
-      void SetDbTableViewName(wxSQLite3Database* db,
-                              const wxString& objectname,
-                              const wxString& base = wxEmptyString);
+    void SetDbTableViewName(wxSQLite3Database* db,
+                            const wxString& objectname,
+                            const wxString& base = wxEmptyString);
 
-      bool HasFocus();
+    bool HasFocus();
 
-      void DoRefresh(bool usefilter = false);
+    void DoRefresh(bool usefilter = false);
 
-   protected:
+protected:
 
-      void Init();
-      void CreateControls();
+    void Init();
+    void CreateControls();
 
-      void OnMnuFilterClick(wxCommandEvent& event);
-      void OnMnuSortClick(wxCommandEvent& event);
-      void OnMnuRefreshClick(wxCommandEvent& event);
-      void OnStaticUpdate(wxUpdateUIEvent& event);
+    void OnMnuFilterClick(wxCommandEvent& event);
+    void OnMnuSortClick(wxCommandEvent& event);
+    void OnMnuRefreshClick(wxCommandEvent& event);
+    void OnStaticUpdate(wxUpdateUIEvent& event);
 
-   private:
+private:
 
-      wxStaticText* m_active;
-      wxDataGrid* m_DataGrid;
+    wxStaticText* m_active;
+    wxDataGrid* m_DataGrid;
 };
 
 #endif   // _PANELDATA_H_

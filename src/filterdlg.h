@@ -11,60 +11,62 @@
 /*---------------------------------------------------------------------------*/
 class wxFilterDialog: public wxDialog
 {
-   DECLARE_DYNAMIC_CLASS(wxFilterDialog)
-   DECLARE_EVENT_TABLE()
+    DECLARE_DYNAMIC_CLASS(wxFilterDialog)
+    DECLARE_EVENT_TABLE()
 
-   public:
+public:
 
-      wxFilterDialog();
-      wxFilterDialog(wxWindow* parent, wxWindowID id = -1,
-                     const wxString& caption = _("Filter"),
-                     const wxPoint& pos = wxDefaultPosition,
-                     const wxSize& size = wxDefaultSize,
-                     long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER);
+    wxFilterDialog();
+    wxFilterDialog(wxWindow* parent, wxWindowID id = -1,
+                   const wxString& caption = _("Filter"),
+                   const wxPoint& pos = wxDefaultPosition,
+                   const wxSize& size = wxDefaultSize,
+                   long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER);
 
-      bool Create(wxWindow* parent, wxWindowID id = -1,
-                  const wxString& caption = _("Filter"),
-                  const wxPoint& pos = wxDefaultPosition,
-                  const wxSize& size = wxDefaultSize,
-                  long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER);
+    bool Create(wxWindow* parent, wxWindowID id = -1,
+                const wxString& caption = _("Filter"),
+                const wxPoint& pos = wxDefaultPosition,
+                const wxSize& size = wxDefaultSize,
+                long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER);
 
-      ~wxFilterDialog();
+    ~wxFilterDialog();
 
-      void SetDatabase(wxSQLite3Database* db,
-                       const wxString& base = wxEmptyString);
-      void SetTable(const wxString& table);
+    void SetDatabase(wxSQLite3Database* db,
+                     const wxString& base = wxEmptyString);
+    void SetTable(const wxString& table);
 
-      wxString GetStatement(){return m_Statement;}
-      void SetStatement(const wxString& value);
+    wxString GetStatement() {
+        return m_Statement;
+    }
+    void SetStatement(const wxString& value);
 
-   protected:
+protected:
 
-      void Init();
-      void CreateControls();
+    void Init();
+    void CreateControls();
 
-      void OnFieldsSelected(wxCommandEvent& event);
-      void OnValueUpdate(wxUpdateUIEvent& event);
-      void OnBtnAndClick(wxCommandEvent& event);
-      void OnBtnOrClick(wxCommandEvent& event);
-      void OnBtnOparClick(wxCommandEvent& event);
-      void OnBtnCparClick(wxCommandEvent& event);
-      void OnClearClick(wxCommandEvent& event);
-      void OnClearUpdate(wxUpdateUIEvent& event);
-      void OnBtnAddClick(wxCommandEvent& event);
-      void OnOkClick(wxCommandEvent& event);
+    void OnFieldsSelected(wxCommandEvent& event);
+    void OnValueUpdate(wxUpdateUIEvent& event);
+    void OnBtnAndClick(wxCommandEvent& event);
+    void OnBtnOrClick(wxCommandEvent& event);
+    void OnBtnOparClick(wxCommandEvent& event);
+    void OnBtnCparClick(wxCommandEvent& event);
+    void OnClearClick(wxCommandEvent& event);
+    void OnClearUpdate(wxUpdateUIEvent& event);
+    void OnBtnAddClick(wxCommandEvent& event);
+    void OnOkClick(wxCommandEvent& event);
 
-   private:
+private:
 
-      wxChoice* m_fields;
-      wxChoice* m_operators;
-      wxTextCtrl* m_Value;
-      wxSQLEditor* m_filter;
+    wxChoice* m_fields;
+    wxChoice* m_operators;
+    wxTextCtrl* m_Value;
+    wxSQLEditor* m_filter;
 
-      wxSQLite3Database* m_Db;
-      wxString m_Base;
-      wxString m_Table;
-      wxString m_Statement;
+    wxSQLite3Database* m_Db;
+    wxString m_Base;
+    wxString m_Table;
+    wxString m_Statement;
 
 };
 /*---------------------------------------------------------------------------*/

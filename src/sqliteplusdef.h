@@ -2,9 +2,9 @@
 #define _SQLITEPLUSDEF_H_
 /*---------------------------------------------------------------------------*/
 #if wxUSE_UNICODE
-   #define ToUTF8(str) str
+#define ToUTF8(str) str
 #else
-   #define ToUTF8(str) wxString(wxConvCurrent->cMB2WC(str), wxConvUTF8)
+#define ToUTF8(str) wxString(wxConvCurrent->cMB2WC(str), wxConvUTF8)
 #endif /* Unicode */
 /*---------------------------------------------------------------------------*/
 #define IPC_VERB_OPEN ("OPEN")

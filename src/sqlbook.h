@@ -15,110 +15,122 @@ class SQLite3HookForCount;
 /*---------------------------------------------------------------------------*/
 class wxSQLBook: public wxPanel
 {
-   DECLARE_DYNAMIC_CLASS(wxSQLBook)
-   DECLARE_EVENT_TABLE()
+    DECLARE_DYNAMIC_CLASS(wxSQLBook)
+    DECLARE_EVENT_TABLE()
 
-   public:
+public:
 
-      wxSQLBook();
-      wxSQLBook(wxWindow* parent, wxWindowID id = -1,
+    wxSQLBook();
+    wxSQLBook(wxWindow* parent, wxWindowID id = -1,
+              const wxPoint& pos = wxDefaultPosition,
+              const wxSize& size = wxDefaultSize, long style = 0);
+
+    bool Create(wxWindow* parent, wxWindowID id = -1,
                 const wxPoint& pos = wxDefaultPosition,
                 const wxSize& size = wxDefaultSize, long style = 0);
 
-      bool Create(wxWindow* parent, wxWindowID id = -1,
-                  const wxPoint& pos = wxDefaultPosition,
-                  const wxSize& size = wxDefaultSize, long style = 0);
+    ~wxSQLBook();
 
-      ~wxSQLBook();
+    wxSQLEditor* GetSQLEdit() {
+        return m_SQLEdit;
+    }
+    wxGrid* GetDataResult() {
+        return (wxGrid*)m_DataResult;
+    }
+    wxTextCtrl* GetLogResult() {
+        return m_LogResult;
+    }
 
-      wxSQLEditor* GetSQLEdit(){return m_SQLEdit;}
-      wxGrid* GetDataResult(){return (wxGrid*)m_DataResult;}
-      wxTextCtrl* GetLogResult(){return m_LogResult;}
+    void ShowLog(bool showend = true);
+    void ShowData();
+    void ShowExplain();
+    void WriteText(const wxString&  text);
+    void SetAutoClose(bool value) {
+        m_AutoClose = value;
+    }
 
-      void ShowLog(bool showend = true);
-      void ShowData();
-      void ShowExplain();
-      void WriteText(const wxString&  text);
-      void SetAutoClose(bool value){m_AutoClose = value;}
+    void SetDatabaseAndHook(wxSQLite3Database* db, SQLite3HookForCount* hook)
+    {
+        m_db = db;
+        m_Hook = hook;
+    }
+    void SetAutoTransact(bool autotransact) {
+        m_AutoTransact = autotransact;
+    }
 
-      void SetDatabaseAndHook(wxSQLite3Database* db, SQLite3HookForCount* hook)
-      {
-         m_db = db;
-         m_Hook = hook;
-      }
-      void SetAutoTransact(bool autotransact){m_AutoTransact = autotransact;}
+    void ExecQuery(const wxString& sql, bool explain = false,
+                   bool history = true);
+    void ExecScript(const wxArrayString& arrayString);
 
-      void ExecQuery(const wxString& sql, bool explain = false,
-                     bool history = true);
-      void ExecScript(const wxArrayString& arrayString);
+    bool DoClose();
 
-      bool DoClose();
+protected:
 
-   protected:
+    void Init();
+    void CreateControls();
 
-      void Init();
-      void CreateControls();
+    void OnUpdateUI(wxStyledTextEvent& event);
+    void OnSQLRightDown(wxMouseEvent& event);
+    void OnSQLSetFocus(wxFocusEvent& event);
+    void OnSQLKillFocus(wxFocusEvent& event);
 
-      void OnUpdateUI(wxStyledTextEvent& event);
-      void OnSQLRightDown(wxMouseEvent& event);
-      void OnSQLSetFocus(wxFocusEvent& event);
-      void OnSQLKillFocus(wxFocusEvent& event);
+    void OnMnuCompactClick(wxCommandEvent& event);
+    void OnCopyClick(wxCommandEvent& event);
+    void OnCopyUpdate(wxUpdateUIEvent& event);
+    void OnClearAllClick(wxCommandEvent& event);
+    void OnClearAllUpdate(wxUpdateUIEvent& event);
+    void OnSelectallClick(wxCommandEvent& event);
+    void OnSelectallUpdate(wxUpdateUIEvent& event);
+    void OnEventClick(wxCommandEvent& event);
+    void OnEventUpdate(wxUpdateUIEvent& event);
+    void OnMnuShowhistoryClick(wxCommandEvent& event);
+    void OnMnuShowhistoryUpdate(wxUpdateUIEvent& event);
 
-      void OnMnuCompactClick(wxCommandEvent& event);
-      void OnCopyClick(wxCommandEvent& event);
-      void OnCopyUpdate(wxUpdateUIEvent& event);
-      void OnClearAllClick(wxCommandEvent& event);
-      void OnClearAllUpdate(wxUpdateUIEvent& event);
-      void OnSelectallClick(wxCommandEvent& event);
-      void OnSelectallUpdate(wxUpdateUIEvent& event);
-      void OnEventClick(wxCommandEvent& event);
-      void OnEventUpdate(wxUpdateUIEvent& event);
-      void OnMnuShowhistoryClick(wxCommandEvent& event);
-      void OnMnuShowhistoryUpdate(wxUpdateUIEvent& event);
+    void OnExecSQLClick(wxCommandEvent& event);
+    void OnExecScriptClick(wxCommandEvent& event);
+    void OnExplainClick(wxCommandEvent& event);
+    void OnDescribeClick(wxCommandEvent& event);
+    void OnQueryUpdate(wxUpdateUIEvent& event);
 
-      void OnExecSQLClick(wxCommandEvent& event);
-      void OnExecScriptClick(wxCommandEvent& event);
-      void OnExplainClick(wxCommandEvent& event);
-      void OnDescribeClick(wxCommandEvent& event);
-      void OnQueryUpdate(wxUpdateUIEvent& event);
+    void OnBeginTransactionClick(wxCommandEvent& event);
+    void OnEndTransactionClick(wxCommandEvent& event);
+    void OnCommitClick(wxCommandEvent& event);
+    void OnRollbackClick(wxCommandEvent& event);
+    void OnBeginTransactionUpdate(wxUpdateUIEvent& event);
+    void OnEndTransactionUpdate(wxUpdateUIEvent& event);
 
-      void OnBeginTransactionClick(wxCommandEvent& event);
-      void OnEndTransactionClick(wxCommandEvent& event);
-      void OnCommitClick(wxCommandEvent& event);
-      void OnRollbackClick(wxCommandEvent& event);
-      void OnBeginTransactionUpdate(wxUpdateUIEvent& event);
-      void OnEndTransactionUpdate(wxUpdateUIEvent& event);
+    void OnEdRefresh(wxCommandEvent& event);
 
-      void OnEdRefresh(wxCommandEvent& event);
+    wxAuiManager& GetAuiManager() {
+        return m_auiManager;
+    }
 
-      wxAuiManager& GetAuiManager() { return m_auiManager; }
+    static bool ShowToolTips();
 
-      static bool ShowToolTips();
+private:
 
-   private:
+    wxAuiManager m_auiManager;
 
-      wxAuiManager m_auiManager;
+    wxSQLEditor* m_SQLEdit;
+    wxAuiNotebook* m_ResultBook;
+    wxSpecGrid* m_DataResult;
+    wxTextCtrl* m_LogResult;
+    wxSpecGrid* m_Explain;
 
-      wxSQLEditor* m_SQLEdit;
-      wxAuiNotebook* m_ResultBook;
-      wxSpecGrid* m_DataResult;
-      wxTextCtrl* m_LogResult;
-      wxSpecGrid* m_Explain;
+    wxSQLite3Database* m_db;
+    SQLite3HookForCount* m_Hook;
+    bool m_AutoTransact;
+    bool m_AutoClose;
 
-      wxSQLite3Database* m_db;
-      SQLite3HookForCount* m_Hook;
-      bool m_AutoTransact;
-      bool m_AutoClose;
-
-      wxString GetCurrentSQLStatement();
-      void GetScripSQL(wxArrayString& array);
-      wxString GetSQLStatementAt(long start, long& end);
-      wxString GetCurrentItem();
-      void DisplayHookValues();
-      wxMenu* CreateMenuSQLEditor();
-      void ShowEditorPos();
-      void SetStatusText(const wxString& text);
-      void Describe(const wxString& name);
+    wxString GetCurrentSQLStatement();
+    void GetScripSQL(wxArrayString& array);
+    wxString GetSQLStatementAt(long start, long& end);
+    wxString GetCurrentItem();
+    void DisplayHookValues();
+    wxMenu* CreateMenuSQLEditor();
+    void ShowEditorPos();
+    void SetStatusText(const wxString& text);
+    void Describe(const wxString& name);
 
 };
 /*---------------------------------------------------------------------------*/

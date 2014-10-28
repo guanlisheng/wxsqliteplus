@@ -9,45 +9,45 @@
 /*---------------------------------------------------------------------------*/
 class wxDetachDbDlg: public wxDialog
 {
-   DECLARE_DYNAMIC_CLASS(wxDetachDbDlg)
-   DECLARE_EVENT_TABLE()
+    DECLARE_DYNAMIC_CLASS(wxDetachDbDlg)
+    DECLARE_EVENT_TABLE()
 
-   public:
+public:
 
-      wxDetachDbDlg();
-      wxDetachDbDlg(wxWindow* parent, wxWindowID id = -1,
-                    const wxString& caption = _("Detach Database"),
-                    const wxPoint& pos = wxDefaultPosition,
-                    const wxSize& size = wxDefaultSize,
-                    long style = wxDEFAULT_DIALOG_STYLE);
-
-      bool Create(wxWindow* parent, wxWindowID id = -1,
+    wxDetachDbDlg();
+    wxDetachDbDlg(wxWindow* parent, wxWindowID id = -1,
                   const wxString& caption = _("Detach Database"),
                   const wxPoint& pos = wxDefaultPosition,
                   const wxSize& size = wxDefaultSize,
                   long style = wxDEFAULT_DIALOG_STYLE);
 
-      ~wxDetachDbDlg();
+    bool Create(wxWindow* parent, wxWindowID id = -1,
+                const wxString& caption = _("Detach Database"),
+                const wxPoint& pos = wxDefaultPosition,
+                const wxSize& size = wxDefaultSize,
+                long style = wxDEFAULT_DIALOG_STYLE);
 
-      void SetDatabase(wxSQLite3Database* db,
-                       const wxString& base = wxEmptyString);
+    ~wxDetachDbDlg();
 
-       int GetAliasList(wxArrayString& aliaslist);
+    void SetDatabase(wxSQLite3Database* db,
+                     const wxString& base = wxEmptyString);
 
-   protected:
+    int GetAliasList(wxArrayString& aliaslist);
 
-      void Init();
-      void CreateControls();
+protected:
 
-      void OnOkClick(wxCommandEvent& event);
+    void Init();
+    void CreateControls();
 
-      static bool ShowToolTips();
+    void OnOkClick(wxCommandEvent& event);
 
-   private:
+    static bool ShowToolTips();
 
-      wxListBox* m_DataBasesList;
+private:
 
-      wxSQLite3Database* m_Db;
+    wxListBox* m_DataBasesList;
+
+    wxSQLite3Database* m_Db;
 };
 /*---------------------------------------------------------------------------*/
 #endif   // _DETACHDBDLG_H_

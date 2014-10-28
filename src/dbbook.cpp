@@ -20,21 +20,21 @@ IMPLEMENT_CLASS(wxDbBook, wxPanel)
 /*---------------------------------------------------------------------------*/
 wxDbBook::wxDbBook()
 {
-   Init();
+    Init();
 }
 /*---------------------------------------------------------------------------*/
 wxDbBook::wxDbBook(wxWindow* parent, wxWindowID id, const wxPoint& pos,
                    const wxSize& size, long style)
 {
-   Init();
-   Create(parent, id, pos, size, style);
+    Init();
+    Create(parent, id, pos, size, style);
 }
 /*---------------------------------------------------------------------------*/
 bool wxDbBook::Create(wxWindow* parent, wxWindowID id, const wxPoint& pos,
                       const wxSize& size, long style)
 {
-   wxPanel::Create( parent, id, pos, size, style );
-   return true;
+    wxPanel::Create( parent, id, pos, size, style );
+    return true;
 }
 /*---------------------------------------------------------------------------*/
 wxDbBook::~wxDbBook()
@@ -43,15 +43,15 @@ wxDbBook::~wxDbBook()
 /*---------------------------------------------------------------------------*/
 void wxDbBook::Init()
 {
-   m_db = NULL;
+    m_db = NULL;
 }
 /*---------------------------------------------------------------------------*/
 void wxDbBook::SetDbObjectName(wxSQLite3Database* db,
                                const wxString& objectname, const wxString& base)
 {
-   m_db = db;
-   m_Base = base;
-   m_DbObjectName = objectname;
-}                               
+    m_db = db;
+    m_Base = base;
+    m_DbObjectName = objectname;
+}
 /*---------------------------------------------------------------------------*/
 

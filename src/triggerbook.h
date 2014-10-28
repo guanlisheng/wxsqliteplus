@@ -9,44 +9,44 @@
 #include "sqleditor.h"
 /*---------------------------------------------------------------------------*/
 class wxTriggerBook : public wxDbBook
-{    
-   DECLARE_DYNAMIC_CLASS(wxTriggerBook)
-   DECLARE_EVENT_TABLE()
+{
+    DECLARE_DYNAMIC_CLASS(wxTriggerBook)
+    DECLARE_EVENT_TABLE()
 
-   public:
-      
-      wxTriggerBook();
-      wxTriggerBook(wxWindow* parent, wxWindowID id = -1,
-                    const wxPoint& pos = wxDefaultPosition,
-                    const wxSize& size = wxDefaultSize,
-                    long style = wxTAB_TRAVERSAL);
+public:
 
-      bool Create(wxWindow* parent, wxWindowID id = -1,
+    wxTriggerBook();
+    wxTriggerBook(wxWindow* parent, wxWindowID id = -1,
                   const wxPoint& pos = wxDefaultPosition,
                   const wxSize& size = wxDefaultSize,
                   long style = wxTAB_TRAVERSAL);
 
-      ~wxTriggerBook();
+    bool Create(wxWindow* parent, wxWindowID id = -1,
+                const wxPoint& pos = wxDefaultPosition,
+                const wxSize& size = wxDefaultSize,
+                long style = wxTAB_TRAVERSAL);
 
-      virtual void SetDbObjectName(wxSQLite3Database* db,
-                                   const wxString& objectname,
-                                   const wxString& base);
+    ~wxTriggerBook();
 
-      virtual void RefreshDbObject();
+    virtual void SetDbObjectName(wxSQLite3Database* db,
+                                 const wxString& objectname,
+                                 const wxString& base);
 
-   protected:
-      
-      void Init();
-      void CreateControls();
-      static bool ShowToolTips();
+    virtual void RefreshDbObject();
 
-      void OnCopyClick(wxCommandEvent& event);
-      void OnCopyUpdate(wxUpdateUIEvent& event);
-      void OnEdRefresh(wxCommandEvent& event);
+protected:
 
-   private:
-      
-      wxDDLEditor* m_PageDdl;
+    void Init();
+    void CreateControls();
+    static bool ShowToolTips();
+
+    void OnCopyClick(wxCommandEvent& event);
+    void OnCopyUpdate(wxUpdateUIEvent& event);
+    void OnEdRefresh(wxCommandEvent& event);
+
+private:
+
+    wxDDLEditor* m_PageDdl;
 
 };
 /*---------------------------------------------------------------------------*/

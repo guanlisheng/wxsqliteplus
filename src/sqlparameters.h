@@ -12,40 +12,40 @@
 /*---------------------------------------------------------------------------*/
 class wxSQLParametersDialog: public wxDialog
 {
-   DECLARE_DYNAMIC_CLASS(wxSQLParametersDialog)
+    DECLARE_DYNAMIC_CLASS(wxSQLParametersDialog)
 
-   public:
+public:
 
-      wxSQLParametersDialog();
-      wxSQLParametersDialog(wxWindow* parent, wxWindowID id = -1,
-                            const wxString& caption = _("SQL Parameters"),
-                            const wxPoint& pos = wxDefaultPosition,
-                            const wxSize& size = wxSize(400, 250),
-                            long style = WXSQLPARAMETERSDIALOG_STYLE);
+    wxSQLParametersDialog();
+    wxSQLParametersDialog(wxWindow* parent, wxWindowID id = -1,
+                          const wxString& caption = _("SQL Parameters"),
+                          const wxPoint& pos = wxDefaultPosition,
+                          const wxSize& size = wxSize(400, 250),
+                          long style = WXSQLPARAMETERSDIALOG_STYLE);
 
-      bool Create(wxWindow* parent, wxWindowID id = -1,
-                  const wxString& caption = _("SQL Parameters"),
-                  const wxPoint& pos = wxDefaultPosition,
-                  const wxSize& size = wxSize(400, 250),
-                  long style = WXSQLPARAMETERSDIALOG_STYLE);
+    bool Create(wxWindow* parent, wxWindowID id = -1,
+                const wxString& caption = _("SQL Parameters"),
+                const wxPoint& pos = wxDefaultPosition,
+                const wxSize& size = wxSize(400, 250),
+                long style = WXSQLPARAMETERSDIALOG_STYLE);
 
-      ~wxSQLParametersDialog();
+    ~wxSQLParametersDialog();
 
-      void AddParameter(const wxString& name, const wxString& value = wxEmptyString);
-      wxString GetParameter(size_t index);
+    void AddParameter(const wxString& name, const wxString& value = wxEmptyString);
+    wxString GetParameter(size_t index);
 
-   protected:
+protected:
 
-      void Init();
-      void CreateControls();
+    void Init();
+    void CreateControls();
 
-      static bool ShowToolTips();
+    static bool ShowToolTips();
 
-   private:
+private:
 
-      wxScrolledWindow* m_ScrolledWindow;
-      wxFlexGridSizer* m_FlexSizer;
-      wxArrayPtrVoid m_PtrArray;
+    wxScrolledWindow* m_ScrolledWindow;
+    wxFlexGridSizer* m_FlexSizer;
+    wxArrayPtrVoid m_PtrArray;
 };
 /*---------------------------------------------------------------------------*/
 #endif   // _SQLPARAMETERS_H_

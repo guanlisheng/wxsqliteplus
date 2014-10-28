@@ -15,55 +15,55 @@ class wxSQLite3Database;
 /*---------------------------------------------------------------------------*/
 class wxTableBook: public wxDbBook
 {
-   DECLARE_DYNAMIC_CLASS(wxTableBook)
-   DECLARE_EVENT_TABLE()
+    DECLARE_DYNAMIC_CLASS(wxTableBook)
+    DECLARE_EVENT_TABLE()
 
-   public:
+public:
 
-      wxTableBook();
-      wxTableBook(wxWindow* parent, wxWindowID id = -1,
-                  const wxPoint& pos = wxDefaultPosition,
-                  const wxSize& size = wxDefaultSize,
-                  long style = wxTAB_TRAVERSAL);
+    wxTableBook();
+    wxTableBook(wxWindow* parent, wxWindowID id = -1,
+                const wxPoint& pos = wxDefaultPosition,
+                const wxSize& size = wxDefaultSize,
+                long style = wxTAB_TRAVERSAL);
 
     /// Creation
-      bool Create(wxWindow* parent, wxWindowID id = -1,
-                  const wxPoint& pos = wxDefaultPosition,
-                  const wxSize& size = wxDefaultSize,
-                  long style = wxTAB_TRAVERSAL);
+    bool Create(wxWindow* parent, wxWindowID id = -1,
+                const wxPoint& pos = wxDefaultPosition,
+                const wxSize& size = wxDefaultSize,
+                long style = wxTAB_TRAVERSAL);
 
-      ~wxTableBook();
+    ~wxTableBook();
 
-      virtual void SetDbObjectName(wxSQLite3Database* db,
-                                   const wxString& objectname,
-                                   const wxString& base = wxEmptyString);
+    virtual void SetDbObjectName(wxSQLite3Database* db,
+                                 const wxString& objectname,
+                                 const wxString& base = wxEmptyString);
 
-      virtual void RefreshDbObject();
+    virtual void RefreshDbObject();
 
-   protected:
+protected:
 
-      void Init();
-      void CreateControls();
-      static bool ShowToolTips();
+    void Init();
+    void CreateControls();
+    static bool ShowToolTips();
 
-      void OnTablebookPageChanging( wxAuiNotebookEvent& event );
-      void OnCopyClick(wxCommandEvent& event);
-      void OnCopyUpdate(wxUpdateUIEvent& event);
-      void OnEdRefresh(wxCommandEvent& event);
+    void OnTablebookPageChanging( wxAuiNotebookEvent& event );
+    void OnCopyClick(wxCommandEvent& event);
+    void OnCopyUpdate(wxUpdateUIEvent& event);
+    void OnEdRefresh(wxCommandEvent& event);
 
-   private:
+private:
 
-      wxAuiNotebook* m_Book;
-      wxSpecGrid* m_PageColumns;
-      wxPanelData* m_PageData;
-      wxSpecGrid* m_PageForeignKey;
-      wxSpecGrid* m_PageTriggers;
-      wxSpecGrid* m_PageIndexes;
-      wxDDLEditor* m_PageDdl;
-      bool m_InitData;
+    wxAuiNotebook* m_Book;
+    wxSpecGrid* m_PageColumns;
+    wxPanelData* m_PageData;
+    wxSpecGrid* m_PageForeignKey;
+    wxSpecGrid* m_PageTriggers;
+    wxSpecGrid* m_PageIndexes;
+    wxDDLEditor* m_PageDdl;
+    bool m_InitData;
 
-      void RefreshStruct();
-      void RefreshData();
+    void RefreshStruct();
+    void RefreshData();
 };
 /*---------------------------------------------------------------------------*/
 #endif   // _TABLEBOOK_H_

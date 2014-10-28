@@ -10,40 +10,40 @@
 class wxSpecGrid;
 /*---------------------------------------------------------------------------*/
 class wxDescribeDlg: public wxDialog
-{    
-   DECLARE_DYNAMIC_CLASS(wxDescribeDlg)
-   DECLARE_EVENT_TABLE()
+{
+    DECLARE_DYNAMIC_CLASS(wxDescribeDlg)
+    DECLARE_EVENT_TABLE()
 
-   public:
+public:
 
-      wxDescribeDlg();
-      wxDescribeDlg(wxWindow* parent, wxWindowID id = -1,
-                    const wxString& caption = _("Describe"),
-                    const wxPoint& pos = wxDefaultPosition,
-                    const wxSize& size = wxSize(600, 500),
-                    long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER);
-
-      bool Create(wxWindow* parent, wxWindowID id = -1,
+    wxDescribeDlg();
+    wxDescribeDlg(wxWindow* parent, wxWindowID id = -1,
                   const wxString& caption = _("Describe"),
                   const wxPoint& pos = wxDefaultPosition,
                   const wxSize& size = wxSize(600, 500),
                   long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER);
 
-      ~wxDescribeDlg();
+    bool Create(wxWindow* parent, wxWindowID id = -1,
+                const wxString& caption = _("Describe"),
+                const wxPoint& pos = wxDefaultPosition,
+                const wxSize& size = wxSize(600, 500),
+                long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER);
 
-      void Describe(wxSQLite3Database* db, const wxString& name,
-                    const wxString& base);
+    ~wxDescribeDlg();
 
-   protected:
+    void Describe(wxSQLite3Database* db, const wxString& name,
+                  const wxString& base);
 
-      void Init();
-      void CreateControls();
-      static bool ShowToolTips();
+protected:
 
-   private:
+    void Init();
+    void CreateControls();
+    static bool ShowToolTips();
 
-      wxStaticText* m_DescribeName;
-      wxSpecGrid* m_DescribeGrid;
+private:
+
+    wxStaticText* m_DescribeName;
+    wxSpecGrid* m_DescribeGrid;
 };
 /*---------------------------------------------------------------------------*/
 #endif   // _DESCRIBEDLG_H_

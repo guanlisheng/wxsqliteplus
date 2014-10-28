@@ -17,131 +17,155 @@ enum wxColTblType {cttInteger, cttIntegerAutoinc, cttReal, cttText, cttBlob};
 /*---------------------------------------------------------------------------*/
 class wxColumnCtrTable
 {
-   public:
+public:
 
-      wxColumnCtrTable();
+    wxColumnCtrTable();
 
-      void SetName(const wxString& name) {m_Name = name;}
-      void SetType(wxColTblType type) {m_Type = type;}
-      void SetNotNull(bool notnull) {m_NotNull = notnull;}
-      void SetPrimaryKey(bool primarykey) {m_PrimaryKey = primarykey;}
-      void SetDefault(const wxString& def) {m_Default = def;}
+    void SetName(const wxString& name) {
+        m_Name = name;
+    }
+    void SetType(wxColTblType type) {
+        m_Type = type;
+    }
+    void SetNotNull(bool notnull) {
+        m_NotNull = notnull;
+    }
+    void SetPrimaryKey(bool primarykey) {
+        m_PrimaryKey = primarykey;
+    }
+    void SetDefault(const wxString& def) {
+        m_Default = def;
+    }
 
-      wxString GetName() const {return m_Name;}
-      wxColTblType GetType() const {return m_Type;}
-      bool GetNotNull() const {return m_NotNull;}
-      bool GetPrimaryKey() const {return m_PrimaryKey;}
-      wxString GetDefault() const {return m_Default;}
+    wxString GetName() const {
+        return m_Name;
+    }
+    wxColTblType GetType() const {
+        return m_Type;
+    }
+    bool GetNotNull() const {
+        return m_NotNull;
+    }
+    bool GetPrimaryKey() const {
+        return m_PrimaryKey;
+    }
+    wxString GetDefault() const {
+        return m_Default;
+    }
 
-   private:
-        
-      wxString m_Name;
-      wxColTblType m_Type;
-      bool m_NotNull;
-      bool m_PrimaryKey;
-      wxString m_Default;
+private:
+
+    wxString m_Name;
+    wxColTblType m_Type;
+    bool m_NotNull;
+    bool m_PrimaryKey;
+    wxString m_Default;
 };
 /*---------------------------------------------------------------------------*/
 WX_DEFINE_ARRAY(wxColumnCtrTable*, wxArrayColumnCtrTable);
 /*---------------------------------------------------------------------------*/
 class wxGridColumnsTable : public wxGridTableBase
 {
-   public:
-        
-      wxGridColumnsTable();
+public:
 
-      virtual ~wxGridColumnsTable();
-        
-      virtual int GetNumberRows();
-      virtual int GetNumberCols() {return 5;}
-      virtual bool IsEmptyCell(int row, int col);
+    wxGridColumnsTable();
 
-      virtual wxString GetValue(int row, int col);
-      virtual bool GetValueAsBool(int row, int col);
+    virtual ~wxGridColumnsTable();
 
-      virtual void SetValue(int row, int col, const wxString& value);
-      virtual void SetValueAsBool(int row, int col, bool value);
+    virtual int GetNumberRows();
+    virtual int GetNumberCols() {
+        return 5;
+    }
+    virtual bool IsEmptyCell(int row, int col);
 
-      virtual wxString GetColLabelValue(int col);
-      
-      virtual wxString GetTypeName(int row, int col);
-      virtual bool CanGetValueAs(int row, int col, const wxString& typeName);
-      virtual bool CanSetValueAs(int row, int col, const wxString& typeName);
+    virtual wxString GetValue(int row, int col);
+    virtual bool GetValueAsBool(int row, int col);
 
-      virtual bool InsertRows(size_t pos = 0, size_t numRows = 1);
-      virtual bool AppendRows(size_t numRows = 1);
-      virtual bool DeleteRows(size_t pos = 0, size_t numRows = 1);
+    virtual void SetValue(int row, int col, const wxString& value);
+    virtual void SetValueAsBool(int row, int col, bool value);
 
-      wxColumnCtrTable* GetColumnCtrTable(size_t index);
-      
-   protected:
+    virtual wxString GetColLabelValue(int col);
 
-      virtual bool CheckName(const wxString& name, int row = -1);
+    virtual wxString GetTypeName(int row, int col);
+    virtual bool CanGetValueAs(int row, int col, const wxString& typeName);
+    virtual bool CanSetValueAs(int row, int col, const wxString& typeName);
 
-   private:
+    virtual bool InsertRows(size_t pos = 0, size_t numRows = 1);
+    virtual bool AppendRows(size_t numRows = 1);
+    virtual bool DeleteRows(size_t pos = 0, size_t numRows = 1);
 
-      wxArrayColumnCtrTable m_Columns;
+    wxColumnCtrTable* GetColumnCtrTable(size_t index);
 
-      bool CheckAutoInc(int row = -1);
-      wxString GetUniqueName();
+protected:
+
+    virtual bool CheckName(const wxString& name, int row = -1);
+
+private:
+
+    wxArrayColumnCtrTable m_Columns;
+
+    bool CheckAutoInc(int row = -1);
+    wxString GetUniqueName();
 };
 /*---------------------------------------------------------------------------*/
 class wxCreateTableDialog: public wxDialog
-{    
-   DECLARE_DYNAMIC_CLASS(wxCreateTableDialog)
-   DECLARE_EVENT_TABLE()
+{
+    DECLARE_DYNAMIC_CLASS(wxCreateTableDialog)
+    DECLARE_EVENT_TABLE()
 
-   public:
+public:
 
-      wxCreateTableDialog();
-      wxCreateTableDialog(wxWindow* parent, wxWindowID id = -1,
-                          const wxString& caption = _("Create Table"),
-                          const wxPoint& pos = wxDefaultPosition,
-                          const wxSize& size = wxSize(400, 300),
-                          long style = wxDEFAULT_DIALOG_STYLE);
+    wxCreateTableDialog();
+    wxCreateTableDialog(wxWindow* parent, wxWindowID id = -1,
+                        const wxString& caption = _("Create Table"),
+                        const wxPoint& pos = wxDefaultPosition,
+                        const wxSize& size = wxSize(400, 300),
+                        long style = wxDEFAULT_DIALOG_STYLE);
 
-      bool Create(wxWindow* parent, wxWindowID id = -1,
-                  const wxString& caption = _("Create Table"),
-                  const wxPoint& pos = wxDefaultPosition,
-                  const wxSize& size = wxSize(400, 300),
-                  long style = wxDEFAULT_DIALOG_STYLE);
+    bool Create(wxWindow* parent, wxWindowID id = -1,
+                const wxString& caption = _("Create Table"),
+                const wxPoint& pos = wxDefaultPosition,
+                const wxSize& size = wxSize(400, 300),
+                long style = wxDEFAULT_DIALOG_STYLE);
 
-      ~wxCreateTableDialog();
+    ~wxCreateTableDialog();
 
-      wxString GetCreateTableDDL();
-      
-      void SetDatabase(wxSQLite3Database* db,
-                       const wxString& base = wxEmptyString);
+    wxString GetCreateTableDDL();
 
-      bool GetTemporary() const {return m_Temporary;}
-      
-   protected:
+    void SetDatabase(wxSQLite3Database* db,
+                     const wxString& base = wxEmptyString);
 
-      void Init();
-      void CreateControls();
+    bool GetTemporary() const {
+        return m_Temporary;
+    }
 
-      void OnChar(wxKeyEvent& event);
-      void OnBookPageChanging(wxNotebookEvent& event);
-      void OnGridChar(wxKeyEvent& event);
-      void OnBtnAddcolumnClick(wxCommandEvent& event);
-      void OnBtnDelcolumnClick(wxCommandEvent& event);
-      void OnBtnDelcolumnUpdate(wxUpdateUIEvent& event);
-      void OnOkClick(wxCommandEvent& event);
+protected:
 
-      static bool ShowToolTips();
+    void Init();
+    void CreateControls();
 
-   private:
+    void OnChar(wxKeyEvent& event);
+    void OnBookPageChanging(wxNotebookEvent& event);
+    void OnGridChar(wxKeyEvent& event);
+    void OnBtnAddcolumnClick(wxCommandEvent& event);
+    void OnBtnDelcolumnClick(wxCommandEvent& event);
+    void OnBtnDelcolumnUpdate(wxUpdateUIEvent& event);
+    void OnOkClick(wxCommandEvent& event);
 
-      wxTextCtrl* m_TextTableName;
-      wxCheckBox* m_TempTable;
-      wxSpecGrid* m_GridColumns;
-      wxDDLEditor* m_TextDdl;
-      wxButton* m_BtnAddColumn;
+    static bool ShowToolTips();
 
-      wxSQLite3Database* m_Db;
-      wxString m_Base;
-      wxGridColumnsTable m_TableColumns;
-      bool m_Temporary;
+private:
+
+    wxTextCtrl* m_TextTableName;
+    wxCheckBox* m_TempTable;
+    wxSpecGrid* m_GridColumns;
+    wxDDLEditor* m_TextDdl;
+    wxButton* m_BtnAddColumn;
+
+    wxSQLite3Database* m_Db;
+    wxString m_Base;
+    wxGridColumnsTable m_TableColumns;
+    bool m_Temporary;
 
 };
 /*---------------------------------------------------------------------------*/

@@ -27,38 +27,38 @@
 IMPLEMENT_DYNAMIC_CLASS(wxAttachDbDlg, wxDialog)
 
 BEGIN_EVENT_TABLE(wxAttachDbDlg, wxDialog)
-   EVT_BUTTON(ID_ATTACHBTN, wxAttachDbDlg::OnAttachbtnClick)
-   EVT_BUTTON(wxID_OK, wxAttachDbDlg::OnOkClick)
+    EVT_BUTTON(ID_ATTACHBTN, wxAttachDbDlg::OnAttachbtnClick)
+    EVT_BUTTON(wxID_OK, wxAttachDbDlg::OnOkClick)
 END_EVENT_TABLE()
 /*---------------------------------------------------------------------------*/
 wxAttachDbDlg::wxAttachDbDlg()
 {
-   Init();
+    Init();
 }
 /*---------------------------------------------------------------------------*/
 wxAttachDbDlg::wxAttachDbDlg(wxWindow* parent, wxWindowID id,
                              const wxString& caption, const wxPoint& pos,
                              const wxSize& size, long style)
 {
-   Init();
-   Create(parent, id, caption, pos, size, style);
+    Init();
+    Create(parent, id, caption, pos, size, style);
 }
 /*---------------------------------------------------------------------------*/
 bool wxAttachDbDlg::Create(wxWindow* parent, wxWindowID id,
                            const wxString& caption, const wxPoint& pos,
                            const wxSize& size, long style)
 {
-   SetExtraStyle(wxWS_EX_BLOCK_EVENTS);
-   wxDialog::Create(parent, id, caption, pos, size, style);
+    SetExtraStyle(wxWS_EX_BLOCK_EVENTS);
+    wxDialog::Create(parent, id, caption, pos, size, style);
 
-   CreateControls();
-   SetIcon(wxGetApp().GetIcon(ID_ICO_DATABASE));
-   if (GetSizer())
-   {
-      GetSizer()->SetSizeHints(this);
-   }
-   Centre();
-   return true;
+    CreateControls();
+    SetIcon(wxGetApp().GetIcon(ID_ICO_DATABASE));
+    if (GetSizer())
+    {
+        GetSizer()->SetSizeHints(this);
+    }
+    Centre();
+    return true;
 }
 /*---------------------------------------------------------------------------*/
 wxAttachDbDlg::~wxAttachDbDlg()
@@ -67,165 +67,165 @@ wxAttachDbDlg::~wxAttachDbDlg()
 /*---------------------------------------------------------------------------*/
 void wxAttachDbDlg::SetDatabase(wxSQLite3Database* db)
 {
-   m_Db = db;
-   if (!m_Db||!m_Db->IsOpen())
-      m_Db = NULL;
+    m_Db = db;
+    if (!m_Db||!m_Db->IsOpen())
+        m_Db = NULL;
 }
 /*---------------------------------------------------------------------------*/
 void wxAttachDbDlg::Init()
 {
-   m_BtnAttach = NULL;
-   m_EdFilename = NULL;
-   m_EdAlias = NULL;
-   m_EdKey = NULL;
-   m_Db = NULL;
+    m_BtnAttach = NULL;
+    m_EdFilename = NULL;
+    m_EdAlias = NULL;
+    m_EdKey = NULL;
+    m_Db = NULL;
 }
 /*---------------------------------------------------------------------------*/
 void wxAttachDbDlg::CreateControls()
 {
-   wxBoxSizer* bSizer1 = new wxBoxSizer(wxVERTICAL);
-   SetSizer(bSizer1);
+    wxBoxSizer* bSizer1 = new wxBoxSizer(wxVERTICAL);
+    SetSizer(bSizer1);
 
-   wxStaticText* sText1 = new wxStaticText(this, wxID_STATIC, _("File name :"),
-                                           wxDefaultPosition, wxDefaultSize, 0);
-   bSizer1->Add(sText1, 0, wxALIGN_LEFT|wxALL, 5);
+    wxStaticText* sText1 = new wxStaticText(this, wxID_STATIC, _("File name :"),
+                                            wxDefaultPosition, wxDefaultSize, 0);
+    bSizer1->Add(sText1, 0, wxALIGN_LEFT|wxALL, 5);
 
-   wxBoxSizer* bSizer2 = new wxBoxSizer(wxHORIZONTAL);
-   bSizer1->Add(bSizer2, 0, wxGROW|wxALL, 0);
+    wxBoxSizer* bSizer2 = new wxBoxSizer(wxHORIZONTAL);
+    bSizer1->Add(bSizer2, 0, wxGROW|wxALL, 0);
 
-   m_EdFilename = new wxTextCtrl(this, ID_FILENAME, wxEmptyString,
-                                 wxDefaultPosition, wxSize(250, -1), 0);
-   bSizer2->Add(m_EdFilename, 1, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    m_EdFilename = new wxTextCtrl(this, ID_FILENAME, wxEmptyString,
+                                  wxDefaultPosition, wxSize(250, -1), 0);
+    bSizer2->Add(m_EdFilename, 1, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
-   m_BtnAttach = new wxBitmapButton(this, ID_ATTACHBTN,
-                                    wxGetApp().GetBmp(ID_BMP_OPENDB),
-                                    wxDefaultPosition,
-                                    wxDefaultSize, wxBU_AUTODRAW);
-   bSizer2->Add(m_BtnAttach, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    m_BtnAttach = new wxBitmapButton(this, ID_ATTACHBTN,
+                                     wxGetApp().GetBmp(ID_BMP_OPENDB),
+                                     wxDefaultPosition,
+                                     wxDefaultSize, wxBU_AUTODRAW);
+    bSizer2->Add(m_BtnAttach, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
-   wxStaticText* sText2 = new wxStaticText(this, wxID_STATIC, _("Alias :"),
-                                           wxDefaultPosition, wxDefaultSize, 0);
-   bSizer1->Add(sText2, 0, wxALIGN_LEFT|wxALL, 5);
+    wxStaticText* sText2 = new wxStaticText(this, wxID_STATIC, _("Alias :"),
+                                            wxDefaultPosition, wxDefaultSize, 0);
+    bSizer1->Add(sText2, 0, wxALIGN_LEFT|wxALL, 5);
 
-   m_EdAlias = new wxTextCtrl(this, ID_ALIAS, wxEmptyString, wxDefaultPosition,
-                              wxDefaultSize, 0);
-   bSizer1->Add(m_EdAlias, 0, wxGROW|wxALL, 5);
+    m_EdAlias = new wxTextCtrl(this, ID_ALIAS, wxEmptyString, wxDefaultPosition,
+                               wxDefaultSize, 0);
+    bSizer1->Add(m_EdAlias, 0, wxGROW|wxALL, 5);
 
-   wxStaticText* sText3 = new wxStaticText(this, wxID_STATIC,
-                                           _("Enter encryption key: (let empty for no encryption)"),
-                                           wxDefaultPosition, wxDefaultSize, 0);
-   bSizer1->Add(sText3, 0, wxALIGN_LEFT|wxALL, 5);
+    wxStaticText* sText3 = new wxStaticText(this, wxID_STATIC,
+                                            _("Enter encryption key: (let empty for no encryption)"),
+                                            wxDefaultPosition, wxDefaultSize, 0);
+    bSizer1->Add(sText3, 0, wxALIGN_LEFT|wxALL, 5);
 
-   m_EdKey = new wxTextCtrl(this, ID_KEY, wxEmptyString, wxDefaultPosition,
-                          wxDefaultSize, wxTE_PASSWORD);
-   bSizer1->Add(m_EdKey, 0, wxGROW|wxALL, 5);
+    m_EdKey = new wxTextCtrl(this, ID_KEY, wxEmptyString, wxDefaultPosition,
+                             wxDefaultSize, wxTE_PASSWORD);
+    bSizer1->Add(m_EdKey, 0, wxGROW|wxALL, 5);
 
-   wxStdDialogButtonSizer* dlgBtnSizer1 = new wxStdDialogButtonSizer;
+    wxStdDialogButtonSizer* dlgBtnSizer1 = new wxStdDialogButtonSizer;
 
-   bSizer1->Add(dlgBtnSizer1, 0, wxALIGN_RIGHT|wxALL, 5);
-   wxButton* btnOk = new wxButton(this, wxID_OK, _("&OK"), wxDefaultPosition,
-                                  wxDefaultSize, 0);
-   btnOk->SetDefault();
-   dlgBtnSizer1->AddButton(btnOk);
+    bSizer1->Add(dlgBtnSizer1, 0, wxALIGN_RIGHT|wxALL, 5);
+    wxButton* btnOk = new wxButton(this, wxID_OK, _("&OK"), wxDefaultPosition,
+                                   wxDefaultSize, 0);
+    btnOk->SetDefault();
+    dlgBtnSizer1->AddButton(btnOk);
 
-   wxButton* btnCancel = new wxButton(this, wxID_CANCEL, _("&Cancel"),
-                                      wxDefaultPosition, wxDefaultSize, 0);
-   dlgBtnSizer1->AddButton(btnCancel);
+    wxButton* btnCancel = new wxButton(this, wxID_CANCEL, _("&Cancel"),
+                                       wxDefaultPosition, wxDefaultSize, 0);
+    dlgBtnSizer1->AddButton(btnCancel);
 
-   dlgBtnSizer1->Realize();
+    dlgBtnSizer1->Realize();
 
-   // Set validators
-   m_EdFilename->SetValidator(wxTextValidator(wxFILTER_NONE, &m_FileName));
-   m_EdAlias->SetValidator(wxTextValidator(wxFILTER_NONE, &m_Alias));
-   m_EdKey->SetValidator(wxTextValidator(wxFILTER_NONE, &m_Key));
+    // Set validators
+    m_EdFilename->SetValidator(wxTextValidator(wxFILTER_NONE, &m_FileName));
+    m_EdAlias->SetValidator(wxTextValidator(wxFILTER_NONE, &m_Alias));
+    m_EdKey->SetValidator(wxTextValidator(wxFILTER_NONE, &m_Key));
 
-   // Connect events and objects
-   m_EdAlias->Connect(ID_ALIAS, wxEVT_CHAR,
-                      wxKeyEventHandler(wxAttachDbDlg::OnChar), NULL, this);
+    // Connect events and objects
+    m_EdAlias->Connect(ID_ALIAS, wxEVT_CHAR,
+                       wxKeyEventHandler(wxAttachDbDlg::OnChar), NULL, this);
 
-   m_EdFilename->SetFocus();
+    m_EdFilename->SetFocus();
 }
 /*---------------------------------------------------------------------------*/
 bool wxAttachDbDlg::ShowToolTips()
 {
-   return true;
+    return true;
 }
 /*---------------------------------------------------------------------------*/
 void wxAttachDbDlg::OnlyKey()
 {
-   m_BtnAttach->Enable (false);
-   m_EdFilename->Enable (false);
-   m_EdAlias->Enable (false);
-   m_EdKey->SetFocus();
+    m_BtnAttach->Enable (false);
+    m_EdFilename->Enable (false);
+    m_EdAlias->Enable (false);
+    m_EdKey->SetFocus();
 }
 /*---------------------------------------------------------------------------*/
 void wxAttachDbDlg::OnAttachbtnClick(wxCommandEvent& event)
 {
-   wxFileDialog fileDialog(this, _("Attach database"), wxEmptyString,
-                           wxEmptyString,
-                           _("SQLite files (*.db)|*.db|All files (*.*)|*.*"),
-                           wxFD_OPEN/*|wxFILE_MUST_EXIST*/);
-   if (fileDialog.ShowModal() == wxID_OK)
-   {
-      m_EdFilename->SetValue(fileDialog.GetPath());
-   }
+    wxFileDialog fileDialog(this, _("Attach database"), wxEmptyString,
+                            wxEmptyString,
+                            _("SQLite files (*.db)|*.db|All files (*.*)|*.*"),
+                            wxFD_OPEN/*|wxFILE_MUST_EXIST*/);
+    if (fileDialog.ShowModal() == wxID_OK)
+    {
+        m_EdFilename->SetValue(fileDialog.GetPath());
+    }
 }
 /*---------------------------------------------------------------------------*/
 void wxAttachDbDlg::OnOkClick(wxCommandEvent& event)
 {
-   wxSQLite3ResultSet dbQRY;
-   wxString alias;
+    wxSQLite3ResultSet dbQRY;
+    wxString alias;
 
-   if (!m_Db||!m_Db->IsOpen())
-      return;
+    if (!m_Db||!m_Db->IsOpen())
+        return;
 
-   if (m_EdFilename->GetValue().IsEmpty())
-   {
-      wxMessageBox(_("You have to enter a file name."),
-                   _("Error"));
-      m_EdFilename->SetFocus();
-      return;
-   }
-   if (m_EdAlias->GetValue().IsEmpty())
-   {
-      wxMessageBox(_("You have to enter an alias name."),
-                   _("Error"));
-      m_EdAlias->SetFocus();
-      return;
-   }
+    if (m_EdFilename->GetValue().IsEmpty())
+    {
+        wxMessageBox(_("You have to enter a file name."),
+                     _("Error"));
+        m_EdFilename->SetFocus();
+        return;
+    }
+    if (m_EdAlias->GetValue().IsEmpty())
+    {
+        wxMessageBox(_("You have to enter an alias name."),
+                     _("Error"));
+        m_EdAlias->SetFocus();
+        return;
+    }
 
-   alias = m_EdAlias->GetValue().Lower();
-   try
-   {
-      dbQRY = m_Db->ExecuteQuery(ToUTF8("PRAGMA database_list;"));
-      while (dbQRY.NextRow())
-      {
-         if (dbQRY.GetString(1) == alias)
-         {
-            wxMessageBox(_("This alias already exist."),
-                         _("Error"));
-            m_EdAlias->SetFocus();
-            dbQRY.Finalize();
-            return;
-         }
-      }
-   }
-   catch(wxSQLite3Exception& ex)
-   {
-      wxGetApp().ShowError("OnOkClick", ex);
-   }
-   dbQRY.Finalize();
-   event.Skip();
+    alias = m_EdAlias->GetValue().Lower();
+    try
+    {
+        dbQRY = m_Db->ExecuteQuery(ToUTF8("PRAGMA database_list;"));
+        while (dbQRY.NextRow())
+        {
+            if (dbQRY.GetString(1) == alias)
+            {
+                wxMessageBox(_("This alias already exist."),
+                             _("Error"));
+                m_EdAlias->SetFocus();
+                dbQRY.Finalize();
+                return;
+            }
+        }
+    }
+    catch(wxSQLite3Exception& ex)
+    {
+        wxGetApp().ShowError("OnOkClick", ex);
+    }
+    dbQRY.Finalize();
+    event.Skip();
 }
 /*---------------------------------------------------------------------------*/
 void wxAttachDbDlg::OnChar(wxKeyEvent& event)
 {
-   int c = event.GetKeyCode();
-   if ((!wxIsalnum(c) && c != ('_') && c != WXK_BACK &&
-        c != WXK_DELETE && c != WXK_TAB)&&
-      // Ctrl+C Ctrl+V Ctrl+X
-       !(event.ControlDown() && (c == 3 || c == 22 || c == 24)))
-      return;
-   event.Skip();
+    int c = event.GetKeyCode();
+    if ((!wxIsalnum(c) && c != ('_') && c != WXK_BACK &&
+            c != WXK_DELETE && c != WXK_TAB)&&
+            // Ctrl+C Ctrl+V Ctrl+X
+            !(event.ControlDown() && (c == 3 || c == 22 || c == 24)))
+        return;
+    event.Skip();
 }
 /*---------------------------------------------------------------------------*/

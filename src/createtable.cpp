@@ -32,10 +32,10 @@
 /*---------------------------------------------------------------------------*/
 wxColumnCtrTable::wxColumnCtrTable()
 {
-   m_Name = ("col");
-   m_Type = cttText;
-   m_NotNull = false;
-   m_PrimaryKey = false;
+    m_Name = ("col");
+    m_Type = cttText;
+    m_NotNull = false;
+    m_PrimaryKey = false;
 }
 /*---------------------------------------------------------------------------*/
 wxGridColumnsTable::wxGridColumnsTable()
@@ -44,610 +44,627 @@ wxGridColumnsTable::wxGridColumnsTable()
 /*---------------------------------------------------------------------------*/
 wxGridColumnsTable::~wxGridColumnsTable()
 {
-   WX_CLEAR_ARRAY(m_Columns)
+    WX_CLEAR_ARRAY(m_Columns)
 }
 /*---------------------------------------------------------------------------*/
 int wxGridColumnsTable::GetNumberRows()
 {
-   return (int)m_Columns.GetCount();
+    return (int)m_Columns.GetCount();
 }
 /*---------------------------------------------------------------------------*/
 bool wxGridColumnsTable::IsEmptyCell(int row, int col)
 {
-   if (col == 0)
-      if (m_Columns[row]->GetName() == wxEmptyString)
-         return true;
-   return false;
+    if (col == 0)
+        if (m_Columns[row]->GetName() == wxEmptyString)
+            return true;
+    return false;
 }
 /*---------------------------------------------------------------------------*/
 wxString wxGridColumnsTable::GetValue(int row, int col)
 {
-   switch (col)
-   {
-      case 0 : return m_Columns[row]->GetName();
-      case 1 :
-         switch (m_Columns[row]->GetType())
-         {
-            case cttInteger : return ("INTEGER");
-            case cttIntegerAutoinc : return ("INTEGER AUTOINCREMENT");
-            case cttReal : return ("REAL");
-            case cttText : return ("TEXT");
-            case cttBlob : return ("BLOB");
-         }
-         return wxEmptyString;
-      case 2 :
-         if (m_Columns[row]->GetNotNull())
+    switch (col)
+    {
+    case 0 :
+        return m_Columns[row]->GetName();
+    case 1 :
+        switch (m_Columns[row]->GetType())
+        {
+        case cttInteger :
+            return ("INTEGER");
+        case cttIntegerAutoinc :
+            return ("INTEGER AUTOINCREMENT");
+        case cttReal :
+            return ("REAL");
+        case cttText :
+            return ("TEXT");
+        case cttBlob :
+            return ("BLOB");
+        }
+        return wxEmptyString;
+    case 2 :
+        if (m_Columns[row]->GetNotNull())
             return ("1");
-         return ("0");
-      case 3 :
-         if (m_Columns[row]->GetPrimaryKey())
+        return ("0");
+    case 3 :
+        if (m_Columns[row]->GetPrimaryKey())
             return ("1");
-         return ("0");
-      case 4 : return m_Columns[row]->GetDefault();
-   }
-   return wxEmptyString;
+        return ("0");
+    case 4 :
+        return m_Columns[row]->GetDefault();
+    }
+    return wxEmptyString;
 }
 /*---------------------------------------------------------------------------*/
 bool wxGridColumnsTable::GetValueAsBool(int row, int col)
 {
-   if (col == 2)
-      return m_Columns[row]->GetNotNull();
-   else if (col == 3)
-      return m_Columns[row]->GetPrimaryKey();
-   else
-      return false;
+    if (col == 2)
+        return m_Columns[row]->GetNotNull();
+    else if (col == 3)
+        return m_Columns[row]->GetPrimaryKey();
+    else
+        return false;
 }
 /*---------------------------------------------------------------------------*/
 void wxGridColumnsTable::SetValue(int row, int col, const wxString& value)
 {
-   if (col == 0)
-   {
-      if (CheckName(value, row))
-         m_Columns[row]->SetName(value.Upper());
-   }
-   else if (col == 1)
-   {
-      if (value == ("INTEGER"))
-      {
-         long l_Long;
-         wxString val;
+    if (col == 0)
+    {
+        if (CheckName(value, row))
+            m_Columns[row]->SetName(value.Upper());
+    }
+    else if (col == 1)
+    {
+        if (value == ("INTEGER"))
+        {
+            long l_Long;
+            wxString val;
 
-         m_Columns[row]->SetType(cttInteger);
-         val = m_Columns[row]->GetDefault();
-         if ((val != wxEmptyString) && !val.ToLong(&l_Long))
+            m_Columns[row]->SetType(cttInteger);
+            val = m_Columns[row]->GetDefault();
+            if ((val != wxEmptyString) && !val.ToLong(&l_Long))
+                SetValue(row, 4, wxEmptyString);
+        }
+        else if (value == ("INTEGER AUTOINCREMENT"))
+        {
+            if (CheckAutoInc())
+                return;
+            m_Columns[row]->SetType(cttIntegerAutoinc);
+            SetValueAsBool(row, 3, true);
             SetValue(row, 4, wxEmptyString);
-      }
-      else if (value == ("INTEGER AUTOINCREMENT"))
-      {
-         if (CheckAutoInc())
-            return;
-         m_Columns[row]->SetType(cttIntegerAutoinc);
-         SetValueAsBool(row, 3, true);
-         SetValue(row, 4, wxEmptyString);
-         // Oblige la grille à prendre en compte le changement
-         GetView()->SetCellValue(row, 3, ("1"));
-      }
-      else if (value == ("REAL"))
-      {
-         double l_Double;
-         wxString val;
+            // Oblige la grille à prendre en compte le changement
+            GetView()->SetCellValue(row, 3, ("1"));
+        }
+        else if (value == ("REAL"))
+        {
+            double l_Double;
+            wxString val;
 
-         m_Columns[row]->SetType(cttReal);
-         val = m_Columns[row]->GetDefault();
-         if ((val != wxEmptyString) && !val.ToDouble(&l_Double))
-            SetValue(row, 4, wxEmptyString);
-      }
-      else if (value == ("TEXT"))
-         m_Columns[row]->SetType(cttText);
-      else if (value == ("BLOB"))
-         m_Columns[row]->SetType(cttBlob);
-   }
-   else if (col == 4)
-   {
-      if (value != wxEmptyString)
-      {
-         long l_Long;
-         double l_Double;
+            m_Columns[row]->SetType(cttReal);
+            val = m_Columns[row]->GetDefault();
+            if ((val != wxEmptyString) && !val.ToDouble(&l_Double))
+                SetValue(row, 4, wxEmptyString);
+        }
+        else if (value == ("TEXT"))
+            m_Columns[row]->SetType(cttText);
+        else if (value == ("BLOB"))
+            m_Columns[row]->SetType(cttBlob);
+    }
+    else if (col == 4)
+    {
+        if (value != wxEmptyString)
+        {
+            long l_Long;
+            double l_Double;
 
-         switch (m_Columns[row]->GetType())
-         {
+            switch (m_Columns[row]->GetType())
+            {
             case cttInteger :
-               if (value.ToLong(&l_Long))
-                  m_Columns[row]->SetDefault(wxString::Format(("%li"), l_Long));
-               break;
-            case cttIntegerAutoinc : return;
+                if (value.ToLong(&l_Long))
+                    m_Columns[row]->SetDefault(wxString::Format(("%li"), l_Long));
+                break;
+            case cttIntegerAutoinc :
+                return;
             case cttReal :
-               if (value.ToDouble(&l_Double))
-                  m_Columns[row]->SetDefault(wxString::Format(("%f"), l_Double));
-               break;
+                if (value.ToDouble(&l_Double))
+                    m_Columns[row]->SetDefault(wxString::Format(("%f"), l_Double));
+                break;
             case cttText :
             case cttBlob :
-               if ((value.Upper() == ("CURRENT_TIME"))||
-                  (value.Upper() == ("CURRENT_DATE"))||
-                  (value.Upper() == ("CURRENT_TIMESTAMP")))
-                  m_Columns[row]->SetDefault(value.Upper());
-               else
-                  m_Columns[row]->SetDefault(value);
-         }
-      }
-      else
-         m_Columns[row]->SetDefault(wxEmptyString);
-   }
+                if ((value.Upper() == ("CURRENT_TIME"))||
+                        (value.Upper() == ("CURRENT_DATE"))||
+                        (value.Upper() == ("CURRENT_TIMESTAMP")))
+                    m_Columns[row]->SetDefault(value.Upper());
+                else
+                    m_Columns[row]->SetDefault(value);
+            }
+        }
+        else
+            m_Columns[row]->SetDefault(wxEmptyString);
+    }
 }
 /*---------------------------------------------------------------------------*/
 void wxGridColumnsTable::SetValueAsBool(int row, int col, bool value)
 {
 
-   if (col == 2)
-      m_Columns[row]->SetNotNull(value);
-   else if (col == 3)
-   {
-      if (value != 0)   // Si primary key
-      {
-         if (CheckAutoInc(row))
-            return;
+    if (col == 2)
+        m_Columns[row]->SetNotNull(value);
+    else if (col == 3)
+    {
+        if (value != 0)   // Si primary key
+        {
+            if (CheckAutoInc(row))
+                return;
 
-         // alors retirer le flag au autres
-         for (size_t i = 0; i < m_Columns.GetCount(); i++)
-         {
-            m_Columns[i]->SetPrimaryKey(false);
-            // Oblige la grille à prendre en compte le changement
-            GetView()->SetCellValue(i, 3, ("0"));
-         }
-      }
-      else
-      {  // Si la colonne est autoincrement ne pas supprimer le primary key
-         if (m_Columns[row]->GetType() == cttIntegerAutoinc)
-            return;
-      }
-      m_Columns[row]->SetPrimaryKey(value);
-   }
+            // alors retirer le flag au autres
+            for (size_t i = 0; i < m_Columns.GetCount(); i++)
+            {
+                m_Columns[i]->SetPrimaryKey(false);
+                // Oblige la grille à prendre en compte le changement
+                GetView()->SetCellValue(i, 3, ("0"));
+            }
+        }
+        else
+        {   // Si la colonne est autoincrement ne pas supprimer le primary key
+            if (m_Columns[row]->GetType() == cttIntegerAutoinc)
+                return;
+        }
+        m_Columns[row]->SetPrimaryKey(value);
+    }
 }
 /*---------------------------------------------------------------------------*/
 wxString wxGridColumnsTable::GetColLabelValue(int col)
 {
-   switch (col)
-   {
-      case 0 : return _("Name");
-      case 1 : return _("Type");
-      case 2 : return _("Not Null");
-      case 3 : return _("Primay Key");
-      case 4 : return _("Default");
-   }
-   return wxEmptyString;
+    switch (col)
+    {
+    case 0 :
+        return _("Name");
+    case 1 :
+        return _("Type");
+    case 2 :
+        return _("Not Null");
+    case 3 :
+        return _("Primay Key");
+    case 4 :
+        return _("Default");
+    }
+    return wxEmptyString;
 }
 /*---------------------------------------------------------------------------*/
 wxString wxGridColumnsTable::GetTypeName(int row, int col)
 {
-   if (col == 0 || col == 4)
-      return wxGRID_VALUE_STRING;
-   else if (col == 1)
-      return wxString::Format(("%s:INTEGER,INTEGER AUTOINCREMENT,REAL,TEXT,BLOB"), wxGRID_VALUE_CHOICE);
-   else if (col == 2 || col == 3)
-      return wxGRID_VALUE_BOOL;
-   return wxEmptyString;
+    if (col == 0 || col == 4)
+        return wxGRID_VALUE_STRING;
+    else if (col == 1)
+        return wxString::Format(("%s:INTEGER,INTEGER AUTOINCREMENT,REAL,TEXT,BLOB"), wxGRID_VALUE_CHOICE);
+    else if (col == 2 || col == 3)
+        return wxGRID_VALUE_BOOL;
+    return wxEmptyString;
 }
 /*---------------------------------------------------------------------------*/
 bool wxGridColumnsTable::CanGetValueAs(int row, int col, const wxString& typeName)
 {
-   if (typeName == wxGRID_VALUE_STRING)
-      return (col == 0 || col == 1 || col == 4);
-   else if (typeName == wxGRID_VALUE_BOOL)
-      return (col == 2 || col == 3);
-   else
-      return false;
+    if (typeName == wxGRID_VALUE_STRING)
+        return (col == 0 || col == 1 || col == 4);
+    else if (typeName == wxGRID_VALUE_BOOL)
+        return (col == 2 || col == 3);
+    else
+        return false;
 }
 /*---------------------------------------------------------------------------*/
 bool wxGridColumnsTable::CanSetValueAs(int row, int col, const wxString& typeName)
 {
-   return CanGetValueAs(row, col, typeName);
+    return CanGetValueAs(row, col, typeName);
 }
 /*---------------------------------------------------------------------------*/
 bool wxGridColumnsTable::InsertRows(size_t pos, size_t numRows)
 {
-   for (size_t i = 0; i < numRows; i ++)
-   {
-      wxColumnCtrTable* item = new wxColumnCtrTable;
-      item->SetName(GetUniqueName());
-      m_Columns.Insert(item, pos + i);
-   }
-   if (GetView())
-   {
-      wxGridTableMessage msg(this, wxGRIDTABLE_NOTIFY_ROWS_INSERTED, pos, numRows);
-      GetView()->ProcessTableMessage( msg );
-   }
-   return true;
+    for (size_t i = 0; i < numRows; i ++)
+    {
+        wxColumnCtrTable* item = new wxColumnCtrTable;
+        item->SetName(GetUniqueName());
+        m_Columns.Insert(item, pos + i);
+    }
+    if (GetView())
+    {
+        wxGridTableMessage msg(this, wxGRIDTABLE_NOTIFY_ROWS_INSERTED, pos, numRows);
+        GetView()->ProcessTableMessage( msg );
+    }
+    return true;
 }
 /*---------------------------------------------------------------------------*/
 bool wxGridColumnsTable::AppendRows(size_t numRows)
 {
-   for (size_t i = 0; i < numRows; i ++)
-   {
-      wxColumnCtrTable* item = new wxColumnCtrTable;
-      item->SetName(GetUniqueName());
-      m_Columns.Add(item);
-   }
-   if (GetView())
-   {
-      wxGridTableMessage msg(this, wxGRIDTABLE_NOTIFY_ROWS_APPENDED, numRows);
-      GetView()->ProcessTableMessage(msg);
-   }
-   return true;
+    for (size_t i = 0; i < numRows; i ++)
+    {
+        wxColumnCtrTable* item = new wxColumnCtrTable;
+        item->SetName(GetUniqueName());
+        m_Columns.Add(item);
+    }
+    if (GetView())
+    {
+        wxGridTableMessage msg(this, wxGRIDTABLE_NOTIFY_ROWS_APPENDED, numRows);
+        GetView()->ProcessTableMessage(msg);
+    }
+    return true;
 }
 /*---------------------------------------------------------------------------*/
 bool wxGridColumnsTable::DeleteRows(size_t pos, size_t numRows)
 {
-   for (size_t i = pos; i < pos + numRows && i < m_Columns.GetCount(); i++)
-   {
-      wxColumnCtrTable* item = m_Columns[i];
-      m_Columns.Remove(item);
-      delete item;
-   }
-   if (GetView())
-   {
-      wxGridTableMessage msg(this, wxGRIDTABLE_NOTIFY_ROWS_DELETED, pos, numRows);
-      GetView()->ProcessTableMessage(msg);
+    for (size_t i = pos; i < pos + numRows && i < m_Columns.GetCount(); i++)
+    {
+        wxColumnCtrTable* item = m_Columns[i];
+        m_Columns.Remove(item);
+        delete item;
     }
-   return true;
+    if (GetView())
+    {
+        wxGridTableMessage msg(this, wxGRIDTABLE_NOTIFY_ROWS_DELETED, pos, numRows);
+        GetView()->ProcessTableMessage(msg);
+    }
+    return true;
 }
 /*---------------------------------------------------------------------------*/
 bool wxGridColumnsTable::CheckName(const wxString& name, int row)
 {
-   wxChar c;
-   // Vérification du nom
-   for (size_t i = 0; i < name.Len(); i++)
-   {
-      c = name.GetChar(i);
-      if (!wxIsalnum(c) && c != ('_') && c != (' '))
-         return false;
-   }
-   // Vérifie que le nom est unique
-   for (size_t i = 0; i < m_Columns.GetCount(); i++)
-      if ((int)i != row)
-         if (m_Columns[i]->GetName().Upper() == name.Upper())
+    wxChar c;
+    // Vérification du nom
+    for (size_t i = 0; i < name.Len(); i++)
+    {
+        c = name.GetChar(i);
+        if (!wxIsalnum(c) && c != ('_') && c != (' '))
             return false;
+    }
+    // Vérifie que le nom est unique
+    for (size_t i = 0; i < m_Columns.GetCount(); i++)
+        if ((int)i != row)
+            if (m_Columns[i]->GetName().Upper() == name.Upper())
+                return false;
 
-   return true;
+    return true;
 }
 /*---------------------------------------------------------------------------*/
 wxString wxGridColumnsTable::GetUniqueName()
 {
-   wxString name;
-   size_t i = m_Columns.GetCount();
+    wxString name;
+    size_t i = m_Columns.GetCount();
 
-   do
-   {
-      name << "COLUMN" << i++;
-      //name = wxString::Format(("COLUMN%l"), i++);
-   }
-   while (!CheckName(name));
-   return name;
+    do
+    {
+        name << "COLUMN" << i++;
+        //name = wxString::Format(("COLUMN%l"), i++);
+    }
+    while (!CheckName(name));
+    return name;
 }
 /*---------------------------------------------------------------------------*/
 wxColumnCtrTable* wxGridColumnsTable::GetColumnCtrTable(size_t index)
 {
-   if (index < m_Columns.GetCount())
-      return m_Columns[index];
-   return NULL;
+    if (index < m_Columns.GetCount())
+        return m_Columns[index];
+    return NULL;
 }
 /*---------------------------------------------------------------------------*/
 bool wxGridColumnsTable::CheckAutoInc(int row)
 {
-   // Vérifier si une ligne est AUTOINCREMENT
-   for (size_t i = 0; i < m_Columns.GetCount(); i++)
-      if (((int)i != row) && (m_Columns[i]->GetType() == cttIntegerAutoinc))
-         return true;
-   return false;
+    // Vérifier si une ligne est AUTOINCREMENT
+    for (size_t i = 0; i < m_Columns.GetCount(); i++)
+        if (((int)i != row) && (m_Columns[i]->GetType() == cttIntegerAutoinc))
+            return true;
+    return false;
 }
 /*---------------------------------------------------------------------------*/
 IMPLEMENT_DYNAMIC_CLASS(wxCreateTableDialog, wxDialog)
 
 BEGIN_EVENT_TABLE(wxCreateTableDialog, wxDialog)
-   EVT_NOTEBOOK_PAGE_CHANGING(ID_BOOK, wxCreateTableDialog::OnBookPageChanging)
-   EVT_BUTTON(ID_BTN_ADDCOLUMN, wxCreateTableDialog::OnBtnAddcolumnClick)
-   EVT_BUTTON(ID_BTN_DELCOLUMN, wxCreateTableDialog::OnBtnDelcolumnClick)
-   EVT_UPDATE_UI(ID_BTN_DELCOLUMN, wxCreateTableDialog::OnBtnDelcolumnUpdate)
-   EVT_BUTTON(wxID_OK, wxCreateTableDialog::OnOkClick)
+    EVT_NOTEBOOK_PAGE_CHANGING(ID_BOOK, wxCreateTableDialog::OnBookPageChanging)
+    EVT_BUTTON(ID_BTN_ADDCOLUMN, wxCreateTableDialog::OnBtnAddcolumnClick)
+    EVT_BUTTON(ID_BTN_DELCOLUMN, wxCreateTableDialog::OnBtnDelcolumnClick)
+    EVT_UPDATE_UI(ID_BTN_DELCOLUMN, wxCreateTableDialog::OnBtnDelcolumnUpdate)
+    EVT_BUTTON(wxID_OK, wxCreateTableDialog::OnOkClick)
 END_EVENT_TABLE()
 /*---------------------------------------------------------------------------*/
 wxCreateTableDialog::wxCreateTableDialog()
 {
-   Init();
+    Init();
 }
 /*---------------------------------------------------------------------------*/
 wxCreateTableDialog::wxCreateTableDialog(wxWindow* parent, wxWindowID id,
-                                         const wxString& caption,
-                                         const wxPoint& pos, const wxSize& size,
-                                         long style)
+        const wxString& caption,
+        const wxPoint& pos, const wxSize& size,
+        long style)
 {
-   Init();
-   Create(parent, id, caption, pos, size, style);
+    Init();
+    Create(parent, id, caption, pos, size, style);
 }
 /*---------------------------------------------------------------------------*/
 bool wxCreateTableDialog::Create(wxWindow* parent, wxWindowID id,
                                  const wxString& caption, const wxPoint& pos,
                                  const wxSize& size, long style)
 {
-   SetExtraStyle(wxWS_EX_BLOCK_EVENTS);
-   wxDialog::Create(parent, id, caption, pos, size, style);
+    SetExtraStyle(wxWS_EX_BLOCK_EVENTS);
+    wxDialog::Create(parent, id, caption, pos, size, style);
 
-   CreateControls();
-   SetIcon(wxGetApp().GetIcon(ID_ICO_TABLE));
-   if (GetSizer())
-   {
-      GetSizer()->SetSizeHints(this);
-   }
-   Centre();
-   return true;
+    CreateControls();
+    SetIcon(wxGetApp().GetIcon(ID_ICO_TABLE));
+    if (GetSizer())
+    {
+        GetSizer()->SetSizeHints(this);
+    }
+    Centre();
+    return true;
 }
 /*---------------------------------------------------------------------------*/
 wxCreateTableDialog::~wxCreateTableDialog()
 {
-   // if this line does not exist the program crash on GTK2
-   m_GridColumns->SetTable(NULL);
+    // if this line does not exist the program crash on GTK2
+    m_GridColumns->SetTable(NULL);
 }
 /*---------------------------------------------------------------------------*/
 void wxCreateTableDialog::SetDatabase(wxSQLite3Database* db,
                                       const wxString& base)
 {
-   m_Db = db;
-   m_Base = base;
-   if (!m_Db||!m_Db->IsOpen())
-      m_Db = NULL;
+    m_Db = db;
+    m_Base = base;
+    if (!m_Db||!m_Db->IsOpen())
+        m_Db = NULL;
 }
 /*---------------------------------------------------------------------------*/
 void wxCreateTableDialog::Init()
 {
-   m_TextTableName = NULL;
-   m_TempTable = NULL;
-   m_GridColumns = NULL;
-   m_TextDdl = NULL;
-   m_Db = NULL;
-   m_Temporary = false;
+    m_TextTableName = NULL;
+    m_TempTable = NULL;
+    m_GridColumns = NULL;
+    m_TextDdl = NULL;
+    m_Db = NULL;
+    m_Temporary = false;
 }
 /*---------------------------------------------------------------------------*/
 void wxCreateTableDialog::CreateControls()
 {
-   wxBoxSizer* bSizer1 = new wxBoxSizer(wxVERTICAL);
-   SetSizer(bSizer1);
+    wxBoxSizer* bSizer1 = new wxBoxSizer(wxVERTICAL);
+    SetSizer(bSizer1);
 
-   wxBoxSizer* bSizer2 = new wxBoxSizer(wxHORIZONTAL);
-   bSizer1->Add(bSizer2, 0, wxALIGN_LEFT|wxALL, 5);
+    wxBoxSizer* bSizer2 = new wxBoxSizer(wxHORIZONTAL);
+    bSizer1->Add(bSizer2, 0, wxALIGN_LEFT|wxALL, 5);
 
-   wxStaticText* iStatic1 = new wxStaticText(this, wxID_STATIC, _("&Name : "),
-                                             wxDefaultPosition, wxDefaultSize, 0);
-   bSizer2->Add(iStatic1, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    wxStaticText* iStatic1 = new wxStaticText(this, wxID_STATIC, _("&Name : "),
+            wxDefaultPosition, wxDefaultSize, 0);
+    bSizer2->Add(iStatic1, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
-   m_TextTableName = new wxTextCtrl(this, ID_TABLENAME, wxEmptyString,
-                                    wxDefaultPosition, wxSize(200, -1), 0);
-   bSizer2->Add(m_TextTableName, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    m_TextTableName = new wxTextCtrl(this, ID_TABLENAME, wxEmptyString,
+                                     wxDefaultPosition, wxSize(200, -1), 0);
+    bSizer2->Add(m_TextTableName, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
-   m_TempTable = new wxCheckBox(this, ID_CB_TEMP, _("&Temporary Table"),
-                                wxDefaultPosition, wxDefaultSize, 0);
-   m_TempTable->SetValue(false);
-   bSizer2->Add(m_TempTable, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
-
-   wxNotebook* noteBook1 = new wxNotebook(this, ID_BOOK, wxDefaultPosition,
-                                          wxDefaultSize, wxBK_DEFAULT);
-
-   wxPanel* panel1 = new wxPanel(noteBook1, ID_PANELBOOK, wxDefaultPosition,
-                                 wxDefaultSize, wxTAB_TRAVERSAL);
-   wxBoxSizer* bSizer3 = new wxBoxSizer(wxVERTICAL);
-   panel1->SetSizer(bSizer3);
-
-   m_GridColumns = new wxSpecGrid(panel1, ID_COLUMNS, wxDefaultPosition,
-                                  wxSize(700, 250), wxHSCROLL|wxVSCROLL);
-   m_GridColumns->SetDefaultColSize(50);
-   m_GridColumns->SetDefaultRowSize(25);
-   m_GridColumns->SetColLabelSize(25);
-   m_GridColumns->SetRowLabelSize(50);
-   m_GridColumns->CreateGrid(0, 5, wxGrid::wxGridSelectCells);
-   bSizer3->Add(m_GridColumns, 1, wxGROW|wxALL, 5);
-
-   wxBoxSizer* bSizer4 = new wxBoxSizer(wxHORIZONTAL);
-   bSizer3->Add(bSizer4, 0, wxALIGN_LEFT|wxALL, 5);
-   m_BtnAddColumn = new wxButton(panel1, ID_BTN_ADDCOLUMN, _("Add Column"),
+    m_TempTable = new wxCheckBox(this, ID_CB_TEMP, _("&Temporary Table"),
                                  wxDefaultPosition, wxDefaultSize, 0);
-   bSizer4->Add(m_BtnAddColumn, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    m_TempTable->SetValue(false);
+    bSizer2->Add(m_TempTable, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
-   wxButton* btnDel = new wxButton(panel1, ID_BTN_DELCOLUMN, _("Remove Column"),
-                                   wxDefaultPosition, wxDefaultSize, 0);
-   bSizer4->Add(btnDel, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    wxNotebook* noteBook1 = new wxNotebook(this, ID_BOOK, wxDefaultPosition,
+                                           wxDefaultSize, wxBK_DEFAULT);
 
-   noteBook1->AddPage(panel1, _("Table"));
+    wxPanel* panel1 = new wxPanel(noteBook1, ID_PANELBOOK, wxDefaultPosition,
+                                  wxDefaultSize, wxTAB_TRAVERSAL);
+    wxBoxSizer* bSizer3 = new wxBoxSizer(wxVERTICAL);
+    panel1->SetSizer(bSizer3);
 
-   m_TextDdl = new wxDDLEditor(noteBook1, ID_DDL);
+    m_GridColumns = new wxSpecGrid(panel1, ID_COLUMNS, wxDefaultPosition,
+                                   wxSize(700, 250), wxHSCROLL|wxVSCROLL);
+    m_GridColumns->SetDefaultColSize(50);
+    m_GridColumns->SetDefaultRowSize(25);
+    m_GridColumns->SetColLabelSize(25);
+    m_GridColumns->SetRowLabelSize(50);
+    m_GridColumns->CreateGrid(0, 5, wxGrid::wxGridSelectCells);
+    bSizer3->Add(m_GridColumns, 1, wxGROW|wxALL, 5);
 
-   noteBook1->AddPage(m_TextDdl, _("DDL"));
+    wxBoxSizer* bSizer4 = new wxBoxSizer(wxHORIZONTAL);
+    bSizer3->Add(bSizer4, 0, wxALIGN_LEFT|wxALL, 5);
+    m_BtnAddColumn = new wxButton(panel1, ID_BTN_ADDCOLUMN, _("Add Column"),
+                                  wxDefaultPosition, wxDefaultSize, 0);
+    bSizer4->Add(m_BtnAddColumn, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
-   bSizer1->Add(noteBook1, 0, wxGROW|wxALL, 5);
+    wxButton* btnDel = new wxButton(panel1, ID_BTN_DELCOLUMN, _("Remove Column"),
+                                    wxDefaultPosition, wxDefaultSize, 0);
+    bSizer4->Add(btnDel, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
-   wxStdDialogButtonSizer* dlgBtnSizer1 = new wxStdDialogButtonSizer;
+    noteBook1->AddPage(panel1, _("Table"));
 
-   bSizer1->Add(dlgBtnSizer1, 0, wxALIGN_RIGHT|wxALL, 5);
-   wxButton* btnOk = new wxButton(this, wxID_OK, _("&OK"), wxDefaultPosition,
-                                  wxDefaultSize, 0);
-   btnOk->SetDefault();
-   dlgBtnSizer1->AddButton(btnOk);
+    m_TextDdl = new wxDDLEditor(noteBook1, ID_DDL);
 
-   wxButton* btnCancel = new wxButton(this, wxID_CANCEL, _("&Cancel"),
-                                      wxDefaultPosition, wxDefaultSize, 0);
-   dlgBtnSizer1->AddButton(btnCancel);
+    noteBook1->AddPage(m_TextDdl, _("DDL"));
 
-   dlgBtnSizer1->Realize();
+    bSizer1->Add(noteBook1, 0, wxGROW|wxALL, 5);
 
-   // Connect events and objects
-   m_TextTableName->Connect(ID_TABLENAME, wxEVT_CHAR,
-                            wxKeyEventHandler(wxCreateTableDialog::OnChar),
-                            NULL, this);
-   m_GridColumns->Connect(ID_COLUMNS, wxEVT_CHAR,
-                          wxKeyEventHandler(wxCreateTableDialog::OnGridChar),
-                          NULL, this);
-   m_GridColumns->SetTable(&m_TableColumns);
-   m_GridColumns->SetColSize(0, 190);
-   m_GridColumns->SetColSize(1, 185);
-   m_GridColumns->SetColSize(2, 70);
-   m_GridColumns->SetColSize(3, 90);
-   m_GridColumns->SetColSize(4, 120);
+    wxStdDialogButtonSizer* dlgBtnSizer1 = new wxStdDialogButtonSizer;
 
-   // Set validators
-   m_TempTable->SetValidator(wxGenericValidator(&m_Temporary));
+    bSizer1->Add(dlgBtnSizer1, 0, wxALIGN_RIGHT|wxALL, 5);
+    wxButton* btnOk = new wxButton(this, wxID_OK, _("&OK"), wxDefaultPosition,
+                                   wxDefaultSize, 0);
+    btnOk->SetDefault();
+    dlgBtnSizer1->AddButton(btnOk);
+
+    wxButton* btnCancel = new wxButton(this, wxID_CANCEL, _("&Cancel"),
+                                       wxDefaultPosition, wxDefaultSize, 0);
+    dlgBtnSizer1->AddButton(btnCancel);
+
+    dlgBtnSizer1->Realize();
+
+    // Connect events and objects
+    m_TextTableName->Connect(ID_TABLENAME, wxEVT_CHAR,
+                             wxKeyEventHandler(wxCreateTableDialog::OnChar),
+                             NULL, this);
+    m_GridColumns->Connect(ID_COLUMNS, wxEVT_CHAR,
+                           wxKeyEventHandler(wxCreateTableDialog::OnGridChar),
+                           NULL, this);
+    m_GridColumns->SetTable(&m_TableColumns);
+    m_GridColumns->SetColSize(0, 190);
+    m_GridColumns->SetColSize(1, 185);
+    m_GridColumns->SetColSize(2, 70);
+    m_GridColumns->SetColSize(3, 90);
+    m_GridColumns->SetColSize(4, 120);
+
+    // Set validators
+    m_TempTable->SetValidator(wxGenericValidator(&m_Temporary));
 }
 /*---------------------------------------------------------------------------*/
 bool wxCreateTableDialog::ShowToolTips()
 {
-   return true;
+    return true;
 }
 /*---------------------------------------------------------------------------*/
 void wxCreateTableDialog::OnBtnAddcolumnClick(wxCommandEvent& event)
 {
-   m_GridColumns->AppendRows(1);
+    m_GridColumns->AppendRows(1);
 }
 /*---------------------------------------------------------------------------*/
 void wxCreateTableDialog::OnBtnDelcolumnClick(wxCommandEvent& event)
 {
-   wxArrayInt rowsArray = m_GridColumns->GetSelectedRows();
-   for (size_t i = rowsArray.GetCount(); i > 0; i--)
-      m_GridColumns->DeleteRows(rowsArray[i - 1]);
+    wxArrayInt rowsArray = m_GridColumns->GetSelectedRows();
+    for (size_t i = rowsArray.GetCount(); i > 0; i--)
+        m_GridColumns->DeleteRows(rowsArray[i - 1]);
 }
 /*---------------------------------------------------------------------------*/
 void wxCreateTableDialog::OnBtnDelcolumnUpdate(wxUpdateUIEvent& event)
 {
-   event.Enable(m_GridColumns->GetSelectedRows().GetCount() > 0);
+    event.Enable(m_GridColumns->GetSelectedRows().GetCount() > 0);
 }
 /*---------------------------------------------------------------------------*/
 void wxCreateTableDialog::OnOkClick(wxCommandEvent& event)
 {
-   if (GetCreateTableDDL().IsEmpty())
-      return;
-   event.Skip();
+    if (GetCreateTableDDL().IsEmpty())
+        return;
+    event.Skip();
 }
 /*---------------------------------------------------------------------------*/
 void wxCreateTableDialog::OnGridChar(wxKeyEvent& event)
 {
-   event.Skip();
+    event.Skip();
 }
 /*---------------------------------------------------------------------------*/
 void wxCreateTableDialog::OnChar(wxKeyEvent& event)
 {
-   int c = event.GetKeyCode();
-   if ((!wxIsalnum(c) && c != ('_') && c != (' ') && c != WXK_BACK && c != WXK_DELETE)&&
-      // Ctrl+C Ctrl+V Ctrl+X
-       !(event.ControlDown() && (c == 3 || c == 22 || c == 24)))
-      return;
-   event.Skip();
+    int c = event.GetKeyCode();
+    if ((!wxIsalnum(c) && c != ('_') && c != (' ') && c != WXK_BACK && c != WXK_DELETE)&&
+            // Ctrl+C Ctrl+V Ctrl+X
+            !(event.ControlDown() && (c == 3 || c == 22 || c == 24)))
+        return;
+    event.Skip();
 }
 /*---------------------------------------------------------------------------*/
 void wxCreateTableDialog::OnBookPageChanging(wxNotebookEvent& event)
 {
-   if (event.GetOldSelection() == 0)
-   {
-      wxString ddl = GetCreateTableDDL();
+    if (event.GetOldSelection() == 0)
+    {
+        wxString ddl = GetCreateTableDDL();
 
-      if (ddl.IsEmpty())
-         event.Veto();
-      else
-         m_TextDdl->SetValue(ddl);
-   }
+        if (ddl.IsEmpty())
+            event.Veto();
+        else
+            m_TextDdl->SetValue(ddl);
+    }
 }
 /*---------------------------------------------------------------------------*/
 wxString wxCreateTableDialog::GetCreateTableDDL()
 {
-   wxString ddl, tablename, def;
-   wxColumnCtrTable* column;
-   wxSQLitePlusFrame* frame;
+    wxString ddl, tablename, def;
+    wxColumnCtrTable* column;
+    wxSQLitePlusFrame* frame;
 
-   if (!m_Db||!m_Db->IsOpen())
-      return wxEmptyString;
+    if (!m_Db||!m_Db->IsOpen())
+        return wxEmptyString;
 
-   tablename = m_TextTableName->GetValue();
-   if (tablename.IsEmpty())
-   {
-      wxMessageBox(_("You have to enter a table name."),
-                   _("Error"));
-      m_TextTableName->SetFocus();
-      return wxEmptyString;
-   }
-   if (m_GridColumns->GetNumberRows() == 0)
-   {
-      wxMessageBox(_("You have to create column(s) for the table."),
-                   _("Error"));
-      m_BtnAddColumn->SetFocus();
-      return wxEmptyString;
-   }
+    tablename = m_TextTableName->GetValue();
+    if (tablename.IsEmpty())
+    {
+        wxMessageBox(_("You have to enter a table name."),
+                     _("Error"));
+        m_TextTableName->SetFocus();
+        return wxEmptyString;
+    }
+    if (m_GridColumns->GetNumberRows() == 0)
+    {
+        wxMessageBox(_("You have to create column(s) for the table."),
+                     _("Error"));
+        m_BtnAddColumn->SetFocus();
+        return wxEmptyString;
+    }
 
-   frame = (wxSQLitePlusFrame*)wxGetApp().GetTopWindow();
+    frame = (wxSQLitePlusFrame*)wxGetApp().GetTopWindow();
 
-   if (frame->ExistDbObject(otTable, tablename, m_Base))
-   {
-      wxMessageBox(_("Table or view with this name already exist."),
-                   _("Error"));
-      m_TextTableName->SetFocus();
-      return wxEmptyString;
-   }
+    if (frame->ExistDbObject(otTable, tablename, m_Base))
+    {
+        wxMessageBox(_("Table or view with this name already exist."),
+                     _("Error"));
+        m_TextTableName->SetFocus();
+        return wxEmptyString;
+    }
 
-   // Création du DDL
-   ddl = ("CREATE ");
-   if (m_TempTable->IsChecked())
-      ddl += ("TEMPORARY ");
-   ddl += ("TABLE ");
-   if (!m_TempTable->IsChecked() && m_Base != wxEmptyString)
-      ddl += "'" + m_Base + ("'.");
-   ddl += ("\"") + tablename.Lower() + ("\"\n");
-   ddl += ("(");
-   for (int i = 0; i < m_TableColumns.GetNumberRows(); i++)
-   {
-      column = m_TableColumns.GetColumnCtrTable(i);
-      ddl += ("\n  \"") + column->GetName() + ("\" ");
-      switch (column->GetType())
-      {
-         case cttIntegerAutoinc :
+    // Création du DDL
+    ddl = ("CREATE ");
+    if (m_TempTable->IsChecked())
+        ddl += ("TEMPORARY ");
+    ddl += ("TABLE ");
+    if (!m_TempTable->IsChecked() && m_Base != wxEmptyString)
+        ddl += "'" + m_Base + ("'.");
+    ddl += ("\"") + tablename.Lower() + ("\"\n");
+    ddl += ("(");
+    for (int i = 0; i < m_TableColumns.GetNumberRows(); i++)
+    {
+        column = m_TableColumns.GetColumnCtrTable(i);
+        ddl += ("\n  \"") + column->GetName() + ("\" ");
+        switch (column->GetType())
+        {
+        case cttIntegerAutoinc :
             if (!column->GetPrimaryKey())
             {
-               wxMessageBox(_("A column with AUTOINCREMENT must be a primary key."),
-                            _("Error"));
-               return wxEmptyString;
+                wxMessageBox(_("A column with AUTOINCREMENT must be a primary key."),
+                             _("Error"));
+                return wxEmptyString;
             }
-         case cttInteger :
-            ddl += ("INTEGER"); break;
-         case cttReal :
-            ddl += ("REAL"); break;
-         case cttText :
-            ddl += ("TEXT"); break;
-         case cttBlob :
-            ddl += ("BLOB"); break;
-      }
-      if (column->GetNotNull())
-         ddl += (" NOT NULL");
-      if (column->GetPrimaryKey())
-      {
-         ddl += (" PRIMARY KEY");
-         if (column->GetType() == cttIntegerAutoinc)
-            ddl += (" AUTOINCREMENT");
-      }
-      if (column->GetDefault() != wxEmptyString)
-      {
-         ddl += (" DEFAULT ");
-         if ((column->GetType() == cttText || column->GetType() == cttBlob)&&
-             (column->GetDefault() != ("CURRENT_TIME")||
-              column->GetDefault() != ("CURRENT_DATE")||
-              column->GetDefault() != ("CURRENT_TIMESTAMP")))
-         {
-            def = column->GetDefault();
-            if (!def.StartsWith(("'"))||!def.EndsWith(("'")))
+        case cttInteger :
+            ddl += ("INTEGER");
+            break;
+        case cttReal :
+            ddl += ("REAL");
+            break;
+        case cttText :
+            ddl += ("TEXT");
+            break;
+        case cttBlob :
+            ddl += ("BLOB");
+            break;
+        }
+        if (column->GetNotNull())
+            ddl += (" NOT NULL");
+        if (column->GetPrimaryKey())
+        {
+            ddl += (" PRIMARY KEY");
+            if (column->GetType() == cttIntegerAutoinc)
+                ddl += (" AUTOINCREMENT");
+        }
+        if (column->GetDefault() != wxEmptyString)
+        {
+            ddl += (" DEFAULT ");
+            if ((column->GetType() == cttText || column->GetType() == cttBlob)&&
+                    (column->GetDefault() != ("CURRENT_TIME")||
+                     column->GetDefault() != ("CURRENT_DATE")||
+                     column->GetDefault() != ("CURRENT_TIMESTAMP")))
             {
-               def.Replace(("'"), ("''"));
-               ddl += ("'") + def + ("'");
+                def = column->GetDefault();
+                if (!def.StartsWith(("'"))||!def.EndsWith(("'")))
+                {
+                    def.Replace(("'"), ("''"));
+                    ddl += ("'") + def + ("'");
+                }
             }
-         }
-         else
-            ddl += column->GetDefault();
-      }
-      if (i != m_TableColumns.GetNumberRows() - 1)
-         ddl += (",");
-   }
-   ddl += ("\n);");
-   return ddl;
+            else
+                ddl += column->GetDefault();
+        }
+        if (i != m_TableColumns.GetNumberRows() - 1)
+            ddl += (",");
+    }
+    ddl += ("\n);");
+    return ddl;
 }
 /*---------------------------------------------------------------------------*/
 

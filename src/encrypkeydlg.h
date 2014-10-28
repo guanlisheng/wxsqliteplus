@@ -5,41 +5,45 @@
 /*---------------------------------------------------------------------------*/
 class wxDbEncryptionKeyDlg: public wxDialog
 {
-   DECLARE_DYNAMIC_CLASS(wxDbEncryptionKeyDlg)
-   DECLARE_EVENT_TABLE()
+    DECLARE_DYNAMIC_CLASS(wxDbEncryptionKeyDlg)
+    DECLARE_EVENT_TABLE()
 
-   public:
+public:
 
-      wxDbEncryptionKeyDlg();
-      wxDbEncryptionKeyDlg(wxWindow* parent, wxWindowID id = -1,
-                           const wxString& caption = _("Database Encryption Key"),
-                           const wxPoint& pos = wxDefaultPosition,
-                           const wxSize& size = wxDefaultSize,
-                           long style = wxDEFAULT_DIALOG_STYLE);
+    wxDbEncryptionKeyDlg();
+    wxDbEncryptionKeyDlg(wxWindow* parent, wxWindowID id = -1,
+                         const wxString& caption = _("Database Encryption Key"),
+                         const wxPoint& pos = wxDefaultPosition,
+                         const wxSize& size = wxDefaultSize,
+                         long style = wxDEFAULT_DIALOG_STYLE);
 
-      bool Create(wxWindow* parent, wxWindowID id = -1,
-                  const wxString& caption = _("Database Encryption Key"),
-                  const wxPoint& pos = wxDefaultPosition,
-                  const wxSize& size = wxDefaultSize,
-                  long style = wxDEFAULT_DIALOG_STYLE);
+    bool Create(wxWindow* parent, wxWindowID id = -1,
+                const wxString& caption = _("Database Encryption Key"),
+                const wxPoint& pos = wxDefaultPosition,
+                const wxSize& size = wxDefaultSize,
+                long style = wxDEFAULT_DIALOG_STYLE);
 
-      ~wxDbEncryptionKeyDlg();
+    ~wxDbEncryptionKeyDlg();
 
-      wxString GetKey() const {return m_Key;}
-      void SetKey(wxString value) {m_Key = value;}
+    wxString GetKey() const {
+        return m_Key;
+    }
+    void SetKey(wxString value) {
+        m_Key = value;
+    }
 
-   protected:
+protected:
 
-      void Init();
-      void CreateControls();
+    void Init();
+    void CreateControls();
 
-      static bool ShowToolTips();
+    static bool ShowToolTips();
 
-   private:
+private:
 
-      wxTextCtrl* m_EdKey;
+    wxTextCtrl* m_EdKey;
 
-      wxString m_Key;
+    wxString m_Key;
 
 };
 /*---------------------------------------------------------------------------*/

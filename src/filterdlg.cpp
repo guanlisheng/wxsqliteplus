@@ -30,42 +30,42 @@
 IMPLEMENT_DYNAMIC_CLASS(wxFilterDialog, wxDialog)
 
 BEGIN_EVENT_TABLE(wxFilterDialog, wxDialog)
-   EVT_CHOICE(ID_FIELDS, wxFilterDialog::OnFieldsSelected)
-   EVT_UPDATE_UI(ID_VALUE, wxFilterDialog::OnValueUpdate)
-   EVT_BUTTON(ID_BTN_AND, wxFilterDialog::OnBtnAndClick)
-   EVT_BUTTON(ID_BTN_OR, wxFilterDialog::OnBtnOrClick)
-   EVT_BUTTON(ID_BTN_OPAR, wxFilterDialog::OnBtnOparClick)
-   EVT_BUTTON(ID_BTN_CPAR, wxFilterDialog::OnBtnCparClick)
-   EVT_BUTTON(wxID_CLEAR, wxFilterDialog::OnClearClick)
-   EVT_UPDATE_UI(wxID_CLEAR, wxFilterDialog::OnClearUpdate)
-   EVT_BUTTON(ID_BTN_ADD, wxFilterDialog::OnBtnAddClick)
-   EVT_BUTTON(wxID_OK, wxFilterDialog::OnOkClick)
+    EVT_CHOICE(ID_FIELDS, wxFilterDialog::OnFieldsSelected)
+    EVT_UPDATE_UI(ID_VALUE, wxFilterDialog::OnValueUpdate)
+    EVT_BUTTON(ID_BTN_AND, wxFilterDialog::OnBtnAndClick)
+    EVT_BUTTON(ID_BTN_OR, wxFilterDialog::OnBtnOrClick)
+    EVT_BUTTON(ID_BTN_OPAR, wxFilterDialog::OnBtnOparClick)
+    EVT_BUTTON(ID_BTN_CPAR, wxFilterDialog::OnBtnCparClick)
+    EVT_BUTTON(wxID_CLEAR, wxFilterDialog::OnClearClick)
+    EVT_UPDATE_UI(wxID_CLEAR, wxFilterDialog::OnClearUpdate)
+    EVT_BUTTON(ID_BTN_ADD, wxFilterDialog::OnBtnAddClick)
+    EVT_BUTTON(wxID_OK, wxFilterDialog::OnOkClick)
 END_EVENT_TABLE()
 /*---------------------------------------------------------------------------*/
 wxFilterDialog::wxFilterDialog()
 {
-   Init();
+    Init();
 }
 /*---------------------------------------------------------------------------*/
 wxFilterDialog::wxFilterDialog(wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style)
 {
-   Init();
-   Create(parent, id, caption, pos, size, style);
+    Init();
+    Create(parent, id, caption, pos, size, style);
 }
 /*---------------------------------------------------------------------------*/
 bool wxFilterDialog::Create(wxWindow* parent, wxWindowID id, const wxString& caption, const wxPoint& pos, const wxSize& size, long style)
 {
-   SetExtraStyle(wxWS_EX_BLOCK_EVENTS);
-   wxDialog::Create(parent, id, caption, pos, size, style);
+    SetExtraStyle(wxWS_EX_BLOCK_EVENTS);
+    wxDialog::Create(parent, id, caption, pos, size, style);
 
-   CreateControls();
-   SetIcon(wxGetApp().GetIcon(ID_ICO_FILTER));
-   if (GetSizer())
-   {
-      GetSizer()->SetSizeHints(this);
-   }
-   Centre();
-   return true;
+    CreateControls();
+    SetIcon(wxGetApp().GetIcon(ID_ICO_FILTER));
+    if (GetSizer())
+    {
+        GetSizer()->SetSizeHints(this);
+    }
+    Centre();
+    return true;
 }
 /*---------------------------------------------------------------------------*/
 wxFilterDialog::~wxFilterDialog()
@@ -74,251 +74,251 @@ wxFilterDialog::~wxFilterDialog()
 /*---------------------------------------------------------------------------*/
 void wxFilterDialog::Init()
 {
-   m_fields = NULL;
-   m_operators = NULL;
-   m_Value = NULL;
-   m_filter = NULL;
+    m_fields = NULL;
+    m_operators = NULL;
+    m_Value = NULL;
+    m_filter = NULL;
 }
 /*---------------------------------------------------------------------------*/
 void wxFilterDialog::CreateControls()
 {
-   wxBoxSizer* bSizer1 = new wxBoxSizer(wxVERTICAL);
-   SetSizer(bSizer1);
+    wxBoxSizer* bSizer1 = new wxBoxSizer(wxVERTICAL);
+    SetSizer(bSizer1);
 
-   wxPanel* iPanel1 = new wxPanel(this, ID_FILTER_PANEL, wxDefaultPosition,
-                                  wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL);
-   bSizer1->Add(iPanel1, 0, wxGROW, 0);
+    wxPanel* iPanel1 = new wxPanel(this, ID_FILTER_PANEL, wxDefaultPosition,
+                                   wxDefaultSize, wxSUNKEN_BORDER|wxTAB_TRAVERSAL);
+    bSizer1->Add(iPanel1, 0, wxGROW, 0);
 
-   wxBoxSizer* bSizer2 = new wxBoxSizer(wxVERTICAL);
-   iPanel1->SetSizer(bSizer2);
+    wxBoxSizer* bSizer2 = new wxBoxSizer(wxVERTICAL);
+    iPanel1->SetSizer(bSizer2);
 
-   wxBoxSizer* bSizer3 = new wxBoxSizer(wxHORIZONTAL);
-   bSizer2->Add(bSizer3, 0, wxGROW, 0);
+    wxBoxSizer* bSizer3 = new wxBoxSizer(wxHORIZONTAL);
+    bSizer2->Add(bSizer3, 0, wxGROW, 0);
 
-   m_fields = new wxChoice(iPanel1, ID_FIELDS, wxDefaultPosition,
-                           wxDefaultSize, 0, NULL, 0);
-   bSizer3->Add(m_fields, 1, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    m_fields = new wxChoice(iPanel1, ID_FIELDS, wxDefaultPosition,
+                            wxDefaultSize, 0, NULL, 0);
+    bSizer3->Add(m_fields, 1, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
-   wxArrayString m_operatorsStrings;
-   m_operatorsStrings.Add(_(">"));
-   m_operatorsStrings.Add(_(">="));
-   m_operatorsStrings.Add(_("<"));
-   m_operatorsStrings.Add(_("<="));
-   m_operatorsStrings.Add(_("="));
-   m_operatorsStrings.Add(_("<>"));
-   m_operatorsStrings.Add(_("LIKE"));
-   m_operatorsStrings.Add(_("NOT LIKE"));
-   m_operatorsStrings.Add(_("GLOB"));
-   m_operatorsStrings.Add(_("NOT GLOB"));
-   m_operatorsStrings.Add(_("ISNULL"));
-   m_operatorsStrings.Add(_("NOTNULL"));
-   m_operators = new wxChoice(iPanel1, ID_OPERATORS, wxDefaultPosition,
-                              wxDefaultSize, m_operatorsStrings, 0);
-   m_operators->SetStringSelection(_(">"));
-   bSizer3->Add(m_operators, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    wxArrayString m_operatorsStrings;
+    m_operatorsStrings.Add(_(">"));
+    m_operatorsStrings.Add(_(">="));
+    m_operatorsStrings.Add(_("<"));
+    m_operatorsStrings.Add(_("<="));
+    m_operatorsStrings.Add(_("="));
+    m_operatorsStrings.Add(_("<>"));
+    m_operatorsStrings.Add(_("LIKE"));
+    m_operatorsStrings.Add(_("NOT LIKE"));
+    m_operatorsStrings.Add(_("GLOB"));
+    m_operatorsStrings.Add(_("NOT GLOB"));
+    m_operatorsStrings.Add(_("ISNULL"));
+    m_operatorsStrings.Add(_("NOTNULL"));
+    m_operators = new wxChoice(iPanel1, ID_OPERATORS, wxDefaultPosition,
+                               wxDefaultSize, m_operatorsStrings, 0);
+    m_operators->SetStringSelection(_(">"));
+    bSizer3->Add(m_operators, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
-   m_Value = new wxTextCtrl(iPanel1, ID_VALUE, (""), wxDefaultPosition,
-                            wxDefaultSize, 0);
-   bSizer3->Add(m_Value, 1, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    m_Value = new wxTextCtrl(iPanel1, ID_VALUE, (""), wxDefaultPosition,
+                             wxDefaultSize, 0);
+    bSizer3->Add(m_Value, 1, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
-   wxBoxSizer* bSizer4 = new wxBoxSizer(wxHORIZONTAL);
-   bSizer2->Add(bSizer4, 0, wxALIGN_LEFT, 0);
+    wxBoxSizer* bSizer4 = new wxBoxSizer(wxHORIZONTAL);
+    bSizer2->Add(bSizer4, 0, wxALIGN_LEFT, 0);
 
-   wxButton* btnAnd = new wxButton(iPanel1, ID_BTN_AND, _("AND"),
+    wxButton* btnAnd = new wxButton(iPanel1, ID_BTN_AND, _("AND"),
+                                    wxDefaultPosition, wxSize(50, -1), 0);
+    bSizer4->Add(btnAnd, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+    wxButton* btnOr = new wxButton(iPanel1, ID_BTN_OR, _("OR"),
                                    wxDefaultPosition, wxSize(50, -1), 0);
-   bSizer4->Add(btnAnd, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    bSizer4->Add(btnOr, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
-   wxButton* btnOr = new wxButton(iPanel1, ID_BTN_OR, _("OR"),
-                                  wxDefaultPosition, wxSize(50, -1), 0);
-   bSizer4->Add(btnOr, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
-
-   wxButton* btnOpenPar = new wxButton(iPanel1, ID_BTN_OPAR, _("("),
-                                       wxDefaultPosition, wxSize(50, -1), 0);
-   bSizer4->Add(btnOpenPar, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
-
-   wxButton* btnClosePar = new wxButton(iPanel1, ID_BTN_CPAR, _(")"),
+    wxButton* btnOpenPar = new wxButton(iPanel1, ID_BTN_OPAR, _("("),
                                         wxDefaultPosition, wxSize(50, -1), 0);
-   bSizer4->Add(btnClosePar, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    bSizer4->Add(btnOpenPar, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
-   wxButton* btnClear = new wxButton(iPanel1, wxID_CLEAR, _("&Clear"),
-                                     wxDefaultPosition, wxDefaultSize, 0);
-   bSizer4->Add(btnClear, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+    wxButton* btnClosePar = new wxButton(iPanel1, ID_BTN_CPAR, _(")"),
+                                         wxDefaultPosition, wxSize(50, -1), 0);
+    bSizer4->Add(btnClosePar, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
-   bSizer4->Add(5, 5, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
-
-   wxButton* btnAdd = new wxButton(iPanel1, ID_BTN_ADD, _("Add"),
-                                   wxDefaultPosition, wxDefaultSize, 0);
-   bSizer4->Add(btnAdd, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
-
-   m_filter = new wxSQLEditor(this, ID_STATEMENT, wxDefaultPosition, wxSize(-1, 100));
-   m_filter->SetLineNumberMarginStyle(false);
-
-   bSizer1->Add(m_filter, 1, wxGROW|wxLEFT, 0);
-
-   wxStdDialogButtonSizer* dlgButtonSizer1 = new wxStdDialogButtonSizer;
-
-   bSizer1->Add(dlgButtonSizer1, 0, wxALIGN_RIGHT|wxALL, 5);
-   wxButton* btnOk = new wxButton(this, wxID_OK, _("&OK"),
-                                  wxDefaultPosition, wxDefaultSize, 0);
-   btnOk->SetDefault();
-   dlgButtonSizer1->AddButton(btnOk);
-
-   wxButton* btnCancel = new wxButton(this, wxID_CANCEL, _("&Cancel"),
+    wxButton* btnClear = new wxButton(iPanel1, wxID_CLEAR, _("&Clear"),
                                       wxDefaultPosition, wxDefaultSize, 0);
-   dlgButtonSizer1->AddButton(btnCancel);
+    bSizer4->Add(btnClear, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
-   dlgButtonSizer1->Realize();
+    bSizer4->Add(5, 5, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+    wxButton* btnAdd = new wxButton(iPanel1, ID_BTN_ADD, _("Add"),
+                                    wxDefaultPosition, wxDefaultSize, 0);
+    bSizer4->Add(btnAdd, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
+
+    m_filter = new wxSQLEditor(this, ID_STATEMENT, wxDefaultPosition, wxSize(-1, 100));
+    m_filter->SetLineNumberMarginStyle(false);
+
+    bSizer1->Add(m_filter, 1, wxGROW|wxLEFT, 0);
+
+    wxStdDialogButtonSizer* dlgButtonSizer1 = new wxStdDialogButtonSizer;
+
+    bSizer1->Add(dlgButtonSizer1, 0, wxALIGN_RIGHT|wxALL, 5);
+    wxButton* btnOk = new wxButton(this, wxID_OK, _("&OK"),
+                                   wxDefaultPosition, wxDefaultSize, 0);
+    btnOk->SetDefault();
+    dlgButtonSizer1->AddButton(btnOk);
+
+    wxButton* btnCancel = new wxButton(this, wxID_CANCEL, _("&Cancel"),
+                                       wxDefaultPosition, wxDefaultSize, 0);
+    dlgButtonSizer1->AddButton(btnCancel);
+
+    dlgButtonSizer1->Realize();
 }
 /*---------------------------------------------------------------------------*/
 void wxFilterDialog::OnBtnAddClick(wxCommandEvent& event)
 {
-   wxString tmp1, tmp2;
-   int idxfield, idxoper;
+    wxString tmp1, tmp2;
+    int idxfield, idxoper;
 
-   idxfield = m_fields->GetSelection();
-   idxoper = m_operators->GetSelection();
+    idxfield = m_fields->GetSelection();
+    idxoper = m_operators->GetSelection();
 
-   tmp1 = wxString::Format(("\"%s\" %s"),
-                           m_fields->GetString(idxfield).c_str(),
-                           m_operators->GetString(idxoper).c_str());
-   if (idxoper < 10)
-   {
-      tmp2 = m_Value-> GetValue();
-      if (m_fields->GetClientData(idxfield) == (void*)1)
-         tmp2 = wxString::Format(("'%s'"), tmp2.c_str());
-      tmp1 = wxString::Format(("%s %s"), tmp1.c_str(), tmp2.c_str());
-   }
-   m_filter->AddText(tmp1);
+    tmp1 = wxString::Format(("\"%s\" %s"),
+                            m_fields->GetString(idxfield).c_str(),
+                            m_operators->GetString(idxoper).c_str());
+    if (idxoper < 10)
+    {
+        tmp2 = m_Value-> GetValue();
+        if (m_fields->GetClientData(idxfield) == (void*)1)
+            tmp2 = wxString::Format(("'%s'"), tmp2.c_str());
+        tmp1 = wxString::Format(("%s %s"), tmp1.c_str(), tmp2.c_str());
+    }
+    m_filter->AddText(tmp1);
 }
 /*---------------------------------------------------------------------------*/
 void wxFilterDialog::OnBtnAndClick(wxCommandEvent& event)
 {
-   m_filter->AddText("\nAND ");
+    m_filter->AddText("\nAND ");
 }
 /*---------------------------------------------------------------------------*/
 void wxFilterDialog::OnBtnOrClick(wxCommandEvent& event)
 {
-   m_filter->AddText("\nOR ");
+    m_filter->AddText("\nOR ");
 }
 /*---------------------------------------------------------------------------*/
 void wxFilterDialog::OnBtnOparClick(wxCommandEvent& event)
 {
-   m_filter->AddText("(");
+    m_filter->AddText("(");
 }
 /*---------------------------------------------------------------------------*/
 void wxFilterDialog::OnBtnCparClick(wxCommandEvent& event)
 {
-   m_filter->AddText(")");
+    m_filter->AddText(")");
 }
 /*---------------------------------------------------------------------------*/
 void wxFilterDialog::OnClearClick(wxCommandEvent& event)
 {
-   m_filter->ClearAll();
+    m_filter->ClearAll();
 }
 /*---------------------------------------------------------------------------*/
 void wxFilterDialog::OnClearUpdate(wxUpdateUIEvent& event)
 {
-   event.Enable(m_filter->GetLength() > 0);
+    event.Enable(m_filter->GetLength() > 0);
 }
 /*---------------------------------------------------------------------------*/
 void wxFilterDialog::OnOkClick(wxCommandEvent& event)
 {
-   try
-   {
-      m_Statement = m_filter->GetText();
-      if (!m_Statement.IsEmpty())
-      {
-         wxString base = m_Base.IsEmpty() ? "main" : m_Base;
-         wxString sql = "EXPLAIN SELECT *\r";
-         sql += "FROM " + base + "." + m_Table + "\r";
-         sql += "WHERE " + m_Statement + ";";
-         wxSQLite3ResultSet resultSet = m_Db->ExecuteQuery(ToUTF8(sql));
-         resultSet.Finalize();
-      }
-      event.Skip();
-   }
-   catch(wxSQLite3Exception& ex)
-   {
-      wxMessageBox(ex.GetMessage(), _("Error"));
-   }
+    try
+    {
+        m_Statement = m_filter->GetText();
+        if (!m_Statement.IsEmpty())
+        {
+            wxString base = m_Base.IsEmpty() ? "main" : m_Base;
+            wxString sql = "EXPLAIN SELECT *\r";
+            sql += "FROM " + base + "." + m_Table + "\r";
+            sql += "WHERE " + m_Statement + ";";
+            wxSQLite3ResultSet resultSet = m_Db->ExecuteQuery(ToUTF8(sql));
+            resultSet.Finalize();
+        }
+        event.Skip();
+    }
+    catch(wxSQLite3Exception& ex)
+    {
+        wxMessageBox(ex.GetMessage(), _("Error"));
+    }
 }
 /*---------------------------------------------------------------------------*/
 void wxFilterDialog::OnFieldsSelected(wxCommandEvent& event)
 {
-   m_Value->Clear();
-   event.Skip();
+    m_Value->Clear();
+    event.Skip();
 }
 /*---------------------------------------------------------------------------*/
 void wxFilterDialog::OnValueUpdate(wxUpdateUIEvent& event)
 {
-   event.Enable(m_operators->GetSelection() < 10);
+    event.Enable(m_operators->GetSelection() < 10);
 }
 /*---------------------------------------------------------------------------*/
 void wxFilterDialog::SetDatabase(wxSQLite3Database* db, const wxString& base)
 {
-   m_Db = db;
-   m_Base = base;
-   if (!m_Db||!m_Db->IsOpen())
-      return;
-   m_fields->Clear();
-   m_Table = wxEmptyString;
+    m_Db = db;
+    m_Base = base;
+    if (!m_Db||!m_Db->IsOpen())
+        return;
+    m_fields->Clear();
+    m_Table = wxEmptyString;
 }
 /*---------------------------------------------------------------------------*/
 void wxFilterDialog::SetTable(const wxString& table)
 {
-   if (!m_Db||!m_Db->IsOpen())
-      return;
+    if (!m_Db||!m_Db->IsOpen())
+        return;
 
-   m_Table = table;
-   m_fields->Clear();
+    m_Table = table;
+    m_fields->Clear();
 
-   try
-   {
-      wxSQLite3ResultSet clmnQRY;
-      wxString sql, basename;
-      int numberCols;
+    try
+    {
+        wxSQLite3ResultSet clmnQRY;
+        wxString sql, basename;
+        int numberCols;
 
-      if (m_Base != wxEmptyString)
-         basename = m_Base;
-      else
-         basename = ("main");
+        if (m_Base != wxEmptyString)
+            basename = m_Base;
+        else
+            basename = ("main");
 
-      // limiter à 1 car si limite à 0 ça ne fonctionne pas
-      // les informations sur le type de colonnes n'est pas retourné
-      sql = wxString::Format(("SELECT * FROM %s.%s LIMIT 1;"),
-                             basename.c_str(), m_Table.c_str());
-      clmnQRY = m_Db->ExecuteQuery(ToUTF8(sql));
+        // limiter à 1 car si limite à 0 ça ne fonctionne pas
+        // les informations sur le type de colonnes n'est pas retourné
+        sql = wxString::Format(("SELECT * FROM %s.%s LIMIT 1;"),
+                               basename.c_str(), m_Table.c_str());
+        clmnQRY = m_Db->ExecuteQuery(ToUTF8(sql));
 
-      numberCols = clmnQRY.GetColumnCount();
-      int colt;
-      for (int i = 0; i < numberCols; i++)
-      {
-         colt = clmnQRY.GetColumnType(i);
-         switch (colt)
-         {
+        numberCols = clmnQRY.GetColumnCount();
+        int colt;
+        for (int i = 0; i < numberCols; i++)
+        {
+            colt = clmnQRY.GetColumnType(i);
+            switch (colt)
+            {
             case WXSQLITE_INTEGER :
             case WXSQLITE_FLOAT   :
-               m_fields->Append(clmnQRY.GetColumnName(i), (void*)0);
-               break;
+                m_fields->Append(clmnQRY.GetColumnName(i), (void*)0);
+                break;
             default : ; // WXSQLITE_TEXT WXSQLITE_BLOB WXSQLITE_NULL
-               m_fields->Append(clmnQRY.GetColumnName(i), (void*)1);
-         }
-      }
+                m_fields->Append(clmnQRY.GetColumnName(i), (void*)1);
+            }
+        }
 
-      clmnQRY.Finalize();
-      m_fields->SetSelection(0);
-   }
-   catch(wxSQLite3Exception& ex)
-   {
-      wxGetApp().ShowError("SetTable", ex);
-   }
+        clmnQRY.Finalize();
+        m_fields->SetSelection(0);
+    }
+    catch(wxSQLite3Exception& ex)
+    {
+        wxGetApp().ShowError("SetTable", ex);
+    }
 
 }
 /*---------------------------------------------------------------------------*/
 void wxFilterDialog::SetStatement(const wxString& value)
 {
-   m_Statement = value;
-   m_filter->SetText(m_Statement);
+    m_Statement = value;
+    m_filter->SetText(m_Statement);
 }
 /*---------------------------------------------------------------------------*/
 

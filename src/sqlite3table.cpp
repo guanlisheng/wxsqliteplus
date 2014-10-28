@@ -28,207 +28,225 @@ wxString g_NullValString(("(null)"));
 /*---------------------------------------------------------------------------*/
 class wxSQLite3TableColumn
 {
-   public:
+public:
 
-      wxSQLite3TableColumn(){m_ShowNull = true;}
-      virtual ~wxSQLite3TableColumn(){}
+    wxSQLite3TableColumn() {
+        m_ShowNull = true;
+    }
+    virtual ~wxSQLite3TableColumn() {}
 
-      virtual void AddValue(wxSQLite3ResultSet& resultSet, int columnIndex){}
-      virtual void AddValue(const wxString& value){}
-      virtual void AddValue(long value){}
-      virtual void AddValue(double value){}
+    virtual void AddValue(wxSQLite3ResultSet& resultSet, int columnIndex) {}
+    virtual void AddValue(const wxString& value) {}
+    virtual void AddValue(long value) {}
+    virtual void AddValue(double value) {}
 
-      wxString GetLabelValue(){return m_Label;}
-      void SetLabelValue(const wxString& value){m_Label = value;}
-      int GetSize();
+    wxString GetLabelValue() {
+        return m_Label;
+    }
+    void SetLabelValue(const wxString& value) {
+        m_Label = value;
+    }
+    int GetSize();
 
-      virtual wxString GetType() const {return wxEmptyString;}
+    virtual wxString GetType() const {
+        return wxEmptyString;
+    }
 
-      virtual wxString GetString(int row)
-      {
-         return wxEmptyString;
-      }
+    virtual wxString GetString(int row)
+    {
+        return wxEmptyString;
+    }
 
-      virtual bool GetBool(int row)
-      {
-         return false;
-      }
+    virtual bool GetBool(int row)
+    {
+        return false;
+    }
 
-      bool IsNull(int row)
-      {
-         return (m_nullValues.Item(row) == 0);
-      }
+    bool IsNull(int row)
+    {
+        return (m_nullValues.Item(row) == 0);
+    }
 
-      bool GetShowNull(){return m_ShowNull;}
-      void SetShowNull(bool value){m_ShowNull = value;}
+    bool GetShowNull() {
+        return m_ShowNull;
+    }
+    void SetShowNull(bool value) {
+        m_ShowNull = value;
+    }
 
-      wxString GetNullString()
-      {
-         if (m_ShowNull)
+    wxString GetNullString()
+    {
+        if (m_ShowNull)
             return g_NullValString;
-         else
+        else
             return wxEmptyString;
-      }
+    }
 
-   protected:
+protected:
 
-      wxArrayInt m_nullValues;
+    wxArrayInt m_nullValues;
 
-   private:
+private:
 
-      bool m_ShowNull;
-      wxString m_Label;
+    bool m_ShowNull;
+    wxString m_Label;
 };
 /*---------------------------------------------------------------------------*/
 int wxSQLite3TableColumn::GetSize()
 {
-   int m_Size;
+    int m_Size;
 
-   if (GetType() == wxGRID_VALUE_STRING)
-      m_Size = 24;
-   else if (GetType() == wxGRID_VALUE_BOOL)
-      m_Size = 5;
-   else if (GetType() == wxGRID_VALUE_NUMBER)   // 4 000 000 000
-      m_Size = 10;
-   else if (GetType() == wxGRID_VALUE_FLOAT)
-      m_Size = 12;
-   else if (GetType() == wxGRID_VALUE_CHOICE)
-      m_Size = 28;
-   else if (GetType() == wxGRID_VALUE_BLOB)
-      m_Size = 8;
-   else
-      m_Size = 0;
-   return m_Size;
+    if (GetType() == wxGRID_VALUE_STRING)
+        m_Size = 24;
+    else if (GetType() == wxGRID_VALUE_BOOL)
+        m_Size = 5;
+    else if (GetType() == wxGRID_VALUE_NUMBER)   // 4 000 000 000
+        m_Size = 10;
+    else if (GetType() == wxGRID_VALUE_FLOAT)
+        m_Size = 12;
+    else if (GetType() == wxGRID_VALUE_CHOICE)
+        m_Size = 28;
+    else if (GetType() == wxGRID_VALUE_BLOB)
+        m_Size = 8;
+    else
+        m_Size = 0;
+    return m_Size;
 }
 /*---------------------------------------------------------------------------*/
 // wxSQLite3TableStringColumn
 /*---------------------------------------------------------------------------*/
 class wxSQLite3TableStringColumn : public wxSQLite3TableColumn
 {
-   public:
+public:
 
-      virtual void AddValue(wxSQLite3ResultSet& resultSet, int columnIndex)
-      {
-         if (resultSet.IsNull(columnIndex))
+    virtual void AddValue(wxSQLite3ResultSet& resultSet, int columnIndex)
+    {
+        if (resultSet.IsNull(columnIndex))
             m_nullValues.Add(0);
-         else
+        else
             m_nullValues.Add(1);
 
-         m_Array.Add(resultSet.GetString(columnIndex));
-      }
-      virtual void AddValue(const wxString& value)
-      {
-         m_nullValues.Add(1);
-         m_Array.Add(value);
-      }
+        m_Array.Add(resultSet.GetString(columnIndex));
+    }
+    virtual void AddValue(const wxString& value)
+    {
+        m_nullValues.Add(1);
+        m_Array.Add(value);
+    }
 
-      virtual wxString GetType() const {return wxGRID_VALUE_STRING;}
+    virtual wxString GetType() const {
+        return wxGRID_VALUE_STRING;
+    }
 
-      virtual wxString GetString(int row)
-      {
-         if (row >= 0)
-         {
+    virtual wxString GetString(int row)
+    {
+        if (row >= 0)
+        {
             if (m_nullValues.Item(row) == 0)
-               return GetNullString();
+                return GetNullString();
             return m_Array.Item(row);
-         }
-         return wxEmptyString;
-      }
+        }
+        return wxEmptyString;
+    }
 
-   private:
+private:
 
-      wxArrayString m_Array;
+    wxArrayString m_Array;
 };
 /*---------------------------------------------------------------------------*/
 // wxSQLite3TableLongColumn
 /*---------------------------------------------------------------------------*/
 class wxSQLite3TableLongColumn : public wxSQLite3TableColumn
 {
-   public:
+public:
 
-      virtual void AddValue(wxSQLite3ResultSet& resultSet, int columnIndex)
-      {
-         if (resultSet.IsNull(columnIndex))
+    virtual void AddValue(wxSQLite3ResultSet& resultSet, int columnIndex)
+    {
+        if (resultSet.IsNull(columnIndex))
             m_nullValues.Add(0);
-         else
+        else
             m_nullValues.Add(1);
 
-         m_Array.Add(resultSet.GetInt(columnIndex));
-      }
-      virtual void AddValue(long value)
-      {
-         m_nullValues.Add(1);
-         m_Array.Add(value);
-      }
+        m_Array.Add(resultSet.GetInt(columnIndex));
+    }
+    virtual void AddValue(long value)
+    {
+        m_nullValues.Add(1);
+        m_Array.Add(value);
+    }
 
-      virtual wxString GetType() const {return wxGRID_VALUE_NUMBER;}
+    virtual wxString GetType() const {
+        return wxGRID_VALUE_NUMBER;
+    }
 
-      virtual wxString GetString(int row)
-      {
-         if (row >= 0)
-         {
+    virtual wxString GetString(int row)
+    {
+        if (row >= 0)
+        {
             if (m_nullValues.Item(row) == 0)
-               return GetNullString();
+                return GetNullString();
             return wxString::Format(_("%li"), m_Array.Item(row));
-         }
-         return wxEmptyString;
-      }
+        }
+        return wxEmptyString;
+    }
 
-      virtual bool GetBool(int row)
-      {
-         if (row >= 0)
+    virtual bool GetBool(int row)
+    {
+        if (row >= 0)
             return m_Array.Item(row) ? true : false;
-         return false;
-      }
+        return false;
+    }
 
-   private:
+private:
 
-      wxArrayLong m_Array;
+    wxArrayLong m_Array;
 };
 /*---------------------------------------------------------------------------*/
 // wxSQLite3TableDoubleColumn
 /*---------------------------------------------------------------------------*/
 class wxSQLite3TableDoubleColumn : public wxSQLite3TableColumn
 {
-   public:
+public:
 
-      virtual void AddValue(wxSQLite3ResultSet& resultSet, int columnIndex)
-      {
-         if (resultSet.IsNull(columnIndex))
+    virtual void AddValue(wxSQLite3ResultSet& resultSet, int columnIndex)
+    {
+        if (resultSet.IsNull(columnIndex))
             m_nullValues.Add(0);
-         else
+        else
             m_nullValues.Add(1);
 
-         m_Array.Add(resultSet.GetDouble(columnIndex));
-      }
-      virtual void AddValue(double value)
-      {
-         m_nullValues.Add(1);
-         m_Array.Add(value);
-      }
+        m_Array.Add(resultSet.GetDouble(columnIndex));
+    }
+    virtual void AddValue(double value)
+    {
+        m_nullValues.Add(1);
+        m_Array.Add(value);
+    }
 
-      virtual wxString GetString(int row)
-      {
-         if (row >= 0)
-         {
+    virtual wxString GetString(int row)
+    {
+        if (row >= 0)
+        {
             if (m_nullValues.Item(row) == 0)
-               return GetNullString();
+                return GetNullString();
             return wxString::Format(_("%g"), m_Array.Item(row));
-         }
-         return wxEmptyString;
-      }
-      virtual wxString GetType()const {return wxGRID_VALUE_FLOAT;}
+        }
+        return wxEmptyString;
+    }
+    virtual wxString GetType()const {
+        return wxGRID_VALUE_FLOAT;
+    }
 
-      virtual bool GetBool(int row)
-      {
-         if (row >= 0)
+    virtual bool GetBool(int row)
+    {
+        if (row >= 0)
             return m_Array.Item(row) ? true : false;
-         return false;
-      }
+        return false;
+    }
 
-   private:
+private:
 
-      wxArrayDouble m_Array;
+    wxArrayDouble m_Array;
 };
 /*---------------------------------------------------------------------------*/
 // wxSQLite3TableBlobColumn
@@ -238,65 +256,67 @@ WX_DEFINE_OBJARRAY(wxArrayOfBlob);
 /*---------------------------------------------------------------------------*/
 class wxSQLite3TableBlobColumn : public wxSQLite3TableColumn
 {
-   public:
+public:
 
-      ~wxSQLite3TableBlobColumn()
-      {
-         m_BlobArray.Clear();
-      }
+    ~wxSQLite3TableBlobColumn()
+    {
+        m_BlobArray.Clear();
+    }
 
-      virtual void AddValue(wxSQLite3ResultSet& resultSet, int columnIndex)
-      {
-         if (resultSet.IsNull(columnIndex))
-         {
+    virtual void AddValue(wxSQLite3ResultSet& resultSet, int columnIndex)
+    {
+        if (resultSet.IsNull(columnIndex))
+        {
             m_nullValues.Add(0);
             m_BlobArray.Add(NULL);
-         }
-         else
-         {
+        }
+        else
+        {
             wxMemoryBuffer* memBuf = new  wxMemoryBuffer;
             m_nullValues.Add(1);
             resultSet.GetBlob(columnIndex, *memBuf);
             m_BlobArray.Add(memBuf);
-         }
-     }
-      virtual void AddValue(const wxString& value)
-      {
-         size_t sizeUsed;
-         wxMemoryBuffer* memBuf = new  wxMemoryBuffer;
+        }
+    }
+    virtual void AddValue(const wxString& value)
+    {
+        size_t sizeUsed;
+        wxMemoryBuffer* memBuf = new  wxMemoryBuffer;
 
-         sizeUsed = value.Len() * sizeof(wxChar);
-         memBuf->SetBufSize(sizeUsed + 1);
-         memBuf->AppendData((const void*)value.GetData(), sizeUsed);
-         memBuf->AppendByte(0);
+        sizeUsed = value.Len() * sizeof(wxChar);
+        memBuf->SetBufSize(sizeUsed + 1);
+        memBuf->AppendData((const void*)value.GetData(), sizeUsed);
+        memBuf->AppendByte(0);
 
-         m_nullValues.Add(1);
-         m_BlobArray.Add(memBuf);
-      }
+        m_nullValues.Add(1);
+        m_BlobArray.Add(memBuf);
+    }
 
-      virtual wxString GetType() const {return wxGRID_VALUE_BLOB;}
+    virtual wxString GetType() const {
+        return wxGRID_VALUE_BLOB;
+    }
 
-      virtual wxString GetString(int row)
-      {
-         if (row >= 0)
-         {
+    virtual wxString GetString(int row)
+    {
+        if (row >= 0)
+        {
             if (m_nullValues.Item(row) == 0)
-               return GetNullString();
+                return GetNullString();
             return ("(blob)");
-         }
-         return wxEmptyString;
-      }
+        }
+        return wxEmptyString;
+    }
 
-      wxMemoryBuffer* GetBuffer(size_t index)
-      {
-         if (index < m_BlobArray.Count())
+    wxMemoryBuffer* GetBuffer(size_t index)
+    {
+        if (index < m_BlobArray.Count())
             return &m_BlobArray[index];
-         return NULL;
-      }
+        return NULL;
+    }
 
-   private:
+private:
 
-      wxArrayOfBlob m_BlobArray;
+    wxArrayOfBlob m_BlobArray;
 
 };
 /*---------------------------------------------------------------------------*/
@@ -304,433 +324,433 @@ class wxSQLite3TableBlobColumn : public wxSQLite3TableColumn
 /*---------------------------------------------------------------------------*/
 OddRowsGridCellAttrProvider::OddRowsGridCellAttrProvider(wxColour colour)
 {
-   m_attrForOddRows = new wxGridCellAttr;
-   m_OddColour = colour;
-   m_attrForOddRows->SetBackgroundColour(m_OddColour);
+    m_attrForOddRows = new wxGridCellAttr;
+    m_OddColour = colour;
+    m_attrForOddRows->SetBackgroundColour(m_OddColour);
 }
 /*---------------------------------------------------------------------------*/
 OddRowsGridCellAttrProvider::~OddRowsGridCellAttrProvider()
 {
-   m_attrForOddRows->DecRef();
+    m_attrForOddRows->DecRef();
 }
 /*---------------------------------------------------------------------------*/
 wxGridCellAttr* OddRowsGridCellAttrProvider::GetAttr(int row, int col,
-                                                     wxGridCellAttr::wxAttrKind  kind) const
+        wxGridCellAttr::wxAttrKind  kind) const
 {
-   wxGridCellAttr *attr = wxGridCellAttrProvider::GetAttr(row, col, kind);
+    wxGridCellAttr *attr = wxGridCellAttrProvider::GetAttr(row, col, kind);
 
-   if (row % 2)
-   {
-      if ( !attr )
-      {
-         attr = m_attrForOddRows;
-         attr->IncRef();
-      }
-      else
-      {
-         if (!attr->HasBackgroundColour())
-         {
-            wxGridCellAttr *attrNew = attr->Clone();
-            attr->DecRef();
-            attr = attrNew;
-            attr->SetBackgroundColour(m_OddColour);
-         }
-      }
-   }
+    if (row % 2)
+    {
+        if ( !attr )
+        {
+            attr = m_attrForOddRows;
+            attr->IncRef();
+        }
+        else
+        {
+            if (!attr->HasBackgroundColour())
+            {
+                wxGridCellAttr *attrNew = attr->Clone();
+                attr->DecRef();
+                attr = attrNew;
+                attr->SetBackgroundColour(m_OddColour);
+            }
+        }
+    }
 
-   return attr;
+    return attr;
 }
 /*---------------------------------------------------------------------------*/
 // wxGridSQLite3TableBase
 /*---------------------------------------------------------------------------*/
 wxGridSQLite3TableBase::wxGridSQLite3TableBase()
 {
-   Init();
+    Init();
 }
 /*---------------------------------------------------------------------------*/
 wxGridSQLite3TableBase::~wxGridSQLite3TableBase()
 {
-   WX_CLEAR_ARRAY(m_ArrayColumn)
+    WX_CLEAR_ARRAY(m_ArrayColumn)
 }
 /*---------------------------------------------------------------------------*/
 bool wxGridSQLite3TableBase::IsEmptyCell(int row, int col)
 {
-   if (m_ArrayColumn[col]->IsNull(row))
-      return true;
-   return false;
+    if (m_ArrayColumn[col]->IsNull(row))
+        return true;
+    return false;
 }
 /*---------------------------------------------------------------------------*/
 wxString wxGridSQLite3TableBase::GetValue(int row, int col)
 {
-   return m_ArrayColumn[col]->GetString(row);
+    return m_ArrayColumn[col]->GetString(row);
 }
 /*---------------------------------------------------------------------------*/
 void wxGridSQLite3TableBase::SetValue(int row, int col, const wxString& value)
 {
-   // rien pour l'instant
+    // rien pour l'instant
 }
 /*---------------------------------------------------------------------------*/
 wxString wxGridSQLite3TableBase::GetColLabelValue(int col)
 {
-   return m_ArrayColumn[col]->GetLabelValue();
+    return m_ArrayColumn[col]->GetLabelValue();
 }
 /*---------------------------------------------------------------------------*/
 wxString wxGridSQLite3TableBase::GetTypeName(int row, int col)
 {
-   return m_ArrayColumn[col]->GetType();
+    return m_ArrayColumn[col]->GetType();
 }
 /*---------------------------------------------------------------------------*/
 void wxGridSQLite3TableBase::SetView(wxGrid* grid)
 {
-   if (grid)
-   {
-      m_CharWidth = grid->GetCharWidth();
+    if (grid)
+    {
+        m_CharWidth = grid->GetCharWidth();
 
-      wxString tmp = wxString::Format(_(" %i "), GetNumberRows());
+        wxString tmp = wxString::Format(_(" %i "), GetNumberRows());
 
-      grid->SetRowLabelSize(tmp.Length() * m_CharWidth);
-   }
+        grid->SetRowLabelSize(tmp.Length() * m_CharWidth);
+    }
 
-   wxGridTableBase::SetView(grid);
+    wxGridTableBase::SetView(grid);
 }
 /*---------------------------------------------------------------------------*/
 void wxGridSQLite3TableBase::AdaptColumnsSize()
 {
-   if (GetView())
-   {
-      for (int i = 0; i < m_NumberCols; i++)
-      {
-        wxLogDebug("%i %s", i, m_ArrayColumn[i]->GetType());
-         GetView()->SetColSize(i, m_ArrayColumn[i]->GetSize() * m_CharWidth);
-         if (m_ArrayColumn[i]->GetType() == wxGRID_VALUE_FLOAT)
-            GetView()->SetColFormatFloat(i, m_FloatWidth, m_FloatPrecision);
-         else if (m_ArrayColumn[i]->GetType() == wxGRID_VALUE_NUMBER)
-            GetView()->SetColFormatNumber(i);
-         else if (m_ArrayColumn[i]->GetType() == wxGRID_VALUE_STRING)
-         {
-            wxGridCellAttr* textAttr = new wxGridCellAttr;
+    if (GetView())
+    {
+        for (int i = 0; i < m_NumberCols; i++)
+        {
+            wxLogDebug("%i %s", i, m_ArrayColumn[i]->GetType());
+            GetView()->SetColSize(i, m_ArrayColumn[i]->GetSize() * m_CharWidth);
+            if (m_ArrayColumn[i]->GetType() == wxGRID_VALUE_FLOAT)
+                GetView()->SetColFormatFloat(i, m_FloatWidth, m_FloatPrecision);
+            else if (m_ArrayColumn[i]->GetType() == wxGRID_VALUE_NUMBER)
+                GetView()->SetColFormatNumber(i);
+            else if (m_ArrayColumn[i]->GetType() == wxGRID_VALUE_STRING)
+            {
+                wxGridCellAttr* textAttr = new wxGridCellAttr;
 
-            textAttr->SetEditor(new wxGridCellAutoWrapStringEditor);
-            textAttr->SetRenderer(new wxGridCellAutoWrapStringRenderer);
-            GetView()->SetColAttr(i, textAttr);
-         }
-         else if (m_ArrayColumn[i]->GetType() == wxGRID_VALUE_BLOB)
-         {
-            wxGridCellAttr* textAttr = new wxGridCellAttr;
+                textAttr->SetEditor(new wxGridCellAutoWrapStringEditor);
+                textAttr->SetRenderer(new wxGridCellAutoWrapStringRenderer);
+                GetView()->SetColAttr(i, textAttr);
+            }
+            else if (m_ArrayColumn[i]->GetType() == wxGRID_VALUE_BLOB)
+            {
+                wxGridCellAttr* textAttr = new wxGridCellAttr;
 
-            textAttr->SetRenderer(new wxGridCellBlobRenderer);
-            textAttr->SetEditor(new wxGridCellBlobEditor);
-            GetView()->SetColAttr(i, textAttr);
-         }
-      }
-   }
+                textAttr->SetRenderer(new wxGridCellBlobRenderer);
+                textAttr->SetEditor(new wxGridCellBlobEditor);
+                GetView()->SetColAttr(i, textAttr);
+            }
+        }
+    }
 }
 /*---------------------------------------------------------------------------*/
 void wxGridSQLite3TableBase::Init()
 {
-   m_CharWidth = 10; // par défaut
-   m_NumberRows = m_NumberCols = 0;
-   m_FloatWidth = -1;
-   m_FloatPrecision = 2;
+    m_CharWidth = 10; // par défaut
+    m_NumberRows = m_NumberCols = 0;
+    m_FloatWidth = -1;
+    m_FloatPrecision = 2;
 }
 /*---------------------------------------------------------------------------*/
 void wxGridSQLite3TableBase::PopulateArray(wxSQLite3ResultSet* resultSet)
 {
-   wxSQLite3TableColumn* p_Column;
-   wxString colType;
+    wxSQLite3TableColumn* p_Column;
+    wxString colType;
 
-   if (resultSet == NULL)
-      return;
-   m_NumberCols = resultSet->GetColumnCount();
-   // Création des colonnes
-   for (int i = 0; i < m_NumberCols; i++)
-   {
-      colType = resultSet->GetDeclaredColumnType(i).Upper();
-      switch (resultSet->GetColumnType(i))
-      {
-         case WXSQLITE_INTEGER :
+    if (resultSet == NULL)
+        return;
+    m_NumberCols = resultSet->GetColumnCount();
+    // Création des colonnes
+    for (int i = 0; i < m_NumberCols; i++)
+    {
+        colType = resultSet->GetDeclaredColumnType(i).Upper();
+        switch (resultSet->GetColumnType(i))
+        {
+        case WXSQLITE_INTEGER :
             p_Column = (wxSQLite3TableColumn*)new wxSQLite3TableLongColumn;
             break;
-         case WXSQLITE_FLOAT   :
+        case WXSQLITE_FLOAT   :
             p_Column = (wxSQLite3TableColumn*)new wxSQLite3TableDoubleColumn;
             break;
-         case WXSQLITE_BLOB    :
+        case WXSQLITE_BLOB    :
             p_Column = (wxSQLite3TableColumn*)new wxSQLite3TableBlobColumn;
             break;
-         default : // WXSQLITE_TEXT WXSQLITE_NULL
+        default : // WXSQLITE_TEXT WXSQLITE_NULL
             if (colType == ("BLOB") || colType == ("CLOB") ||
-                colType == ("GLOB"))
-               p_Column = (wxSQLite3TableColumn*)new wxSQLite3TableBlobColumn;
+                    colType == ("GLOB"))
+                p_Column = (wxSQLite3TableColumn*)new wxSQLite3TableBlobColumn;
             else
-               p_Column = (wxSQLite3TableColumn*)new wxSQLite3TableStringColumn;
-      }
-      // Nommer les colonnes
-      p_Column->SetLabelValue(resultSet->GetColumnName(i));
-      // Ajouter la colonne
-      m_ArrayColumn.Add(p_Column);
-   }
-   // boucler et incrémenter
-   while (resultSet->NextRow())
-   {
-      m_NumberRows++;
-      for (int i = 0; i < m_NumberCols; i++)
-         m_ArrayColumn[i]->AddValue(*resultSet, i);
-   }
+                p_Column = (wxSQLite3TableColumn*)new wxSQLite3TableStringColumn;
+        }
+        // Nommer les colonnes
+        p_Column->SetLabelValue(resultSet->GetColumnName(i));
+        // Ajouter la colonne
+        m_ArrayColumn.Add(p_Column);
+    }
+    // boucler et incrémenter
+    while (resultSet->NextRow())
+    {
+        m_NumberRows++;
+        for (int i = 0; i < m_NumberCols; i++)
+            m_ArrayColumn[i]->AddValue(*resultSet, i);
+    }
 }
 /*---------------------------------------------------------------------------*/
 // wxGridSQLite3Table
 /*---------------------------------------------------------------------------*/
 wxGridSQLite3Table::wxGridSQLite3Table(wxSQLite3ResultSet* resultSet) :
-                    wxGridSQLite3TableBase()
+    wxGridSQLite3TableBase()
 {
-   PopulateArray(resultSet);
+    PopulateArray(resultSet);
 }
 /*---------------------------------------------------------------------------*/
 wxGridSQLite3Table::wxGridSQLite3Table(wxSQLite3Database* db,
                                        const wxString& tablename,
                                        const wxString& base) :
-                    wxGridSQLite3TableBase()
+    wxGridSQLite3TableBase()
 {
-   if (db == NULL)
-      return;
-   if (db->TableExists(tablename))
-   {
-      m_TableName = tablename;
-      wxSQLite3ResultSet resultSet = GetResultSet(db, base);
-      PopulateArray(&resultSet);
-      resultSet.Finalize();
-   }
+    if (db == NULL)
+        return;
+    if (db->TableExists(tablename))
+    {
+        m_TableName = tablename;
+        wxSQLite3ResultSet resultSet = GetResultSet(db, base);
+        PopulateArray(&resultSet);
+        resultSet.Finalize();
+    }
 }
 /*---------------------------------------------------------------------------*/
 bool wxGridSQLite3Table::GetBlob(size_t row, size_t col, wxMemoryBuffer*& buffer)
 {
-   if (row < (size_t)GetNumberRows() && col < (size_t)GetNumberCols())
-      if (m_ArrayColumn[col]->GetType() == wxGRID_VALUE_BLOB)
-      {
-         buffer =  ((wxSQLite3TableBlobColumn*)m_ArrayColumn[col])->GetBuffer(row);
-         return true;
-      }
-   return false;
+    if (row < (size_t)GetNumberRows() && col < (size_t)GetNumberCols())
+        if (m_ArrayColumn[col]->GetType() == wxGRID_VALUE_BLOB)
+        {
+            buffer =  ((wxSQLite3TableBlobColumn*)m_ArrayColumn[col])->GetBuffer(row);
+            return true;
+        }
+    return false;
 }
 /*---------------------------------------------------------------------------*/
 wxSQLite3ResultSet wxGridSQLite3Table::GetResultSet(wxSQLite3Database* db,
-                                                    const wxString& base)
+        const wxString& base)
 {
-   wxSQLite3ResultSet resultSet;
-   wxString sql;
-   sql = _("SELECT * FROM ");
-   if (base != wxEmptyString)
-      sql += base + (".");
-   sql += m_TableName + _(";");
-   try
-   {
-      resultSet = db->ExecuteQuery(ToUTF8(sql));
-   }
-   catch(wxSQLite3Exception& ex)
-   {
-      wxGetApp().ShowError("GetResultSet", ex);
-   }
-   return resultSet;
+    wxSQLite3ResultSet resultSet;
+    wxString sql;
+    sql = _("SELECT * FROM ");
+    if (base != wxEmptyString)
+        sql += base + (".");
+    sql += m_TableName + _(";");
+    try
+    {
+        resultSet = db->ExecuteQuery(ToUTF8(sql));
+    }
+    catch(wxSQLite3Exception& ex)
+    {
+        wxGetApp().ShowError("GetResultSet", ex);
+    }
+    return resultSet;
 }
 /*---------------------------------------------------------------------------*/
 wxGridTblIndexesTable::wxGridTblIndexesTable(wxSQLite3Database* db,
-                                             const wxString& tablename,
-                                             const wxString& base) :
-                    wxGridSQLite3TableBase()
+        const wxString& tablename,
+        const wxString& base) :
+    wxGridSQLite3TableBase()
 {
-   if (db == NULL)
-      return;
-   if (db->TableExists(tablename))
-   {
-      wxSQLite3ResultSet resultSet = GetResultSet(db, tablename, base);
-      PopulateArray(&resultSet);
-      resultSet.Finalize();
-      for (int i = 0; i < m_NumberCols; i++)
-         m_ArrayColumn[i]->SetShowNull(false);
-   }
+    if (db == NULL)
+        return;
+    if (db->TableExists(tablename))
+    {
+        wxSQLite3ResultSet resultSet = GetResultSet(db, tablename, base);
+        PopulateArray(&resultSet);
+        resultSet.Finalize();
+        for (int i = 0; i < m_NumberCols; i++)
+            m_ArrayColumn[i]->SetShowNull(false);
+    }
 }
 /*---------------------------------------------------------------------------*/
 wxString wxGridTblIndexesTable::GetTypeName(int row, int col)
 {
-   if (col == 2)
-         return wxGRID_VALUE_BOOL;
-   else
-      return wxGridSQLite3TableBase::GetTypeName(row, col);
+    if (col == 2)
+        return wxGRID_VALUE_BOOL;
+    else
+        return wxGridSQLite3TableBase::GetTypeName(row, col);
 }
 /*---------------------------------------------------------------------------*/
 wxString wxGridTblIndexesTable::GetValue(int row, int col)
 {
-   // dans certain cas au lieu de 1 la colonne est égale à 99
-   // les coches sont alors mal gérées
-   if (col == 2)
-      return m_ArrayColumn[col]->GetBool(row) ? ("1") : ("0");
-   else
-      return m_ArrayColumn[col]->GetString(row);
+    // dans certain cas au lieu de 1 la colonne est égale à 99
+    // les coches sont alors mal gérées
+    if (col == 2)
+        return m_ArrayColumn[col]->GetBool(row) ? ("1") : ("0");
+    else
+        return m_ArrayColumn[col]->GetString(row);
 }
 /*---------------------------------------------------------------------------*/
 wxSQLite3ResultSet wxGridTblIndexesTable::GetResultSet(wxSQLite3Database* db,
-                                                       const wxString& tablename,
-                                                       const wxString& base)
+        const wxString& tablename,
+        const wxString& base)
 {
-   wxSQLite3ResultSet resultSet;
-   wxString sql, basename;
+    wxSQLite3ResultSet resultSet;
+    wxString sql, basename;
 
-   if (base != wxEmptyString)
-      basename = base;
-   else
-      basename = ("main");
-   sql = wxString::Format(("PRAGMA %s.index_list(\"%s\");"), basename.c_str(),
-                          tablename.c_str());
-   try
-   {
-      resultSet = db->ExecuteQuery(ToUTF8(sql));
-   }
-   catch(wxSQLite3Exception& ex)
-   {
-      wxGetApp().ShowError("GetResultSet", ex);
-   }
-   return resultSet;
+    if (base != wxEmptyString)
+        basename = base;
+    else
+        basename = ("main");
+    sql = wxString::Format(("PRAGMA %s.index_list(\"%s\");"), basename.c_str(),
+                           tablename.c_str());
+    try
+    {
+        resultSet = db->ExecuteQuery(ToUTF8(sql));
+    }
+    catch(wxSQLite3Exception& ex)
+    {
+        wxGetApp().ShowError("GetResultSet", ex);
+    }
+    return resultSet;
 }
 /*---------------------------------------------------------------------------*/
 wxGridTblColumnsTable::wxGridTblColumnsTable(wxSQLite3Database* db,
-                                             const wxString& tablename,
-                                             const wxString& base) :
-                    wxGridSQLite3TableBase()
+        const wxString& tablename,
+        const wxString& base) :
+    wxGridSQLite3TableBase()
 {
-   if (db == NULL)
-      return;
-   wxSQLite3ResultSet resultSet = GetResultSet(db, tablename, base);
-   PopulateArray(&resultSet);
-   resultSet.Finalize();
-   for (int i = 0; i < m_NumberCols; i++)
-      m_ArrayColumn[i]->SetShowNull(false);
+    if (db == NULL)
+        return;
+    wxSQLite3ResultSet resultSet = GetResultSet(db, tablename, base);
+    PopulateArray(&resultSet);
+    resultSet.Finalize();
+    for (int i = 0; i < m_NumberCols; i++)
+        m_ArrayColumn[i]->SetShowNull(false);
 }
 /*---------------------------------------------------------------------------*/
 wxString wxGridTblColumnsTable::GetTypeName(int row, int col)
 {
-   if ((col == 3)||(col == 5))
-         return wxGRID_VALUE_BOOL;
-   else
-      return wxGridSQLite3TableBase::GetTypeName(row, col);
+    if ((col == 3)||(col == 5))
+        return wxGRID_VALUE_BOOL;
+    else
+        return wxGridSQLite3TableBase::GetTypeName(row, col);
 }
 /*---------------------------------------------------------------------------*/
 wxString wxGridTblColumnsTable::GetValue(int row, int col)
 {
-   // dans certain cas au lieu de 1 la colonne est égale à 99
-   // les coches sont alors mal gérées
-   if ((col == 3)||(col == 5))
-      return m_ArrayColumn[col]->GetBool(row) ? ("1") : ("0");
-   else
-      return m_ArrayColumn[col]->GetString(row);
+    // dans certain cas au lieu de 1 la colonne est égale à 99
+    // les coches sont alors mal gérées
+    if ((col == 3)||(col == 5))
+        return m_ArrayColumn[col]->GetBool(row) ? ("1") : ("0");
+    else
+        return m_ArrayColumn[col]->GetString(row);
 }
 /*---------------------------------------------------------------------------*/
 wxSQLite3ResultSet wxGridTblColumnsTable::GetResultSet(wxSQLite3Database* db,
-                                                       const wxString& tablename,
-                                                       const wxString& base)
+        const wxString& tablename,
+        const wxString& base)
 {
-   wxSQLite3ResultSet resultSet;
-   wxString sql, basename;
+    wxSQLite3ResultSet resultSet;
+    wxString sql, basename;
 
-   if (base != wxEmptyString)
-      basename = base;
-   else
-      basename = ("main");
-   sql = wxString::Format(("PRAGMA '%s'.table_info(\"%s\");"), basename.c_str(),
-                          tablename.c_str());
-   try
-   {
-      resultSet = db->ExecuteQuery(ToUTF8(sql));
-   }
-   catch(wxSQLite3Exception& ex)
-   {
-      wxGetApp().ShowError("GetResultSet", ex);
-   }
-   return resultSet;
+    if (base != wxEmptyString)
+        basename = base;
+    else
+        basename = ("main");
+    sql = wxString::Format(("PRAGMA '%s'.table_info(\"%s\");"), basename.c_str(),
+                           tablename.c_str());
+    try
+    {
+        resultSet = db->ExecuteQuery(ToUTF8(sql));
+    }
+    catch(wxSQLite3Exception& ex)
+    {
+        wxGetApp().ShowError("GetResultSet", ex);
+    }
+    return resultSet;
 }
 /*---------------------------------------------------------------------------*/
 wxGridTriggerTable::wxGridTriggerTable(wxSQLite3Database* db,
                                        const wxString& tablename,
                                        const wxString& base) :
-                    wxGridSQLite3TableBase()
+    wxGridSQLite3TableBase()
 {
-   if (db == NULL)
-      return;
-   if (db->TableExists(tablename))
-   {
-      wxSQLite3ResultSet resultSet = GetResultSet(db, tablename, base);
-      PopulateArray(&resultSet);
-      resultSet.Finalize();
-   }
+    if (db == NULL)
+        return;
+    if (db->TableExists(tablename))
+    {
+        wxSQLite3ResultSet resultSet = GetResultSet(db, tablename, base);
+        PopulateArray(&resultSet);
+        resultSet.Finalize();
+    }
 }
 /*---------------------------------------------------------------------------*/
 void wxGridTriggerTable::PopulateArray(wxSQLite3ResultSet* resultSet)
 {
-   wxSQLite3TableColumn* p_Column;
-   wxString sql;
+    wxSQLite3TableColumn* p_Column;
+    wxString sql;
 
-   if (resultSet == NULL||resultSet->GetColumnCount() == 0)
-      return;
-   m_NumberCols = 3;
-   p_Column = (wxSQLite3TableColumn*)new wxSQLite3TableStringColumn;
-   p_Column->SetLabelValue(("name"));
-   p_Column->SetShowNull(false);
-   m_ArrayColumn.Add(p_Column);
-   p_Column = (wxSQLite3TableColumn*)new wxSQLite3TableStringColumn;
-   p_Column->SetLabelValue(("type"));
-   p_Column->SetShowNull(false);
-   m_ArrayColumn.Add(p_Column);
-   p_Column = (wxSQLite3TableColumn*)new wxSQLite3TableStringColumn;
-   p_Column->SetLabelValue(("column/Event"));
-   p_Column->SetShowNull(false);
-   m_ArrayColumn.Add(p_Column);
-   // boucler et incrémenter
-   while (resultSet->NextRow())
-   {
-      m_NumberRows++;
-      m_ArrayColumn[0]->AddValue(*resultSet, 0);
-      sql = resultSet->GetString(1);
-      wxCreateTrigerParserMinimal parser(sql);
-      m_ArrayColumn[1]->AddValue(parser.GetEvent());
-      m_ArrayColumn[2]->AddValue(parser.GetColumn());
-   }
+    if (resultSet == NULL||resultSet->GetColumnCount() == 0)
+        return;
+    m_NumberCols = 3;
+    p_Column = (wxSQLite3TableColumn*)new wxSQLite3TableStringColumn;
+    p_Column->SetLabelValue(("name"));
+    p_Column->SetShowNull(false);
+    m_ArrayColumn.Add(p_Column);
+    p_Column = (wxSQLite3TableColumn*)new wxSQLite3TableStringColumn;
+    p_Column->SetLabelValue(("type"));
+    p_Column->SetShowNull(false);
+    m_ArrayColumn.Add(p_Column);
+    p_Column = (wxSQLite3TableColumn*)new wxSQLite3TableStringColumn;
+    p_Column->SetLabelValue(("column/Event"));
+    p_Column->SetShowNull(false);
+    m_ArrayColumn.Add(p_Column);
+    // boucler et incrémenter
+    while (resultSet->NextRow())
+    {
+        m_NumberRows++;
+        m_ArrayColumn[0]->AddValue(*resultSet, 0);
+        sql = resultSet->GetString(1);
+        wxCreateTrigerParserMinimal parser(sql);
+        m_ArrayColumn[1]->AddValue(parser.GetEvent());
+        m_ArrayColumn[2]->AddValue(parser.GetColumn());
+    }
 }
 /*---------------------------------------------------------------------------*/
 wxSQLite3ResultSet wxGridTriggerTable::GetResultSet(wxSQLite3Database* db,
-                                                    const wxString& tablename,
-                                                    const wxString& base)
+        const wxString& tablename,
+        const wxString& base)
 {
-   wxSQLite3ResultSet resultSet;
-   wxString sql;
+    wxSQLite3ResultSet resultSet;
+    wxString sql;
 
-   if ((base == wxEmptyString)||(base == ("main")))
-   {
-      sql = ("SELECT name, sql \n"
+    if ((base == wxEmptyString)||(base == ("main")))
+    {
+        sql = ("SELECT name, sql \n"
                "FROM  sqlite_master \n"
                "WHERE type = 'trigger' AND tbl_name = '");
-      sql += tablename + ("' \n"
+        sql += tablename + ("' \n"
                             "UNION \n"
                             "SELECT name, sql \n"
                             "FROM sqlite_temp_master \n"
                             "WHERE type = 'trigger' AND tbl_name = '");
-      sql += tablename + ("';");
-   }
-   else
-   {
-      sql = ("SELECT name, sql \n"
+        sql += tablename + ("';");
+    }
+    else
+    {
+        sql = ("SELECT name, sql \n"
                "FROM ");
-      sql += base + (".");
-      sql += ("sqlite_master \n"
+        sql += base + (".");
+        sql += ("sqlite_master \n"
                 "WHERE type = 'trigger' AND tbl_name = '");
-      sql += tablename + ("';");
-   }
-   try
-   {
-      resultSet = db->ExecuteQuery(ToUTF8(sql));
-   }
-   catch(wxSQLite3Exception& ex)
-   {
-      wxGetApp().ShowError("GetResultSet", ex);
-   }
-   return resultSet;
+        sql += tablename + ("';");
+    }
+    try
+    {
+        resultSet = db->ExecuteQuery(ToUTF8(sql));
+    }
+    catch(wxSQLite3Exception& ex)
+    {
+        wxGetApp().ShowError("GetResultSet", ex);
+    }
+    return resultSet;
 }
 /*---------------------------------------------------------------------------*/

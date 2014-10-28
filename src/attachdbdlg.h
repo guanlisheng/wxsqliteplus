@@ -9,63 +9,75 @@
 /*---------------------------------------------------------------------------*/
 class wxAttachDbDlg: public wxDialog
 {
-   DECLARE_DYNAMIC_CLASS(wxAttachDbDlg)
-   DECLARE_EVENT_TABLE()
+    DECLARE_DYNAMIC_CLASS(wxAttachDbDlg)
+    DECLARE_EVENT_TABLE()
 
-   public:
+public:
 
-      wxAttachDbDlg();
-      wxAttachDbDlg(wxWindow* parent, wxWindowID id = -1,
-                    const wxString& caption = _("Attach Database"),
-                    const wxPoint& pos = wxDefaultPosition,
-                    const wxSize& size = wxDefaultSize,
-                    long style = wxDEFAULT_DIALOG_STYLE);
-
-      bool Create(wxWindow* parent, wxWindowID id = -1,
+    wxAttachDbDlg();
+    wxAttachDbDlg(wxWindow* parent, wxWindowID id = -1,
                   const wxString& caption = _("Attach Database"),
                   const wxPoint& pos = wxDefaultPosition,
                   const wxSize& size = wxDefaultSize,
                   long style = wxDEFAULT_DIALOG_STYLE);
 
-      ~wxAttachDbDlg();
+    bool Create(wxWindow* parent, wxWindowID id = -1,
+                const wxString& caption = _("Attach Database"),
+                const wxPoint& pos = wxDefaultPosition,
+                const wxSize& size = wxDefaultSize,
+                long style = wxDEFAULT_DIALOG_STYLE);
 
-      void SetDatabase(wxSQLite3Database* db);
+    ~wxAttachDbDlg();
 
-      wxString GetFileName() const {return m_FileName;}
-      void SetFileName(wxString value) {m_FileName = value;}
+    void SetDatabase(wxSQLite3Database* db);
 
-      wxString GetAlias() const {return m_Alias;}
-      void SetAlias(wxString value) {m_Alias = value;}
+    wxString GetFileName() const {
+        return m_FileName;
+    }
+    void SetFileName(wxString value) {
+        m_FileName = value;
+    }
 
-      wxString GetKey() const {return m_Key;}
-      void SetKey(wxString value) {m_Key = value;}
+    wxString GetAlias() const {
+        return m_Alias;
+    }
+    void SetAlias(wxString value) {
+        m_Alias = value;
+    }
 
-      void OnlyKey();
+    wxString GetKey() const {
+        return m_Key;
+    }
+    void SetKey(wxString value) {
+        m_Key = value;
+    }
 
-   protected:
+    void OnlyKey();
 
-      void Init();
-      void CreateControls();
+protected:
 
-      void OnAttachbtnClick(wxCommandEvent& event);
-      void OnOkClick(wxCommandEvent& event);
-      void OnChar(wxKeyEvent& event);
+    void Init();
+    void CreateControls();
+
+    void OnAttachbtnClick(wxCommandEvent& event);
+    void OnOkClick(wxCommandEvent& event);
+    void OnChar(wxKeyEvent& event);
 
 
-      static bool ShowToolTips();
+    static bool ShowToolTips();
 
-   private:
+private:
 
-      wxBitmapButton*   m_BtnAttach;
-      wxTextCtrl*       m_EdFilename;
-      wxTextCtrl*       m_EdAlias;
-      wxTextCtrl*       m_EdKey;
+    wxBitmapButton*   m_BtnAttach;
+    wxTextCtrl*       m_EdFilename;
+    wxTextCtrl*       m_EdAlias;
+    wxTextCtrl*       m_EdKey;
 
-      wxString m_FileName;
-      wxString m_Alias;
-      wxString m_Key;
+    wxString m_FileName;
+    wxString m_Alias;
+    wxString m_Key;
 
-      wxSQLite3Database* m_Db;
+    wxSQLite3Database* m_Db;
 };
 /*---------------------------------------------------------------------------*/
 #endif   // _ATTACHDBDLG_H_

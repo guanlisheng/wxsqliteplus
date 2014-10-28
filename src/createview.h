@@ -11,61 +11,63 @@
 #include "sqleditor.h"
 /*---------------------------------------------------------------------------*/
 class wxCreateViewDialog: public wxDialog
-{    
-   DECLARE_DYNAMIC_CLASS(wxCreateViewDialog)
-   DECLARE_EVENT_TABLE()
+{
+    DECLARE_DYNAMIC_CLASS(wxCreateViewDialog)
+    DECLARE_EVENT_TABLE()
 
-   public:
+public:
 
-      wxCreateViewDialog();
-      wxCreateViewDialog(wxWindow* parent, wxWindowID id = -1,
-                         const wxString& caption = _("Create View"),
-                         const wxPoint& pos = wxDefaultPosition,
-                         const wxSize& size = wxDefaultSize,
-                         long style = wxDEFAULT_DIALOG_STYLE);
+    wxCreateViewDialog();
+    wxCreateViewDialog(wxWindow* parent, wxWindowID id = -1,
+                       const wxString& caption = _("Create View"),
+                       const wxPoint& pos = wxDefaultPosition,
+                       const wxSize& size = wxDefaultSize,
+                       long style = wxDEFAULT_DIALOG_STYLE);
 
-      bool Create(wxWindow* parent, wxWindowID id = -1,
-                  const wxString& caption = _("Create View"),
-                  const wxPoint& pos = wxDefaultPosition,
-                  const wxSize& size = wxDefaultSize,
-                  long style = wxDEFAULT_DIALOG_STYLE);
+    bool Create(wxWindow* parent, wxWindowID id = -1,
+                const wxString& caption = _("Create View"),
+                const wxPoint& pos = wxDefaultPosition,
+                const wxSize& size = wxDefaultSize,
+                long style = wxDEFAULT_DIALOG_STYLE);
 
-      ~wxCreateViewDialog();
+    ~wxCreateViewDialog();
 
-      wxString GetCreateViewDDL();
+    wxString GetCreateViewDDL();
 
-      void SetDatabase(wxSQLite3Database* db,
-                       const wxString& base = wxEmptyString);
+    void SetDatabase(wxSQLite3Database* db,
+                     const wxString& base = wxEmptyString);
 
-      bool GetTemporary() const {return m_Temporary;}
-      
-   protected:
+    bool GetTemporary() const {
+        return m_Temporary;
+    }
 
-      void Init();
-      void CreateControls();
+protected:
 
-      void OnChar(wxKeyEvent& event);
-      void OnNotebookPageChanging(wxNotebookEvent& event);
-      void OnBtnTestClick(wxCommandEvent& event);
-      void OnBtnTestUpdate(wxUpdateUIEvent& event);
-      void OnOkClick(wxCommandEvent& event);
+    void Init();
+    void CreateControls();
 
-      static bool ShowToolTips();
+    void OnChar(wxKeyEvent& event);
+    void OnNotebookPageChanging(wxNotebookEvent& event);
+    void OnBtnTestClick(wxCommandEvent& event);
+    void OnBtnTestUpdate(wxUpdateUIEvent& event);
+    void OnOkClick(wxCommandEvent& event);
 
-   private:
+    static bool ShowToolTips();
 
-      wxTextCtrl* m_ViewName;
-      wxCheckBox* m_TempView;
-      wxSQLEditor* m_ViewQuery;
-      wxTextCtrl* m_ParseResults;
-      wxDDLEditor* m_TextDdl;
+private:
 
-      wxSQLite3Database* m_Db;
-      wxString m_Base;
-      wxString m_QueryError;
-      bool m_Temporary;
+    wxTextCtrl* m_ViewName;
+    wxCheckBox* m_TempView;
+    wxSQLEditor* m_ViewQuery;
+    wxTextCtrl* m_ParseResults;
+    wxDDLEditor* m_TextDdl;
 
-      bool CheckViewQuery(const wxString& query);
+    wxSQLite3Database* m_Db;
+    wxString m_Base;
+    wxString m_QueryError;
+    bool m_Temporary;
+
+    bool CheckViewQuery(const wxString& query);
 };
 /*---------------------------------------------------------------------------*/
 #endif   // _CREATEVIEW_H_

@@ -10,78 +10,80 @@
 /*---------------------------------------------------------------------------*/
 class wxSortDialog: public wxDialog
 {
-   DECLARE_DYNAMIC_CLASS(wxSortDialog)
-   DECLARE_EVENT_TABLE()
+    DECLARE_DYNAMIC_CLASS(wxSortDialog)
+    DECLARE_EVENT_TABLE()
 
-   public:
+public:
 
-      wxSortDialog();
-      wxSortDialog(wxWindow* parent, wxWindowID id = -1,
-                   const wxString& caption = _("Sort"),
-                   const wxPoint& pos = wxDefaultPosition,
-                   const wxSize& size = wxDefaultSize,
-                   long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER);
+    wxSortDialog();
+    wxSortDialog(wxWindow* parent, wxWindowID id = -1,
+                 const wxString& caption = _("Sort"),
+                 const wxPoint& pos = wxDefaultPosition,
+                 const wxSize& size = wxDefaultSize,
+                 long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER);
 
-      bool Create(wxWindow* parent, wxWindowID id = -1,
-                  const wxString& caption = _("Sort"),
-                  const wxPoint& pos = wxDefaultPosition,
-                  const wxSize& size = wxDefaultSize,
-                  long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER);
+    bool Create(wxWindow* parent, wxWindowID id = -1,
+                const wxString& caption = _("Sort"),
+                const wxPoint& pos = wxDefaultPosition,
+                const wxSize& size = wxDefaultSize,
+                long style = wxDEFAULT_DIALOG_STYLE|wxRESIZE_BORDER);
 
-      ~wxSortDialog();
+    ~wxSortDialog();
 
-      wxArrayString GetStringsOrder(){return m_StringsOrder;}
-      void SetStringsOrder(wxArrayString& array);
+    wxArrayString GetStringsOrder() {
+        return m_StringsOrder;
+    }
+    void SetStringsOrder(wxArrayString& array);
 
-      void SetDatabase(wxSQLite3Database* db,
-                       const wxString& base = wxEmptyString);
-      void SetTable(const wxString& table);
+    void SetDatabase(wxSQLite3Database* db,
+                     const wxString& base = wxEmptyString);
+    void SetTable(const wxString& table);
 
-   protected:
+protected:
 
-      void Init();
-      void CreateControls();
+    void Init();
+    void CreateControls();
 
-      void OnTorightClick(wxCommandEvent& event);
-      void OnTorightUpdate(wxUpdateUIEvent& event);
-      void OnAlltorightClick(wxCommandEvent& event);
-      void OnAlltorightUpdate(wxUpdateUIEvent& event);
-      void OnToleftClick(wxCommandEvent& event);
-      void OnToleftUpdate(wxUpdateUIEvent& event);
-      void OnAlltoleftClick(wxCommandEvent& event);
-      void OnAlltoleftUpdate(wxUpdateUIEvent& event);
-      void OnSelectedSelected(wxCommandEvent& event);
-      void OnFirstClick(wxCommandEvent& event);
-      void OnFirstUpdate(wxUpdateUIEvent& event);
-      void OnUpClick(wxCommandEvent& event);
-      void OnUpUpdate(wxUpdateUIEvent& event);
-      void OnDownClick(wxCommandEvent& event);
-      void OnDownUpdate(wxUpdateUIEvent& event);
-      void OnLastClick(wxCommandEvent& event);
-      void OnLastUpdate(wxUpdateUIEvent& event);
-      void OnRbAscSelected(wxCommandEvent& event);
-      void OnRbDescSelected(wxCommandEvent& event);
-      void OnOkClick(wxCommandEvent& event);
+    void OnTorightClick(wxCommandEvent& event);
+    void OnTorightUpdate(wxUpdateUIEvent& event);
+    void OnAlltorightClick(wxCommandEvent& event);
+    void OnAlltorightUpdate(wxUpdateUIEvent& event);
+    void OnToleftClick(wxCommandEvent& event);
+    void OnToleftUpdate(wxUpdateUIEvent& event);
+    void OnAlltoleftClick(wxCommandEvent& event);
+    void OnAlltoleftUpdate(wxUpdateUIEvent& event);
+    void OnSelectedSelected(wxCommandEvent& event);
+    void OnFirstClick(wxCommandEvent& event);
+    void OnFirstUpdate(wxUpdateUIEvent& event);
+    void OnUpClick(wxCommandEvent& event);
+    void OnUpUpdate(wxUpdateUIEvent& event);
+    void OnDownClick(wxCommandEvent& event);
+    void OnDownUpdate(wxUpdateUIEvent& event);
+    void OnLastClick(wxCommandEvent& event);
+    void OnLastUpdate(wxUpdateUIEvent& event);
+    void OnRbAscSelected(wxCommandEvent& event);
+    void OnRbDescSelected(wxCommandEvent& event);
+    void OnOkClick(wxCommandEvent& event);
 
-   private:
+private:
 
-      wxListBox*           m_Available;
-      wxBitmapButton*      m_BtnRight;
-      wxBitmapButton*      m_BtnAllRight;
-      wxBitmapButton*      m_BtnLeft;
-      wxBitmapButton*      m_BtnAllLeft;
-      wxListBox*           m_Selected;
-      wxBitmapButton*      m_BtnTop;
-      wxBitmapButton*      m_BtnUp;
-      wxBitmapButton*      m_BtnDown;
-      wxBitmapButton*      m_BtnBottom;
-      wxRadioButton*       m_Ascending;
-      wxRadioButton*       m_Descending;
+    wxListBox*           m_Available;
+    wxBitmapButton*      m_BtnRight;
+    wxBitmapButton*      m_BtnAllRight;
+    wxBitmapButton*      m_BtnLeft;
+    wxBitmapButton*      m_BtnAllLeft;
+    wxListBox*           m_Selected;
+    wxBitmapButton*      m_BtnTop;
+    wxBitmapButton*      m_BtnUp;
+    wxBitmapButton*      m_BtnDown;
+    wxBitmapButton*      m_BtnBottom;
+    wxRadioButton*       m_Ascending;
+    wxRadioButton*       m_Descending;
 
-      wxSQLite3Database*   m_Db;
-      wxString             m_Base;
-      wxString             m_Table;
-      wxArrayString        m_StringsOrder;
+    wxSQLite3Database*   m_Db;
+    wxString             m_Base;
+    wxString             m_Table;
+    wxArrayString        m_StringsOrder;
 };
 /*---------------------------------------------------------------------------*/
 #endif   // _SORTDLG_H_

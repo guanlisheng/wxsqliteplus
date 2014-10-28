@@ -11,47 +11,49 @@ class wxSpecGrid;
 class wxSQLite3ResultSet;
 /*---------------------------------------------------------------------------*/
 class wxSQLHistory: public wxDialog
-{    
-   DECLARE_DYNAMIC_CLASS(wxSQLHistory)
-   DECLARE_EVENT_TABLE()
+{
+    DECLARE_DYNAMIC_CLASS(wxSQLHistory)
+    DECLARE_EVENT_TABLE()
 
-   public:
+public:
 
-      wxSQLHistory();
-      wxSQLHistory(wxWindow* parent, wxWindowID id = -1,
-                   const wxString& caption = _("SQL History"),
-                   const wxPoint& pos = wxDefaultPosition,
-                   const wxSize& size = wxDefaultSize,
-                   long style = wxDEFAULT_DIALOG_STYLE);
+    wxSQLHistory();
+    wxSQLHistory(wxWindow* parent, wxWindowID id = -1,
+                 const wxString& caption = _("SQL History"),
+                 const wxPoint& pos = wxDefaultPosition,
+                 const wxSize& size = wxDefaultSize,
+                 long style = wxDEFAULT_DIALOG_STYLE);
 
-      bool Create(wxWindow* parent, wxWindowID id = -1,
-                  const wxString& caption = _("SQL History"),
-                  const wxPoint& pos = wxDefaultPosition,
-                  const wxSize& size = wxDefaultSize,
-                  long style = wxDEFAULT_DIALOG_STYLE);
+    bool Create(wxWindow* parent, wxWindowID id = -1,
+                const wxString& caption = _("SQL History"),
+                const wxPoint& pos = wxDefaultPosition,
+                const wxSize& size = wxDefaultSize,
+                long style = wxDEFAULT_DIALOG_STYLE);
 
-      ~wxSQLHistory();
+    ~wxSQLHistory();
 
-      void SetResultSet(wxSQLite3ResultSet& resultSet);
-      
-      wxString GetSQLStatement(){return m_SqlStatement;}
-      
-   protected:
+    void SetResultSet(wxSQLite3ResultSet& resultSet);
 
-      void Init();
-      void CreateControls();
+    wxString GetSQLStatement() {
+        return m_SqlStatement;
+    }
 
-      void OnCellLeftDClick(wxGridEvent& event);
-      void OnOkClick(wxCommandEvent& event);
+protected:
 
-      static bool ShowToolTips();
+    void Init();
+    void CreateControls();
 
-   private:
+    void OnCellLeftDClick(wxGridEvent& event);
+    void OnOkClick(wxCommandEvent& event);
 
-      wxSpecGrid* m_HistoryGrid;
-      wxString m_SqlStatement;
-      
-      bool PopulateStement();
+    static bool ShowToolTips();
+
+private:
+
+    wxSpecGrid* m_HistoryGrid;
+    wxString m_SqlStatement;
+
+    bool PopulateStement();
 };
 /*---------------------------------------------------------------------------*/
 #endif   // _SQLHISTORY_H_

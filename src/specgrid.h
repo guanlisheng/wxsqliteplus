@@ -11,11 +11,11 @@
 #include <wx/arrimpl.cpp>
 /*---------------------------------------------------------------------------*/
 #ifdef WXMAKINGDLL_WXSCPECGRID
-    #define WXDLLIMPEXP_SCPECGRID WXEXPORT
+#define WXDLLIMPEXP_SCPECGRID WXEXPORT
 #elif defined(WXUSINGDLL_WXSCPECGRID)
-    #define WXDLLIMPEXP_SCPECGRID WXIMPORT
+#define WXDLLIMPEXP_SCPECGRID WXIMPORT
 #else // not making nor using DLL
-    #define WXDLLIMPEXP_SCPECGRID
+#define WXDLLIMPEXP_SCPECGRID
 #endif
 /*---------------------------------------------------------------------------*/
 class wxSQLite3Database;
@@ -23,284 +23,320 @@ class WXDLLIMPEXP_SCPECGRID wxGridCellBlobEditorEvent;
 /*---------------------------------------------------------------------------*/
 class WXDLLIMPEXP_SCPECGRID wxCellsBlock
 {
-   public:
+public:
 
-      wxCellsBlock()
-      {
-         m_LeftTop.Set(-1, -1);
-         m_RightBottom.Set(-1, -1);
-      }
+    wxCellsBlock()
+    {
+        m_LeftTop.Set(-1, -1);
+        m_RightBottom.Set(-1, -1);
+    }
 
-      wxCellsBlock(int left, int top, int right, int bottom)
-      {
-         m_LeftTop.Set(top, left);
-         m_RightBottom.Set(bottom, right);
-      }
+    wxCellsBlock(int left, int top, int right, int bottom)
+    {
+        m_LeftTop.Set(top, left);
+        m_RightBottom.Set(bottom, right);
+    }
 
-      wxCellsBlock(const wxGridCellCoords& topleft,
-                   const wxGridCellCoords& bottomright)
-      {
-         m_LeftTop = topleft;
-         m_RightBottom = bottomright;
-      }
+    wxCellsBlock(const wxGridCellCoords& topleft,
+                 const wxGridCellCoords& bottomright)
+    {
+        m_LeftTop = topleft;
+        m_RightBottom = bottomright;
+    }
 
-      wxCellsBlock(const wxCellsBlock& cellsblock)
-      {
-         m_LeftTop = cellsblock.m_LeftTop;
-         m_RightBottom = cellsblock.m_RightBottom;
-      }
+    wxCellsBlock(const wxCellsBlock& cellsblock)
+    {
+        m_LeftTop = cellsblock.m_LeftTop;
+        m_RightBottom = cellsblock.m_RightBottom;
+    }
 
-      bool IsOk(){return (m_LeftTop.GetRow() < 0)||
-                         (m_RightBottom.GetRow() < 0)||
-                         (m_LeftTop.GetCol() < 0)||
-                         (m_RightBottom.GetCol() < 0);}
+    bool IsOk() {
+        return (m_LeftTop.GetRow() < 0)||
+               (m_RightBottom.GetRow() < 0)||
+               (m_LeftTop.GetCol() < 0)||
+               (m_RightBottom.GetCol() < 0);
+    }
 
-      inline wxCellsBlock& operator=(const wxCellsBlock& cellsblock)
-      {
-         m_LeftTop = cellsblock.m_LeftTop;
-         m_RightBottom = cellsblock.m_RightBottom;
-         return *this;
-      }
+    inline wxCellsBlock& operator=(const wxCellsBlock& cellsblock)
+    {
+        m_LeftTop = cellsblock.m_LeftTop;
+        m_RightBottom = cellsblock.m_RightBottom;
+        return *this;
+    }
 
-      inline bool operator<(const wxCellsBlock& cellsblock) const
-      {
-         return (m_LeftTop.GetRow() < cellsblock.m_LeftTop.GetRow())||
-                ((m_LeftTop.GetRow() == cellsblock.m_LeftTop.GetRow())&&
-                 (m_RightBottom.GetCol() < cellsblock.m_RightBottom.GetCol()));
-      }
+    inline bool operator<(const wxCellsBlock& cellsblock) const
+    {
+        return (m_LeftTop.GetRow() < cellsblock.m_LeftTop.GetRow())||
+               ((m_LeftTop.GetRow() == cellsblock.m_LeftTop.GetRow())&&
+                (m_RightBottom.GetCol() < cellsblock.m_RightBottom.GetCol()));
+    }
 
-      inline bool operator>(const wxCellsBlock& cellsblock) const
-      {
-         return (m_LeftTop.GetRow() > cellsblock.m_LeftTop.GetRow())||
-                ((m_LeftTop.GetRow() == cellsblock.m_LeftTop.GetRow())&&
-                 (m_RightBottom.GetCol() > cellsblock.m_RightBottom.GetCol()));
-      }
+    inline bool operator>(const wxCellsBlock& cellsblock) const
+    {
+        return (m_LeftTop.GetRow() > cellsblock.m_LeftTop.GetRow())||
+               ((m_LeftTop.GetRow() == cellsblock.m_LeftTop.GetRow())&&
+                (m_RightBottom.GetCol() > cellsblock.m_RightBottom.GetCol()));
+    }
 
-      inline bool operator<=(const wxCellsBlock& cellsblock) const
-      {
-         return (m_LeftTop.GetRow() < cellsblock.m_LeftTop.GetRow())||
-                ((m_LeftTop.GetRow() == cellsblock.m_LeftTop.GetRow())&&
-                 (m_RightBottom.GetCol() <= cellsblock.m_RightBottom.GetCol()));
-      }
+    inline bool operator<=(const wxCellsBlock& cellsblock) const
+    {
+        return (m_LeftTop.GetRow() < cellsblock.m_LeftTop.GetRow())||
+               ((m_LeftTop.GetRow() == cellsblock.m_LeftTop.GetRow())&&
+                (m_RightBottom.GetCol() <= cellsblock.m_RightBottom.GetCol()));
+    }
 
-      inline bool operator>=(const wxCellsBlock& cellsblock) const
-      {
-         return (m_LeftTop.GetRow() > cellsblock.m_LeftTop.GetRow())||
-                ((m_LeftTop.GetRow() == cellsblock.m_LeftTop.GetRow())&&
-                 (m_RightBottom.GetCol() >= cellsblock.m_RightBottom.GetCol()));
-      }
+    inline bool operator>=(const wxCellsBlock& cellsblock) const
+    {
+        return (m_LeftTop.GetRow() > cellsblock.m_LeftTop.GetRow())||
+               ((m_LeftTop.GetRow() == cellsblock.m_LeftTop.GetRow())&&
+                (m_RightBottom.GetCol() >= cellsblock.m_RightBottom.GetCol()));
+    }
 
-      inline bool operator==(const wxCellsBlock& cellsblock) const
-      {
-         return (m_LeftTop.GetCol() == cellsblock.m_LeftTop.GetCol())&&
-                (m_LeftTop.GetRow() == cellsblock.m_LeftTop.GetRow())&&
-                (m_RightBottom.GetCol() == cellsblock.m_RightBottom.GetCol())&&
-                (m_RightBottom.GetRow() == cellsblock.m_RightBottom.GetRow());
-      }
+    inline bool operator==(const wxCellsBlock& cellsblock) const
+    {
+        return (m_LeftTop.GetCol() == cellsblock.m_LeftTop.GetCol())&&
+               (m_LeftTop.GetRow() == cellsblock.m_LeftTop.GetRow())&&
+               (m_RightBottom.GetCol() == cellsblock.m_RightBottom.GetCol())&&
+               (m_RightBottom.GetRow() == cellsblock.m_RightBottom.GetRow());
+    }
 
-      wxGridCellCoords GetLeftTop(){return m_LeftTop;}
-      wxGridCellCoords GetRightBottom(){return m_RightBottom;}
+    wxGridCellCoords GetLeftTop() {
+        return m_LeftTop;
+    }
+    wxGridCellCoords GetRightBottom() {
+        return m_RightBottom;
+    }
 
-      int GetLeft(){return m_LeftTop.GetCol();}
-      int GetTop(){return m_LeftTop.GetRow();}
-      int GetRight(){return m_RightBottom.GetCol();}
-      int GetBottom(){return m_RightBottom.GetRow();}
+    int GetLeft() {
+        return m_LeftTop.GetCol();
+    }
+    int GetTop() {
+        return m_LeftTop.GetRow();
+    }
+    int GetRight() {
+        return m_RightBottom.GetCol();
+    }
+    int GetBottom() {
+        return m_RightBottom.GetRow();
+    }
 
-   private:
+private:
 
-      wxGridCellCoords m_LeftTop;
-      wxGridCellCoords m_RightBottom;
+    wxGridCellCoords m_LeftTop;
+    wxGridCellCoords m_RightBottom;
 };
 /*---------------------------------------------------------------------------*/
 WX_DECLARE_OBJARRAY(wxCellsBlock, wxArrayOfCellsBlock);
 /*---------------------------------------------------------------------------*/
 class WXDLLIMPEXP_SCPECGRID wxSpecGrid : public wxGrid
 {
-   DECLARE_DYNAMIC_CLASS(wxSpecGrid)
-   DECLARE_EVENT_TABLE()
+    DECLARE_DYNAMIC_CLASS(wxSpecGrid)
+    DECLARE_EVENT_TABLE()
 
-   public:
+public:
 
-      wxSpecGrid() : wxGrid(){}
-      virtual ~wxSpecGrid(){}
+    wxSpecGrid() : wxGrid() {}
+    virtual ~wxSpecGrid() {}
 
-      wxSpecGrid(wxWindow* parent, wxWindowID id,
-                 const wxPoint& pos = wxDefaultPosition,
-                 const wxSize& size = wxDefaultSize,
-                 long style = wxWANTS_CHARS,
-                 const wxString& name = wxPanelNameStr) : wxGrid(parent, id,
-                                                                 pos, size,
-                                                                 style, name){}
+    wxSpecGrid(wxWindow* parent, wxWindowID id,
+               const wxPoint& pos = wxDefaultPosition,
+               const wxSize& size = wxDefaultSize,
+               long style = wxWANTS_CHARS,
+               const wxString& name = wxPanelNameStr) : wxGrid(parent, id,
+                           pos, size,
+                           style, name) {}
 
-      void SetDefaultSelection(int row = -1, int col = -1);
+    void SetDefaultSelection(int row = -1, int col = -1);
 
-      bool HasFocus();
+    bool HasFocus();
 
-   protected:
+protected:
 
-      void OnCopy(wxCommandEvent& event);
-      void OnCopyUpdate(wxUpdateUIEvent& event);
-      void OnSelectAll(wxCommandEvent& event);
-      void OnSelectAllUpdate(wxUpdateUIEvent& event);
-      void OnRightDown(wxGridEvent& event);
-      void OnSelectCell(wxGridEvent& event);
-      void OnBlodEdit(wxGridCellBlobEditorEvent& event);
+    void OnCopy(wxCommandEvent& event);
+    void OnCopyUpdate(wxUpdateUIEvent& event);
+    void OnSelectAll(wxCommandEvent& event);
+    void OnSelectAllUpdate(wxUpdateUIEvent& event);
+    void OnRightDown(wxGridEvent& event);
+    void OnSelectCell(wxGridEvent& event);
+    void OnBlodEdit(wxGridCellBlobEditorEvent& event);
 
-      virtual wxMenu* CreateRightMenu();
+    virtual wxMenu* CreateRightMenu();
 
-   private:
+private:
 
-      wxString GetDataBlock(const wxGridCellCoords& topleft,
-                            const wxGridCellCoords& bottomright);
-      wxString GetDataBlock(const wxArrayOfCellsBlock& array);
+    wxString GetDataBlock(const wxGridCellCoords& topleft,
+                          const wxGridCellCoords& bottomright);
+    wxString GetDataBlock(const wxArrayOfCellsBlock& array);
 
 };
 /*---------------------------------------------------------------------------*/
 class WXDLLIMPEXP_SCPECGRID wxDataGrid : public wxSpecGrid
 {
-   DECLARE_DYNAMIC_CLASS(wxDataGrid)
-   DECLARE_EVENT_TABLE()
+    DECLARE_DYNAMIC_CLASS(wxDataGrid)
+    DECLARE_EVENT_TABLE()
 
-   public:
+public:
 
-      wxDataGrid() : wxSpecGrid()
-         {m_IsFiltered = m_IsSorted = false;}
-      virtual ~wxDataGrid(){}
+    wxDataGrid() : wxSpecGrid()
+    {
+        m_IsFiltered = m_IsSorted = false;
+    }
+    virtual ~wxDataGrid() {}
 
-      wxDataGrid(wxWindow* parent, wxWindowID id,
-                 const wxPoint& pos = wxDefaultPosition,
-                 const wxSize& size = wxDefaultSize) :
-                 wxSpecGrid(parent, id, pos, size, wxHSCROLL|wxVSCROLL)
-                 {m_IsFiltered = m_IsSorted = false;}
+    wxDataGrid(wxWindow* parent, wxWindowID id,
+               const wxPoint& pos = wxDefaultPosition,
+               const wxSize& size = wxDefaultSize) :
+        wxSpecGrid(parent, id, pos, size, wxHSCROLL|wxVSCROLL)
+    {
+        m_IsFiltered = m_IsSorted = false;
+    }
 
-      void SetDbTableViewName(wxSQLite3Database* db,
-                              const wxString& objectname,
-                              const wxString& base = wxEmptyString);
+    void SetDbTableViewName(wxSQLite3Database* db,
+                            const wxString& objectname,
+                            const wxString& base = wxEmptyString);
 
-      void DoRefresh(bool usefilter = false);
-      void DoSort();
-      void DoFilter();
+    void DoRefresh(bool usefilter = false);
+    void DoSort();
+    void DoFilter();
 
-      bool IsFiltered(){return m_IsFiltered;}
-      bool IsSorted(){return m_IsSorted;}
+    bool IsFiltered() {
+        return m_IsFiltered;
+    }
+    bool IsSorted() {
+        return m_IsSorted;
+    }
 
-   protected:
+protected:
 
-      void OnFilter(wxCommandEvent& event);
-      void OnSort(wxCommandEvent& event);
-      void OnRefresh(wxCommandEvent& event);
-      void OnFilterSortUpdate(wxUpdateUIEvent& event);
+    void OnFilter(wxCommandEvent& event);
+    void OnSort(wxCommandEvent& event);
+    void OnRefresh(wxCommandEvent& event);
+    void OnFilterSortUpdate(wxUpdateUIEvent& event);
 
-      virtual wxMenu* CreateRightMenu();
+    virtual wxMenu* CreateRightMenu();
 
-   private:
+private:
 
-      wxSQLite3Database*   m_db;
-      wxString             m_Base;
-      wxString             m_TableViewName;
+    wxSQLite3Database*   m_db;
+    wxString             m_Base;
+    wxString             m_TableViewName;
 
-      wxArrayString        m_StringsOrder;
-      wxString             m_StringWhere;
-      bool                 m_IsFiltered;
-      bool                 m_IsSorted;
+    wxArrayString        m_StringsOrder;
+    wxString             m_StringWhere;
+    bool                 m_IsFiltered;
+    bool                 m_IsSorted;
 };
 /*---------------------------------------------------------------------------*/
 class WXDLLIMPEXP_SCPECGRID wxGridCellBlobRenderer : public wxGridCellStringRenderer
 {
-   public:
+public:
 
-      wxGridCellBlobRenderer(bool displaynullvalue = true,
-                             const wxString& defaultstring = ("(blob)"));
+    wxGridCellBlobRenderer(bool displaynullvalue = true,
+                           const wxString& defaultstring = ("(blob)"));
 
-      virtual void Draw(wxGrid& grid, wxGridCellAttr& attr, wxDC& dc,
-                        const wxRect& rect, int row, int col, bool isSelected);
+    virtual void Draw(wxGrid& grid, wxGridCellAttr& attr, wxDC& dc,
+                      const wxRect& rect, int row, int col, bool isSelected);
 
-      virtual wxSize GetBestSize(wxGrid& grid, wxGridCellAttr& attr,
-                                 wxDC& dc, int row, int col);
+    virtual wxSize GetBestSize(wxGrid& grid, wxGridCellAttr& attr,
+                               wxDC& dc, int row, int col);
 
-   protected:
+protected:
 
-      wxString GetString(const wxGrid& grid, int row, int col);
+    wxString GetString(const wxGrid& grid, int row, int col);
 
-   private:
+private:
 
-      bool m_IsNullValueDisplayed;
-      wxString m_DefaultString;
+    bool m_IsNullValueDisplayed;
+    wxString m_DefaultString;
 };
 /*---------------------------------------------------------------------------*/
 class WXDLLIMPEXP_SCPECGRID wxGridCellBlobEditor : public wxGridCellEditor, public wxEvtHandler
 {
-   DECLARE_EVENT_TABLE()
+    DECLARE_EVENT_TABLE()
 
-   public:
+public:
 
-      wxGridCellBlobEditor();
+    wxGridCellBlobEditor();
 
-      virtual void Create(wxWindow* parent, wxWindowID id,
-                          wxEvtHandler* evtHandler);
+    virtual void Create(wxWindow* parent, wxWindowID id,
+                        wxEvtHandler* evtHandler);
 
-      virtual void PaintBackground(const wxRect& rectCell, wxGridCellAttr *attr);
+    virtual void PaintBackground(const wxRect& rectCell, wxGridCellAttr *attr);
 
-      virtual void BeginEdit(int row, int col, wxGrid* grid);
-  
+    virtual void BeginEdit(int row, int col, wxGrid* grid);
+
 #if wxCHECK_VERSION(2,9,0)
-      virtual bool EndEdit(int row, int col, const wxGrid* grid,
-                           const wxString& oldval, wxString* newval);
+    virtual bool EndEdit(int row, int col, const wxGrid* grid,
+                         const wxString& oldval, wxString* newval);
 
-      virtual void ApplyEdit(int row, int col, wxGrid* grid);
+    virtual void ApplyEdit(int row, int col, wxGrid* grid);
 #else
-      virtual bool EndEdit(int row, int col, wxGrid* grid);
+    virtual bool EndEdit(int row, int col, wxGrid* grid);
 #endif
-      virtual void Reset();
+    virtual void Reset();
 
-      virtual wxGridCellEditor *Clone() const;
+    virtual wxGridCellEditor *Clone() const;
 
-      virtual wxString GetValue() const;
+    virtual wxString GetValue() const;
 
-      virtual void SetSize(const wxRect& rectOrig);
+    virtual void SetSize(const wxRect& rectOrig);
 
-   protected:
+protected:
 
-      void OnBtnClick(wxCommandEvent& event);
+    void OnBtnClick(wxCommandEvent& event);
 
-   private:
+private:
 
-      int m_Row;
-      int m_Col;
-      wxGrid* m_Grid;
+    int m_Row;
+    int m_Col;
+    wxGrid* m_Grid;
 };
 /*---------------------------------------------------------------------------*/
 class WXDLLIMPEXP_SCPECGRID wxGridCellBlobEditorEvent : public wxNotifyEvent
 {
-   DECLARE_DYNAMIC_CLASS(wxGridCellBlobEditorEvent)
+    DECLARE_DYNAMIC_CLASS(wxGridCellBlobEditorEvent)
 
-   public:
+public:
 
-      wxGridCellBlobEditorEvent(wxEventType commandType = 0, int id = 0);
-      wxGridCellBlobEditorEvent(const wxGridCellBlobEditorEvent& event);
+    wxGridCellBlobEditorEvent(wxEventType commandType = 0, int id = 0);
+    wxGridCellBlobEditorEvent(const wxGridCellBlobEditorEvent& event);
 
-      ~wxGridCellBlobEditorEvent() {}
+    ~wxGridCellBlobEditorEvent() {}
 
-      void SetRow(int val)       {m_Row = val;}
-      void SetCol(int val)       {m_Col = val;}
-      void SetGrid(wxGrid* val)  {m_Grid = val;}
+    void SetRow(int val)       {
+        m_Row = val;
+    }
+    void SetCol(int val)       {
+        m_Col = val;
+    }
+    void SetGrid(wxGrid* val)  {
+        m_Grid = val;
+    }
 
-      int GetRow()      const {return m_Row;}
-      int GetCol()      const {return m_Col;}
-      wxGrid* GetGrid() const {return m_Grid;}
+    int GetRow()      const {
+        return m_Row;
+    }
+    int GetCol()      const {
+        return m_Col;
+    }
+    wxGrid* GetGrid() const {
+        return m_Grid;
+    }
 
-      virtual wxEvent* Clone() const {return new wxGridCellBlobEditorEvent(*this);}
+    virtual wxEvent* Clone() const {
+        return new wxGridCellBlobEditorEvent(*this);
+    }
 
-   private:
+private:
 
-      int m_Row;        // Row number
-      int m_Col;        // Col number
-      wxGrid* m_Grid;   // Grid control
+    int m_Row;        // Row number
+    int m_Col;        // Col number
+    wxGrid* m_Grid;   // Grid control
 
 };
 /*---------------------------------------------------------------------------*/
 BEGIN_DECLARE_EVENT_TYPES()
-   DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_SCPECGRID, wxEVT_GRID_BLOBEDIT,   1670) // wxGridCellBlobEditorEventFunction
+DECLARE_EXPORTED_EVENT_TYPE(WXDLLIMPEXP_SCPECGRID, wxEVT_GRID_BLOBEDIT,   1670) // wxGridCellBlobEditorEventFunction
 END_DECLARE_EVENT_TYPES()
 
 typedef void (wxEvtHandler::*wxGridCellBlobEditorEventFunction)(wxGridCellBlobEditorEvent&);
