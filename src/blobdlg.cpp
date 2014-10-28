@@ -170,16 +170,11 @@ void wxBlobDialog::SetBlob(wxMemoryBuffer* buffer)
         m_EditHexa->SetValue(GetHexaString(buffer));
         wxMemoryInputStream inputStream((const char*)buffer->GetData(), BufLen);
         if (m_FlagBin == false)
-        {
             m_EditText->SetValue(wxString::From8BitData((const char*)buffer->GetData(), BufLen));
-            wxXPMDecoder XpmDecoder;
-            if (XpmDecoder.CanRead(inputStream))
-                image = XpmDecoder.ReadFile(inputStream);
-        }
-        else
-        {
+
+        if (wxImage::CanRead(inputStream))
             image.LoadFile(inputStream);
-        }
+
         if (image.IsOk())
         {
             wxSize newSize;
