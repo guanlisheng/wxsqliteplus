@@ -1,0 +1,3 @@
+[submodule "3rd/wxsqlite3"]
+	path = 3rd/wxsqlite3
+	url = https://github.com/utelle/wxsqlite3.git
