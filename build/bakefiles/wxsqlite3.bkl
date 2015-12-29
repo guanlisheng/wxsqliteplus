@@ -13,6 +13,7 @@
         <define>SQLITE_ENABLE_EXTFUNC</define>
         <define>SQLITE_ENABLE_COLUMN_METADATA</define>
         <define>SQLITE_ENABLE_JSON1</define>
+        <define>SQLITE_USER_AUTHENTICATION</define>
 
         <define>HAVE_ACOSH</define>
         <define>HAVE_ASINH</define>
