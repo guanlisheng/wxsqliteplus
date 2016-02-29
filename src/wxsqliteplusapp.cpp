@@ -168,12 +168,6 @@ END_EVENT_TABLE()
 /*---------------------------------------------------------------------------*/
 wxSQLitePlusApp::wxSQLitePlusApp()
 {
-    m_lang = (wxLanguage)wxLocale::GetSystemLanguage();
-    m_locale.Init(m_lang, wxLOCALE_DONT_LOAD_DEFAULT);
-    m_locale.AddCatalogLookupPathPrefix(wxGetCwd());
-    m_locale.AddCatalogLookupPathPrefix("locale");
-    m_locale.AddCatalogLookupPathPrefix(wxStandardPaths::Get().GetResourcesDir());
-    m_locale.AddCatalog("wxstd");
 }
 /*---------------------------------------------------------------------------*/
 bool wxSQLitePlusApp::OnInit()
@@ -189,6 +183,22 @@ bool wxSQLitePlusApp::OnInit()
     Init();
 
     wxInitAllImageHandlers();
+
+    // don't use wxLOCALE_LOAD_DEFAULT flag so that Init() doesn't return
+    // false just because it failed to load wxstd catalog
+    m_lang = (wxLanguage)wxLocale::GetSystemLanguage();
+    m_locale.Init(m_lang, wxLOCALE_DONT_LOAD_DEFAULT);
+
+    // normally this wouldn't be necessary as the catalog files would be found
+    // in the default locations, but when the program is not installed the
+    // catalogs are in the build directory where we wouldn't find them by
+    // default
+    m_locale.AddCatalogLookupPathPrefix(".");
+    m_locale.AddCatalogLookupPathPrefix(wxGetCwd());
+    m_locale.AddCatalogLookupPathPrefix("locale");
+    m_locale.AddCatalogLookupPathPrefix(wxStandardPaths::Get().GetResourcesDir());
+    m_locale.AddCatalog("wxstd");
+    m_locale.AddCatalog("wxsqliteplus");
 
     if (m_SavePosition)
     {

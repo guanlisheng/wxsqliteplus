@@ -1,0 +1,1587 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2016-02-29 17:20+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: src/aboutdlg.cpp:78
+#, c-format
+msgid "About %s"
+msgstr ""
+
+#: src/aboutdlg.cpp:147
+#, c-format
+msgid ""
+"%s comes with ABSOLUTELY NO WARRANTY.\n"
+"This is free software, and you are welcome to redistribute it\n"
+"under certain conditions. For details read the file gpl.txt.\n"
+msgstr ""
+
+#: src/aboutdlg.cpp:166 src/addcolumn.cpp:220 src/attachdbdlg.cpp:157
+#: src/backrestdlg.cpp:167 src/createindex.cpp:249 src/createtable.cpp:512
+#: src/createtrigger.cpp:356 src/createview.cpp:199 src/detachdbdlg.cpp:146
+#: src/dropobject.cpp:132 src/encrypkeydlg.cpp:110 src/filterdlg.cpp:192
+#: src/sortdlg.cpp:240 src/sqlhistory.cpp:135 src/sqlparameters.cpp:118
+msgid "&OK"
+msgstr ""
+
+#: src/addcolumn.cpp:172
+msgid "&Table :"
+msgstr ""
+
+#: src/addcolumn.cpp:201 src/createtable.cpp:493
+msgid "Add Column"
+msgstr ""
+
+#: src/addcolumn.cpp:205 src/createtable.cpp:497
+msgid "Remove Column"
+msgstr ""
+
+#: src/addcolumn.cpp:209 src/indexbook.cpp:118 src/tablebook.cpp:130
+#: src/viewbook.cpp:124
+msgid "Columns"
+msgstr ""
+
+#: src/addcolumn.cpp:213 src/createindex.cpp:242 src/createtable.cpp:505
+#: src/createtrigger.cpp:349 src/createview.cpp:192 src/indexbook.cpp:123
+#: src/tablebook.cpp:168 src/viewbook.cpp:134
+msgid "DDL"
+msgstr ""
+
+#: src/addcolumn.cpp:225 src/attachdbdlg.cpp:162 src/backrestdlg.cpp:172
+#: src/blobdlg.cpp:181 src/createindex.cpp:254 src/createtable.cpp:517
+#: src/createtrigger.cpp:361 src/createview.cpp:204 src/describedlg.cpp:111
+#: src/detachdbdlg.cpp:151 src/dropobject.cpp:137 src/encrypkeydlg.cpp:115
+#: src/filterdlg.cpp:197 src/sortdlg.cpp:245 src/sqlhistory.cpp:139
+#: src/sqlparameters.cpp:123
+msgid "&Cancel"
+msgstr ""
+
+#: src/addcolumn.cpp:336
+msgid "You have to select a table."
+msgstr ""
+
+#: src/addcolumn.cpp:337 src/addcolumn.cpp:344 src/addcolumn.cpp:365
+#: src/addcolumn.cpp:387 src/addcolumn.cpp:414 src/addcolumn.cpp:423
+#: src/attachdbdlg.cpp:216 src/attachdbdlg.cpp:223 src/attachdbdlg.cpp:237
+#: src/backrestdlg.cpp:215 src/backrestdlg.cpp:225 src/backrestdlg.cpp:231
+#: src/backrestdlg.cpp:241 src/createindex.cpp:407 src/createindex.cpp:415
+#: src/createindex.cpp:422 src/createindex.cpp:432 src/createtable.cpp:611
+#: src/createtable.cpp:618 src/createtable.cpp:628 src/createtable.cpp:652
+#: src/createtrigger.cpp:618 src/createtrigger.cpp:626
+#: src/createtrigger.cpp:634 src/createtrigger.cpp:642
+#: src/createtrigger.cpp:651 src/createtrigger.cpp:690 src/createview.cpp:303
+#: src/createview.cpp:311 src/createview.cpp:321 src/dropobject.cpp:170
+#: src/dropobject.cpp:176 src/dropobject.cpp:185 src/filterdlg.cpp:273
+#: src/sqlbook.cpp:934
+msgid "Error"
+msgstr ""
+
+#: src/addcolumn.cpp:343
+msgid "You have to add column(s) for the table."
+msgstr ""
+
+#: src/addcolumn.cpp:364 src/createtable.cpp:651
+msgid "A column with AUTOINCREMENT must be a primary key."
+msgstr ""
+
+#: src/addcolumn.cpp:386
+msgid "Cannot add a NOT NULL column with default value NULL."
+msgstr ""
+
+#: src/addcolumn.cpp:412
+msgid ""
+"The column may not have a default value of CURRENT_TIME, CURRENT_DATE or "
+"CURRENT_TIMESTAMP."
+msgstr ""
+
+#: src/addcolumn.cpp:422
+msgid "Adding a primary key column is forbidden."
+msgstr ""
+
+#: src/attachdbdlg.cpp:120
+msgid "File name :"
+msgstr ""
+
+#: src/attachdbdlg.cpp:137
+msgid "Alias :"
+msgstr ""
+
+#: src/attachdbdlg.cpp:146 src/backrestdlg.cpp:147
+msgid "Enter encryption key: (let empty for no encryption)"
+msgstr ""
+
+#: src/attachdbdlg.cpp:195
+msgid "Attach database"
+msgstr ""
+
+#: src/attachdbdlg.cpp:197 src/backrestdlg.cpp:200 src/sqliteplusframe.cpp:856
+msgid "SQLite files (*.db)|*.db|All files (*.*)|*.*"
+msgstr ""
+
+#: src/attachdbdlg.cpp:215 src/backrestdlg.cpp:215
+msgid "You have to enter a file name."
+msgstr ""
+
+#: src/attachdbdlg.cpp:222
+msgid "You have to enter an alias name."
+msgstr ""
+
+#: src/attachdbdlg.cpp:236
+msgid "This alias already exist."
+msgstr ""
+
+#: src/backrestdlg.cpp:85
+msgid "Backup Database"
+msgstr ""
+
+#: src/backrestdlg.cpp:86
+msgid "Restore Database"
+msgstr ""
+
+#: src/backrestdlg.cpp:117
+msgid "File name (target):"
+msgstr ""
+
+#: src/backrestdlg.cpp:118
+msgid "Database (source):"
+msgstr ""
+
+#: src/backrestdlg.cpp:122
+msgid "File name (source):"
+msgstr ""
+
+#: src/backrestdlg.cpp:123
+msgid "Database (target):"
+msgstr ""
+
+#: src/backrestdlg.cpp:189
+msgid "Target database"
+msgstr ""
+
+#: src/backrestdlg.cpp:194
+msgid "Source database"
+msgstr ""
+
+#: src/backrestdlg.cpp:225
+msgid "Please choose an existing directory."
+msgstr ""
+
+#: src/backrestdlg.cpp:231
+msgid "Please choose a correct file name."
+msgstr ""
+
+#: src/backrestdlg.cpp:241
+msgid "Please choose an existing file."
+msgstr ""
+
+#: src/blobdlg.cpp:123
+msgid "Length: "
+msgstr ""
+
+#: src/blobdlg.cpp:134
+msgid "First 32 bytes"
+msgstr ""
+
+#: src/blobdlg.cpp:145
+msgid "Save As"
+msgstr ""
+
+#: src/blobdlg.cpp:150
+msgid "Information"
+msgstr ""
+
+#: src/blobdlg.cpp:155
+msgid "Text"
+msgstr ""
+
+#: src/blobdlg.cpp:174
+msgid "Image"
+msgstr ""
+
+#: src/blobdlg.cpp:214
+#, c-format
+msgid "Real Size: %i x %i"
+msgstr ""
+
+#: src/blobdlg.cpp:231
+msgid "not implemented"
+msgstr ""
+
+#: src/createindex.cpp:138 src/createtable.cpp:461
+msgid "&Name : "
+msgstr ""
+
+#: src/createindex.cpp:157
+msgid "&Table : "
+msgstr ""
+
+#: src/createindex.cpp:166
+msgid "&Unique"
+msgstr ""
+
+#: src/createindex.cpp:171
+msgid "&Index :"
+msgstr ""
+
+#: src/createindex.cpp:216
+msgid "&Column name :"
+msgstr ""
+
+#: src/createindex.cpp:226
+msgid "&Order :"
+msgstr ""
+
+#: src/createindex.cpp:231 src/createindex.cpp:235
+msgid "ASC"
+msgstr ""
+
+#: src/createindex.cpp:232
+msgid "DESC"
+msgstr ""
+
+#: src/createindex.cpp:238
+msgid "Properties"
+msgstr ""
+
+#: src/createindex.cpp:406
+msgid "You have to enter an index name."
+msgstr ""
+
+#: src/createindex.cpp:414
+msgid "You have to select an table name."
+msgstr ""
+
+#: src/createindex.cpp:421
+msgid "You have to choose column(s) for the index."
+msgstr ""
+
+#: src/createindex.cpp:431
+msgid "Index with this name already exist."
+msgstr ""
+
+#: src/createtable.cpp:251
+msgid "Name"
+msgstr ""
+
+#: src/createtable.cpp:253
+msgid "Type"
+msgstr ""
+
+#: src/createtable.cpp:255
+msgid "Not Null"
+msgstr ""
+
+#: src/createtable.cpp:257
+msgid "Primay Key"
+msgstr ""
+
+#: src/createtable.cpp:259 src/preferences.cpp:383 src/preferences.cpp:397
+msgid "Default"
+msgstr ""
+
+#: src/createtable.cpp:469
+msgid "&Temporary Table"
+msgstr ""
+
+#: src/createtable.cpp:501
+msgid "Table"
+msgstr ""
+
+#: src/createtable.cpp:610
+msgid "You have to enter a table name."
+msgstr ""
+
+#: src/createtable.cpp:617
+msgid "You have to create column(s) for the table."
+msgstr ""
+
+#: src/createtable.cpp:627
+msgid "Table or view with this name already exist."
+msgstr ""
+
+#: src/createtrigger.cpp:144 src/createtrigger.cpp:219
+#: src/createtrigger.cpp:223 src/dropobject.cpp:109
+msgid "TABLE"
+msgstr ""
+
+#: src/createtrigger.cpp:146 src/createtrigger.cpp:220 src/dropobject.cpp:110
+msgid "VIEW"
+msgstr ""
+
+#: src/createtrigger.cpp:188 src/createview.cpp:135
+msgid "Na&me :"
+msgstr ""
+
+#: src/createtrigger.cpp:198
+msgid "&Temporary Trigger"
+msgstr ""
+
+#: src/createtrigger.cpp:214
+msgid "Object : "
+msgstr ""
+
+#: src/createtrigger.cpp:233
+msgid "Type : "
+msgstr ""
+
+#: src/createtrigger.cpp:238 src/createtrigger.cpp:543
+msgid "AFTER"
+msgstr ""
+
+#: src/createtrigger.cpp:239 src/createtrigger.cpp:242
+#: src/createtrigger.cpp:544 src/createtrigger.cpp:546
+msgid "BEFORE"
+msgstr ""
+
+#: src/createtrigger.cpp:246 src/createtrigger.cpp:252
+msgid "DELETE"
+msgstr ""
+
+#: src/createtrigger.cpp:247
+msgid "INSERT"
+msgstr ""
+
+#: src/createtrigger.cpp:248
+msgid "UPDATE"
+msgstr ""
+
+#: src/createtrigger.cpp:249
+msgid "UPDATE OF"
+msgstr ""
+
+#: src/createtrigger.cpp:260
+msgid "Available Columns"
+msgstr ""
+
+#: src/createtrigger.cpp:270
+msgid "Selected Columns"
+msgstr ""
+
+#: src/createtrigger.cpp:319
+msgid "For Each Row"
+msgstr ""
+
+#: src/createtrigger.cpp:326
+msgid "When : "
+msgstr ""
+
+#: src/createtrigger.cpp:335
+msgid "Trigger Statement"
+msgstr ""
+
+#: src/createtrigger.cpp:345
+msgid "Trigger"
+msgstr "触发器"
+
+#: src/createtrigger.cpp:551 src/createtrigger.cpp:553
+msgid "INSTEAD OF"
+msgstr ""
+
+#: src/createtrigger.cpp:617
+msgid "You have to enter a trigger name."
+msgstr ""
+
+#: src/createtrigger.cpp:625
+msgid "You have to select an table or view name."
+msgstr ""
+
+#: src/createtrigger.cpp:633
+msgid "You have to select column(s) for the trigger."
+msgstr ""
+
+#: src/createtrigger.cpp:641
+msgid "The trigger statement is a mandatory value."
+msgstr ""
+
+#: src/createtrigger.cpp:650
+msgid "Trigger with this name already exist."
+msgstr ""
+
+#: src/createview.cpp:145
+msgid "&Temporary View"
+msgstr ""
+
+#: src/createview.cpp:159
+msgid "SQL &Query :"
+msgstr ""
+
+#: src/createview.cpp:173
+msgid "SQL &Parse Results :"
+msgstr ""
+
+#: src/createview.cpp:184
+msgid "Test &Syntax"
+msgstr ""
+
+#: src/createview.cpp:188
+msgid "SQL Query"
+msgstr ""
+
+#: src/createview.cpp:258
+msgid "No errors found in SQL."
+msgstr ""
+
+#: src/createview.cpp:287
+msgid "You must enter a SELECT sql statement."
+msgstr ""
+
+#: src/createview.cpp:302
+msgid "You have to enter a view name."
+msgstr ""
+
+#: src/createview.cpp:320
+msgid "View or table with this name already exist."
+msgstr ""
+
+#: src/detachdbdlg.cpp:134
+msgid "Databases :"
+msgstr ""
+
+#: src/dropobject.cpp:104
+msgid "Object Type :"
+msgstr ""
+
+#: src/dropobject.cpp:111
+msgid "INDEX"
+msgstr ""
+
+#: src/dropobject.cpp:112
+msgid "TRIGGER"
+msgstr ""
+
+#: src/dropobject.cpp:118
+msgid "Object Name :"
+msgstr ""
+
+#: src/dropobject.cpp:169
+msgid "You have to select an object type."
+msgstr ""
+
+#: src/dropobject.cpp:175
+msgid "You have to enter an object name."
+msgstr ""
+
+#: src/dropobject.cpp:184
+msgid "Object of this type with this name don't exist."
+msgstr ""
+
+#: src/encrypkeydlg.cpp:99
+msgid "Enter encryption key (let empty for no encryption)"
+msgstr ""
+
+#: src/filterdlg.cpp:134 src/filterdlg.cpp:148
+msgid ">"
+msgstr ""
+
+#: src/filterdlg.cpp:135
+msgid ">="
+msgstr ""
+
+#: src/filterdlg.cpp:136
+msgid "<"
+msgstr ""
+
+#: src/filterdlg.cpp:137
+msgid "<="
+msgstr ""
+
+#: src/filterdlg.cpp:138
+msgid "="
+msgstr ""
+
+#: src/filterdlg.cpp:139
+msgid "<>"
+msgstr ""
+
+#: src/filterdlg.cpp:140
+msgid "LIKE"
+msgstr ""
+
+#: src/filterdlg.cpp:141
+msgid "NOT LIKE"
+msgstr ""
+
+#: src/filterdlg.cpp:142
+msgid "GLOB"
+msgstr ""
+
+#: src/filterdlg.cpp:143
+msgid "NOT GLOB"
+msgstr ""
+
+#: src/filterdlg.cpp:144
+msgid "ISNULL"
+msgstr ""
+
+#: src/filterdlg.cpp:145
+msgid "NOTNULL"
+msgstr ""
+
+#: src/filterdlg.cpp:158
+msgid "AND"
+msgstr ""
+
+#: src/filterdlg.cpp:162
+msgid "OR"
+msgstr ""
+
+#: src/filterdlg.cpp:166
+msgid "("
+msgstr ""
+
+#: src/filterdlg.cpp:170
+msgid ")"
+msgstr ""
+
+#: src/filterdlg.cpp:174
+msgid "&Clear"
+msgstr ""
+
+#: src/filterdlg.cpp:180
+msgid "Add"
+msgstr ""
+
+#: src/paneldata.cpp:113 src/paneldata.cpp:114
+msgid "Filter"
+msgstr ""
+
+#: src/paneldata.cpp:116 src/paneldata.cpp:117
+msgid "Sort"
+msgstr ""
+
+#: src/paneldata.cpp:119 src/paneldata.cpp:120 src/sqliteplusframe.cpp:379
+#: src/sqliteplusframe.cpp:2168 src/sqliteplusframe.cpp:2201
+#: src/sqliteplusframe.cpp:2223 src/sqliteplusframe.cpp:2238
+#: src/sqliteplusframe.cpp:2255
+msgid "Refresh"
+msgstr ""
+
+#: src/paneldata.cpp:142
+msgid "Filtered"
+msgstr ""
+
+#: src/paneldata.cpp:147
+msgid "Sorted"
+msgstr ""
+
+#: src/preferences.cpp:205
+msgid "Odd Line Colour : "
+msgstr ""
+
+#: src/preferences.cpp:216
+msgid "Max. SQL History : "
+msgstr ""
+
+#: src/preferences.cpp:228
+msgid "Save window position"
+msgstr ""
+
+#: src/preferences.cpp:234
+msgid "Save window perspective"
+msgstr ""
+
+#: src/preferences.cpp:242 src/preferences.cpp:344 src/preferences.cpp:483
+msgid "Reset Default"
+msgstr ""
+
+#: src/preferences.cpp:246
+msgid "General"
+msgstr ""
+
+#: src/preferences.cpp:258
+msgid "Show Edge Line"
+msgstr ""
+
+#: src/preferences.cpp:266
+msgid "Show Line Number"
+msgstr ""
+
+#: src/preferences.cpp:274 src/preferences.cpp:422
+msgid "Foreground :"
+msgstr ""
+
+#: src/preferences.cpp:285 src/preferences.cpp:433
+msgid "Background  :"
+msgstr ""
+
+#: src/preferences.cpp:297
+msgid "Use Tab"
+msgstr ""
+
+#: src/preferences.cpp:302
+msgid "Tab Indent"
+msgstr ""
+
+#: src/preferences.cpp:308
+msgid "Backspace Unindent"
+msgstr ""
+
+#: src/preferences.cpp:322
+msgid "Tab Width : "
+msgstr ""
+
+#: src/preferences.cpp:332
+msgid "Indent Width : "
+msgstr ""
+
+#: src/preferences.cpp:348
+msgid "Editor"
+msgstr ""
+
+#: src/preferences.cpp:362
+msgid "Font : "
+msgstr ""
+
+#: src/preferences.cpp:378
+msgid "Items : "
+msgstr ""
+
+#: src/preferences.cpp:384
+msgid "Comment"
+msgstr ""
+
+#: src/preferences.cpp:385
+msgid "Comment One Line"
+msgstr ""
+
+#: src/preferences.cpp:386
+msgid "Number"
+msgstr ""
+
+#: src/preferences.cpp:387
+msgid "Key Word 1"
+msgstr ""
+
+#: src/preferences.cpp:388
+msgid "String"
+msgstr ""
+
+#: src/preferences.cpp:389
+msgid "Characters"
+msgstr ""
+
+#: src/preferences.cpp:390
+msgid "Operator"
+msgstr ""
+
+#: src/preferences.cpp:391
+msgid "Identifier"
+msgstr ""
+
+#: src/preferences.cpp:392
+msgid "Key Word 2"
+msgstr ""
+
+#: src/preferences.cpp:393
+msgid "Key Word 3"
+msgstr ""
+
+#: src/preferences.cpp:394
+msgid "Key Word 4"
+msgstr ""
+
+#: src/preferences.cpp:402
+msgid "Bold"
+msgstr ""
+
+#: src/preferences.cpp:407
+msgid "Italic"
+msgstr ""
+
+#: src/preferences.cpp:412
+msgid "Underline"
+msgstr ""
+
+#: src/preferences.cpp:445
+msgid "Case Mixed"
+msgstr ""
+
+#: src/preferences.cpp:450
+msgid "Case Upper"
+msgstr ""
+
+#: src/preferences.cpp:455
+msgid "Case Lower"
+msgstr ""
+
+#: src/preferences.cpp:489
+msgid "Syntax Highlight"
+msgstr ""
+
+#: src/sortdlg.cpp:149
+msgid "&Available Columns"
+msgstr ""
+
+#: src/sortdlg.cpp:188
+msgid "&Selected Columns"
+msgstr ""
+
+#: src/sortdlg.cpp:226
+msgid "&Ascending"
+msgstr ""
+
+#: src/sortdlg.cpp:232
+msgid "D&escending"
+msgstr ""
+
+#: src/specgrid.cpp:177
+msgid "C&opy"
+msgstr ""
+
+#: src/specgrid.cpp:177 src/sqlbook.cpp:822 src/sqliteplusframe.cpp:397
+#: src/sqliteplusframe.cpp:555
+msgid "Copy the selected text"
+msgstr ""
+
+#: src/specgrid.cpp:179
+msgid "Select &All"
+msgstr ""
+
+#: src/specgrid.cpp:382
+msgid "&Filter"
+msgstr ""
+
+#: src/specgrid.cpp:383
+msgid "&Sort"
+msgstr ""
+
+#: src/specgrid.cpp:385
+msgid "&Refresh"
+msgstr ""
+
+#: src/sqlbook.cpp:208
+msgid "Results"
+msgstr ""
+
+#: src/sqlbook.cpp:215
+msgid "Output"
+msgstr ""
+
+#: src/sqlbook.cpp:226 src/sqliteplusframe.cpp:592
+msgid "Explain"
+msgstr ""
+
+#: src/sqlbook.cpp:360 src/sqlbook.cpp:597
+msgid "Started transaction.\n"
+msgstr ""
+
+#: src/sqlbook.cpp:365 src/sqlbook.cpp:602 src/sqlbook.cpp:622
+#: src/sqlbook.cpp:642 src/sqlbook.cpp:662 src/sqlbook.cpp:732
+#: src/sqliteplusframe.cpp:1590 src/sqliteplusframe.cpp:1637
+#: src/sqliteplusframe.cpp:1690 src/sqliteplusframe.cpp:1865
+#: src/sqliteplusframe.cpp:1888
+#, c-format
+msgid "Error %i-%i : %s\n"
+msgstr ""
+
+#: src/sqlbook.cpp:444
+#, c-format
+msgid ""
+"Error %i in : \n"
+"%s\n"
+"%i : %s\n"
+msgstr ""
+
+#: src/sqlbook.cpp:617 src/sqlbook.cpp:637
+msgid "Transaction completed.\n"
+msgstr ""
+
+#: src/sqlbook.cpp:657
+msgid "Transaction cancelled.\n"
+msgstr ""
+
+#: src/sqlbook.cpp:685
+#, c-format
+msgid "%i rows where deleted.\n"
+msgstr ""
+
+#: src/sqlbook.cpp:688
+#, c-format
+msgid "%i row was deleted.\n"
+msgstr ""
+
+#: src/sqlbook.cpp:694
+#, c-format
+msgid "%i rows where inserted.\n"
+msgstr ""
+
+#: src/sqlbook.cpp:697
+#, c-format
+msgid "%i row was inserted.\n"
+msgstr ""
+
+#: src/sqlbook.cpp:703
+#, c-format
+msgid "%i rows where updated.\n"
+msgstr ""
+
+#: src/sqlbook.cpp:706
+#, c-format
+msgid "%i row was updated.\n"
+msgstr ""
+
+#: src/sqlbook.cpp:720
+msgid "Operation completed.\n"
+msgstr ""
+
+#: src/sqlbook.cpp:724
+msgid ""
+"A transaction is running.\n"
+"You have to execute COMMIT or ROLLBACK before compacting the database."
+msgstr ""
+
+#: src/sqlbook.cpp:727 src/sqliteplusframe.cpp:2588
+msgid "Warning"
+msgstr ""
+
+#: src/sqlbook.cpp:812 src/sqliteplusframe.cpp:440
+msgid "E&xecute Statement\tF9"
+msgstr ""
+
+#: src/sqlbook.cpp:812 src/sqliteplusframe.cpp:441 src/sqliteplusframe.cpp:584
+msgid "Execute the current SQL statement"
+msgstr ""
+
+#: src/sqlbook.cpp:813 src/sqliteplusframe.cpp:442
+msgid "Run &Script\tF5"
+msgstr ""
+
+#: src/sqlbook.cpp:813 src/sqliteplusframe.cpp:443 src/sqliteplusframe.cpp:588
+msgid "Execute the SQL script"
+msgstr ""
+
+#: src/sqlbook.cpp:815 src/sqliteplusframe.cpp:445
+msgid "Execute &Explain Plan\tF6"
+msgstr ""
+
+#: src/sqlbook.cpp:815 src/sqliteplusframe.cpp:446 src/sqliteplusframe.cpp:593
+msgid "Explain the current SQL statement"
+msgstr ""
+
+#: src/sqlbook.cpp:816 src/sqliteplusframe.cpp:447
+msgid "&Describe\tF4"
+msgstr ""
+
+#: src/sqlbook.cpp:818 src/sqliteplusframe.cpp:389
+msgid "&undo\tCtrl+Z"
+msgstr ""
+
+#: src/sqlbook.cpp:818 src/sqliteplusframe.cpp:390 src/sqliteplusframe.cpp:545
+msgid "Undo the last editor action"
+msgstr ""
+
+#: src/sqlbook.cpp:819 src/sqliteplusframe.cpp:391
+msgid "&Redo\tShift+Ctrl+Z"
+msgstr ""
+
+#: src/sqlbook.cpp:819 src/sqliteplusframe.cpp:392 src/sqliteplusframe.cpp:548
+msgid "Redo the last editor action"
+msgstr ""
+
+#: src/sqlbook.cpp:821 src/sqliteplusframe.cpp:394
+msgid "&Cut\tCtrl+X"
+msgstr ""
+
+#: src/sqlbook.cpp:821 src/sqliteplusframe.cpp:395 src/sqliteplusframe.cpp:552
+msgid "Cut the selected text"
+msgstr ""
+
+#: src/sqlbook.cpp:822 src/sqliteplusframe.cpp:396
+msgid "C&opy\tCtrl+C"
+msgstr ""
+
+#: src/sqlbook.cpp:823 src/sqliteplusframe.cpp:398
+msgid "&Paste\tCtrl+V"
+msgstr ""
+
+#: src/sqlbook.cpp:823 src/sqliteplusframe.cpp:399 src/sqliteplusframe.cpp:559
+msgid "Paste in the editor the text in the clipboard"
+msgstr ""
+
+#: src/sqlbook.cpp:825 src/sqliteplusframe.cpp:402
+msgid "C&lear"
+msgstr ""
+
+#: src/sqlbook.cpp:825 src/sqliteplusframe.cpp:402 src/sqliteplusframe.cpp:564
+msgid "Delete the selected text"
+msgstr ""
+
+#: src/sqlbook.cpp:826 src/sqliteplusframe.cpp:404
+msgid "Clear A&ll"
+msgstr ""
+
+#: src/sqlbook.cpp:826 src/sqliteplusframe.cpp:404
+msgid "Clear editor"
+msgstr ""
+
+#: src/sqlbook.cpp:827 src/sqliteplusframe.cpp:406
+msgid "Select &All\tCtrl+A"
+msgstr ""
+
+#: src/sqlbook.cpp:827 src/sqliteplusframe.cpp:407
+msgid "Select all the content of the editor"
+msgstr ""
+
+#: src/sqlbook.cpp:932
+#, c-format
+msgid "Table or view \"%s\" not found."
+msgstr ""
+
+#: src/sqlite3table.cpp:219
+#, c-format
+msgid "%li"
+msgstr ""
+
+#: src/sqlite3table.cpp:263
+#, c-format
+msgid "%g"
+msgstr ""
+
+#: src/sqlite3table.cpp:440
+#, c-format
+msgid " %i "
+msgstr ""
+
+#: src/sqlite3table.cpp:572
+msgid "SELECT * FROM "
+msgstr ""
+
+#: src/sqlite3table.cpp:575
+msgid ";"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:102
+msgid "table"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:103
+msgid "view"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:104
+msgid "index"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:105
+msgid "trigger"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:355
+msgid "&Open/Create"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:356 src/sqliteplusframe.cpp:513
+#: src/sqliteplusframe.cpp:2172
+msgid "Open an existing database or create a new database"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:358
+msgid "&Attach"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:359 src/sqliteplusframe.cpp:517
+msgid "Attach an existing or new database"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:361
+msgid "C&lose database"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:362 src/sqliteplusframe.cpp:2175
+msgid "Close the current database"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:363
+msgid "&Detach database"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:364 src/sqliteplusframe.cpp:2177
+msgid "Detach an attached database"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:366
+msgid "&Compact"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:367 src/sqliteplusframe.cpp:521
+msgid "Delete empty space in database"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:370
+msgid "Encryption key"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:371
+msgid "Add/Change the encryption key of the main database"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:373 src/sqliteplusframe.cpp:2179
+msgid "Backup"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:374 src/sqliteplusframe.cpp:2180
+msgid "Backup a database"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:375 src/sqliteplusframe.cpp:2181
+msgid "Restore"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:376 src/sqliteplusframe.cpp:2182
+msgid "Restore a database"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:380 src/sqliteplusframe.cpp:526
+msgid "Refresh all database structure"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:382
+msgid "&Preferences"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:383
+msgid "Show the preferences dialog"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:385
+msgid "E&xit\tAlt+X"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:386
+msgid "&File"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:408
+msgid "&Edit"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:411
+msgid "Create &table"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:412 src/sqliteplusframe.cpp:653
+#: src/sqliteplusframe.cpp:2188 src/sqliteplusframe.cpp:2209
+msgid "Show dialog to create new table"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:413
+msgid "Delete t&able"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:414 src/sqliteplusframe.cpp:657
+msgid "Show dialog to delete table"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:416
+msgid "Create &view"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:417 src/sqliteplusframe.cpp:662
+#: src/sqliteplusframe.cpp:2190 src/sqliteplusframe.cpp:2246
+msgid "Show dialog to create new view"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:418
+msgid "Delete v&iew"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:419 src/sqliteplusframe.cpp:666
+msgid "Show dialog to delete view"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:421
+msgid "Create i&ndex"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:422 src/sqliteplusframe.cpp:671
+#: src/sqliteplusframe.cpp:2192 src/sqliteplusframe.cpp:2211
+#: src/sqliteplusframe.cpp:2231
+msgid "Show dialog to create new index"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:423
+msgid "Delete inde&x"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:424 src/sqliteplusframe.cpp:675
+msgid "Show dialog to delete index"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:426
+msgid "Create tr&igger"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:427 src/sqliteplusframe.cpp:680
+#: src/sqliteplusframe.cpp:2194 src/sqliteplusframe.cpp:2213
+#: src/sqliteplusframe.cpp:2248 src/sqliteplusframe.cpp:2263
+msgid "Show dialog to create new trigger"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:428
+msgid "Delete tri&gger"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:429 src/sqliteplusframe.cpp:684
+msgid "Show dialog to delete trigger"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:431
+msgid "Add &columns"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:432 src/sqliteplusframe.cpp:2216
+msgid "Show dialog to add columns to table"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:434 src/sqliteplusframe.cpp:2203
+#: src/sqliteplusframe.cpp:2225 src/sqliteplusframe.cpp:2240
+#: src/sqliteplusframe.cpp:2257
+msgid "Explore"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:435
+msgid "Explore the selected object"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:437
+msgid "&Database"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:449
+msgid "Query"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:452
+msgid "&Begin transaction"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:453 src/sqliteplusframe.cpp:613
+msgid "Begin a new transaction"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:454
+msgid "&End transaction"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:455 src/sqliteplusframe.cpp:617
+msgid "Stop the current transaction"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:457
+msgid "&Commit"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:458 src/sqliteplusframe.cpp:622
+msgid "Commit the current transaction"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:459
+msgid "&Rollback"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:460 src/sqliteplusframe.cpp:626
+msgid "Rollback the current transaction"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:462
+msgid "Auto start transaction"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:463 src/sqliteplusframe.cpp:632
+msgid "Set/unset the auto start transaction flag"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:465
+msgid "&Transaction"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:468
+msgid "Show Database &structure"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:469
+msgid "Show/hide the database structure window"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:472
+msgid "Show SQL &History\tF8"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:473
+msgid "Show the SQL history window"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:476
+msgid "Show toolbar &File"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:477
+msgid "Show/hide the file toolbar"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:479
+msgid "Show toolbar &Edit"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:480
+msgid "Show/hide the edit toolbar"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:482
+msgid "Show toolbar &Database"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:483
+msgid "Show/hide the database toolbar"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:484
+msgid "Show toolbar &Query"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:485
+msgid "Show/hide the query toolbar"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:487
+msgid "Show toolbar &Transaction"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:488
+msgid "Show/hide the transaction toolbar"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:490
+msgid "Toolbars"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:491
+msgid "&Windows"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:494 src/sqliteplusframe.cpp:498
+msgid "&Help"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:494
+msgid "Show the help window"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:496
+msgid "&About"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:497
+msgid "Show the information dialog"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:512
+msgid "Open/Create Database"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:516
+msgid "Attach Database"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:520
+msgid "Compact Database"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:525
+msgid "Refresh Structure"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:545
+msgid "Undo"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:548
+msgid "Redo"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:552
+msgid "Cut"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:555
+msgid "Copy"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:558
+msgid "Paste"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:563
+msgid "Clear"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:583
+msgid "Execute SQL"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:587
+msgid "Execute script"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:612
+msgid "Begin Transaction"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:616
+msgid "End Transaction"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:621
+msgid "Commit"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:625
+msgid "Rollback"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:631
+msgid "Auto Start Transaction"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:652 src/sqliteplusframe.cpp:2187
+#: src/sqliteplusframe.cpp:2208
+msgid "Create Table"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:656 src/sqliteplusframe.cpp:2206
+msgid "Drop Table"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:661 src/sqliteplusframe.cpp:2189
+#: src/sqliteplusframe.cpp:2245
+msgid "Create View"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:665 src/sqliteplusframe.cpp:2243
+msgid "Drop View"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:670 src/sqliteplusframe.cpp:2191
+#: src/sqliteplusframe.cpp:2210 src/sqliteplusframe.cpp:2230
+msgid "Create Index"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:674 src/sqliteplusframe.cpp:2228
+msgid "Drop Index"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:679 src/sqliteplusframe.cpp:2193
+#: src/sqliteplusframe.cpp:2262
+msgid "Create Trigger"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:683 src/sqliteplusframe.cpp:2260
+msgid "Drop Trigger"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:716
+#, c-format
+msgid "Error : Database \"%s\" is already opened as %s\n"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:854
+msgid "Open/Create database"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:862
+#, c-format
+msgid ""
+"%s\n"
+"File does not exist.\n"
+"Do you want to create it?"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:864
+msgid "Confirm"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:1176
+msgid "Databases"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:1242
+msgid "Tables"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:1243
+msgid "Views"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:1244
+msgid "Index"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:1245 src/tablebook.cpp:154
+msgid "Triggers"
+msgstr "触发器"
+
+#: src/sqliteplusframe.cpp:1623
+msgid "SQL"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:1626
+#, c-format
+msgid "SQLite3 Version %s\n"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:1628
+#, c-format
+msgid "The database \"%s\" is opened as main\n"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:1724
+#, c-format
+msgid "The database \"%s\" is attached as %s\n"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:1984
+msgid "\";"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:2169
+msgid "Refresh database structure"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:2171
+msgid "Open/Create"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:2174
+msgid "Close"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:2176
+msgid "Detach database"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:2184
+msgid "Drop Object"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:2185
+msgid "Show dialog to delete database object"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:2202
+msgid "Refresh tables database structure"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:2204
+msgid "Explore the selected table"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:2207
+msgid "Delete the selected table"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:2212
+msgid "Create trigger"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:2215
+msgid "Add columns"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:2224
+msgid "Refresh indexes database structure"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:2226
+msgid "Explore the selected index"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:2229
+msgid "Delete the selected index"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:2239
+msgid "Refresh views database structure"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:2241
+msgid "Explore the selected view"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:2244
+msgid "Delete the selected view"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:2247
+msgid "Create &trigger"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:2256
+msgid "Refresh triggers database structure"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:2258
+msgid "Explore the selected trigger"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:2261
+msgid "Delete the selected trigger"
+msgstr ""
+
+#: src/sqliteplusframe.cpp:2586
+msgid ""
+"A transaction is running.\n"
+"Do you want to COMMIT your change?"
+msgstr ""
+
+#: src/sqlparameters.cpp:99
+msgid "Enter the value of the parameters"
+msgstr ""
+
+#: src/sqlparameters.cpp:141
+msgid "Unknow"
+msgstr ""
+
+#: src/tablebook.cpp:135 src/viewbook.cpp:129
+msgid "Data"
+msgstr ""
+
+#: src/tablebook.cpp:145
+msgid "Foreign key"
+msgstr ""
+
+#: src/tablebook.cpp:163
+msgid "Indexes"
+msgstr ""
+
+#: src/wxsqliteplusapp.cpp:1319
+msgid "A simple SQLite database browser."
+msgstr ""
+
+#: src/wxsqliteplusapp.cpp:1351
+#, c-format
+msgid ""
+"Error %i-%i in %s:\n"
+"%s\n"
+msgstr ""
+
+#: src/wxsqliteplusapp.cpp:1356
+msgid "Internal Error"
+msgstr ""
+
+#: src/wxsqliteplusapp.cpp:1493
+msgid "No database or database is not open."
+msgstr ""
