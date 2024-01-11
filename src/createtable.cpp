@@ -75,7 +75,7 @@ wxGridColumnsTable::wxGridColumnsTable()
 /*---------------------------------------------------------------------------*/
 wxGridColumnsTable::~wxGridColumnsTable()
 {
-    WX_CLEAR_ARRAY(m_Columns)
+    WX_CLEAR_ARRAY(m_Columns);
 }
 /*---------------------------------------------------------------------------*/
 int wxGridColumnsTable::GetNumberRows()
