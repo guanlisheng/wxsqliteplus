@@ -1663,7 +1663,7 @@ bool wxSQLitePlusFrame::AttachDatabase(const wxString& dbfile,
 
     if (DoFinishTransaction()) // vérifier si transaction finie
     {
-        l_dbkey = l_dbkey;
+        l_dbkey = dbkey;
         try
         {
             do
