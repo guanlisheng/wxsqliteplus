@@ -401,7 +401,7 @@ wxGridSQLite3TableBase::wxGridSQLite3TableBase()
 /*---------------------------------------------------------------------------*/
 wxGridSQLite3TableBase::~wxGridSQLite3TableBase()
 {
-    WX_CLEAR_ARRAY(m_ArrayColumn)
+    WX_CLEAR_ARRAY(m_ArrayColumn);
 }
 /*---------------------------------------------------------------------------*/
 bool wxGridSQLite3TableBase::IsEmptyCell(int row, int col)
