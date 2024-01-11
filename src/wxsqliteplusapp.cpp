@@ -184,10 +184,8 @@ bool wxSQLitePlusApp::OnInit()
 
     wxInitAllImageHandlers();
 
-    // don't use wxLOCALE_LOAD_DEFAULT flag so that Init() doesn't return
     // false just because it failed to load wxstd catalog
     m_lang = (wxLanguage)wxLocale::GetSystemLanguage();
-    m_locale.Init(m_lang, wxLOCALE_DONT_LOAD_DEFAULT);
 
     // normally this wouldn't be necessary as the catalog files would be found
     // in the default locations, but when the program is not installed the
