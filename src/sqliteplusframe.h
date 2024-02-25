@@ -176,6 +176,7 @@ private:
     int m_NodeType;
     wxString m_NodeText;
     wxString m_NodeDbName;
+    std::vector<wxSQLite3Cipher*> m_Cipher;
 
     void InitTree();
 

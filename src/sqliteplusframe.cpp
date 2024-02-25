@@ -250,6 +250,11 @@ bool wxSQLitePlusFrame::Create(wxWindow* parent, wxWindowID id,
 wxSQLitePlusFrame::~wxSQLitePlusFrame()
 {
     GetAuiManager().UnInit();
+    for(auto cipher: this->m_Cipher)
+    {
+        delete cipher;
+    }
+    this->m_Cipher.clear();
 }
 /*---------------------------------------------------------------------------*/
 void wxSQLitePlusFrame::Init()
@@ -296,6 +301,15 @@ void wxSQLitePlusFrame::Init()
 
     wxAcceleratorTable accel(5, entries);
     SetAcceleratorTable(accel);
+
+    wxSQLite3CipherAes128* aes128 = new wxSQLite3CipherAes128;
+    this->m_Cipher.push_back(aes128);
+
+    wxSQLite3CipherSQLCipher* sqlCipher4 = new wxSQLite3CipherSQLCipher();
+    sqlCipher4->InitializeVersionDefault(4);
+    sqlCipher4->SetLegacy(true);
+    this->m_Cipher.push_back(sqlCipher4);
+
 }
 /*---------------------------------------------------------------------------*/
 void wxSQLitePlusFrame::CreateControls()
@@ -1579,9 +1593,7 @@ bool wxSQLitePlusFrame::OpenDatabase(const wxString& dbfullname, const wxString&
             {
                 try
                 {
-                    wxSQLite3ResultSet dbQRY;
-
-                    dbQRY = m_db.ExecuteQuery(ToUTF8(("PRAGMA database_list;")));
+                    wxSQLite3ResultSet dbQRY = m_db.ExecuteQuery(ToUTF8(("PRAGMA database_list;")));
                     ret = true;
                 }
                 catch(wxSQLite3Exception& ex)
@@ -1666,22 +1678,32 @@ bool wxSQLitePlusFrame::AttachDatabase(const wxString& dbfile,
         l_dbkey = dbkey;
         try
         {
+            wxSQLite3Cipher *cipher = nullptr;
             do
             {
-                // tester si dbkey est vide
-                // si la base main est chiffrée utiliser
-                // ATTACH DATABASE "fichier" AS alias KEY "";
-                // même pour une base non chiffrée
-                if (l_dbkey.IsEmpty() && !m_db.IsEncrypted())
-                    sql = ("ATTACH DATABASE \"") + dbfile + ("\" AS ") +
-                          dbalias + (";");
-                else // si non
-                    sql = ("ATTACH DATABASE \"") + dbfile + ("\" AS ") +
-                          dbalias  + (" KEY \"") + l_dbkey + ("\";");
                 try
                 {
-                    m_db.ExecuteUpdate(sql);
-                    ret = true; // Ouverture correcte continuer
+                    for (size_t index = 0; index < this->m_Cipher.size(); ++ index)
+                    {
+                        cipher = this->m_Cipher[index];
+                        try
+                        {
+                            m_db.AttachDatabase(dbfile, dbalias, *cipher, l_dbkey);
+                            ret = true; // Ouverture correcte continuer
+                            break;
+                        }
+                        catch (wxSQLite3Exception& ex)
+                        {
+                            if (index == this->m_Cipher.size())
+                            {
+                                throw wxSQLite3Exception(WXSQLITE_ERROR, "");
+                            }
+                        }
+                        catch (...)
+                        {
+                           // todo 
+                        }
+                    }
                 }
                 catch(wxSQLite3Exception& ex)
                 {   // Capture de l'exception n'est pas une base ou est criptée
@@ -1721,8 +1743,8 @@ bool wxSQLitePlusFrame::AttachDatabase(const wxString& dbfile,
             if (book)
             {
                 // si dbkey est non nulle modifgier le message pour indiquer que la base est chiffrée
-                msg = wxString::Format(_("The database \"%s\" is attached as %s\n"),
-                                       dbfile.c_str(), dbalias.c_str());
+                msg = wxString::Format(_("The database \"%s\" is attached as %s with %s\n"),
+                                       dbfile.c_str(), dbalias.c_str(), wxSQLite3Cipher::GetCipherName(cipher->GetCipherType()));
 
                 book->GetLogResult()->AppendText(msg);
                 book->ShowLog();
