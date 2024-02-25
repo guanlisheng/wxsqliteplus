@@ -1696,12 +1696,8 @@ bool wxSQLitePlusFrame::AttachDatabase(const wxString& dbfile,
                         {
                             if (index == this->m_Cipher.size())
                             {
-                                throw wxSQLite3Exception(WXSQLITE_ERROR, "");
+                                throw wxSQLite3Exception(ex);
                             }
-                        }
-                        catch (...)
-                        {
-                           // todo 
                         }
                     }
                 }
