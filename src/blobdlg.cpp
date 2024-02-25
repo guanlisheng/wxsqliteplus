@@ -138,7 +138,7 @@ void wxBlobDialog::CreateControls()
     m_EditHexa = new wxTextCtrl(pnInfo, ID_TEXTCTRL3, wxEmptyString,
                                 wxDefaultPosition, wxDefaultSize,
                                 wxTE_MULTILINE|wxTE_READONLY|wxHSCROLL);
-    m_EditHexa->SetFont(wxFont(10, wxTELETYPE, wxNORMAL, wxNORMAL, false,
+    m_EditHexa->SetFont(wxFont(10, wxFONTFAMILY_TELETYPE, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL, false,
                                wxT("Liberation Mono")));
     bSizer2->Add(m_EditHexa, 1, wxGROW|wxALL, 5);
 

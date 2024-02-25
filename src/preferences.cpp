@@ -364,7 +364,7 @@ void wxPrefDlg::CreatePanelSyntax()
     bSizer2->Add(sText1, 0, wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
     m_Font = new wxFontPickerCtrl(panelSyntax, ID_FONT,
-                                  wxFont(8, wxSWISS, wxNORMAL, wxNORMAL,
+                                  wxFont(8, wxFONTFAMILY_SWISS, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL,
                                          false, wxT("Courier New")),
                                   wxDefaultPosition, wxDefaultSize,
                                   wxFNTP_DEFAULT_STYLE);
@@ -907,7 +907,7 @@ void wxPrefDlg::ResetDisplayEditor()
 /*---------------------------------------------------------------------------*/
 void wxPrefDlg::ResetDisplaySyntax()
 {
-    wxFont font(m_Val_FontSize, wxFONTFAMILY_DEFAULT, wxNORMAL, wxNORMAL,
+    wxFont font(m_Val_FontSize, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL,
                 false, m_Val_FontName);
     m_Font->SetSelectedFont(font);
     int index = m_EdItems->GetSelection();
