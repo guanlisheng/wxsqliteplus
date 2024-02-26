@@ -1694,7 +1694,7 @@ bool wxSQLitePlusFrame::AttachDatabase(const wxString& dbfile,
                         }
                         catch (wxSQLite3Exception& ex)
                         {
-                            if (index == this->m_Cipher.size())
+                            if (index == this->m_Cipher.size() - 1)
                             {
                                 throw ex;
                             }
