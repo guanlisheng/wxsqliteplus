@@ -1593,7 +1593,7 @@ bool wxSQLitePlusFrame::OpenDatabase(const wxString& dbfullname, const wxString&
             {
                 try
                 {
-                    wxSQLite3ResultSet dbQRY = m_db.ExecuteQuery(ToUTF8(("PRAGMA database_list;")));
+                    wxSQLite3ResultSet dbQRY = m_db.ExecuteQuery(ToUTF8(("SELECT * FROM sqlite_master;")));
                     ret = true;
                 }
                 catch(wxSQLite3Exception& ex)
@@ -1612,7 +1612,20 @@ bool wxSQLitePlusFrame::OpenDatabase(const wxString& dbfullname, const wxString&
                             l_dbkey = encryptionKeyDlg.GetKey();  // ok
                         else
                             return false;  // Annuler retour sans ouvrir
-                        m_db.Open(dbfullname, l_dbkey);
+                        for (size_t index = 0; index < this->m_Cipher.size(); ++ index)
+                        {
+                            wxSQLite3Cipher* cipher = this->m_Cipher[index];
+                            try
+                            {
+                                m_db.Open(dbfullname, *cipher, l_dbkey);
+                                m_db.ExecuteQuery(ToUTF8(("SELECT * FROM sqlite_master;")));
+                                break;
+                            }
+                            catch (wxSQLite3Exception& ex)
+                            {
+                                // silently and goto do-while
+                            }
+                        }
                     }
                     else
                         throw;
