@@ -1775,7 +1775,7 @@ bool wxSQLitePlusFrame::EncryptDatabase(const wxString& dbkey)
     {
         try
         {
-            m_db.ReKey(dbkey);
+            m_db.ReKey(*(*(this->m_Cipher.rbegin())), dbkey);
         }
         catch(wxSQLite3Exception& ex)
         {
