@@ -4,7 +4,7 @@ wxSqlitePlus
 A cross-platform, open-source, easy-to-use SQLite database browser or client.
 Encryption method is now upon [wxSQLite3](https://github.com/utelle/wxsqlite3) and compatible with 
 1. [Money Manager EX](https://github.com/moneymanagerex/moneymanagerex)
-2. [SQLicpher](https://www.zetetic.net/sqlcipher/)
+2. [SQLCipher](https://www.zetetic.net/sqlcipher/)
 
 [![Build Status](https://secure.travis-ci.org/guanlisheng/wxsqliteplus.png)](http://travis-ci.org/guanlisheng/wxsqliteplus)
 [![Ohloh](http://www.ohloh.net/p/wxsqliteplus/widgets/project_thin_badge.gif)](https://www.ohloh.net/p/wxsqliteplus)
