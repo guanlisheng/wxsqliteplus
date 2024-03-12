@@ -7,7 +7,7 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\3rd\wxsqlite3\sqlite3\secure\src\sqlite3secure.c">
+    <ClCompile Include="..\..\3rd\wxsqlite3\src\sqlite3mc_amalgamation.c">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="..\..\3rd\wxsqlite3\src\wxsqlite3.cpp">
