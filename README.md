@@ -6,7 +6,7 @@ Encryption method is now upon [wxSQLite3](https://github.com/utelle/wxsqlite3) a
 1. [Money Manager EX](https://github.com/moneymanagerex/moneymanagerex)
 2. [SQLCipher](https://www.zetetic.net/sqlcipher/)
 
-[![Build Status](https://secure.travis-ci.org/guanlisheng/wxsqliteplus.png)](http://travis-ci.org/guanlisheng/wxsqliteplus)
+[![Build status](https://ci.appveyor.com/api/projects/status/styoyfaaoa0560qx?svg=true)](https://ci.appveyor.com/project/guanlisheng/wxsqliteplus)
 [![Ohloh](http://www.ohloh.net/p/wxsqliteplus/widgets/project_thin_badge.gif)](https://www.ohloh.net/p/wxsqliteplus)
 
 ## Contributing
