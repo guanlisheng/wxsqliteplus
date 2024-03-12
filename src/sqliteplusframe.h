@@ -36,6 +36,7 @@ pour plus de détails.
 #pragma interface "sqliteplusframe.h"
 #endif
 /*---------------------------------------------------------------------------*/
+#include <vector>
 #include <wx/wxsqlite3.h>
 #include <wx/treectrl.h>
 #include <wx/aui/auibook.h>
