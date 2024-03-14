@@ -305,6 +305,30 @@ void wxSQLitePlusFrame::Init()
     wxSQLite3CipherAes128* aes128 = new wxSQLite3CipherAes128;
     this->m_Cipher.push_back(aes128);
 
+    wxSQLite3CipherSQLCipher* sqlCipher1 = new wxSQLite3CipherSQLCipher();
+    sqlCipher1->InitializeVersionDefault(1);
+    this->m_Cipher.push_back(sqlCipher1);
+
+    wxSQLite3CipherSQLCipher* sqlCipher2 = new wxSQLite3CipherSQLCipher();
+    sqlCipher2->InitializeVersionDefault(2);
+    sqlCipher2->SetFastKdfIter(4000);
+    sqlCipher2->SetHmacSaltMask(0);
+    this->m_Cipher.push_back(sqlCipher2);
+
+    wxSQLite3CipherSQLCipher* sqlCipher2be = new wxSQLite3CipherSQLCipher();
+    sqlCipher2be->InitializeVersionDefault(2);
+    sqlCipher2be->SetHmacPgNo(2);
+    this->m_Cipher.push_back(sqlCipher2be);
+
+    wxSQLite3CipherSQLCipher* sqlCipher2le = new wxSQLite3CipherSQLCipher();
+    sqlCipher2le->InitializeVersionDefault(2);
+    this->m_Cipher.push_back(sqlCipher2le);
+
+    wxSQLite3CipherSQLCipher* sqlCipher3 = new wxSQLite3CipherSQLCipher();
+    sqlCipher3->InitializeVersionDefault(3);
+    sqlCipher3->SetLegacy(true);
+    this->m_Cipher.push_back(sqlCipher3);
+
     wxSQLite3CipherSQLCipher* sqlCipher4 = new wxSQLite3CipherSQLCipher();
     sqlCipher4->InitializeVersionDefault(4);
     sqlCipher4->SetLegacy(true);

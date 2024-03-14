@@ -46,6 +46,7 @@ pour plus de détails.
 
 #include <wx/valtext.h>
 #include <wx/filedlg.h>
+#include <wx/filename.h>
 /*---------------------------------------------------------------------------*/
 #include "attachdbdlg.h"
 #include "wxsqliteplusapp.h"
@@ -199,6 +200,12 @@ void wxAttachDbDlg::OnAttachbtnClick(wxCommandEvent& event)
     if (fileDialog.ShowModal() == wxID_OK)
     {
         m_EdFilename->SetValue(fileDialog.GetPath());
+
+        wxString alias = wxFileName(fileDialog.GetPath()).GetName().Lower();
+        alias.Replace((" "), ("_"));
+        alias.Replace(("\""), (""));
+        alias.Replace(("'"), (""));
+        m_EdAlias->SetValue(alias);
     }
 }
 /*---------------------------------------------------------------------------*/
