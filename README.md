@@ -5,6 +5,8 @@ A cross-platform, open-source, easy-to-use SQLite database browser or client.
 Encryption method is now upon [wxSQLite3](https://github.com/utelle/wxsqlite3) and compatible with 
 1. [Money Manager EX](https://github.com/moneymanagerex/moneymanagerex)
 2. [SQLCipher](https://www.zetetic.net/sqlcipher/)
+3. [SQLite Studio](https://github.com/pawelsalawa/sqlitestudio/wiki/Official_plugins#dbsqlitewx)
+4. [DB Browser for SQLite](https://github.com/sqlitebrowser/sqlitebrowser/wiki/Encrypted-Databases)
 
 [![Build status](https://ci.appveyor.com/api/projects/status/styoyfaaoa0560qx?svg=true)](https://ci.appveyor.com/project/guanlisheng/wxsqliteplus)
 [![Ohloh](http://www.ohloh.net/p/wxsqliteplus/widgets/project_thin_badge.gif)](https://www.ohloh.net/p/wxsqliteplus)
