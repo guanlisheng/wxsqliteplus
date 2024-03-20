@@ -1611,6 +1611,7 @@ bool wxSQLitePlusFrame::OpenDatabase(const wxString& dbfullname, const wxString&
 
         m_DbName = name;
         m_db.Open(dbfullname);
+        wxSQLite3Cipher* cipher = nullptr;
         if (m_db.IsOpen()&&m_db.HasEncryptionSupport())
         {
             do
@@ -1638,7 +1639,7 @@ bool wxSQLitePlusFrame::OpenDatabase(const wxString& dbfullname, const wxString&
                             return false;  // Annuler retour sans ouvrir
                         for (size_t index = 0; index < this->m_Cipher.size(); ++ index)
                         {
-                            wxSQLite3Cipher* cipher = this->m_Cipher[index];
+                            cipher = this->m_Cipher[index];
                             try
                             {
                                 m_db.Open(dbfullname, *cipher, l_dbkey);
@@ -1674,7 +1675,7 @@ bool wxSQLitePlusFrame::OpenDatabase(const wxString& dbfullname, const wxString&
         m_auiManager.Update();
         msg = wxString::Format(_("SQLite3 Version %s\n"), m_db.GetVersion().c_str());
         SQLBook->GetLogResult()->AppendText(msg);
-        msg = wxString::Format(_("The database \"%s\" is opened as main\n"), dbfullname.c_str());
+        msg = wxString::Format(_("The database \"%s\" is opened as main with %s\n"), dbfullname.c_str(), cipher == nullptr ? "empty cipher" : wxSQLite3Cipher::GetCipherName(cipher->GetCipherType()));
         SQLBook->GetLogResult()->AppendText(msg);
 
         SQLBook->ShowLog();
@@ -1777,7 +1778,7 @@ bool wxSQLitePlusFrame::AttachDatabase(const wxString& dbfile,
             {
                 // si dbkey est non nulle modifgier le message pour indiquer que la base est chiffrée
                 msg = wxString::Format(_("The database \"%s\" is attached as %s with %s\n"),
-                                       dbfile.c_str(), dbalias.c_str(), wxSQLite3Cipher::GetCipherName(cipher->GetCipherType()));
+                                       dbfile.c_str(), dbalias.c_str(), l_dbkey.IsEmpty() ? "empty cipher" : wxSQLite3Cipher::GetCipherName(cipher->GetCipherType()));
 
                 book->GetLogResult()->AppendText(msg);
                 book->ShowLog();
