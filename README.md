@@ -26,4 +26,4 @@ Encryption method is now upon [wxSQLite3](https://github.com/utelle/wxsqlite3) a
 
 ## Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=datvodinh/rag-chatbot,guanlisheng/wxsqliteplus&type=Date)](https://star-history.com/#datvodinh/rag-chatbot&guanlisheng/wxsqliteplus&Date)
+[![Star History Chart](https://api.star-history.com/svg?repos=guanlisheng/wxsqliteplus&type=Date)](https://star-history.com/#guanlisheng/wxsqliteplus&Date)
