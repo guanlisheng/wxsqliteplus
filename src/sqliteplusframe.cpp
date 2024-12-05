@@ -543,7 +543,6 @@ void wxSQLitePlusFrame::CreateToolbars()
 
     m_TbFile = new wxToolBar(this, ID_TB_FILE, wxDefaultPosition, wxDefaultSize,
                              wxTB_FLAT|wxTB_HORIZONTAL|wxTB_NODIVIDER);
-    m_TbFile->SetToolBitmapSize(wxSize(20, 20));
 
     wxBitmap bmp1(wxGetApp().GetBmp(ID_BMP_OPENDB));
     m_TbFile->AddTool(wxID_OPEN, wxEmptyString, bmp1, BitmapDisabled,
@@ -577,7 +576,6 @@ void wxSQLitePlusFrame::CreateToolbars()
 
     m_TbEdit = new wxToolBar(this, ID_TB_EDIT, wxDefaultPosition, wxDefaultSize,
                              wxTB_FLAT|wxTB_HORIZONTAL|wxTB_NODIVIDER);
-    m_TbEdit->SetToolBitmapSize(wxSize(20, 20));
     wxBitmap bmp5(wxGetApp().GetBmp(ID_BMP_UNDO));
     m_TbEdit->AddTool(wxID_UNDO, wxEmptyString, bmp5, BitmapDisabled,
                       wxITEM_NORMAL, _("Undo"), _("Undo the last editor action"));
@@ -615,7 +613,6 @@ void wxSQLitePlusFrame::CreateToolbars()
 
     m_TbQuery = new wxToolBar(this, ID_TBQUERY, wxDefaultPosition, wxDefaultSize,
                               wxTB_FLAT|wxTB_HORIZONTAL|wxTB_NODIVIDER);
-    m_TbQuery->SetToolBitmapSize(wxSize(20, 20));
     wxBitmap bmp11(wxGetApp().GetBmp(ID_BMP_RUNSQL));
     m_TbQuery->AddTool(ID_MNU_EXECUTESQL, wxEmptyString, bmp11, BitmapDisabled,
                        wxITEM_NORMAL, _("Execute SQL"),
@@ -644,7 +641,6 @@ void wxSQLitePlusFrame::CreateToolbars()
     m_TbTransact = new wxToolBar(this, ID_TB_TRANSACT, wxDefaultPosition,
                                  wxDefaultSize,
                                  wxTB_FLAT|wxTB_HORIZONTAL|wxTB_NODIVIDER);
-    m_TbTransact->SetToolBitmapSize(wxSize(20, 20));
     wxBitmap bmp14(wxGetApp().GetBmp(ID_BMP_STARTTRANSACT));
     m_TbTransact->AddTool(ID_MNU_BEGINTRANSACT, wxEmptyString, bmp14,
                           BitmapDisabled, wxITEM_NORMAL, _("Begin Transaction"),
@@ -684,7 +680,6 @@ void wxSQLitePlusFrame::CreateToolbars()
     m_TbDatabase = new wxToolBar(this, ID_MNU_TB_DATABASE, wxDefaultPosition,
                                  wxDefaultSize,
                                  wxTB_FLAT|wxTB_HORIZONTAL|wxTB_NODIVIDER);
-    m_TbDatabase->SetToolBitmapSize(wxSize(20, 20));
     wxBitmap bmp19(wxGetApp().GetBmp(ID_BMP_TABLECREATE));
     m_TbDatabase->AddTool(ID_MNU_ADD_TABLE, wxEmptyString, bmp19, BitmapDisabled,
                           wxITEM_NORMAL, _("Create Table"),
