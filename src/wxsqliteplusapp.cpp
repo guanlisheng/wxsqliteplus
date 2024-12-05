@@ -1342,7 +1342,7 @@ wxString wxSQLitePlusApp::GetLegalCopyright() const
     wxString tmp;
 
     tmp = ("Copyright (c) 2007-2009, Fred Cailleau-Lepetit");
-    tmp += ("\nCopyright (c) 2014, Guan Lisheng");
+    tmp += ("\nCopyright (c) 2014,2024 Guan Lisheng");
 #if WXSQLITE3_HAVE_CODEC
     tmp += ("\nPart of encryption code:\nCopyright (c) 1990, RSA Data Security");
 #endif
