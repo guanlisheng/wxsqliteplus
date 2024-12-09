@@ -126,12 +126,12 @@ void wxTableBook::CreateControls()
     m_PageColumns->SetDefaultRowSize(25);
     m_PageColumns->SetColLabelSize(25);
 
-    wxBitmap m_PageColumnsBitmap(wxGetApp().GetBmp(ID_BMP_FIELD));
+    wxBitmapBundle m_PageColumnsBitmap(wxGetApp().GetBmp(ID_BMP_FIELD));
     m_Book->AddPage(m_PageColumns, _("Columns"), false, m_PageColumnsBitmap);
 
     m_PageData = new wxPanelData(m_Book, ID_PAGEDATA, wxDefaultPosition, wxDefaultSize);
 
-    wxBitmap m_PageDataBitmap(wxGetApp().GetBmp(ID_BMP_TABLE));
+    wxBitmapBundle m_PageDataBitmap(wxGetApp().GetBmp(ID_BMP_TABLE));
     m_Book->AddPage(m_PageData, _("Data"), false, m_PageDataBitmap);
 
     m_PageForeignKey = new wxSpecGrid(m_Book, ID_PAGEFORIEGNKEY,
@@ -141,7 +141,7 @@ void wxTableBook::CreateControls()
     m_PageForeignKey->SetDefaultRowSize(25);
     m_PageForeignKey->SetColLabelSize(25);
 
-    wxBitmap m_PageForeignKeyBitmap(wxGetApp().GetBmp(ID_BMP_FIELD2));
+    wxBitmapBundle m_PageForeignKeyBitmap(wxGetApp().GetBmp(ID_BMP_FIELD2));
     m_Book->AddPage(m_PageForeignKey, _("Foreign key"), false, m_PageForeignKeyBitmap);
 
     m_PageTriggers = new wxSpecGrid(m_Book, ID_PAGETRIGGERS, wxDefaultPosition,
@@ -150,7 +150,7 @@ void wxTableBook::CreateControls()
     m_PageTriggers->SetDefaultRowSize(25);
     m_PageTriggers->SetColLabelSize(25);
 
-    wxBitmap m_PageTriggersBitmap(wxGetApp().GetBmp(ID_BMP_TRIGGER2));
+    wxBitmapBundle m_PageTriggersBitmap(wxGetApp().GetBmp(ID_BMP_TRIGGER2));
     m_Book->AddPage(m_PageTriggers, _("Triggers"), false, m_PageTriggersBitmap);
 
     m_PageIndexes = new wxSpecGrid(m_Book, ID_PAGEINDEXES, wxDefaultPosition,
@@ -159,12 +159,12 @@ void wxTableBook::CreateControls()
     m_PageIndexes->SetDefaultRowSize(25);
     m_PageIndexes->SetColLabelSize(25);
 
-    wxBitmap m_PageIndexesBitmap(wxGetApp().GetBmp(ID_BMP_INDEXE));
+    wxBitmapBundle m_PageIndexesBitmap(wxGetApp().GetBmp(ID_BMP_INDEXE));
     m_Book->AddPage(m_PageIndexes, _("Indexes"), false, m_PageIndexesBitmap);
 
     m_PageDdl = new wxDDLEditor(m_Book, ID_PAGEDDL);
 
-    wxBitmap m_PageDdlBitmap(wxGetApp().GetBmp(ID_BMP_RUNSCRIPT));
+    wxBitmapBundle m_PageDdlBitmap(wxGetApp().GetBmp(ID_BMP_RUNSCRIPT));
     m_Book->AddPage(m_PageDdl, _("DDL"), false, m_PageDdlBitmap);
 
     bSizer->Add(m_Book, 1, wxGROW, 0);

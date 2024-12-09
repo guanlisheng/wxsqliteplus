@@ -41,7 +41,6 @@ pour plus de détails.
 #include <wx/treectrl.h>
 #include <wx/aui/auibook.h>
 #include <wx/socket.h>
-#include <wx/imaglist.h>
 #include "sqlite3table.h"
 /*---------------------------------------------------------------------------*/
 class wxTreeCtrl;
@@ -172,7 +171,7 @@ private:
 
     wxSQLite3Database m_db;
     SQLite3HookForCount m_Hook;
-    wxImageList m_TreeImageList;
+    wxVector<wxBitmapBundle > m_images;
     wxString m_DbName;
     int m_NodeType;
     wxString m_NodeText;

@@ -109,13 +109,13 @@ void wxPanelData::CreateControls()
     wxToolBar* iToolBar1 = new wxToolBar(this, ID_DATATOOLBAR, wxDefaultPosition,
                                          wxDefaultSize,
                                          wxTB_FLAT|wxTB_HORIZONTAL|wxTB_NODIVIDER);
-    wxBitmap filterBmp(wxGetApp().GetBmp(ID_BMP_FILTER));
+    wxBitmapBundle filterBmp(wxGetApp().GetBmp(ID_BMP_FILTER));
     iToolBar1->AddTool(ID_MNU_FILTER, _("Filter"), filterBmp, BitmapDisabled,
                        wxITEM_NORMAL, _("Filter"), _("Filter"));
-    wxBitmap sortBmp(wxGetApp().GetBmp(ID_BMP_SORT));
+    wxBitmapBundle sortBmp(wxGetApp().GetBmp(ID_BMP_SORT));
     iToolBar1->AddTool(ID_MNU_SORT, _("Sort"), sortBmp, BitmapDisabled,
                        wxITEM_NORMAL, _("Sort"), _("Sort"));
-    wxBitmap refreshBmp(wxGetApp().GetBmp(ID_BMP_REFRESH));
+    wxBitmapBundle refreshBmp(wxGetApp().GetBmp(ID_BMP_REFRESH));
     iToolBar1->AddTool(ID_MNU_REFRESH, _("Refresh"), refreshBmp, BitmapDisabled,
                        wxITEM_NORMAL, _("Refresh"), _("Refresh"));
     iToolBar1->AddSeparator();

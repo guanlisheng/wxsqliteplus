@@ -204,14 +204,14 @@ void wxSQLBook::CreateControls()
     m_DataResult->SetColLabelSize(25);
     m_DataResult->SetRowLabelSize(50);
 
-    wxBitmap m_DataResultBitmap(wxGetApp().GetBmp(ID_BMP_RUNSQL));
+    wxBitmapBundle m_DataResultBitmap(wxGetApp().GetBmp(ID_BMP_RUNSQL));
     m_ResultBook->AddPage(m_DataResult, _("Results"), false, m_DataResultBitmap);
 
     m_LogResult = new wxTextCtrl(m_ResultBook, ID_LOGRESULT, wxEmptyString,
                                  wxDefaultPosition, wxDefaultSize,
                                  wxTE_MULTILINE|wxTE_READONLY|wxTE_WORDWRAP);
 
-    wxBitmap m_LogResultBitmap(wxGetApp().GetBmp(ID_BMP_LOG));
+    wxBitmapBundle m_LogResultBitmap(wxGetApp().GetBmp(ID_BMP_LOG));
     m_ResultBook->AddPage(m_LogResult, _("Output"), false, m_LogResultBitmap);
 
     m_Explain = new wxSpecGrid(m_ResultBook, ID_GRIDEXPLAIN, wxDefaultPosition,
@@ -222,7 +222,7 @@ void wxSQLBook::CreateControls()
     m_Explain->SetColLabelSize(25);
     m_Explain->SetRowLabelSize(50);
 
-    wxBitmap m_ExplainBitmap(wxGetApp().GetBmp(ID_BMP_EXPLAIN));
+    wxBitmapBundle m_ExplainBitmap(wxGetApp().GetBmp(ID_BMP_EXPLAIN));
     m_ResultBook->AddPage(m_Explain, _("Explain"), false, m_ExplainBitmap);
 
     GetAuiManager().AddPane(m_ResultBook,

@@ -50,6 +50,7 @@ pour plus de détails.
 #include <wx/frame.h>
 #include <wx/statusbr.h>
 #include <wx/toolbar.h>
+#include <wx/artprov.h>
 /*---------------------------------------------------------------------------*/
 #include "sqliteplusframe.h"
 #include "wxsqliteplusapp.h"
@@ -274,23 +275,22 @@ void wxSQLitePlusFrame::Init()
 
     InitNodeParams();
 
-    m_TreeImageList.Create(16, 16);
-    m_TreeImageList.Add(wxGetApp().GetBmp(ID_BMP_DATABASE));
-    m_TreeImageList.Add(wxGetApp().GetBmp(ID_BMP_TABLES));
-    m_TreeImageList.Add(wxGetApp().GetBmp(ID_BMP_VIEWS));
-    m_TreeImageList.Add(wxGetApp().GetBmp(ID_BMP_INDEXES));
-    m_TreeImageList.Add(wxGetApp().GetBmp(ID_BMP_TRIGGERS2));
-    m_TreeImageList.Add(wxGetApp().GetBmp(ID_BMP_TABLE));
-    m_TreeImageList.Add(wxGetApp().GetBmp(ID_BMP_TABLE_TMP));
-    m_TreeImageList.Add(wxGetApp().GetBmp(ID_BMP_VIEW));
-    m_TreeImageList.Add(wxGetApp().GetBmp(ID_BMP_VIEW_TMP));
-    m_TreeImageList.Add(wxGetApp().GetBmp(ID_BMP_INDEXE));
-    m_TreeImageList.Add(wxGetApp().GetBmp(ID_BMP_INDEXE_TMP));
-    m_TreeImageList.Add(wxGetApp().GetBmp(ID_BMP_TRIGGER2));
-    m_TreeImageList.Add(wxGetApp().GetBmp(ID_BMP_TRIGGER2_TMP));
-    m_TreeImageList.Add(wxGetApp().GetBmp(ID_BMP_FIELD));
-
     // Accelerators
+    m_images.push_back(wxGetApp().GetBmp(ID_BMP_DATABASE));
+    m_images.push_back(wxGetApp().GetBmp(ID_BMP_TABLES));
+    m_images.push_back(wxGetApp().GetBmp(ID_BMP_VIEWS));
+    m_images.push_back(wxGetApp().GetBmp(ID_BMP_INDEXES));
+    m_images.push_back(wxGetApp().GetBmp(ID_BMP_TRIGGERS2));
+    m_images.push_back(wxGetApp().GetBmp(ID_BMP_TABLE));
+    m_images.push_back(wxGetApp().GetBmp(ID_BMP_TABLE_TMP));
+    m_images.push_back(wxGetApp().GetBmp(ID_BMP_VIEW));
+    m_images.push_back(wxGetApp().GetBmp(ID_BMP_VIEW_TMP));
+    m_images.push_back(wxGetApp().GetBmp(ID_BMP_INDEXE));
+    m_images.push_back(wxGetApp().GetBmp(ID_BMP_INDEXE_TMP));
+    m_images.push_back(wxGetApp().GetBmp(ID_BMP_TRIGGER2));
+    m_images.push_back(wxGetApp().GetBmp(ID_BMP_TRIGGER2_TMP));
+    m_images.push_back(wxGetApp().GetBmp(ID_BMP_FIELD));
+
     wxAcceleratorEntry entries[5];
 
     entries[0].Set(wxACCEL_CTRL, 'E', ID_MNU_EXECUTESQL);
@@ -379,7 +379,7 @@ void wxSQLitePlusFrame::CreateControls()
 
     GetAuiManager().Update();
 
-    m_TreeCtrl->SetImageList(&m_TreeImageList);
+    m_TreeCtrl->SetImages(m_images);
     int widths[3] = {-1, 70, 170};
     SetStatusWidths(3, widths);
     SetStatusText("v" + wxGetApp().GetFileVersion() + "/" + m_db.GetVersion() + "/" + wxVERSION_STRING, 2);
@@ -539,25 +539,25 @@ void wxSQLitePlusFrame::CreateMenus()
 /*---------------------------------------------------------------------------*/
 void wxSQLitePlusFrame::CreateToolbars()
 {
-    wxBitmap BitmapDisabled;
+    wxBitmap BitmapDisabled = wxArtProvider::GetBitmap(wxART_MISSING_IMAGE, wxART_TOOLBAR);;
 
     m_TbFile = new wxToolBar(this, ID_TB_FILE, wxDefaultPosition, wxDefaultSize,
                              wxTB_FLAT|wxTB_HORIZONTAL|wxTB_NODIVIDER);
-
-    wxBitmap bmp1(wxGetApp().GetBmp(ID_BMP_OPENDB));
+    m_TbFile->SetToolBitmapSize(wxSize(32, 32));
+    wxBitmapBundle bmp1(wxGetApp().GetBmp(ID_BMP_OPENDB));
     m_TbFile->AddTool(wxID_OPEN, wxEmptyString, bmp1, BitmapDisabled,
                       wxITEM_NORMAL, _("Open/Create Database"),
                       _("Open an existing database or create a new database"));
-    wxBitmap bmp2(wxGetApp().GetBmp(ID_BMP_ATTACH));
+    wxBitmapBundle bmp2(wxGetApp().GetBmp(ID_BMP_ATTACH));
     m_TbFile->AddTool(ID_MNU_ATTACH_DB, wxEmptyString, bmp2, BitmapDisabled,
                       wxITEM_NORMAL, _("Attach Database"),
                       _("Attach an existing or new database"));
-    wxBitmap bmp3(wxGetApp().GetBmp(ID_BMP_COMPACTDB));
+    wxBitmapBundle bmp3(wxGetApp().GetBmp(ID_BMP_COMPACTDB));
     m_TbFile->AddTool(ID_MNU_COMPACT, wxEmptyString, bmp3, BitmapDisabled,
                       wxITEM_NORMAL, _("Compact Database"),
                       _("Delete empty space in database"));
     m_TbFile->EnableTool(ID_MNU_COMPACT, false);
-    wxBitmap bmp4(wxGetApp().GetBmp(ID_BMP_REFRESH));
+    wxBitmapBundle bmp4(wxGetApp().GetBmp(ID_BMP_REFRESH));
     m_TbFile->AddTool(ID_MNU_REFRESHALL, wxEmptyString, bmp4, BitmapDisabled,
                       wxITEM_NORMAL, _("Refresh Structure"),
                       _("Refresh all database structure"));
@@ -576,25 +576,26 @@ void wxSQLitePlusFrame::CreateToolbars()
 
     m_TbEdit = new wxToolBar(this, ID_TB_EDIT, wxDefaultPosition, wxDefaultSize,
                              wxTB_FLAT|wxTB_HORIZONTAL|wxTB_NODIVIDER);
-    wxBitmap bmp5(wxGetApp().GetBmp(ID_BMP_UNDO));
+    m_TbEdit->SetToolBitmapSize(wxSize(32, 32));
+    wxBitmapBundle bmp5(wxGetApp().GetBmp(ID_BMP_UNDO));
     m_TbEdit->AddTool(wxID_UNDO, wxEmptyString, bmp5, BitmapDisabled,
                       wxITEM_NORMAL, _("Undo"), _("Undo the last editor action"));
-    wxBitmap bmp6(wxGetApp().GetBmp(ID_BMP_REDO));
+    wxBitmapBundle bmp6(wxGetApp().GetBmp(ID_BMP_REDO));
     m_TbEdit->AddTool(wxID_REDO, wxEmptyString, bmp6, BitmapDisabled,
                       wxITEM_NORMAL, _("Redo"), _("Redo the last editor action"));
     m_TbEdit->AddSeparator();
-    wxBitmap bmp7(wxGetApp().GetBmp(ID_BMP_CUT));
+    wxBitmapBundle bmp7(wxGetApp().GetBmp(ID_BMP_CUT));
     m_TbEdit->AddTool(wxID_CUT, wxEmptyString, bmp7, BitmapDisabled,
                       wxITEM_NORMAL, _("Cut"), _("Cut the selected text"));
-    wxBitmap bmp8(wxGetApp().GetBmp(ID_BMP_COPY));
+    wxBitmapBundle bmp8(wxGetApp().GetBmp(ID_BMP_COPY));
     m_TbEdit->AddTool(wxID_COPY, wxEmptyString, bmp8, BitmapDisabled,
                       wxITEM_NORMAL, _("Copy"), _("Copy the selected text"));
-    wxBitmap bmp9(wxGetApp().GetBmp(ID_BMP_PASTE));
+    wxBitmapBundle bmp9(wxGetApp().GetBmp(ID_BMP_PASTE));
     m_TbEdit->AddTool(wxID_PASTE, wxEmptyString, bmp9, BitmapDisabled,
                       wxITEM_NORMAL, _("Paste"),
                       _("Paste in the editor the text in the clipboard"));
     m_TbEdit->AddSeparator();
-    wxBitmap bmp10(wxGetApp().GetBmp(ID_BMP_CLEAR));
+    wxBitmapBundle bmp10(wxGetApp().GetBmp(ID_BMP_CLEAR));
     m_TbEdit->AddTool(wxID_CLEAR, wxEmptyString, bmp10, BitmapDisabled,
                       wxITEM_NORMAL, _("Clear"),
                       _("Delete the selected text"));
@@ -613,16 +614,17 @@ void wxSQLitePlusFrame::CreateToolbars()
 
     m_TbQuery = new wxToolBar(this, ID_TBQUERY, wxDefaultPosition, wxDefaultSize,
                               wxTB_FLAT|wxTB_HORIZONTAL|wxTB_NODIVIDER);
-    wxBitmap bmp11(wxGetApp().GetBmp(ID_BMP_RUNSQL));
+    m_TbQuery->SetToolBitmapSize(wxSize(32, 32));
+    wxBitmapBundle bmp11(wxGetApp().GetBmp(ID_BMP_RUNSQL));
     m_TbQuery->AddTool(ID_MNU_EXECUTESQL, wxEmptyString, bmp11, BitmapDisabled,
                        wxITEM_NORMAL, _("Execute SQL"),
                        _("Execute the current SQL statement"));
-    wxBitmap bmp12(wxGetApp().GetBmp(ID_BMP_RUNSCRIPT));
+    wxBitmapBundle bmp12(wxGetApp().GetBmp(ID_BMP_RUNSCRIPT));
     m_TbQuery->AddTool(ID_MNU_EXECUTESCRIPT, wxEmptyString, bmp12, BitmapDisabled,
                        wxITEM_NORMAL, _("Execute script"),
                        _("Execute the SQL script"));
     m_TbQuery->AddSeparator();
-    wxBitmap bmp13(wxGetApp().GetBmp(ID_BMP_EXPLAIN));
+    wxBitmapBundle bmp13(wxGetApp().GetBmp(ID_BMP_EXPLAIN));
     m_TbQuery->AddTool(ID_MNU_EXPLAIN, wxEmptyString, bmp13, BitmapDisabled,
                        wxITEM_NORMAL, _("Explain"),
                        _("Explain the current SQL statement"));
@@ -641,25 +643,26 @@ void wxSQLitePlusFrame::CreateToolbars()
     m_TbTransact = new wxToolBar(this, ID_TB_TRANSACT, wxDefaultPosition,
                                  wxDefaultSize,
                                  wxTB_FLAT|wxTB_HORIZONTAL|wxTB_NODIVIDER);
-    wxBitmap bmp14(wxGetApp().GetBmp(ID_BMP_STARTTRANSACT));
+    m_TbTransact->SetToolBitmapSize(wxSize(32, 32));
+    wxBitmapBundle bmp14(wxGetApp().GetBmp(ID_BMP_STARTTRANSACT));
     m_TbTransact->AddTool(ID_MNU_BEGINTRANSACT, wxEmptyString, bmp14,
                           BitmapDisabled, wxITEM_NORMAL, _("Begin Transaction"),
                           _("Begin a new transaction"));
-    wxBitmap bmp15(wxGetApp().GetBmp(ID_BMP_STOPTRANSACT));
+    wxBitmapBundle bmp15(wxGetApp().GetBmp(ID_BMP_STOPTRANSACT));
     m_TbTransact->AddTool(ID_MNU_ENDTRANSACT, wxEmptyString, bmp15,
                           BitmapDisabled, wxITEM_NORMAL, _("End Transaction"),
                           _("Stop the current transaction"));
     m_TbTransact->AddSeparator();
-    wxBitmap bmp16(wxGetApp().GetBmp(ID_BMP_COMMIT));
+    wxBitmapBundle bmp16(wxGetApp().GetBmp(ID_BMP_COMMIT));
     m_TbTransact->AddTool(ID_MNU_COMMIT, wxEmptyString, bmp16, BitmapDisabled,
                           wxITEM_NORMAL, _("Commit"),
                           _("Commit the current transaction"));
-    wxBitmap bmp17(wxGetApp().GetBmp(ID_BMP_ROLLBACK));
+    wxBitmapBundle bmp17(wxGetApp().GetBmp(ID_BMP_ROLLBACK));
     m_TbTransact->AddTool(ID_MNU_ROLLBACK, wxEmptyString, bmp17, BitmapDisabled,
                           wxITEM_NORMAL, _("Rollback"),
                           _("Rollback the current transaction"));
     m_TbTransact->AddSeparator();
-    wxBitmap bmp18(wxGetApp().GetBmp(ID_BMP_AUTOTRANSACT));
+    wxBitmapBundle bmp18(wxGetApp().GetBmp(ID_BMP_AUTOTRANSACT));
     m_TbTransact->AddTool(ID_MNU_AUTOTRANSACT, wxEmptyString, bmp18,
                           BitmapDisabled, wxITEM_CHECK,
                           _("Auto Start Transaction"),
@@ -680,38 +683,39 @@ void wxSQLitePlusFrame::CreateToolbars()
     m_TbDatabase = new wxToolBar(this, ID_MNU_TB_DATABASE, wxDefaultPosition,
                                  wxDefaultSize,
                                  wxTB_FLAT|wxTB_HORIZONTAL|wxTB_NODIVIDER);
-    wxBitmap bmp19(wxGetApp().GetBmp(ID_BMP_TABLECREATE));
+    m_TbDatabase->SetToolBitmapSize(wxSize(32, 32));
+    wxBitmapBundle bmp19(wxGetApp().GetBmp(ID_BMP_TABLECREATE));
     m_TbDatabase->AddTool(ID_MNU_ADD_TABLE, wxEmptyString, bmp19, BitmapDisabled,
                           wxITEM_NORMAL, _("Create Table"),
                           _("Show dialog to create new table"));
-    wxBitmap bmp20(wxGetApp().GetBmp(ID_BMP_TABLEDROP));
+    wxBitmapBundle bmp20(wxGetApp().GetBmp(ID_BMP_TABLEDROP));
     m_TbDatabase->AddTool(ID_MNU_DEL_TABLE, wxEmptyString, bmp20, BitmapDisabled,
                           wxITEM_NORMAL, _("Drop Table"),
                           _("Show dialog to delete table"));
     m_TbDatabase->AddSeparator();
-    wxBitmap bmp21(wxGetApp().GetBmp(ID_BMP_VIEWCREATE));
+    wxBitmapBundle bmp21(wxGetApp().GetBmp(ID_BMP_VIEWCREATE));
     m_TbDatabase->AddTool(ID_MNU_ADD_VIEW, wxEmptyString, bmp21, BitmapDisabled,
                           wxITEM_NORMAL, _("Create View"),
                           _("Show dialog to create new view"));
-    wxBitmap bmp22(wxGetApp().GetBmp(ID_BMP_VIEWDROP));
+    wxBitmapBundle bmp22(wxGetApp().GetBmp(ID_BMP_VIEWDROP));
     m_TbDatabase->AddTool(ID_MNU_DEL_VIEW, wxEmptyString, bmp22, BitmapDisabled,
                           wxITEM_NORMAL, _("Drop View"),
                           _("Show dialog to delete view"));
     m_TbDatabase->AddSeparator();
-    wxBitmap bmp23(wxGetApp().GetBmp(ID_BMP_INDEXECREATE));
+    wxBitmapBundle bmp23(wxGetApp().GetBmp(ID_BMP_INDEXECREATE));
     m_TbDatabase->AddTool(ID_MNU_ADD_INDEX, wxEmptyString, bmp23, BitmapDisabled,
                           wxITEM_NORMAL, _("Create Index"),
                           _("Show dialog to create new index"));
-    wxBitmap bmp24(wxGetApp().GetBmp(ID_BMP_INDEXEDROP));
+    wxBitmapBundle bmp24(wxGetApp().GetBmp(ID_BMP_INDEXEDROP));
     m_TbDatabase->AddTool(ID_MNU_DEL_INDEX, wxEmptyString, bmp24, BitmapDisabled,
                           wxITEM_NORMAL, _("Drop Index"),
                           _("Show dialog to delete index"));
     m_TbDatabase->AddSeparator();
-    wxBitmap bmp25(wxGetApp().GetBmp(ID_BMP_TRIGGERCREATE));
+    wxBitmapBundle bmp25(wxGetApp().GetBmp(ID_BMP_TRIGGERCREATE));
     m_TbDatabase->AddTool(ID_MNU_ADD_TRIGGER, wxEmptyString, bmp25,
                           BitmapDisabled, wxITEM_NORMAL, _("Create Trigger"),
                           _("Show dialog to create new trigger"));
-    wxBitmap bmp26(wxGetApp().GetBmp(ID_BMP_TRIGGERDROP));
+    wxBitmapBundle bmp26(wxGetApp().GetBmp(ID_BMP_TRIGGERDROP));
     m_TbDatabase->AddTool(ID_MNU_DEL_TRIGGER, wxEmptyString, bmp26,
                           BitmapDisabled, wxITEM_NORMAL, _("Drop Trigger"),
                           _("Show dialog to delete trigger"));

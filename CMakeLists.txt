@@ -82,6 +82,7 @@ target_include_directories(${PROJECT_NAME} PUBLIC src)
 
 if(APPLE)
     set_target_properties(${PROJECT_NAME} PROPERTIES
+        MACOSX_BUNDLE_INFO_PLIST ${CMAKE_SOURCE_DIR}/build/Info.plist.in
         RESOURCE "build/wxmac.icns"
         MACOSX_BUNDLE_ICON_FILE wxmac.icns
         MACOSX_BUNDLE_COPYRIGHT "Copyright wxWidgets"

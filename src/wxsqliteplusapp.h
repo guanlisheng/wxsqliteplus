@@ -66,7 +66,7 @@ public:
     void SetSQLParameter(const wxString& param, const wxString& value);
     wxString GetSQLParameter(const wxString& param);
 
-    wxBitmap GetBmp(int id);
+    wxBitmapBundle GetBmp(int id);
     wxIcon GetIcon(int id);
 
     wxString GetCompanyName() const;
