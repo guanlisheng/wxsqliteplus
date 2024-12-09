@@ -1149,140 +1149,148 @@ wxString wxSQLitePlusApp::GetSQLParameter(const wxString& param)
     return QueryGetParam(paramname, wxEmptyString);
 }
 /*---------------------------------------------------------------------------*/
-wxBitmap wxSQLitePlusApp::GetBmp(int id)
+wxBitmapBundle wxSQLitePlusApp::GetBmp(int id)
 {
+    const char* * xpm = nullptr;
     switch (id)
     {
     case ID_BMP_ADD :
-        return wxBitmap(add_xpm);
+        xpm = add_xpm; break;
     case ID_BMP_REMOVE :
-        return wxBitmap(remove_xpm);
+        xpm = remove_xpm; break;
     case ID_BMP_COLUP :
-        return wxBitmap(colup_xpm);
+        xpm = colup_xpm; break;
     case ID_BMP_COLDOWN :
-        return wxBitmap(coldown_xpm);
+        xpm = coldown_xpm; break;
     case ID_BMP_DBNEW :
-        return wxBitmap(dbnew_xpm);
+        xpm = dbnew_xpm; break;
     case ID_BMP_OPENDB :
-        return wxBitmap(opendb_xpm);
+        xpm = opendb_xpm; break;
     case ID_BMP_ATTACH :
-        return wxBitmap(attachdb_xpm);
+        xpm = attachdb_xpm; break;
     case ID_BMP_COMPACTDB :
-        return wxBitmap(compactdb_xpm);
+        xpm = compactdb_xpm; break;
     case ID_BMP_REFRESH :
-        return wxBitmap(refresh_xpm);
+        xpm = refresh_xpm; break;
     case ID_BMP_UNDO :
-        return wxBitmap(undo_xpm);
+        xpm = undo_xpm; break;
     case ID_BMP_REDO :
-        return wxBitmap(redo_xpm);
+        xpm = redo_xpm; break;
     case ID_BMP_CUT :
-        return wxBitmap(cut_xpm);
+        xpm = cut_xpm; break;
     case ID_BMP_COPY :
-        return wxBitmap(copy_xpm);
+        xpm = copy_xpm; break;
     case ID_BMP_PASTE :
-        return wxBitmap(paste_xpm);
+        xpm = paste_xpm; break;
     case ID_BMP_CLEAR :
-        return wxBitmap(clear_xpm);
+        xpm = clear_xpm; break;
     case ID_BMP_RUNSQL :
-        return wxBitmap(runsql_xpm);
+        xpm = runsql_xpm; break;
     case ID_BMP_RUNSCRIPT :
-        return wxBitmap(runscript_xpm);
+        xpm = runscript_xpm; break;
     case ID_BMP_EXPLAIN :
-        return wxBitmap(explain_xpm);
+        xpm = explain_xpm; break;
     case ID_BMP_STARTTRANSACT :
-        return wxBitmap(starttransact_xpm);
+        xpm = starttransact_xpm; break;
     case ID_BMP_STOPTRANSACT :
-        return wxBitmap(stoptransact_xpm);
+        xpm = stoptransact_xpm; break;
     case ID_BMP_COMMIT :
-        return wxBitmap(commit_xpm);
+        xpm = commit_xpm; break;
     case ID_BMP_ROLLBACK :
-        return wxBitmap(rollback_xpm);
+        xpm = rollback_xpm; break;
     case ID_BMP_AUTOTRANSACT :
-        return wxBitmap(autotransact_xpm);
+        xpm = autotransact_xpm; break;
     case ID_BMP_TABLECREATE :
-        return wxBitmap(tablecreate_xpm);
+        xpm = tablecreate_xpm; break;
     case ID_BMP_TABLEDROP :
-        return wxBitmap(tabledrop_xpm);
+        xpm = tabledrop_xpm; break;
     case ID_BMP_VIEWCREATE :
-        return wxBitmap(viewcreate_xpm);
+        xpm = viewcreate_xpm; break;
     case ID_BMP_VIEWDROP :
-        return wxBitmap(viewdrop_xpm);
+        xpm = viewdrop_xpm; break;
     case ID_BMP_INDEXECREATE :
-        return wxBitmap(indexecreate_xpm);
+        xpm = indexecreate_xpm; break;
     case ID_BMP_INDEXEDROP :
-        return wxBitmap(indexedrop_xpm);
+        xpm = indexedrop_xpm; break;
     case ID_BMP_TRIGGERCREATE :
-        return wxBitmap(triggercreate_xpm);
+        xpm = triggercreate_xpm; break;
     case ID_BMP_TRIGGERDROP :
-        return wxBitmap(triggerdrop_xpm);
+        xpm = triggerdrop_xpm; break;
     case ID_BMP_INDEXE :
-        return wxBitmap(indexe_xpm);
+        xpm = indexe_xpm; break;
     case ID_BMP_INDEXE_TMP :
-        return wxBitmap(indexe_tmp_xpm);
+        xpm = indexe_tmp_xpm; break;
     case ID_BMP_INDEXES :
-        return wxBitmap(indexes_xpm);
+        xpm = indexes_xpm; break;
     case ID_BMP_TABLE :
-        return wxBitmap(table_xpm);
+        xpm = table_xpm; break;
     case ID_BMP_TABLE_TMP :
-        return wxBitmap(table_tmp_xpm);
+        xpm = table_tmp_xpm; break;
     case ID_BMP_TABLES :
-        return wxBitmap(tables_xpm);
+        xpm = tables_xpm; break;
     case ID_BMP_TRIGGER2 :
-        return wxBitmap(trigger2_xpm);
+        xpm = trigger2_xpm; break;
     case ID_BMP_TRIGGER2_TMP :
-        return wxBitmap(trigger2_tmp_xpm);
+        xpm = trigger2_tmp_xpm; break;
     case ID_BMP_TRIGGERS2 :
-        return wxBitmap(triggers2_xpm);
+        xpm = triggers2_xpm; break;
     case ID_BMP_VIEW :
-        return wxBitmap(view_xpm);
+        xpm = view_xpm; break;
     case ID_BMP_VIEW_TMP :
-        return wxBitmap(view_tmp_xpm);
+        xpm = view_tmp_xpm; break;
     case ID_BMP_VIEWS :
-        return wxBitmap(views_xpm);
+        xpm = views_xpm; break;
     case ID_BMP_LOG :
-        return wxBitmap(log_xpm);
+        xpm = log_xpm; break;
     case ID_BMP_DATABASE :
-        return wxBitmap(database_xpm);
+        xpm = database_xpm; break;
     case ID_BMP_FIELD :
-        return wxBitmap(field_xpm);
+        xpm = field_xpm; break;
     case ID_BMP_FIELD2 :
-        return wxBitmap(field2_xpm);
+        xpm = field2_xpm; break;
     case ID_BMP_RIGHTARROW1 :
-        return wxBitmap(rightarrow1_xpm);
+        xpm = rightarrow1_xpm; break;
     case ID_BMP_RIGHTARROW2 :
-        return wxBitmap(rightarrow2_xpm);
+        xpm = rightarrow2_xpm; break;
     case ID_BMP_LEFTARROW1 :
-        return wxBitmap(leftarrow1_xpm);
+        xpm = leftarrow1_xpm; break;
     case ID_BMP_LEFTARROW2 :
-        return wxBitmap(leftarrow2_xpm);
+        xpm = leftarrow2_xpm; break;
     case ID_BMP_ALLTOLEFT :
-        return wxBitmap(alltoleft_xpm);
+        xpm = alltoleft_xpm; break;
     case ID_BMP_ALLTORIGHT :
-        return wxBitmap(alltoright_xpm);
+        xpm = alltoright_xpm; break;
     case ID_BMP_LEFT :
-        return wxBitmap(left_xpm);
+        xpm = left_xpm; break;
     case ID_BMP_RIGHT :
-        return wxBitmap(right_xpm);
+        xpm = right_xpm; break;
     case ID_BMP_FIRST :
-        return wxBitmap(first_xpm);
+        xpm = first_xpm; break;
     case ID_BMP_LAST :
-        return wxBitmap(last_xpm);
+        xpm = last_xpm; break;
     case ID_BMP_UP :
-        return wxBitmap(up_xpm);
+        xpm = up_xpm; break;
     case ID_BMP_DOWN :
-        return wxBitmap(down_xpm);
+        xpm = down_xpm; break;
     case ID_BMP_FILTER :
-        return wxBitmap(filter_xpm);
+        xpm = filter_xpm; break;
     case ID_BMP_SORT :
-        return wxBitmap(sort_xpm);
+        xpm = sort_xpm; break;
 
     case ID_BMP_LOGO32 :
-        return wxBitmap(logo128_xpm);
+        xpm = logo128_xpm; break;
     case ID_BMP_POWEREDBYSQLITE :
-        return wxBitmap(power_sqlite_xpm);
+        xpm = power_sqlite_xpm; break;
     default:
-        return wxNullBitmap;
+        return wxBitmapBundle(); // Return an empty bundle
     }
+
+    wxVector<wxBitmap> bitmaps;
+    bitmaps.push_back(wxBitmap(wxImage(xpm).Scale(64, 64)));
+    bitmaps.push_back(wxBitmap(wxImage(xpm).Scale(32, 32)));
+    bitmaps.push_back(wxBitmap(wxImage(xpm).Scale(48, 48)));
+
+    return wxBitmapBundle::FromBitmaps(bitmaps);
 }
 /*---------------------------------------------------------------------------*/
 wxIcon wxSQLitePlusApp::GetIcon(int id)
@@ -1342,7 +1350,7 @@ wxString wxSQLitePlusApp::GetLegalCopyright() const
     wxString tmp;
 
     tmp = ("Copyright (c) 2007-2009, Fred Cailleau-Lepetit");
-    tmp += ("\nCopyright (c) 2014, Guan Lisheng");
+    tmp += ("\nCopyright (c) 2014,2024 Guan Lisheng");
 #if WXSQLITE3_HAVE_CODEC
     tmp += ("\nPart of encryption code:\nCopyright (c) 1990, RSA Data Security");
 #endif

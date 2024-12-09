@@ -120,17 +120,17 @@ void wxViewBook::CreateControls()
     m_PageColumns->SetDefaultRowSize(25);
     m_PageColumns->SetColLabelSize(25);
 
-    wxBitmap m_PageColumnsBitmap(wxGetApp().GetBmp(ID_BMP_FIELD));
+    wxBitmapBundle m_PageColumnsBitmap(wxGetApp().GetBmp(ID_BMP_FIELD));
     m_Book->AddPage(m_PageColumns, _("Columns"), false, m_PageColumnsBitmap);
 
     m_PageData = new wxPanelData(m_Book, ID_PAGEDATA, wxDefaultPosition, wxDefaultSize);
 
-    wxBitmap m_PageDataBitmap(wxGetApp().GetBmp(ID_BMP_TABLE));
+    wxBitmapBundle m_PageDataBitmap(wxGetApp().GetBmp(ID_BMP_TABLE));
     m_Book->AddPage(m_PageData, _("Data"), false, m_PageDataBitmap);
 
     m_PageDdl = new wxDDLEditor(m_Book, ID_PAGEDDL);
 
-    wxBitmap m_PageDdlBitmap(wxGetApp().GetBmp(ID_BMP_RUNSCRIPT));
+    wxBitmapBundle m_PageDdlBitmap(wxGetApp().GetBmp(ID_BMP_RUNSCRIPT));
     m_Book->AddPage(m_PageDdl, _("DDL"), false, m_PageDdlBitmap);
 
     bSizer->Add(m_Book, 1, wxGROW, 0);

@@ -114,12 +114,12 @@ void wxIndexBook::CreateControls()
     m_PageColumns->SetDefaultRowSize(25);
     m_PageColumns->SetColLabelSize(25);
 
-    wxBitmap m_PageColumnsBitmap(wxGetApp().GetBmp(ID_BMP_FIELD));
+    wxBitmapBundle m_PageColumnsBitmap(wxGetApp().GetBmp(ID_BMP_FIELD));
     noteBook->AddPage(m_PageColumns, _("Columns"), false, m_PageColumnsBitmap);
 
     m_PageDdl = new wxDDLEditor(noteBook, ID_PAGEDDL);
 
-    wxBitmap m_PageDdlBitmap(wxGetApp().GetBmp(ID_BMP_RUNSCRIPT));
+    wxBitmapBundle m_PageDdlBitmap(wxGetApp().GetBmp(ID_BMP_RUNSCRIPT));
     noteBook->AddPage(m_PageDdl, _("DDL"), false, m_PageDdlBitmap);
 
     bSizer->Add(noteBook, 1, wxGROW, 0);
