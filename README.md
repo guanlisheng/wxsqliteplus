@@ -8,7 +8,7 @@ Encryption method is now upon [wxSQLite3](https://github.com/utelle/wxsqlite3) a
 3. [SQLite Studio](https://github.com/pawelsalawa/sqlitestudio/wiki/Official_plugins#dbsqlitewx)
 4. [DB Browser for SQLite](https://github.com/sqlitebrowser/sqlitebrowser/wiki/Encrypted-Databases)
 
-[![Build status](https://ci.appveyor.com/api/projects/status/styoyfaaoa0560qx?svg=true)](https://ci.appveyor.com/project/guanlisheng/wxsqliteplus)
+[![Build status](https://ci.appveyor.com/api/projects/status/rxj2gomqw0iii3n1/branch/master?svg=true)](https://ci.appveyor.com/project/guanlisheng/wxsqliteplus)
 
 ## Contributing
 
