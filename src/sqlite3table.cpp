@@ -198,7 +198,7 @@ public:
         else
             m_nullValues.Add(1);
 
-        m_Array.Add(resultSet.GetInt(columnIndex));
+        m_Array.Add(resultSet.GetInt64(columnIndex).GetValue());
     }
     virtual void AddValue(long value)
     {
