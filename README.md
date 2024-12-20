@@ -4,9 +4,9 @@ wxSqlitePlus
 A cross-platform, open-source, easy-to-use SQLite database browser or client.
 Encryption method is now upon [wxSQLite3](https://github.com/utelle/wxsqlite3) and compatible with 
 1. [Money Manager EX](https://moneymanagerex.org/)
-    - [MMEX4iOS] (https://github.com/moneymanagerex/mmex-ios)
-    - [MMEX4Android] (https://github.com/moneymanagerex/android-money-manager-ex/)
-    - [MMEX4Destkop] (https://github.com/moneymanagerex/moneymanagerex)
+    - [MMEX4iOS](https://github.com/moneymanagerex/mmex-ios)
+    - [MMEX4Android](https://github.com/moneymanagerex/android-money-manager-ex/)
+    - [MMEX4Destkop](https://github.com/moneymanagerex/moneymanagerex)
 3. [SQLCipher](https://www.zetetic.net/sqlcipher/)
 4. [SQLite Studio](https://github.com/pawelsalawa/sqlitestudio/wiki/Official_plugins#dbsqlitewx)
 5. [DB Browser for SQLite](https://github.com/sqlitebrowser/sqlitebrowser/wiki/Encrypted-Databases)
