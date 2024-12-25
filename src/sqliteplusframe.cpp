@@ -2143,7 +2143,7 @@ void wxSQLitePlusFrame::CreateTrigger(const wxString& dbname, bool useobj,
         if (book)
         {
             book->ExecQuery(createTriggerDlg.GetCreateTriggerDDL());
-            RefreshTriggers(createTriggerDlg.GetTemporary() ? ("main") : dbname);
+            RefreshTriggers(createTriggerDlg.GetTemporary() ? _("main") : dbname);
             m_TreeCtrl->Refresh();
             m_TreeCtrl->Update();
         }

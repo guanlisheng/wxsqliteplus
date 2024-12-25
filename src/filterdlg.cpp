@@ -259,7 +259,7 @@ void wxFilterDialog::OnOkClick(wxCommandEvent& event)
         m_Statement = m_filter->GetText();
         if (!m_Statement.IsEmpty())
         {
-            wxString base = m_Base.IsEmpty() ? "main" : m_Base;
+            wxString base = m_Base.IsEmpty() ? wxString("main") : m_Base;
             wxString sql = "EXPLAIN SELECT *\r";
             sql += "FROM " + base + "." + m_Table + "\r";
             sql += "WHERE " + m_Statement + ";";
