@@ -1674,7 +1674,7 @@ bool wxSQLitePlusFrame::OpenDatabase(const wxString& dbfullname, const wxString&
         m_auiManager.Update();
         msg = wxString::Format(_("SQLite3 Version %s\n"), m_db.GetVersion().c_str());
         SQLBook->GetLogResult()->AppendText(msg);
-        msg = wxString::Format(_("The database \"%s\" is opened as main with %s\n"), dbfullname.c_str(), cipher == nullptr ? "empty cipher" : wxSQLite3Cipher::GetCipherName(cipher->GetCipherType()));
+        msg = wxString::Format(_("The database \"%s\" is opened as main with %s\n"), dbfullname.c_str(), cipher == nullptr ? wxString("empty cipher"): wxSQLite3Cipher::GetCipherName(cipher->GetCipherType()));
         SQLBook->GetLogResult()->AppendText(msg);
 
         SQLBook->ShowLog();
@@ -1777,7 +1777,7 @@ bool wxSQLitePlusFrame::AttachDatabase(const wxString& dbfile,
             {
                 // si dbkey est non nulle modifgier le message pour indiquer que la base est chiffrée
                 msg = wxString::Format(_("The database \"%s\" is attached as %s with %s\n"),
-                                       dbfile.c_str(), dbalias.c_str(), l_dbkey.IsEmpty() ? "empty cipher" : wxSQLite3Cipher::GetCipherName(cipher->GetCipherType()));
+                                       dbfile.c_str(), dbalias.c_str(), l_dbkey.IsEmpty() ? wxString("empty cipher") : wxSQLite3Cipher::GetCipherName(cipher->GetCipherType()));
 
                 book->GetLogResult()->AppendText(msg);
                 book->ShowLog();
@@ -2100,7 +2100,7 @@ void wxSQLitePlusFrame::CreateTable(const wxString& dbname)
         if (book)
         {
             book->ExecQuery(createTableDlg.GetCreateTableDDL());
-            RefreshTables(createTableDlg.GetTemporary() ? ("main") : dbname);
+            RefreshTables(createTableDlg.GetTemporary() ? _("main") : dbname);
             m_TreeCtrl->Refresh();
             m_TreeCtrl->Update();
         }
@@ -2120,7 +2120,7 @@ void wxSQLitePlusFrame::CreateView(const wxString& dbname)
         if (book)
         {
             book->ExecQuery(createViewDlg.GetCreateViewDDL());
-            RefreshViews(createViewDlg.GetTemporary() ? ("main") : dbname);
+            RefreshViews(createViewDlg.GetTemporary() ? _("main") : dbname);
             m_TreeCtrl->Refresh();
             m_TreeCtrl->Update();
         }
