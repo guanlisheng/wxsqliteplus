@@ -185,6 +185,8 @@ protected:
 
     void OnCopy(wxCommandEvent& event);
     void OnCopyUpdate(wxUpdateUIEvent& event);
+    void OnExportCSV(wxCommandEvent& event);
+    void OnExportCSVUpdate(wxUpdateUIEvent& event);
     void OnSelectAll(wxCommandEvent& event);
     void OnSelectAllUpdate(wxUpdateUIEvent& event);
     void OnRightDown(wxGridEvent& event);
@@ -375,4 +377,3 @@ typedef void (wxEvtHandler::*wxGridCellBlobEditorEventFunction)(wxGridCellBlobEd
 #define EVT_GRID_BLOBEDIT(id, fn) DECLARE_EVENT_TABLE_ENTRY(wxEVT_GRID_BLOBEDIT, id, wxID_ANY, (wxObjectEventFunction) (wxEventFunction)  wxStaticCastEvent( wxGridCellBlobEditorEventFunction, & fn ), (wxObject *) NULL ),
 /*---------------------------------------------------------------------------*/
 #endif   // _SPECGRID_H_
-

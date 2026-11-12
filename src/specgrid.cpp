@@ -47,6 +47,8 @@ pour plus de détails.
 #include <wx/dynarray.h>
 #include <wx/arrimpl.cpp>
 #include <wx/clipbrd.h>
+#include <wx/file.h>
+#include <wx/filedlg.h>
 /*---------------------------------------------------------------------------*/
 #include "wxsqliteplusapp.h"
 #include "sqlite3table.h"
@@ -54,6 +56,21 @@ pour plus de détails.
 #include "filterdlg.h"
 #include "sortdlg.h"
 #include "blobdlg.h"
+/*---------------------------------------------------------------------------*/
+namespace
+{
+const int ID_EXPORT_CSV = wxID_HIGHEST + 50;
+
+wxString EscapeCSVField(const wxString& value)
+{
+    wxString escaped = value;
+    escaped.Replace("\"", "\"\"");
+    if (value.Find(',') != wxNOT_FOUND || value.Find('"') != wxNOT_FOUND ||
+            value.Find('\r') != wxNOT_FOUND || value.Find('\n') != wxNOT_FOUND)
+        escaped = "\"" + escaped + "\"";
+    return escaped;
+}
+}
 /*---------------------------------------------------------------------------*/
 WX_DEFINE_OBJARRAY(wxArrayOfCellsBlock);
 /*---------------------------------------------------------------------------*/
@@ -72,6 +89,8 @@ IMPLEMENT_DYNAMIC_CLASS(wxSpecGrid, wxGrid)
 BEGIN_EVENT_TABLE(wxSpecGrid, wxGrid)
     EVT_MENU(wxID_COPY, wxSpecGrid::OnCopy)
     EVT_UPDATE_UI(wxID_COPY, wxSpecGrid::OnCopyUpdate)
+    EVT_MENU(ID_EXPORT_CSV, wxSpecGrid::OnExportCSV)
+    EVT_UPDATE_UI(ID_EXPORT_CSV, wxSpecGrid::OnExportCSVUpdate)
     EVT_MENU(wxID_SELECTALL, wxSpecGrid::OnSelectAll)
     EVT_UPDATE_UI(wxID_SELECTALL, wxSpecGrid::OnSelectAllUpdate)
     EVT_GRID_CELL_RIGHT_CLICK(wxSpecGrid::OnRightDown)
@@ -149,6 +168,57 @@ void wxSpecGrid::OnCopyUpdate(wxUpdateUIEvent& event)
     event.Enable(IsSelection());
 }
 /*---------------------------------------------------------------------------*/
+void wxSpecGrid::OnExportCSV(wxCommandEvent& event)
+{
+    wxUnusedVar(event);
+    wxFileDialog dialog(this, _("Export grid as CSV"), wxEmptyString,
+                        wxEmptyString, _("CSV files (*.csv)|*.csv"),
+                        wxFD_SAVE | wxFD_OVERWRITE_PROMPT);
+    if (dialog.ShowModal() != wxID_OK)
+        return;
+
+    wxString contents;
+    for (int col = 0; col < GetNumberCols(); ++col)
+    {
+        if (col)
+            contents += ",";
+        contents += EscapeCSVField(GetColLabelValue(col));
+    }
+    contents += "\r\n";
+
+    for (int row = 0; row < GetNumberRows(); ++row)
+    {
+        for (int col = 0; col < GetNumberCols(); ++col)
+        {
+            if (col)
+                contents += ",";
+            contents += EscapeCSVField(GetCellValue(row, col));
+        }
+        contents += "\r\n";
+    }
+
+    const wxScopedCharBuffer utf8 = contents.utf8_str();
+    wxFile file;
+    bool written = false;
+    if (file.Create(dialog.GetPath(), true))
+    {
+        written = file.Write(utf8.data(), utf8.length()) == utf8.length();
+        const bool closed = file.Close();
+        written = written && closed;
+    }
+    if (!written)
+    {
+        wxMessageBox(wxString::Format(_("Could not write CSV file:\n%s"),
+                                      dialog.GetPath().c_str()),
+                     _("Export error"), wxOK | wxICON_ERROR, this);
+    }
+}
+/*---------------------------------------------------------------------------*/
+void wxSpecGrid::OnExportCSVUpdate(wxUpdateUIEvent& event)
+{
+    event.Enable(GetNumberCols() > 0);
+}
+/*---------------------------------------------------------------------------*/
 void wxSpecGrid::OnSelectAll(wxCommandEvent& event)
 {
     wxUnusedVar(event);
@@ -175,6 +245,8 @@ wxMenu* wxSpecGrid::CreateRightMenu()
 {
     wxMenu* menu = new wxMenu;
     menu->Append(wxID_COPY, _("C&opy"), _("Copy the selected text"), wxITEM_NORMAL);
+    menu->Append(ID_EXPORT_CSV, _("Export all rows as &CSV..."),
+                 _("Save all rows and columns to a CSV file"), wxITEM_NORMAL);
     menu->AppendSeparator();
     menu->Append(wxID_SELECTALL, _("Select &All"), (""), wxITEM_NORMAL);
     return menu;
@@ -644,4 +716,3 @@ wxGridCellBlobEditorEvent::wxGridCellBlobEditorEvent(const wxGridCellBlobEditorE
     m_Grid = event.m_Grid;
 }
 /*---------------------------------------------------------------------------*/
-

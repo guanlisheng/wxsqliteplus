@@ -1151,6 +1151,24 @@ wxString wxSQLitePlusApp::GetSQLParameter(const wxString& param)
 /*---------------------------------------------------------------------------*/
 wxBitmapBundle wxSQLitePlusApp::GetBmp(int id)
 {
+#ifdef wxHAS_SVG
+    const char* svg = nullptr;
+    switch (id)
+    {
+    case ID_BMP_RUNSQL:
+        svg = R"svg(<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path fill="#21834a" d="M5 2.5a1 1 0 0 1 1.5-.86l11 6.5a1 1 0 0 1 0 1.72l-11 6.5A1 1 0 0 1 5 15.5z"/></svg>)svg";
+        break;
+    case ID_BMP_RUNSCRIPT:
+        svg = R"svg(<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path fill="#3576bf" d="M3 2h10a2 2 0 0 1 2 2v3h-2V4H5v12h5v2H3z"/><path fill="#3576bf" d="M6.5 6h5v1.5h-5zm0 3h4v1.5h-4z"/><path fill="#21834a" d="M12 9.5a.7.7 0 0 1 1.05-.6l5.5 3.25a.7.7 0 0 1 0 1.2l-5.5 3.25a.7.7 0 0 1-1.05-.6z"/></svg>)svg";
+        break;
+    case ID_BMP_EXPLAIN:
+        svg = R"svg(<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20"><path fill="#3576bf" d="M8.25 2a6.25 6.25 0 1 0 3.88 11.15l3.72 3.72 1.42-1.42-3.72-3.72A6.25 6.25 0 0 0 8.25 2zm0 2a4.25 4.25 0 1 1 0 8.5 4.25 4.25 0 0 1 0-8.5z"/><path fill="#3576bf" d="M6 7.5h4.5V9H6z"/></svg>)svg";
+        break;
+    }
+    if (svg)
+        return wxBitmapBundle::FromSVG(svg, wxSize(20, 20));
+#endif
+
     const char* * xpm = nullptr;
     switch (id)
     {

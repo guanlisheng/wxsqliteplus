@@ -484,7 +484,7 @@ void wxSQLitePlusFrame::CreateMenus()
                      _("Explain the current SQL statement"), wxITEM_NORMAL);
     mnuQuery->Append(ID_MNU_DESCRIBE, _("&Describe\tF4"),
                      wxEmptyString, wxITEM_NORMAL);
-    menuBar->Append(mnuQuery, _("Query"));
+    menuBar->Append(mnuQuery, _("&Query"));
 
     m_MnuTransact = new wxMenu;
     m_MnuTransact->Append(ID_MNU_BEGINTRANSACT, _("&Begin transaction"),
@@ -526,7 +526,7 @@ void wxSQLitePlusFrame::CreateMenus()
                         _("Show/hide the transaction toolbar"), wxITEM_CHECK);
     mnuToolbars->Check(ID_MNU_TB_TRANSACT, true);
     m_MnuWindow->Append(ID_MNU_TOOLBAR, _("Toolbars"), mnuToolbars);
-    menuBar->Append(m_MnuWindow, _("&Windows"));
+    menuBar->Append(m_MnuWindow, _("&Window"));
 
     m_MnuHelp = new wxMenu;
     m_MnuHelp->Append(wxID_HELP, _("&Help"), _("Show the help window"),
@@ -539,7 +539,7 @@ void wxSQLitePlusFrame::CreateMenus()
 /*---------------------------------------------------------------------------*/
 void wxSQLitePlusFrame::CreateToolbars()
 {
-    wxBitmap BitmapDisabled = wxArtProvider::GetBitmap(wxART_MISSING_IMAGE, wxART_TOOLBAR);;
+    wxBitmap BitmapDisabled = wxNullBitmap;
 
     m_TbFile = new wxToolBar(this, ID_TB_FILE, wxDefaultPosition, wxDefaultSize,
                              wxTB_FLAT|wxTB_HORIZONTAL|wxTB_NODIVIDER);

@@ -46,6 +46,7 @@ pour plus de détails.
 
 #include <wx/aui/framemanager.h>
 #include <wx/aui/auibook.h>
+#include <wx/toolbar.h>
 /*---------------------------------------------------------------------------*/
 #include "sqlbook.h"
 #include "sqliteplusframe.h"
@@ -182,12 +183,37 @@ void wxSQLBook::CreateControls()
 {
     GetAuiManager().SetManagedWindow(this);
 
-    m_SQLEdit = new wxSQLEditor(this, ID_SQLEDIT);
+    wxPanel* editorPanel = new wxPanel(this);
+    wxBoxSizer* editorSizer = new wxBoxSizer(wxVERTICAL);
+    editorPanel->SetSizer(editorSizer);
 
-    GetAuiManager().AddPane(m_SQLEdit,
+    wxToolBar* editorToolbar = new wxToolBar(editorPanel, wxID_ANY,
+            wxDefaultPosition, wxDefaultSize,
+            wxTB_FLAT | wxTB_HORIZONTAL | wxTB_NODIVIDER | wxTB_TEXT);
+    editorToolbar->SetToolBitmapSize(wxSize(20, 20));
+    wxBitmapBundle runBitmap(wxGetApp().GetBmp(ID_BMP_RUNSQL));
+    editorToolbar->AddTool(ID_MNU_EXECUTESQL, _("Run"),
+                           runBitmap, wxNullBitmap, wxITEM_NORMAL,
+                           _("Run the current statement (F9)"));
+    wxBitmapBundle scriptBitmap(wxGetApp().GetBmp(ID_BMP_RUNSCRIPT));
+    editorToolbar->AddTool(ID_MNU_EXECUTESCRIPT, _("Run Script"),
+                           scriptBitmap, wxNullBitmap, wxITEM_NORMAL,
+                           _("Run the full script (F5)"));
+    editorToolbar->AddSeparator();
+    wxBitmapBundle explainBitmap(wxGetApp().GetBmp(ID_BMP_EXPLAIN));
+    editorToolbar->AddTool(ID_MNU_EXPLAIN, _("Explain"),
+                           explainBitmap, wxNullBitmap, wxITEM_NORMAL,
+                           _("Explain the current statement (F6)"));
+    editorToolbar->Realize();
+    editorSizer->Add(editorToolbar, 0, wxEXPAND);
+
+    m_SQLEdit = new wxSQLEditor(editorPanel, ID_SQLEDIT);
+    editorSizer->Add(m_SQLEdit, 1, wxEXPAND);
+
+    GetAuiManager().AddPane(editorPanel,
                             wxAuiPaneInfo().Name(("SQLEdit"))
-                            .Caption(("Enter SQL Statement :"))
-                            .Top().MinSize(wxSize(-1, 200))
+                            .Caption(_("SQL Editor"))
+                            .Top().MinSize(wxSize(-1, 220))
                             .CloseButton(false)
                             .DestroyOnClose(false)
                             .Resizable(true)
@@ -204,7 +230,7 @@ void wxSQLBook::CreateControls()
     m_DataResult->SetColLabelSize(25);
     m_DataResult->SetRowLabelSize(50);
 
-    wxBitmapBundle m_DataResultBitmap(wxGetApp().GetBmp(ID_BMP_RUNSQL));
+    wxBitmapBundle m_DataResultBitmap(wxGetApp().GetBmp(ID_BMP_TABLE));
     m_ResultBook->AddPage(m_DataResult, _("Results"), false, m_DataResultBitmap);
 
     m_LogResult = new wxTextCtrl(m_ResultBook, ID_LOGRESULT, wxEmptyString,

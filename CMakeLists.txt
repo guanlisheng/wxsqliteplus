@@ -19,7 +19,7 @@ set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 # Request the required wxWidgets libs
-find_package(wxWidgets 3.2 REQUIRED COMPONENTS core base stc xml net adv aui html richtext)
+find_package(wxWidgets 3.3 REQUIRED COMPONENTS core base stc xml net adv aui html richtext)
 add_library(wxWidgets INTERFACE)
 target_include_directories(wxWidgets SYSTEM INTERFACE ${wxWidgets_INCLUDE_DIRS})
 

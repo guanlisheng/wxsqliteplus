@@ -2,6 +2,13 @@ wxSqlitePlus
 ============
 
 A cross-platform, open-source, easy-to-use SQLite database browser or client.
+
+The SQL workspace provides syntax-highlighted editing, one-click statement and
+script execution, query-plan inspection, and tabbed results and output. Grid
+results can be copied or exported as UTF-8 CSV from the context menu.
+The query toolbar uses scalable icons where supported and retains the original
+icons on platforms without SVG bitmap support.
+
 Encryption method is now upon [wxSQLite3](https://github.com/utelle/wxsqlite3) and compatible with 
 1. [Money Manager EX](https://moneymanagerex.org/)
     - [MMEX4iOS](https://github.com/moneymanagerex/mmex-ios)
