@@ -45,6 +45,7 @@ pour plus de détails.
 #endif
 
 #include <wx/aui/auibook.h>
+#include <wx/clipbrd.h>
 /*---------------------------------------------------------------------------*/
 #include "tablebook.h"
 #include "wxsqliteplusapp.h"
@@ -60,11 +61,39 @@ pour plus de détails.
 #define ID_PAGETRIGGERS    12005
 #define ID_PAGEINDEXES     12006
 #define ID_PAGEDDL         12007
+#define ID_COPY_COLUMN_NAME 12008
+#define ID_COPY_SELECT_TEMPLATE 12009
+#define ID_VIEW_COLUMN_DATA 12010
+/*---------------------------------------------------------------------------*/
+static void CopyTextToClipboard(wxWindow* parent, const wxString& text)
+{
+    if (!wxTheClipboard->Open())
+    {
+        wxMessageBox(_("Could not open the clipboard."), _("Copy error"),
+                     wxOK | wxICON_ERROR, parent);
+        return;
+    }
+
+    wxTextDataObject* data = new wxTextDataObject(text);
+    if (!wxTheClipboard->SetData(data))
+    {
+        delete data;
+        wxTheClipboard->Close();
+        wxMessageBox(_("Could not copy text to the clipboard."), _("Copy error"),
+                     wxOK | wxICON_ERROR, parent);
+        return;
+    }
+    wxTheClipboard->Close();
+}
 /*---------------------------------------------------------------------------*/
 IMPLEMENT_DYNAMIC_CLASS(wxTableBook, wxDbBook)
 
 BEGIN_EVENT_TABLE(wxTableBook, wxDbBook)
     EVT_AUINOTEBOOK_PAGE_CHANGING(ID_TABLEBOOK, wxTableBook::OnTablebookPageChanging)
+    EVT_GRID_CMD_SELECT_CELL(ID_PAGECOLUMNS, wxTableBook::OnColumnsSelectCell)
+    EVT_BUTTON(ID_COPY_COLUMN_NAME, wxTableBook::OnCopyColumnName)
+    EVT_BUTTON(ID_COPY_SELECT_TEMPLATE, wxTableBook::OnCopySelectTemplate)
+    EVT_BUTTON(ID_VIEW_COLUMN_DATA, wxTableBook::OnViewColumnData)
     EVT_MENU(wxID_COPY, wxTableBook::OnCopyClick)
     EVT_UPDATE_UI(wxID_COPY, wxTableBook::OnCopyUpdate)
     EVT_MENU(ID_CMD_ED_REFRESH, wxTableBook::OnEdRefresh)
@@ -103,6 +132,10 @@ void wxTableBook::Init()
 {
     m_Book = NULL;
     m_PageColumns = NULL;
+    m_CopyColumnName = NULL;
+    m_CopySelectTemplate = NULL;
+    m_ViewColumnData = NULL;
+    m_ColumnsStatus = NULL;
     m_PageData = NULL;
     m_PageForeignKey = NULL;
     m_PageTriggers = NULL;
@@ -120,14 +153,37 @@ void wxTableBook::CreateControls()
                                wxDefaultSize,
                                wxAUI_NB_TOP|wxAUI_NB_TAB_SPLIT|wxAUI_NB_TAB_MOVE);
 
-    m_PageColumns = new wxSpecGrid(m_Book, ID_PAGECOLUMNS, wxDefaultPosition,
-                                   wxDefaultSize, wxHSCROLL|wxVSCROLL);
+    wxPanel* columnsPage = new wxPanel(m_Book);
+    wxBoxSizer* columnsSizer = new wxBoxSizer(wxVERTICAL);
+    columnsPage->SetSizer(columnsSizer);
+
+    wxBoxSizer* actionsSizer = new wxBoxSizer(wxHORIZONTAL);
+    m_CopyColumnName = new wxButton(columnsPage, ID_COPY_COLUMN_NAME,
+                                    _("Copy column name"));
+    m_CopySelectTemplate = new wxButton(columnsPage, ID_COPY_SELECT_TEMPLATE,
+                                        _("Copy SELECT"));
+    m_ViewColumnData = new wxButton(columnsPage, ID_VIEW_COLUMN_DATA,
+                                     _("View in Data"));
+    m_ColumnsStatus = new wxStaticText(columnsPage, wxID_ANY, wxEmptyString);
+    m_CopyColumnName->Disable();
+    m_CopySelectTemplate->Disable();
+    m_ViewColumnData->Disable();
+    actionsSizer->Add(m_CopyColumnName, 0, wxRIGHT, FromDIP(5));
+    actionsSizer->Add(m_CopySelectTemplate, 0, wxRIGHT, FromDIP(5));
+    actionsSizer->Add(m_ViewColumnData, 0, wxRIGHT, FromDIP(8));
+    actionsSizer->Add(m_ColumnsStatus, 0, wxALIGN_CENTER_VERTICAL);
+    columnsSizer->Add(actionsSizer, 0, wxEXPAND | wxALL, FromDIP(6));
+
+    m_PageColumns = new wxSpecGrid(columnsPage, ID_PAGECOLUMNS,
+                                   wxDefaultPosition, wxDefaultSize,
+                                   wxHSCROLL|wxVSCROLL);
     m_PageColumns->SetDefaultColSize(50);
     m_PageColumns->SetDefaultRowSize(25);
     m_PageColumns->SetColLabelSize(25);
+    columnsSizer->Add(m_PageColumns, 1, wxEXPAND);
 
     wxBitmapBundle m_PageColumnsBitmap(wxGetApp().GetBmp(ID_BMP_FIELD));
-    m_Book->AddPage(m_PageColumns, _("Columns"), false, m_PageColumnsBitmap);
+    m_Book->AddPage(columnsPage, _("Columns"), false, m_PageColumnsBitmap);
 
     m_PageData = new wxPanelData(m_Book, ID_PAGEDATA, wxDefaultPosition, wxDefaultSize);
 
@@ -228,8 +284,21 @@ void wxTableBook::RefreshStruct()
         table->SetAttrProvider(new OddRowsGridCellAttrProvider(oddColour));
         m_PageColumns->SetTable((wxGridTableBase*)table, true);
         table->AdaptColumnsSize();
+        const int widths[] = {50, 190, 140, 90, 220, 75};
+        for (int col = 0; col < m_PageColumns->GetNumberCols() &&
+             col < static_cast<int>(WXSIZEOF(widths)); ++col)
+            m_PageColumns->SetColSize(col, FromDIP(widths[col]));
         m_PageColumns->SetRowLabelSize(0);
         m_PageColumns->SetDefaultSelection();
+        m_SelectedColumn.clear();
+        if (m_PageColumns->GetNumberRows() > 0)
+            m_SelectedColumn = m_PageColumns->GetCellValue(0, 1);
+        const bool haveColumns = !m_SelectedColumn.IsEmpty();
+        m_CopyColumnName->Enable(haveColumns);
+        m_CopySelectTemplate->Enable(haveColumns);
+        m_ViewColumnData->Enable(haveColumns);
+        m_ColumnsStatus->SetLabel(wxString::Format(
+            _("%d columns"), m_PageColumns->GetNumberRows()));
         m_PageColumns-> ForceRefresh();
     }
     catch(wxSQLite3Exception& ex)
@@ -240,8 +309,9 @@ void wxTableBook::RefreshStruct()
     try
     {
         // remplissage de la grille des clés étrangères
-        sql = wxString::Format("PRAGMA '%s'.foreign_key_list(\"%s\");",
-                               basename.c_str(), m_DbObjectName.c_str());
+        sql = "PRAGMA " + QuoteSQLiteIdentifier(basename) +
+              ".foreign_key_list(" + QuoteSQLiteIdentifier(m_DbObjectName) +
+              ");";
         resultSet = m_db->ExecuteQuery(ToUTF8(sql));
         m_PageForeignKey->SetTable(&g_EmptyTable);
         m_PageForeignKey->ForceRefresh();
@@ -300,6 +370,56 @@ void wxTableBook::RefreshStruct()
 
 }
 /*---------------------------------------------------------------------------*/
+void wxTableBook::OnColumnsSelectCell(wxGridEvent& event)
+{
+    if (event.GetRow() >= 0 && event.GetRow() < m_PageColumns->GetNumberRows())
+    {
+        m_SelectedColumn = m_PageColumns->GetCellValue(event.GetRow(), 1);
+        m_CopyColumnName->Enable(true);
+        m_CopySelectTemplate->Enable(true);
+        m_ViewColumnData->Enable(true);
+        m_ColumnsStatus->SetLabel(wxString::Format(
+            _("%d columns | %s selected"),
+            m_PageColumns->GetNumberRows(), m_SelectedColumn.c_str()));
+        m_ColumnsStatus->GetParent()->Layout();
+    }
+    event.Skip();
+}
+/*---------------------------------------------------------------------------*/
+void wxTableBook::OnCopyColumnName(wxCommandEvent& event)
+{
+    wxUnusedVar(event);
+    if (m_SelectedColumn.IsEmpty())
+        return;
+    CopyTextToClipboard(this, m_SelectedColumn);
+}
+/*---------------------------------------------------------------------------*/
+void wxTableBook::OnCopySelectTemplate(wxCommandEvent& event)
+{
+    wxUnusedVar(event);
+    if (m_SelectedColumn.IsEmpty())
+        return;
+    const wxString base = m_Base.IsEmpty() ? wxString("main") : m_Base;
+    const wxString sql = "SELECT " + QuoteSQLiteIdentifier(m_SelectedColumn) +
+                         " FROM " + QuoteSQLiteIdentifier(base) + "." +
+                         QuoteSQLiteIdentifier(m_DbObjectName) + " LIMIT 100;";
+    CopyTextToClipboard(this, sql);
+}
+/*---------------------------------------------------------------------------*/
+void wxTableBook::OnViewColumnData(wxCommandEvent& event)
+{
+    wxUnusedVar(event);
+    if (m_SelectedColumn.IsEmpty())
+        return;
+    m_PageData->SelectColumn(m_SelectedColumn);
+    m_Book->SetSelection(1);
+    if (m_InitData)
+    {
+        m_InitData = false;
+        RefreshData();
+    }
+}
+/*---------------------------------------------------------------------------*/
 void wxTableBook::RefreshData()
 {
     m_PageData->DoRefresh();
@@ -338,4 +458,3 @@ void wxTableBook::OnEdRefresh(wxCommandEvent& event)
     m_PageDdl->InitStyle();
 }
 /*---------------------------------------------------------------------------*/
-

@@ -46,6 +46,7 @@ pour plus de détails.
 
 #include "wxsqliteplusapp.h"
 #include "sortdlg.h"
+#include "sqlite3table.h"
 /*---------------------------------------------------------------------------*/
 #define ID_AVAILABLE    15001
 #define ID_TORIGHT      15002
@@ -498,11 +499,13 @@ void wxSortDialog::SetStringsOrder(wxArrayString& array)
         wxString sql, tmp;
         int index;
 
-        sql = wxString::Format(("PRAGMA '%s'.table_info(\"%s\");"),
-                               m_Base.c_str(), m_Table.c_str());
+        const wxString base = m_Base.IsEmpty() ? wxString("main") : m_Base;
+        sql = "PRAGMA " + QuoteSQLiteIdentifier(base) + ".table_info(" +
+              QuoteSQLiteIdentifier(m_Table) + ");";
         tblQRY = m_Db->ExecuteQuery(ToUTF8(sql));
         while (tblQRY.NextRow())
-            m_Available->Append(tblQRY.GetString(1) + (" ASC"));
+            m_Available->Append(
+                QuoteSQLiteIdentifier(tblQRY.GetString(1)) + " ASC");
 
         tblQRY.Finalize();
 
@@ -524,4 +527,3 @@ void wxSortDialog::SetStringsOrder(wxArrayString& array)
     }
 }
 /*---------------------------------------------------------------------------*/
-

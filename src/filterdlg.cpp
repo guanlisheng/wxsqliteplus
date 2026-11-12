@@ -46,6 +46,7 @@ pour plus de détails.
 
 #include "wxsqliteplusapp.h"
 #include "filterdlg.h"
+#include "sqlite3table.h"
 /*---------------------------------------------------------------------------*/
 #define ID_FILTER_PANEL 15001
 #define ID_FIELDS       15002
@@ -209,14 +210,16 @@ void wxFilterDialog::OnBtnAddClick(wxCommandEvent& event)
     idxfield = m_fields->GetSelection();
     idxoper = m_operators->GetSelection();
 
-    tmp1 = wxString::Format(("\"%s\" %s"),
-                            m_fields->GetString(idxfield).c_str(),
-                            m_operators->GetString(idxoper).c_str());
+    tmp1 = QuoteSQLiteIdentifier(m_fields->GetString(idxfield)) + " " +
+           m_operators->GetString(idxoper);
     if (idxoper < 10)
     {
         tmp2 = m_Value-> GetValue();
         if (m_fields->GetClientData(idxfield) == (void*)1)
-            tmp2 = wxString::Format(("'%s'"), tmp2.c_str());
+        {
+            tmp2.Replace("'", "''");
+            tmp2 = "'" + tmp2 + "'";
+        }
         tmp1 = wxString::Format(("%s %s"), tmp1.c_str(), tmp2.c_str());
     }
     m_filter->AddText(tmp1);
@@ -261,7 +264,8 @@ void wxFilterDialog::OnOkClick(wxCommandEvent& event)
         {
             wxString base = m_Base.IsEmpty() ? wxString("main") : m_Base;
             wxString sql = "EXPLAIN SELECT *\r";
-            sql += "FROM " + base + "." + m_Table + "\r";
+            sql += "FROM " + QuoteSQLiteIdentifier(base) + "." +
+                   QuoteSQLiteIdentifier(m_Table) + "\r";
             sql += "WHERE " + m_Statement + ";";
             wxSQLite3ResultSet resultSet = m_Db->ExecuteQuery(ToUTF8(sql));
             resultSet.Finalize();
@@ -316,8 +320,8 @@ void wxFilterDialog::SetTable(const wxString& table)
 
         // limiter à 1 car si limite à 0 ça ne fonctionne pas
         // les informations sur le type de colonnes n'est pas retourné
-        sql = wxString::Format(("SELECT * FROM %s.%s LIMIT 1;"),
-                               basename.c_str(), m_Table.c_str());
+        sql = "SELECT * FROM " + QuoteSQLiteIdentifier(basename) + "." +
+              QuoteSQLiteIdentifier(m_Table) + " LIMIT 1;";
         clmnQRY = m_Db->ExecuteQuery(ToUTF8(sql));
 
         numberCols = clmnQRY.GetColumnCount();
@@ -352,4 +356,3 @@ void wxFilterDialog::SetStatement(const wxString& value)
     m_filter->SetText(m_Statement);
 }
 /*---------------------------------------------------------------------------*/
-

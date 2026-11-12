@@ -679,6 +679,85 @@ msgstr ""
 msgid "Identifier"
 msgstr ""
 
+#: src/sqlite3table.cpp
+msgid "No."
+msgstr ""
+
+#: src/sqlite3table.cpp
+msgid "Column"
+msgstr ""
+
+#: src/sqlite3table.cpp
+msgid "Not null"
+msgstr ""
+
+#: src/sqlite3table.cpp
+msgid "PK pos"
+msgstr ""
+
+#: src/sqlite3table.cpp
+msgid "Yes"
+msgstr ""
+
+#: src/sqlite3table.cpp
+msgid "No"
+msgstr ""
+
+#: src/sqlite3table.cpp
+msgid "(none)"
+msgstr ""
+
+#: src/tablebook.cpp
+msgid "Copy column name"
+msgstr ""
+
+#: src/tablebook.cpp
+msgid "Copy SELECT"
+msgstr ""
+
+#: src/tablebook.cpp
+msgid "View in Data"
+msgstr ""
+
+#: src/tablebook.cpp
+#, c-format
+msgid "%d columns"
+msgstr ""
+
+#: src/tablebook.cpp
+#, c-format
+msgid "%d columns | %s selected"
+msgstr ""
+
+#: src/tablebook.cpp
+msgid "Could not open the clipboard."
+msgstr ""
+
+#: src/tablebook.cpp
+msgid "Could not copy text to the clipboard."
+msgstr ""
+
+#: src/tablebook.cpp
+msgid "Copy error"
+msgstr ""
+
+#: src/paneldata.cpp
+#, c-format
+msgid "%d rows | Read-only"
+msgstr ""
+
+#: src/paneldata.cpp
+msgid "Clear view"
+msgstr ""
+
+#: src/paneldata.cpp src/specgrid.cpp
+msgid "Clear filter and sort"
+msgstr ""
+
+#: src/paneldata.cpp src/specgrid.cpp
+msgid "Remove the current filter and sort order"
+msgstr ""
+
 #: src/preferences.cpp:361
 msgid "Key Word 2"
 msgstr ""

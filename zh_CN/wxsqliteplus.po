@@ -1585,3 +1585,82 @@ msgstr ""
 #: src/wxsqliteplusapp.cpp:1493
 msgid "No database or database is not open."
 msgstr ""
+
+#: src/sqlite3table.cpp
+msgid "No."
+msgstr "序号"
+
+#: src/sqlite3table.cpp
+msgid "Column"
+msgstr "列名"
+
+#: src/sqlite3table.cpp
+msgid "Not null"
+msgstr "非空"
+
+#: src/sqlite3table.cpp
+msgid "PK pos"
+msgstr "主键序号"
+
+#: src/sqlite3table.cpp
+msgid "Yes"
+msgstr "是"
+
+#: src/sqlite3table.cpp
+msgid "No"
+msgstr "否"
+
+#: src/sqlite3table.cpp
+msgid "(none)"
+msgstr "（无）"
+
+#: src/tablebook.cpp
+msgid "Copy column name"
+msgstr "复制列名"
+
+#: src/tablebook.cpp
+msgid "Copy SELECT"
+msgstr "复制 SELECT"
+
+#: src/tablebook.cpp
+msgid "View in Data"
+msgstr "在数据中查看"
+
+#: src/tablebook.cpp
+#, c-format
+msgid "%d columns"
+msgstr "%d 列"
+
+#: src/tablebook.cpp
+#, c-format
+msgid "%d columns | %s selected"
+msgstr "%d 列 | 已选择 %s"
+
+#: src/tablebook.cpp
+msgid "Could not open the clipboard."
+msgstr "无法打开剪贴板。"
+
+#: src/tablebook.cpp
+msgid "Could not copy text to the clipboard."
+msgstr "无法将文本复制到剪贴板。"
+
+#: src/tablebook.cpp
+msgid "Copy error"
+msgstr "复制错误"
+
+#: src/paneldata.cpp
+#, c-format
+msgid "%d rows | Read-only"
+msgstr "%d 行 | 只读"
+
+#: src/paneldata.cpp
+msgid "Clear view"
+msgstr "清除视图"
+
+#: src/paneldata.cpp src/specgrid.cpp
+msgid "Clear filter and sort"
+msgstr "清除筛选和排序"
+
+#: src/paneldata.cpp src/specgrid.cpp
+msgid "Remove the current filter and sort order"
+msgstr "移除当前筛选和排序条件"

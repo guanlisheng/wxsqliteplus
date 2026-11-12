@@ -50,6 +50,7 @@ pour plus de détails.
 /*---------------------------------------------------------------------------*/
 class wxSQLite3TableColumn;
 WX_DEFINE_ARRAY(wxSQLite3TableColumn*, wxArraySQLite3TableColumn);
+wxString QuoteSQLiteIdentifier(const wxString& identifier);
 /*---------------------------------------------------------------------------*/
 class SQLite3HookForCount : public wxSQLite3Hook
 {
@@ -232,6 +233,8 @@ public:
 
     virtual wxString GetTypeName(int row, int col);
     virtual wxString GetValue(int row, int col);
+    virtual wxString GetColLabelValue(int col);
+    virtual bool IsEmptyCell(int row, int col);
 
 protected:
 
@@ -259,5 +262,3 @@ protected:
 extern wxGridEmptyTable g_EmptyTable;
 /*---------------------------------------------------------------------------*/
 #endif // _SQLITE3TABLE_H_
-
-

@@ -231,6 +231,11 @@ public:
     void DoRefresh(bool usefilter = false);
     void DoSort();
     void DoFilter();
+    void ClearFilterSort();
+    void SelectColumn(const wxString& name);
+    int GetVisibleRowCount() const {
+        return GetNumberRows();
+    }
 
     bool IsFiltered() {
         return m_IsFiltered;
@@ -244,6 +249,8 @@ protected:
     void OnFilter(wxCommandEvent& event);
     void OnSort(wxCommandEvent& event);
     void OnRefresh(wxCommandEvent& event);
+    void OnClearView(wxCommandEvent& event);
+    void OnClearViewUpdate(wxUpdateUIEvent& event);
     void OnFilterSortUpdate(wxUpdateUIEvent& event);
 
     virtual wxMenu* CreateRightMenu();
@@ -256,6 +263,7 @@ private:
 
     wxArrayString        m_StringsOrder;
     wxString             m_StringWhere;
+    wxString             m_SelectedColumnName;
     bool                 m_IsFiltered;
     bool                 m_IsSorted;
 };

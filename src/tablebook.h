@@ -43,6 +43,9 @@ class wxAuiNotebook;
 class wxSpecGrid;
 class wxPanelData;
 class wxSQLite3Database;
+class wxGridEvent;
+class wxButton;
+class wxStaticText;
 /*---------------------------------------------------------------------------*/
 class wxTableBook: public wxDbBook
 {
@@ -78,6 +81,10 @@ protected:
     static bool ShowToolTips();
 
     void OnTablebookPageChanging( wxAuiNotebookEvent& event );
+    void OnColumnsSelectCell(wxGridEvent& event);
+    void OnCopyColumnName(wxCommandEvent& event);
+    void OnCopySelectTemplate(wxCommandEvent& event);
+    void OnViewColumnData(wxCommandEvent& event);
     void OnCopyClick(wxCommandEvent& event);
     void OnCopyUpdate(wxUpdateUIEvent& event);
     void OnEdRefresh(wxCommandEvent& event);
@@ -86,6 +93,11 @@ private:
 
     wxAuiNotebook* m_Book;
     wxSpecGrid* m_PageColumns;
+    wxButton* m_CopyColumnName;
+    wxButton* m_CopySelectTemplate;
+    wxButton* m_ViewColumnData;
+    wxStaticText* m_ColumnsStatus;
+    wxString m_SelectedColumn;
     wxPanelData* m_PageData;
     wxSpecGrid* m_PageForeignKey;
     wxSpecGrid* m_PageTriggers;
@@ -98,4 +110,3 @@ private:
 };
 /*---------------------------------------------------------------------------*/
 #endif   // _TABLEBOOK_H_
-

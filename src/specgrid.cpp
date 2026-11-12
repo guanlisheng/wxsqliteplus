@@ -326,6 +326,8 @@ BEGIN_EVENT_TABLE(wxDataGrid, wxSpecGrid)
     EVT_MENU(ID_MNU_SORT, wxDataGrid::OnSort)
     EVT_UPDATE_UI(ID_MNU_SORT, wxDataGrid::OnFilterSortUpdate)
     EVT_MENU(ID_MNU_REFRESH, wxDataGrid::OnRefresh)
+    EVT_MENU(ID_MNU_CLEAR_VIEW, wxDataGrid::OnClearView)
+    EVT_UPDATE_UI(ID_MNU_CLEAR_VIEW, wxDataGrid::OnClearViewUpdate)
 END_EVENT_TABLE()
 /*---------------------------------------------------------------------------*/
 void wxDataGrid::SetDbTableViewName(wxSQLite3Database* db,
@@ -353,8 +355,8 @@ void wxDataGrid::DoRefresh(bool usefilter)
         basename = ("main");
     try
     {   // remplissage de la grille des données
-        sql = wxString::Format(("SELECT * FROM %s.%s"), basename.c_str(),
-                               m_TableViewName.c_str());
+        sql = "SELECT * FROM " + QuoteSQLiteIdentifier(basename) + "." +
+              QuoteSQLiteIdentifier(m_TableViewName);
         m_IsFiltered = m_IsSorted = false;
         if (usefilter)
         {
@@ -383,6 +385,8 @@ void wxDataGrid::DoRefresh(bool usefilter)
         table->SetAttrProvider(new OddRowsGridCellAttrProvider(oddColour));
         SetTable((wxGridTableBase*)table, true);
         table->AdaptColumnsSize();
+        if (!m_SelectedColumnName.IsEmpty())
+            SelectColumn(m_SelectedColumnName);
         SetDefaultSelection();
         ForceRefresh();
         resultSet.Finalize();
@@ -391,6 +395,44 @@ void wxDataGrid::DoRefresh(bool usefilter)
     {
         wxGetApp().ShowError("Refresh", ex);
     }
+}
+/*---------------------------------------------------------------------------*/
+void wxDataGrid::ClearFilterSort()
+{
+    m_StringWhere.clear();
+    m_StringsOrder.Clear();
+    DoRefresh(true);
+}
+/*---------------------------------------------------------------------------*/
+void wxDataGrid::SelectColumn(const wxString& name)
+{
+    m_SelectedColumnName = name;
+    if (!GetTable() || GetNumberCols() == 0)
+        return;
+
+    for (int col = 0; col < GetNumberCols(); ++col)
+    {
+        if (GetTable()->GetColLabelValue(col) == name)
+        {
+            if (GetNumberRows() > 0)
+            {
+                SetGridCursor(0, col);
+                MakeCellVisible(0, col);
+            }
+            return;
+        }
+    }
+}
+/*---------------------------------------------------------------------------*/
+void wxDataGrid::OnClearView(wxCommandEvent& event)
+{
+    wxUnusedVar(event);
+    ClearFilterSort();
+}
+/*---------------------------------------------------------------------------*/
+void wxDataGrid::OnClearViewUpdate(wxUpdateUIEvent& event)
+{
+    event.Enable(m_IsFiltered || m_IsSorted);
 }
 /*---------------------------------------------------------------------------*/
 void wxDataGrid::DoSort()
@@ -455,6 +497,8 @@ wxMenu* wxDataGrid::CreateRightMenu()
     menu->Append(ID_MNU_SORT, _("&Sort"), wxEmptyString, wxITEM_NORMAL);
     menu->AppendSeparator();
     menu->Append(ID_MNU_REFRESH, _("&Refresh"), wxEmptyString, wxITEM_NORMAL);
+    menu->Append(ID_MNU_CLEAR_VIEW, _("Clear filter and sort"),
+                 _("Remove the current filter and sort order"), wxITEM_NORMAL);
     return menu;
 }
 /*---------------------------------------------------------------------------*/

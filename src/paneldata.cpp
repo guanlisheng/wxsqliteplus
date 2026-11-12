@@ -57,6 +57,8 @@ BEGIN_EVENT_TABLE(wxPanelData, wxPanel)
     EVT_MENU(ID_MNU_FILTER, wxPanelData::OnMnuFilterClick)
     EVT_MENU(ID_MNU_SORT, wxPanelData::OnMnuSortClick)
     EVT_MENU(ID_MNU_REFRESH, wxPanelData::OnMnuRefreshClick)
+    EVT_MENU(ID_MNU_CLEAR_VIEW, wxPanelData::OnMnuClearViewClick)
+    EVT_UPDATE_UI(ID_MNU_CLEAR_VIEW, wxPanelData::OnMnuClearViewUpdate)
     EVT_UPDATE_UI(wxID_STATIC, wxPanelData::OnStaticUpdate)
 END_EVENT_TABLE()
 /*---------------------------------------------------------------------------*/
@@ -118,6 +120,11 @@ void wxPanelData::CreateControls()
     wxBitmapBundle refreshBmp(wxGetApp().GetBmp(ID_BMP_REFRESH));
     iToolBar1->AddTool(ID_MNU_REFRESH, _("Refresh"), refreshBmp, BitmapDisabled,
                        wxITEM_NORMAL, _("Refresh"), _("Refresh"));
+    wxBitmapBundle clearBmp(wxGetApp().GetBmp(ID_BMP_CLEAR));
+    iToolBar1->AddTool(ID_MNU_CLEAR_VIEW, _("Clear view"), clearBmp,
+                       BitmapDisabled, wxITEM_NORMAL,
+                       _("Clear filter and sort"),
+                       _("Remove the current filter and sort order"));
     iToolBar1->AddSeparator();
     m_active = new wxStaticText(iToolBar1, wxID_STATIC, wxEmptyString,
                                 wxDefaultPosition, wxSize(-1, 20), 0);
@@ -136,20 +143,15 @@ void wxPanelData::CreateControls()
 /*---------------------------------------------------------------------------*/
 void wxPanelData::OnStaticUpdate(wxUpdateUIEvent& event)
 {
-    wxString tmp;
+    wxString tmp = wxString::Format(_("%d rows | Read-only"),
+                                    m_DataGrid->GetVisibleRowCount());
 
     if (m_DataGrid->IsFiltered())
-        tmp = _("Filtered");
+        tmp += _(" | Filtered");
     if (m_DataGrid->IsSorted())
-    {
-        if (!tmp.IsEmpty())
-            tmp += (", ");
-        tmp += _("Sorted");
-    }
+        tmp += _(" | Sorted");
     if (tmp != m_active->GetLabel())
-    {
         m_active->SetLabel(tmp);
-    }
 }
 /*---------------------------------------------------------------------------*/
 void wxPanelData::OnMnuFilterClick(wxCommandEvent& event)
@@ -169,10 +171,29 @@ void wxPanelData::OnMnuRefreshClick(wxCommandEvent& event)
     DoRefresh(true);
 }
 /*---------------------------------------------------------------------------*/
+void wxPanelData::OnMnuClearViewClick(wxCommandEvent& event)
+{
+    wxUnusedVar(event);
+    if (m_DataGrid)
+        m_DataGrid->ClearFilterSort();
+}
+/*---------------------------------------------------------------------------*/
+void wxPanelData::OnMnuClearViewUpdate(wxUpdateUIEvent& event)
+{
+    event.Enable(m_DataGrid &&
+                 (m_DataGrid->IsFiltered() || m_DataGrid->IsSorted()));
+}
+/*---------------------------------------------------------------------------*/
 void wxPanelData::DoRefresh(bool usefilter)
 {
     if (m_DataGrid)
         m_DataGrid->DoRefresh(usefilter);
+}
+/*---------------------------------------------------------------------------*/
+void wxPanelData::SelectColumn(const wxString& name)
+{
+    if (m_DataGrid)
+        m_DataGrid->SelectColumn(name);
 }
 /*---------------------------------------------------------------------------*/
 bool wxPanelData::HasFocus()
@@ -182,4 +203,3 @@ bool wxPanelData::HasFocus()
     return false;
 }
 /*---------------------------------------------------------------------------*/
-

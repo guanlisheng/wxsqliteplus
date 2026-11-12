@@ -67,6 +67,7 @@ public:
     bool HasFocus();
 
     void DoRefresh(bool usefilter = false);
+    void SelectColumn(const wxString& name);
 
 protected:
 
@@ -76,6 +77,8 @@ protected:
     void OnMnuFilterClick(wxCommandEvent& event);
     void OnMnuSortClick(wxCommandEvent& event);
     void OnMnuRefreshClick(wxCommandEvent& event);
+    void OnMnuClearViewClick(wxCommandEvent& event);
+    void OnMnuClearViewUpdate(wxUpdateUIEvent& event);
     void OnStaticUpdate(wxUpdateUIEvent& event);
 
 private:
@@ -85,4 +88,3 @@ private:
 };
 
 #endif   // _PANELDATA_H_
-

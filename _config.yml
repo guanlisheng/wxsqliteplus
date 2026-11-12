@@ -1,0 +1,4 @@
+title: wxSQLitePlus
+description: A desktop workspace for exploring SQLite databases, running SQL, and opening compatible encrypted databases.
+theme: minima
+markdown: kramdown

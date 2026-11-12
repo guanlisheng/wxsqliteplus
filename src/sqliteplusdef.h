@@ -164,6 +164,7 @@ pour plus de détails.
 #define ID_MNU_FILTER         11901
 #define ID_MNU_SORT           11902
 #define ID_MNU_REFRESH        11903
+#define ID_MNU_CLEAR_VIEW     11904
 
 #define ID_CMD_ED_REFRESH     12100
 #define ID_CMD_LAUNCH_CLT     12200
@@ -282,4 +283,3 @@ pour plus de détails.
 #define STYLE_COUNT        12
 /*---------------------------------------------------------------------------*/
 #endif   // _SQLITEPLUSDEF_H_
-

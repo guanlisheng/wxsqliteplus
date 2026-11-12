@@ -55,6 +55,16 @@ pour plus de détails.
 wxGridEmptyTable g_EmptyTable;
 wxString g_NullValString(("(null)"));
 /*---------------------------------------------------------------------------*/
+wxString QuoteSQLiteIdentifier(const wxString& identifier)
+{
+    wxString quoted("\"");
+    wxString escaped = identifier;
+    escaped.Replace("\"", "\"\"");
+    quoted += escaped;
+    quoted += "\"";
+    return quoted;
+}
+/*---------------------------------------------------------------------------*/
 // wxSQLite3TableColumn
 /*---------------------------------------------------------------------------*/
 class wxSQLite3TableColumn
@@ -659,20 +669,46 @@ wxGridTblColumnsTable::wxGridTblColumnsTable(wxSQLite3Database* db,
 /*---------------------------------------------------------------------------*/
 wxString wxGridTblColumnsTable::GetTypeName(int row, int col)
 {
-    if ((col == 3)||(col == 5))
-        return wxGRID_VALUE_BOOL;
-    else
-        return wxGridSQLite3TableBase::GetTypeName(row, col);
+    return wxGridSQLite3TableBase::GetTypeName(row, col);
+}
+/*---------------------------------------------------------------------------*/
+wxString wxGridTblColumnsTable::GetColLabelValue(int col)
+{
+    static const wxString labels[] =
+    {
+        _("No."),
+        _("Column"),
+        _("Type"),
+        _("Not null"),
+        _("Default"),
+        _("PK pos")
+    };
+
+    if (col >= 0 && col < static_cast<int>(WXSIZEOF(labels)))
+        return labels[col];
+    return wxGridSQLite3TableBase::GetColLabelValue(col);
 }
 /*---------------------------------------------------------------------------*/
 wxString wxGridTblColumnsTable::GetValue(int row, int col)
 {
-    // dans certain cas au lieu de 1 la colonne est égale à 99
-    // les coches sont alors mal gérées
-    if ((col == 3)||(col == 5))
-        return m_ArrayColumn[col]->GetBool(row) ? ("1") : ("0");
-    else
-        return m_ArrayColumn[col]->GetString(row);
+    if (col == 0)
+    {
+        long ordinal = 0;
+        m_ArrayColumn[col]->GetString(row).ToLong(&ordinal);
+        return wxString::Format("%ld", ordinal + 1);
+    }
+    if (col == 3)
+        return m_ArrayColumn[col]->GetBool(row) ? _("Yes") : _("No");
+    if (col == 4 && m_ArrayColumn[col]->IsNull(row))
+        return _("(none)");
+    return wxGridSQLite3TableBase::GetValue(row, col);
+}
+/*---------------------------------------------------------------------------*/
+bool wxGridTblColumnsTable::IsEmptyCell(int row, int col)
+{
+    if (col == 4 && m_ArrayColumn[col]->IsNull(row))
+        return false;
+    return wxGridSQLite3TableBase::IsEmptyCell(row, col);
 }
 /*---------------------------------------------------------------------------*/
 wxSQLite3ResultSet wxGridTblColumnsTable::GetResultSet(wxSQLite3Database* db,
@@ -686,8 +722,8 @@ wxSQLite3ResultSet wxGridTblColumnsTable::GetResultSet(wxSQLite3Database* db,
         basename = base;
     else
         basename = ("main");
-    sql = wxString::Format(("PRAGMA '%s'.table_info(\"%s\");"), basename.c_str(),
-                           tablename.c_str());
+    sql = "PRAGMA " + QuoteSQLiteIdentifier(basename) + ".table_info(" +
+          QuoteSQLiteIdentifier(tablename) + ");";
     try
     {
         resultSet = db->ExecuteQuery(ToUTF8(sql));

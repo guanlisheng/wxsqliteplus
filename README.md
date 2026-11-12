@@ -1,7 +1,7 @@
-wxSqlitePlus
+wxSQLitePlus
 ============
 
-A cross-platform, open-source, easy-to-use SQLite database browser or client.
+A cross-platform, open-source SQLite database browser and SQL client.
 
 The SQL workspace provides syntax-highlighted editing, one-click statement and
 script execution, query-plan inspection, and tabbed results and output. Grid
@@ -9,21 +9,18 @@ results can be copied or exported as UTF-8 CSV from the context menu.
 Toolbars, object navigation and dialogs use a consistent scalable icon set
 where supported, with the original icons retained as a fallback on platforms
 without SVG bitmap support.
-Use the database structure search to find tables, views, indexes, triggers and
-columns across attached databases. Press Enter or click Next to cycle through
-matches; use Window > Find database object to focus the search.
-Recently opened databases are available from File > Open Recent. The list stores
-database paths only; encryption keys are never saved. The open and attach
-dialogs include MMEX `.mmb` and `.emb` database filters.
+Explore tables and views through their columns, data, foreign keys, indexes,
+triggers, and DDL. Filter and sort table data, inspect BLOB values, copy query
+results, or export grids as CSV. Search database objects across attached
+databases and reopen recent files without storing encryption keys.
 
-Encryption method is now upon [wxSQLite3](https://github.com/utelle/wxsqlite3) and compatible with 
-1. [Money Manager EX](https://moneymanagerex.org/)
-    - [MMEX4iOS](https://github.com/moneymanagerex/mmex-ios)
-    - [MMEX4Android](https://github.com/moneymanagerex/android-money-manager-ex/)
-    - [MMEX4Destkop](https://github.com/moneymanagerex/moneymanagerex)
-3. [SQLCipher](https://www.zetetic.net/sqlcipher/)
-4. [SQLite Studio](https://github.com/pawelsalawa/sqlitestudio/wiki/Official_plugins#dbsqlitewx)
-5. [DB Browser for SQLite](https://github.com/sqlitebrowser/sqlitebrowser/wiki/Encrypted-Databases)
+Open encrypted SQLite databases using the supported wxSQLite3 codecs. MMEX
+`.mmb` and `.emb` files are supported when their encryption format matches an
+available codec; the database remains local and the key is never saved.
+
+Visit the [wxSQLitePlus product page](https://wxsqliteplus.guanlisheng.com/) or
+[download a release](https://github.com/guanlisheng/wxsqliteplus/releases/latest).
+wxSQLitePlus is distributed under the [GNU GPL v3](LICENSE).
 
 [![Build status](https://ci.appveyor.com/api/projects/status/rxj2gomqw0iii3n1/branch/master?svg=true)](https://ci.appveyor.com/project/guanlisheng/wxsqliteplus)
 
