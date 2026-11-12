@@ -195,7 +195,7 @@ void wxAttachDbDlg::OnAttachbtnClick(wxCommandEvent& event)
 {
     wxFileDialog fileDialog(this, _("Attach database"), wxEmptyString,
                             wxEmptyString,
-                            _("SQLite files (*.db)|*.db|All files (*.*)|*.*"),
+                            _("SQLite databases (*.db;*.sqlite;*.sqlite3;*.db3)|*.db;*.sqlite;*.sqlite3;*.db3|MMEX databases (*.mmb;*.emb)|*.mmb;*.emb|All files (*.*)|*.*"),
                             wxFD_OPEN/*|wxFILE_MUST_EXIST*/);
     if (fileDialog.ShowModal() == wxID_OK)
     {

@@ -101,6 +101,8 @@ pour plus de détails.
 #define ID_OBJECT_SEARCH 15201
 #define ID_OBJECT_NEXT   15202
 #define ID_FIND_OBJECT   15203
+#define ID_RECENT_DB_FIRST 15300
+#define ID_RECENT_DB_LAST  15309
 /*---------------------------------------------------------------------------*/
 wxString g_SQLiteObjTypeName[5] =
 {
@@ -125,6 +127,8 @@ BEGIN_EVENT_TABLE(wxSQLitePlusFrame, wxFrame)
     EVT_MENU(ID_FIND_OBJECT, wxSQLitePlusFrame::OnFindDatabaseObject)
 
     EVT_MENU(wxID_OPEN, wxSQLitePlusFrame::OnOpenCreateClick)
+    EVT_MENU_RANGE(ID_RECENT_DB_FIRST, ID_RECENT_DB_LAST,
+                   wxSQLitePlusFrame::OnRecentDatabaseClick)
     EVT_MENU(ID_MNU_ATTACH_DB, wxSQLitePlusFrame::OnAttachDbClick)
     EVT_UPDATE_UI(ID_MNU_ATTACH_DB, wxSQLitePlusFrame::OnMnuCloseDbUpdate)
     EVT_MENU(ID_MNU_CLOSE_DB, wxSQLitePlusFrame::OnMnuCloseDbClick)
@@ -275,6 +279,7 @@ void wxSQLitePlusFrame::Init()
     m_ObjectSearchStatus = NULL;
     m_CenterNotebook = NULL;
     m_MnuFile = NULL;
+    m_RecentDatabaseMenu = NULL;
     m_MnuEdit = NULL;
     m_MnuDatabase = NULL;
     m_MnuTransact = NULL;
@@ -427,6 +432,11 @@ void wxSQLitePlusFrame::CreateMenus()
     m_MnuFile->Append(wxID_OPEN, _("&Open/Create"),
                       _("Open an existing database or create a new database"),
                       wxITEM_NORMAL);
+    m_RecentDatabaseMenu = new wxMenu;
+    m_MnuFile->AppendSubMenu(m_RecentDatabaseMenu, _("Open &Recent"),
+                             _("Open a recently used database"));
+    UpdateRecentDatabaseMenu();
+    m_MnuFile->AppendSeparator();
     m_MnuFile->Append(ID_MNU_ATTACH_DB, _("&Attach"),
                       _("Attach an existing or new database"), wxITEM_NORMAL);
 
@@ -926,7 +936,7 @@ void wxSQLitePlusFrame::OnOpenCreateClick(wxCommandEvent& event)
 {
     wxFileDialog fileDialog(this, _("Open/Create database"), wxEmptyString,
                             wxEmptyString,
-                            _("SQLite files (*.db)|*.db|All files (*.*)|*.*"),
+                            _("SQLite databases (*.db;*.sqlite;*.sqlite3;*.db3)|*.db;*.sqlite;*.sqlite3;*.db3|MMEX databases (*.mmb;*.emb)|*.mmb;*.emb|All files (*.*)|*.*"),
                             wxFD_OPEN/*|wxFILE_MUST_EXIST*/);
     if (fileDialog.ShowModal() == wxID_OK)
     {
@@ -942,6 +952,57 @@ void wxSQLitePlusFrame::OnOpenCreateClick(wxCommandEvent& event)
         if (OpenDatabase(fileDialog.GetPath(),
                          wxFileName(fileDialog.GetPath()).GetFullName()))
             InitNodeParams();
+    }
+}
+/*---------------------------------------------------------------------------*/
+void wxSQLitePlusFrame::OnRecentDatabaseClick(wxCommandEvent& event)
+{
+    const int index = event.GetId() - ID_RECENT_DB_FIRST;
+    const wxArrayString recent = wxGetApp().GetRecentDatabases();
+    if (index < 0 || static_cast<size_t>(index) >= recent.size())
+        return;
+
+    const wxString path = recent[index];
+    if (!wxFileExists(path))
+    {
+        wxMessageBox(wxString::Format(_("The recent database no longer exists:\n%s"),
+                                      path.c_str()),
+                     _("Open Database Error"), wxOK | wxICON_ERROR, this);
+        wxGetApp().RemoveRecentDatabase(path);
+        UpdateRecentDatabaseMenu();
+        return;
+    }
+
+    if (OpenDatabase(path, wxFileName(path).GetFullName()))
+        InitNodeParams();
+}
+/*---------------------------------------------------------------------------*/
+void wxSQLitePlusFrame::UpdateRecentDatabaseMenu()
+{
+    if (!m_RecentDatabaseMenu)
+        return;
+
+    while (m_RecentDatabaseMenu->GetMenuItemCount() > 0)
+    {
+        wxMenuItem* item = m_RecentDatabaseMenu->FindItemByPosition(0);
+        m_RecentDatabaseMenu->Delete(item);
+    }
+    const wxArrayString recent = wxGetApp().GetRecentDatabases();
+    if (recent.IsEmpty())
+    {
+        wxMenuItem* item = m_RecentDatabaseMenu->Append(
+            wxID_ANY, _("(No recent databases)"));
+        item->Enable(false);
+        return;
+    }
+
+    for (size_t index = 0; index < recent.size() &&
+         index < static_cast<size_t>(ID_RECENT_DB_LAST - ID_RECENT_DB_FIRST + 1);
+         ++index)
+    {
+        m_RecentDatabaseMenu->Append(
+            ID_RECENT_DB_FIRST + static_cast<int>(index),
+            wxString::Format("%zu %s", index + 1, recent[index]));
     }
 }
 /*---------------------------------------------------------------------------*/
@@ -1799,6 +1860,8 @@ bool wxSQLitePlusFrame::OpenDatabase(const wxString& dbfullname, const wxString&
 
         SQLBook->ShowLog();
         SQLBook->GetSQLEdit()->SetFocus();
+        wxGetApp().AddRecentDatabase(dbfullname);
+        UpdateRecentDatabaseMenu();
         return true;
     }
     catch(wxSQLite3Exception& ex)

@@ -12,6 +12,9 @@ without SVG bitmap support.
 Use the database structure search to find tables, views, indexes, triggers and
 columns across attached databases. Press Enter or click Next to cycle through
 matches; use Window > Find database object to focus the search.
+Recently opened databases are available from File > Open Recent. The list stores
+database paths only; encryption keys are never saved. The open and attach
+dialogs include MMEX `.mmb` and `.emb` database filters.
 
 Encryption method is now upon [wxSQLite3](https://github.com/utelle/wxsqlite3) and compatible with 
 1. [Money Manager EX](https://moneymanagerex.org/)

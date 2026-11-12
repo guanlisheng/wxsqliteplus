@@ -332,6 +332,73 @@ wxSQLite3ResultSet wxSQLitePlusApp::GetStatementHistory()
     return hisQRY;
 }
 /*---------------------------------------------------------------------------*/
+wxArrayString wxSQLitePlusApp::GetRecentDatabases()
+{
+    wxArrayString recent;
+
+    try
+    {
+        wxSQLite3Statement statement = m_db.PrepareStatement(
+            "SELECT path FROM recentdb WHERE user = ? ORDER BY id DESC LIMIT 10;");
+        statement.Bind(1, wxGetUserId());
+        wxSQLite3ResultSet result = statement.ExecuteQuery();
+        while (result.NextRow())
+            recent.Add(result.GetString(0));
+        result.Finalize();
+    }
+    catch(wxSQLite3Exception& ex)
+    {
+        ShowError("GetRecentDatabases", ex);
+    }
+    return recent;
+}
+/*---------------------------------------------------------------------------*/
+void wxSQLitePlusApp::AddRecentDatabase(const wxString& path)
+{
+    if (path.IsEmpty() || path == ":memory:" || !wxFileExists(path))
+        return;
+
+    wxFileName filename(path);
+    filename.MakeAbsolute();
+    const wxString fullPath = filename.GetFullPath();
+
+    try
+    {
+        wxSQLite3Statement insert = m_db.PrepareStatement(
+            "INSERT OR REPLACE INTO recentdb(user, path) VALUES (?, ?);");
+        insert.Bind(1, wxGetUserId());
+        insert.Bind(2, fullPath);
+        insert.ExecuteUpdate();
+
+        wxSQLite3Statement prune = m_db.PrepareStatement(
+            "DELETE FROM recentdb WHERE user = ? AND id NOT IN "
+            "(SELECT id FROM recentdb WHERE user = ? ORDER BY id DESC LIMIT 10);");
+        prune.Bind(1, wxGetUserId());
+        prune.Bind(2, wxGetUserId());
+        prune.ExecuteUpdate();
+    }
+    catch(wxSQLite3Exception& ex)
+    {
+        ShowError("AddRecentDatabase", ex);
+    }
+}
+/*---------------------------------------------------------------------------*/
+void wxSQLitePlusApp::RemoveRecentDatabase(const wxString& path)
+{
+    try
+    {
+        wxSQLite3Statement statement = m_db.PrepareStatement(
+            "DELETE FROM recentdb WHERE user = ? AND path = ?;");
+        statement.Bind(1, wxGetUserId());
+        statement.Bind(2, path);
+        statement.ExecuteUpdate();
+    }
+    catch(wxSQLite3Exception& ex)
+    {
+        ShowError("RemoveRecentDatabase", ex);
+    }
+}
+/*---------------------------------------------------------------------------*/
 void wxSQLitePlusApp::SetParamInt(int param, int value)
 {
     wxString paramname;
@@ -1757,6 +1824,15 @@ void wxSQLitePlusApp::InitConfig()
             m_db.ExecuteUpdate(sql);
 
             QuerySetParam(("Version"), GetFileVersion());
+        }
+        if (!m_db.TableExists(("recentdb")))
+        {
+            m_db.ExecuteUpdate(
+                "CREATE TABLE recentdb ("
+                "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                "user TEXT NOT NULL, "
+                "path TEXT NOT NULL, "
+                "UNIQUE(user, path));");
         }
     }
     catch(wxSQLite3Exception& ex)

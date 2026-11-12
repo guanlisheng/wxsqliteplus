@@ -38,6 +38,7 @@ pour plus de détails.
 #endif
 /*---------------------------------------------------------------------------*/
 #include <wx/wxsqlite3.h>
+#include <wx/arrstr.h>
 #include "sqliteplusdef.h"
 /*---------------------------------------------------------------------------*/
 class wxSingleInstanceChecker;
@@ -57,6 +58,9 @@ public:
 
     void AddHistory(const wxString& sql);
     wxSQLite3ResultSet GetStatementHistory();
+    wxArrayString GetRecentDatabases();
+    void AddRecentDatabase(const wxString& path);
+    void RemoveRecentDatabase(const wxString& path);
 
     void SetParamInt(int param, int value);
     int GetParamInt(int param);
@@ -181,4 +185,3 @@ private:
 DECLARE_APP(wxSQLitePlusApp)
 /*---------------------------------------------------------------------------*/
 #endif   // _WXSQLITEPLUSAPP_H_
-

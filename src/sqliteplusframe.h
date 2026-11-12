@@ -100,6 +100,7 @@ protected:
     void OnDbtreeItemSelChanged(wxTreeEvent& event);
     void OnDbtreeItemActivated(wxTreeEvent& event);
     void OnOpenCreateClick(wxCommandEvent& event);
+    void OnRecentDatabaseClick(wxCommandEvent& event);
     void OnAttachDbClick(wxCommandEvent& event);
     void OnReKeyDbClick(wxCommandEvent& event);
     void OnMnuCloseDbClick(wxCommandEvent& event);
@@ -167,6 +168,7 @@ private:
     wxString m_LastObjectSearch;
     wxAuiNotebook* m_CenterNotebook;
     wxMenu* m_MnuFile;
+    wxMenu* m_RecentDatabaseMenu;
     wxMenu* m_MnuEdit;
     wxMenu* m_MnuDatabase;
     wxMenu* m_MnuTransact;
@@ -188,6 +190,7 @@ private:
     std::vector<wxSQLite3Cipher*> m_Cipher;
 
     void InitTree();
+    void UpdateRecentDatabaseMenu();
 
     bool CloseDatabase();
     bool OpenDatabase(const wxString& dbfullname, const wxString& name);
