@@ -12,8 +12,7 @@ if(APPLE AND NOT CMAKE_OSX_DEPLOYMENT_TARGET)
     endif()
 endif()
 
-# Name the project
-project(wxSQLitePlus)
+project(wxSQLitePlus VERSION 0.5.0)
 
 set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -85,6 +84,9 @@ if(APPLE)
         MACOSX_BUNDLE_INFO_PLIST ${CMAKE_SOURCE_DIR}/build/Info.plist.in
         RESOURCE "build/wxmac.icns"
         MACOSX_BUNDLE_ICON_FILE wxmac.icns
+        MACOSX_BUNDLE_SHORT_VERSION_STRING "${PROJECT_VERSION}"
+        MACOSX_BUNDLE_BUNDLE_VERSION "${PROJECT_VERSION}"
+        MACOSX_BUNDLE_LONG_VERSION_STRING "${PROJECT_VERSION}"
         MACOSX_BUNDLE_COPYRIGHT "Copyright wxWidgets"
         MACOSX_BUNDLE_GUI_IDENTIFIER "com.guanlisheng.wxsqliteplus"
         )

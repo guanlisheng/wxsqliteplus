@@ -24,6 +24,27 @@ Encryption method is now upon [wxSQLite3](https://github.com/utelle/wxsqlite3) a
 
 [![Build status](https://ci.appveyor.com/api/projects/status/rxj2gomqw0iii3n1/branch/master?svg=true)](https://ci.appveyor.com/project/guanlisheng/wxsqliteplus)
 
+## Building
+
+The project uses CMake 3.27 or newer, a C++20 compiler, and wxWidgets 3.3
+with the core, base, stc, xml, net, adv, aui, html, and richtext components.
+Initialize the wxSQLite3 submodule before configuring:
+
+```sh
+git submodule update --init --recursive
+cmake -S . -B build
+cmake --build build --config Release
+```
+
+On macOS and Linux, if CMake cannot find wxWidgets, specify its configuration
+tool with `-DwxWidgets_CONFIG_EXECUTABLE="$(which wx-config)"`. On Windows,
+configure CMake with a wxWidgets installation compatible with the selected
+compiler and architecture.
+
+The legacy Autotools/Bakefile build files have been removed. The existing
+Visual Studio project files are retained, but have not been verified against
+the current dependencies.
+
 ## Contributing
 
 1. Fork it!
