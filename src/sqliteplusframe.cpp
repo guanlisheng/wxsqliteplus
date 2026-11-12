@@ -51,6 +51,7 @@ pour plus de détails.
 #include <wx/statusbr.h>
 #include <wx/toolbar.h>
 #include <wx/artprov.h>
+#include <wx/srchctrl.h>
 /*---------------------------------------------------------------------------*/
 #include "sqliteplusframe.h"
 #include "wxsqliteplusapp.h"
@@ -97,6 +98,9 @@ pour plus de détails.
 #define ID_TBQUERY      15006
 #define ID_TB_TRANSACT  15007
 #define ID_SQL_PANEL    15008
+#define ID_OBJECT_SEARCH 15201
+#define ID_OBJECT_NEXT   15202
+#define ID_FIND_OBJECT   15203
 /*---------------------------------------------------------------------------*/
 wxString g_SQLiteObjTypeName[5] =
 {
@@ -114,6 +118,11 @@ BEGIN_EVENT_TABLE(wxSQLitePlusFrame, wxFrame)
     EVT_TREE_ITEM_RIGHT_CLICK(ID_DBTREE, wxSQLitePlusFrame::OnDbtreeItemRightClick)
     EVT_TREE_SEL_CHANGED(ID_DBTREE, wxSQLitePlusFrame::OnDbtreeItemSelChanged)
     EVT_TREE_ITEM_ACTIVATED(ID_DBTREE, wxSQLitePlusFrame::OnDbtreeItemActivated)
+    EVT_TEXT(ID_OBJECT_SEARCH, wxSQLitePlusFrame::OnObjectSearchChanged)
+    EVT_TEXT_ENTER(ID_OBJECT_SEARCH, wxSQLitePlusFrame::OnObjectSearchNext)
+    EVT_SEARCH(ID_OBJECT_SEARCH, wxSQLitePlusFrame::OnObjectSearchNext)
+    EVT_BUTTON(ID_OBJECT_NEXT, wxSQLitePlusFrame::OnObjectSearchNext)
+    EVT_MENU(ID_FIND_OBJECT, wxSQLitePlusFrame::OnFindDatabaseObject)
 
     EVT_MENU(wxID_OPEN, wxSQLitePlusFrame::OnOpenCreateClick)
     EVT_MENU(ID_MNU_ATTACH_DB, wxSQLitePlusFrame::OnAttachDbClick)
@@ -260,7 +269,10 @@ wxSQLitePlusFrame::~wxSQLitePlusFrame()
 /*---------------------------------------------------------------------------*/
 void wxSQLitePlusFrame::Init()
 {
+    m_TreePane = NULL;
     m_TreeCtrl = NULL;
+    m_ObjectSearch = NULL;
+    m_ObjectSearchStatus = NULL;
     m_CenterNotebook = NULL;
     m_MnuFile = NULL;
     m_MnuEdit = NULL;
@@ -342,14 +354,36 @@ void wxSQLitePlusFrame::CreateControls()
 
     CreateMenus();
 
-    m_TreeCtrl = new wxTreeCtrl(this, ID_DBTREE, wxDefaultPosition,
+    m_TreePane = new wxPanel(this);
+    wxBoxSizer* treeSizer = new wxBoxSizer(wxVERTICAL);
+    m_TreePane->SetSizer(treeSizer);
+
+    wxBoxSizer* searchSizer = new wxBoxSizer(wxHORIZONTAL);
+    m_ObjectSearch = new wxSearchCtrl(m_TreePane, ID_OBJECT_SEARCH,
+                                      wxEmptyString, wxDefaultPosition,
+                                      wxDefaultSize, wxTE_PROCESS_ENTER);
+    m_ObjectSearch->SetDescriptiveText(_("Find database objects"));
+    m_ObjectSearch->ShowCancelButton(true);
+    m_ObjectSearch->SetToolTip(_("Search tables, views, indexes, triggers and columns"));
+    searchSizer->Add(m_ObjectSearch, 1, wxEXPAND | wxRIGHT, FromDIP(4));
+    wxButton* nextButton = new wxButton(m_TreePane, ID_OBJECT_NEXT, _("Next"));
+    nextButton->SetToolTip(_("Find the next matching object"));
+    searchSizer->Add(nextButton, 0, wxEXPAND);
+    treeSizer->Add(searchSizer, 0, wxEXPAND | wxALL, FromDIP(6));
+
+    m_ObjectSearchStatus = new wxStaticText(m_TreePane, wxID_ANY, wxEmptyString);
+    treeSizer->Add(m_ObjectSearchStatus, 0, wxLEFT | wxRIGHT | wxBOTTOM,
+                   FromDIP(6));
+
+    m_TreeCtrl = new wxTreeCtrl(m_TreePane, ID_DBTREE, wxDefaultPosition,
                                 wxDefaultSize,
                                 wxTR_HAS_BUTTONS |wxTR_LINES_AT_ROOT|
                                 wxTR_HIDE_ROOT|wxTR_SINGLE|wxSUNKEN_BORDER);
+    treeSizer->Add(m_TreeCtrl, 1, wxEXPAND);
 
-    GetAuiManager().AddPane(m_TreeCtrl, wxAuiPaneInfo().Name(("TreePane"))
-                            .Caption(("Database Structure"))
-                            .BestSize(wxSize(250, -1))
+    GetAuiManager().AddPane(m_TreePane, wxAuiPaneInfo().Name(("TreePane"))
+                            .Caption(_("Database Structure"))
+                            .BestSize(FromDIP(wxSize(300, -1)))
                             .TopDockable(false)
                             .BottomDockable(false)
                             .DestroyOnClose(false)
@@ -507,6 +541,8 @@ void wxSQLitePlusFrame::CreateMenus()
                         _("Show/hide the database structure window"),
                         wxITEM_CHECK);
     m_MnuWindow->Check(ID_MNU_SHOWTREE, true);
+    m_MnuWindow->Append(ID_FIND_OBJECT, _("Find database object...\tCtrl+Shift+F"),
+                        _("Find an object in the database structure"));
     m_MnuWindow->Append(ID_MNU_SHOWHISTORY, _("Show SQL &History\tF8"),
                         _("Show the SQL history window"), wxITEM_NORMAL);
     m_MnuWindow->AppendSeparator();
@@ -1134,7 +1170,91 @@ void wxSQLitePlusFrame::OnMnuAddColumnsClick(wxCommandEvent& event)
 /*---------------------------------------------------------------------------*/
 void wxSQLitePlusFrame::OnMnuShowTreeClick(wxCommandEvent& event)
 {
-    HideShowPane(m_TreeCtrl);
+    HideShowPane(m_TreePane);
+}
+/*---------------------------------------------------------------------------*/
+void wxSQLitePlusFrame::OnFindDatabaseObject(wxCommandEvent& event)
+{
+    wxUnusedVar(event);
+    if (!IsShownPane(m_TreePane))
+        HideShowPane(m_TreePane);
+    m_ObjectSearch->SetFocus();
+    m_ObjectSearch->SelectAll();
+}
+/*---------------------------------------------------------------------------*/
+void wxSQLitePlusFrame::OnObjectSearchChanged(wxCommandEvent& event)
+{
+    wxUnusedVar(event);
+    m_LastObjectSearch.clear();
+    m_ObjectSearchStatus->SetLabel(m_ObjectSearch->GetValue().IsEmpty()
+                                   ? wxString() : _("Press Enter to find"));
+    m_TreePane->Layout();
+}
+/*---------------------------------------------------------------------------*/
+void wxSQLitePlusFrame::OnObjectSearchNext(wxCommandEvent& event)
+{
+    wxUnusedVar(event);
+    wxString query = m_ObjectSearch->GetValue().Lower();
+    if (query.IsEmpty())
+    {
+        m_ObjectSearchStatus->SetLabel(wxEmptyString);
+        m_LastObjectSearch.clear();
+        m_TreePane->Layout();
+        return;
+    }
+
+    std::vector<wxTreeItemId> pending;
+    std::vector<wxTreeItemId> matches;
+    wxTreeItemId root = m_TreeCtrl->GetRootItem();
+    if (root.IsOk())
+        pending.push_back(root);
+    while (!pending.empty())
+    {
+        wxTreeItemId item = pending.back();
+        pending.pop_back();
+        int type = m_TreeCtrl->GetItemImage(item);
+        if (type >= ID_TREE_TABLE && type <= ID_TREE_FIELD &&
+                m_TreeCtrl->GetItemText(item).Lower().Find(query) != wxNOT_FOUND)
+            matches.push_back(item);
+
+        std::vector<wxTreeItemId> children;
+        wxTreeItemIdValue cookie;
+        wxTreeItemId child = m_TreeCtrl->GetFirstChild(item, cookie);
+        while (child.IsOk())
+        {
+            children.push_back(child);
+            child = m_TreeCtrl->GetNextChild(item, cookie);
+        }
+        for (auto it = children.rbegin(); it != children.rend(); ++it)
+            pending.push_back(*it);
+    }
+
+    if (matches.empty())
+    {
+        m_ObjectSearchStatus->SetLabel(_("No matching objects"));
+    }
+    else
+    {
+        size_t index = 0;
+        if (query == m_LastObjectSearch)
+        {
+            wxTreeItemId selected = m_TreeCtrl->GetSelection();
+            for (size_t i = 0; i < matches.size(); ++i)
+            {
+                if (matches[i] == selected)
+                {
+                    index = (i + 1) % matches.size();
+                    break;
+                }
+            }
+        }
+        m_TreeCtrl->EnsureVisible(matches[index]);
+        m_TreeCtrl->SelectItem(matches[index]);
+        m_ObjectSearchStatus->SetLabel(
+            wxString::Format(_("Match %zu of %zu"), index + 1, matches.size()));
+    }
+    m_LastObjectSearch = query;
+    m_TreePane->Layout();
 }
 /*---------------------------------------------------------------------------*/
 void wxSQLitePlusFrame::OnMnuTbFileClick(wxCommandEvent& event)
@@ -1164,7 +1284,7 @@ void wxSQLitePlusFrame::OnMnuTbTransactClick(wxCommandEvent& event)
 /*---------------------------------------------------------------------------*/
 void wxSQLitePlusFrame::OnMnuShowTreeUpdate(wxUpdateUIEvent& event)
 {
-    event.Check(IsShownPane(m_TreeCtrl));
+    event.Check(IsShownPane(m_TreePane));
 }
 /*---------------------------------------------------------------------------*/
 void wxSQLitePlusFrame::OnMnuTbFileUpdate(wxUpdateUIEvent& event)

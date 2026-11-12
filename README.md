@@ -8,6 +8,9 @@ script execution, query-plan inspection, and tabbed results and output. Grid
 results can be copied or exported as UTF-8 CSV from the context menu.
 The query toolbar uses scalable icons where supported and retains the original
 icons on platforms without SVG bitmap support.
+Use the database structure search to find tables, views, indexes, triggers and
+columns across attached databases. Press Enter or click Next to cycle through
+matches; use Window > Find database object to focus the search.
 
 Encryption method is now upon [wxSQLite3](https://github.com/utelle/wxsqlite3) and compatible with 
 1. [Money Manager EX](https://moneymanagerex.org/)

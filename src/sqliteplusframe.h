@@ -46,6 +46,8 @@ pour plus de détails.
 class wxTreeCtrl;
 class wxAuiNotebook;
 class wxMenu;
+class wxSearchCtrl;
+class wxStaticText;
 /*---------------------------------------------------------------------------*/
 enum wxSQLiteObjectType {otNone = -1, otTable = 0, otView, otIndex,
                          otTrigger, otTableAndView
@@ -127,6 +129,9 @@ protected:
     void OnMnuAddColumnsClick(wxCommandEvent& event);
     void OnMnuAutotransactClick(wxCommandEvent& event);
     void OnMnuShowTreeClick(wxCommandEvent& event);
+    void OnFindDatabaseObject(wxCommandEvent& event);
+    void OnObjectSearchChanged(wxCommandEvent& event);
+    void OnObjectSearchNext(wxCommandEvent& event);
     void OnMnuTbFileClick(wxCommandEvent& event);
     void OnMnuTbEditClick(wxCommandEvent& event);
     void OnMnuTbDatabaseClick(wxCommandEvent& event);
@@ -155,7 +160,11 @@ protected:
 private:
 
     wxAuiManager m_auiManager;
+    wxPanel* m_TreePane;
     wxTreeCtrl* m_TreeCtrl;
+    wxSearchCtrl* m_ObjectSearch;
+    wxStaticText* m_ObjectSearchStatus;
+    wxString m_LastObjectSearch;
     wxAuiNotebook* m_CenterNotebook;
     wxMenu* m_MnuFile;
     wxMenu* m_MnuEdit;
@@ -224,4 +233,3 @@ private:
 };
 /*---------------------------------------------------------------------------*/
 #endif   // _SQLITEPLUSFRAME_H_
-
