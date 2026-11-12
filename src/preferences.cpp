@@ -207,7 +207,7 @@ void wxPrefDlg::CreatePanelGeneral()
     flexSizer1->Add(sText1, 0, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxALL, 5);
 
     m_OddLineColour = new wxColourPickerCtrl(panelGen, ID_ODDLINECOLOUR,
-            wxColour(255, 255, 128),
+            wxSQLitePlusApp::GetDefaultGridOddRowColour(),
             wxDefaultPosition, wxDefaultSize,
             wxCLRP_DEFAULT_STYLE|wxCLRP_SHOW_LABEL);
     flexSizer1->Add(m_OddLineColour, 0, wxALIGN_LEFT|wxALIGN_CENTER_VERTICAL|wxALL, 5);
@@ -830,7 +830,8 @@ void wxPrefDlg::DisplayStyle(int style)
 /*---------------------------------------------------------------------------*/
 void wxPrefDlg::ResetDefaultDataGeneral()
 {
-    m_Val_OddColour = ("#FFFFAF");
+    m_Val_OddColour =
+        wxSQLitePlusApp::GetDefaultGridOddRowColour().GetAsString(wxC2S_HTML_SYNTAX);
     m_Val_MaxHistory = 100;
     m_Val_SavePos = true;
     m_Val_SavePers = true;
@@ -918,4 +919,3 @@ void wxPrefDlg::ResetDisplaySyntax()
         ChangeStyle(i);
 }
 /*---------------------------------------------------------------------------*/
-

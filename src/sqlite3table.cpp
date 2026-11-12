@@ -366,37 +366,49 @@ private:
 OddRowsGridCellAttrProvider::OddRowsGridCellAttrProvider(wxColour colour)
 {
     m_attrForOddRows = new wxGridCellAttr;
+    m_attrForEvenRows = new wxGridCellAttr;
     m_OddColour = colour;
-    m_attrForOddRows->SetBackgroundColour(m_OddColour);
+    m_UseSystemOddColour = wxSQLitePlusApp::IsDefaultGridOddRowColour(colour) ||
+                           colour == wxColour("#F2F5F8") ||
+                           colour == wxColour("#FFFFAF");
 }
 /*---------------------------------------------------------------------------*/
 OddRowsGridCellAttrProvider::~OddRowsGridCellAttrProvider()
 {
     m_attrForOddRows->DecRef();
+    m_attrForEvenRows->DecRef();
 }
 /*---------------------------------------------------------------------------*/
 wxGridCellAttr* OddRowsGridCellAttrProvider::GetAttr(int row, int col,
         wxGridCellAttr::wxAttrKind  kind) const
 {
     wxGridCellAttr *attr = wxGridCellAttrProvider::GetAttr(row, col, kind);
+    const bool isOddRow = row % 2 != 0;
+    wxGridCellAttr* rowAttr = isOddRow ? m_attrForOddRows : m_attrForEvenRows;
+    const wxColour background = isOddRow && !m_UseSystemOddColour
+                                    ? m_OddColour
+                                    : isOddRow
+                                          ? wxSQLitePlusApp::GetDefaultGridOddRowColour()
+                                          : wxSQLitePlusApp::GetDefaultGridEvenRowColour();
 
-    if (row % 2)
+    rowAttr->SetBackgroundColour(background);
+    rowAttr->SetTextColour(wxSQLitePlusApp::GetDefaultGridTextColour());
+
+    if (!attr)
     {
-        if ( !attr )
-        {
-            attr = m_attrForOddRows;
-            attr->IncRef();
-        }
-        else
-        {
-            if (!attr->HasBackgroundColour())
-            {
-                wxGridCellAttr *attrNew = attr->Clone();
-                attr->DecRef();
-                attr = attrNew;
-                attr->SetBackgroundColour(m_OddColour);
-            }
-        }
+        rowAttr->IncRef();
+        return rowAttr;
+    }
+
+    if (!attr->HasBackgroundColour() || !attr->HasTextColour())
+    {
+        wxGridCellAttr *attrNew = attr->Clone();
+        attr->DecRef();
+        attr = attrNew;
+        if (!attr->HasBackgroundColour())
+            attr->SetBackgroundColour(background);
+        if (!attr->HasTextColour())
+            attr->SetTextColour(wxSQLitePlusApp::GetDefaultGridTextColour());
     }
 
     return attr;

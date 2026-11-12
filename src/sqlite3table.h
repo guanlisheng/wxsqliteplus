@@ -110,7 +110,9 @@ public:
 private:
 
     wxGridCellAttr *m_attrForOddRows;
+    wxGridCellAttr *m_attrForEvenRows;
     wxColour m_OddColour;
+    bool m_UseSystemOddColour;
 };
 /*---------------------------------------------------------------------------*/
 class WXDLLIMPEXP_SQLITE3TABLE wxGridEmptyTable : public wxGridTableBase

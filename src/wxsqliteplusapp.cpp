@@ -1082,7 +1082,7 @@ wxString wxSQLitePlusApp::GetParamStr(int param)
         break;
     case PARAM_ODDROWCOLOR :
         paramname = ("Odd_Row_Color");
-        defvalue = ("#FFFFAF");
+        defvalue = GetDefaultGridOddRowColour().GetAsString(wxC2S_HTML_SYNTAX);
         break;
     case PARAM_STYLE_FONTNAME :
         paramname = ("Style Font Name");
@@ -1196,7 +1196,40 @@ wxString wxSQLitePlusApp::GetParamStr(int param)
         return wxEmptyString;
     }
 
-    return QueryGetParam(paramname, defvalue);
+    wxString value = QueryGetParam(paramname, defvalue);
+    if (param == PARAM_ODDROWCOLOR &&
+            (value.CmpNoCase("#FFFFAF") == 0 ||
+             value.CmpNoCase("#F2F5F8") == 0 ||
+             IsDefaultGridOddRowColour(wxColour(value))))
+    {
+        value = defvalue;
+        QuerySetParam(paramname, value);
+    }
+
+    return value;
+}
+/*---------------------------------------------------------------------------*/
+wxColour wxSQLitePlusApp::GetDefaultGridEvenRowColour()
+{
+    return wxSystemSettings::SelectLightDark(wxColour("#F6F8FA"),
+            wxColour("#252B33"));
+}
+/*---------------------------------------------------------------------------*/
+wxColour wxSQLitePlusApp::GetDefaultGridOddRowColour()
+{
+    return wxSystemSettings::SelectLightDark(wxColour("#EDF1F5"),
+            wxColour("#2D343E"));
+}
+/*---------------------------------------------------------------------------*/
+wxColour wxSQLitePlusApp::GetDefaultGridTextColour()
+{
+    return wxSystemSettings::SelectLightDark(wxColour("#20262E"),
+            wxColour("#E6EAF0"));
+}
+/*---------------------------------------------------------------------------*/
+bool wxSQLitePlusApp::IsDefaultGridOddRowColour(const wxColour& colour)
+{
+    return colour == wxColour("#EDF1F5") || colour == wxColour("#2D343E");
 }
 /*---------------------------------------------------------------------------*/
 void wxSQLitePlusApp::SetSQLParameter(const wxString& param,

@@ -66,6 +66,10 @@ public:
     int GetParamInt(int param);
     void SetParamStr(int param, const wxString& value);
     wxString GetParamStr(int param);
+    static wxColour GetDefaultGridEvenRowColour();
+    static wxColour GetDefaultGridOddRowColour();
+    static wxColour GetDefaultGridTextColour();
+    static bool IsDefaultGridOddRowColour(const wxColour& colour);
 
     void SetSQLParameter(const wxString& param, const wxString& value);
     wxString GetSQLParameter(const wxString& param);
