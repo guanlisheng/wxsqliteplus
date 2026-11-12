@@ -1,4 +1,6 @@
 title: wxSQLitePlus
 description: A desktop workspace for exploring SQLite databases, running SQL, and opening compatible encrypted databases.
+url: https://wxsqliteplus.guanlisheng.com
+baseurl: ""
 theme: minima
 markdown: kramdown

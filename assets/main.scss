@@ -1,0 +1,35 @@
+---
+---
+
+@import "minima";
+
+.site-header {
+  background: #101923;
+  border-top: 5px solid #49d6aa;
+  border-bottom-color: #273440;
+}
+
+.site-title,
+.site-title:visited {
+  color: #fff;
+}
+
+.site-nav {
+  display: none;
+}
+
+.site-nav .page-link {
+  color: #c3ced5;
+}
+
+.site-nav .page-link:hover {
+  color: #49d6aa;
+}
+
+.page-content {
+  background: #f5f7f8;
+}
+
+.page-content .wrapper {
+  max-width: 860px;
+}
