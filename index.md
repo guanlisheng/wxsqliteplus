@@ -5,14 +5,18 @@ description: A desktop workspace for exploring SQLite databases, running SQL, an
 ---
 
 # Get closer to your data
+{: .hero-title}
 
 Browse database structure, inspect table data, and work with SQL in one focused
 desktop application. Straightforward tools for the databases you already use.
+{: .hero-copy}
 
-[Get the latest release](https://github.com/guanlisheng/wxsqliteplus/releases/latest) ·
-[Explore the source](https://github.com/guanlisheng/wxsqliteplus)
+[Get the latest release](https://github.com/guanlisheng/wxsqliteplus/releases/latest){: .button}
+[Explore the source](https://github.com/guanlisheng/wxsqliteplus){: .button .secondary}
+{: .hero-actions}
 
 **Free and open source · GPL-3.0 · Database files stay on your device**
+{: .trust-line}
 
 ## Explore your database
 
@@ -26,6 +30,7 @@ desktop application. Straightforward tools for the databases you already use.
   across open databases.
 - **Open encrypted SQLite files:** Use supported wxSQLite3 encryption codecs.
   Compatible MMEX `.mmb` and `.emb` files are one use case.
+{: .feature-list}
 
 ## Designed to keep your data local
 
@@ -41,3 +46,4 @@ the [GNU General Public License, version 3](https://github.com/guanlisheng/wxsql
 - [Build from source](https://github.com/guanlisheng/wxsqliteplus/blob/master/README.md)
 - [Source code](https://github.com/guanlisheng/wxsqliteplus)
 - [Report an issue or send feedback](https://github.com/guanlisheng/wxsqliteplus/issues)
+{: .resource-links}
