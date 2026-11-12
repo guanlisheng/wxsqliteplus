@@ -6,8 +6,9 @@ A cross-platform, open-source, easy-to-use SQLite database browser or client.
 The SQL workspace provides syntax-highlighted editing, one-click statement and
 script execution, query-plan inspection, and tabbed results and output. Grid
 results can be copied or exported as UTF-8 CSV from the context menu.
-The query toolbar uses scalable icons where supported and retains the original
-icons on platforms without SVG bitmap support.
+Toolbars, object navigation and dialogs use a consistent scalable icon set
+where supported, with the original icons retained as a fallback on platforms
+without SVG bitmap support.
 Use the database structure search to find tables, views, indexes, triggers and
 columns across attached databases. Press Enter or click Next to cycle through
 matches; use Window > Find database object to focus the search.
